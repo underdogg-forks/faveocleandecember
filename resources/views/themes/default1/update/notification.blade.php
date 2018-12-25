@@ -1,11 +1,10 @@
-
 <li class="dropdown notifications-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-refresh"></i>
         <span class="label label-danger" id="count">{!! $notification->count() !!}</span>
     </a>
     <ul class="dropdown-menu" style="width:500px">
-        
+
         <li class="header">You have {!! $notification->count() !!} update(s).</li>
 
         <ul class="menu list-unstyled">
@@ -28,4 +27,3 @@
 
     </ul>
 </li>
-

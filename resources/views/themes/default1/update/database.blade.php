@@ -3,7 +3,7 @@
 
 
 <div class="row">
-    <div class="col-xs-12">  
+    <div class="col-xs-12">
         <!-- check whether success or not -->
         @if(Session::has('success'))
         <div class="alert alert-success alert-dismissable">
@@ -16,7 +16,7 @@
         @if(Session::has('fails'))
         <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <b>{!! Lang::get('lang.alert') !!} !</b>            
+            <b>{!! Lang::get('lang.alert') !!} !</b>
             {{Session::get('fails')}}
         </div>
         @endif

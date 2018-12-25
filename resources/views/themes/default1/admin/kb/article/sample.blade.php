@@ -47,15 +47,19 @@
                                 <td>{!! $song->id !!}</td>
                                 <td>{!! $song->title !!}</td>
                                 <td>{!! $song->slug !!}</td>
-                                <td>{!! link_to_route('songs.show','Show',[$song->slug],['id'=>'show','class'=>'btn btn-primary btn-sm']) !!}
+                                <td>{!! link_to_route('songs.show','Show',[$song->slug],['id'=>'show','class'=>'btn
+                                    btn-primary btn-sm']) !!}
 
-                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{$song->slug}}">Modal Edit</button>
+                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{$song->slug}}">Modal
+                                        Edit</button>
                                     <div class="modal fade" id="{{$song->slug}}">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                {!! Form::model($song,['route'=>['songs.update', $song->slug],'method'=>'PATCH']) !!}
+                                                {!! Form::model($song,['route'=>['songs.update',
+                                                $song->slug],'method'=>'PATCH']) !!}
                                                 <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                            aria-hidden="true">&times;</span></button>
                                                     <h4 class="modal-title">Edit Song</h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -65,27 +69,33 @@
                                                     <div class="form-group">
                                                         {!! Form::submit('Update Song',['class'=>'btn btn-primary'])!!}
                                                     </div>
-                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-default pull-left"
+                                                        data-dismiss="modal">Close</button>
                                                 </div>
                                                 {!! Form::close() !!}
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
                                     </div><!-- /.modal -->
 
-                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#{{$song->slug}}delete">Modal Delete</button>
+                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#{{$song->slug}}delete">Modal
+                                        Delete</button>
                                     <div class="modal fade" id="{{$song->slug}}delete">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                            aria-hidden="true">&times;</span></button>
                                                     <h4 class="modal-title">Delete</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Are you sure you want to Delete ?</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                    {!! link_to_route('songs.delete','Delete',[$song->slug],['id'=>'delete','class'=>'btn btn-danger btn-sm']) !!}
+                                                    <button type="button" class="btn btn-default pull-left"
+                                                        data-dismiss="modal">Close</button>
+                                                    {!!
+                                                    link_to_route('songs.delete','Delete',[$song->slug],['id'=>'delete','class'=>'btn
+                                                    btn-danger btn-sm']) !!}
                                                 </div>
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
@@ -118,16 +128,16 @@
 <script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}" type="text/javascript"></script>
 <!-- page script -->
 <script type="text/javascript">
-$(function() {
-    $("#example1").dataTable();
-    $('#example2').dataTable({
-        "bPaginate": true,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bSort": true,
-        "bInfo": true,
-        "bAutoWidth": false
+    $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
     });
-});
 </script>
 @stop

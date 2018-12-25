@@ -1,5 +1,5 @@
 @extends('themes.default1.client.layout.client')
-@section('content')  
+@section('content')
 <div id="page" class="hfeed site">
     <article class="hentry error404 text-center">
         <h1 class="error-title"><i class="fa fa-frown-o text-info"></i></h1>

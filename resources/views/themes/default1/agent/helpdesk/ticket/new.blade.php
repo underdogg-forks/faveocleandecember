@@ -23,7 +23,7 @@ class="active"
     <div class="box-header with-border" id='box-header1'>
         <h3 class="box-title">{!! Lang::get('lang.create_ticket') !!}</h3>
         @if(Session::has('success'))
-        <br><br>        
+        <br><br>
         <div class="alert alert-success alert-dismissable">
             <i class="fa  fa-check-circle"></i>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -46,7 +46,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('email'))
             <li class="error-message-padding">{!! $errors->first('email', ':message') !!}</li>
             @endif
@@ -89,13 +89,13 @@ class="active"
                         {!! Form::text('email',null,['class' => 'form-control', 'id' => 'email']) !!}
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
                     <!-- email -->
                     <div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
                         {!! Form::label('email',Lang::get('lang.first_name')) !!} <span class="text-red"> *</span>
-                       <!--  {!! Form::text('email',null,['class' => 'form-control'],['id' => 'email']) !!} -->
-                       <input type="text" name="first_name" id="first_name" class="form-control">
+                        <!--  {!! Form::text('email',null,['class' => 'form-control'],['id' => 'email']) !!} -->
+                        <input type="text" name="first_name" id="first_name" class="form-control">
                     </div>
                 </div>
 
@@ -110,12 +110,13 @@ class="active"
             <div class="row">
                 <div class="col-md-1 form-group {{ Session::has('country_code_error') ? 'has-error' : '' }}">
                     <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
-                    {!! Form::label('code',Lang::get('lang.country-code')) !!}
-                    @if ($email_mandatory->status == 0 || $settings->status == 1)
-                         <span class="text-red"> *</span>
-                    @endif
+                        {!! Form::label('code',Lang::get('lang.country-code')) !!}
+                        @if ($email_mandatory->status == 0 || $settings->status == 1)
+                        <span class="text-red"> *</span>
+                        @endif
 
-                    {!! Form::text('code',null,['class' => 'form-control', 'id' => 'country_code', 'placeholder' => $phonecode, 'title' => Lang::get('lang.enter-country-phone-code')]) !!}
+                        {!! Form::text('code',null,['class' => 'form-control', 'id' => 'country_code', 'placeholder' =>
+                        $phonecode, 'title' => Lang::get('lang.enter-country-phone-code')]) !!}
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -123,7 +124,7 @@ class="active"
                     <div class="form-group {{ $errors->has('mobile') ? 'has-error' : '' }}">
                         <label>{!! Lang::get('lang.mobile_number') !!}:</label>
                         @if ($email_mandatory->status == 0 || $settings->status == 1)
-                         <span class="text-red"> *</span>
+                        <span class="text-red"> *</span>
                         @endif
                         {!! Form::input('number','mobile',null,['class' => 'form-control', 'id' => 'mobile']) !!}
                     </div>
@@ -159,7 +160,9 @@ class="active"
                         <label>{!! Lang::get('lang.help_topic') !!}:</label>
                         <!-- helptopic -->
                         <?php $helptopic = App\Model\helpdesk\Manage\Help_topic::where('status', '=', 1)->select('topic', 'id')->get(); ?>
-                        {!! Form::select('helptopic', ['Helptopic'=>$helptopic->pluck('topic','id')->toArray()],null,['class' => 'form-control select','id'=>'selectid']) !!}
+                        {!! Form::select('helptopic',
+                        ['Helptopic'=>$helptopic->pluck('topic','id')->toArray()],null,['class' => 'form-control
+                        select','id'=>'selectid']) !!}
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -167,7 +170,8 @@ class="active"
                     <div class="form-group">
                         <label>{!! Lang::get('lang.sla_plan') !!}:</label>
                         <?php $sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('status', '=', 1)->select('grace_period', 'id')->get(); ?>
-                        {!! Form::select('sla', ['SLA'=>$sla_plan->pluck('grace_period','id')->toArray()],null,['class' => 'form-control select']) !!}
+                        {!! Form::select('sla', ['SLA'=>$sla_plan->pluck('grace_period','id')->toArray()],null,['class'
+                        => 'form-control select']) !!}
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -182,14 +186,16 @@ class="active"
                     <div class="form-group">
                         <label>{!! Lang::get('lang.assign_to') !!}:</label>
                         <?php $agents = App\User::where('role', '!=', 'user')->where('active', '=', 1)->get(); ?>
-                        {!! Form::select('assignto', [''=>'Select an Agent','Agents'=>$agents->pluck('first_name','id')->toArray()],null,['class' => 'form-control select']) !!}
+                        {!! Form::select('assignto', [''=>'Select an
+                        Agent','Agents'=>$agents->pluck('first_name','id')->toArray()],null,['class' => 'form-control
+                        select']) !!}
                     </div>
                 </div>
                 <div id="response" class="col-md-6 form-group"></div>
             </div>
             <div class="row">
-            {{-- Event fire --}}
-            <?php Event::fire(new App\Events\ClientTicketForm()); ?>
+                {{-- Event fire --}}
+                <?php Event::fire(new App\Events\ClientTicketForm()); ?>
             </div>
         </div>
     </div>
@@ -217,7 +223,8 @@ class="active"
                         <label>{!! Lang::get('lang.detail') !!}:<span class="text-red"> *</span></label>
                     </div>
                     <div class="col-md-9">
-                        {!! Form::textarea('body',null,['class' => 'form-control','id' => 'body', 'style'=>"width:100%; height:150px;"]) !!}
+                        {!! Form::textarea('body',null,['class' => 'form-control','id' => 'body', 'style'=>"width:100%;
+                        height:150px;"]) !!}
 
                     </div>
                 </div>
@@ -230,12 +237,14 @@ class="active"
                     </div>
                     <div class="col-md-3">
                         <?php $Priority = App\Model\helpdesk\Ticket\Ticket_Priority::where('status','=',1)->get(); ?>
-                        {!! Form::select('priority', ['Priority'=>$Priority->pluck('priority_desc','priority_id')->toArray()],null,['class' => 'form-control select']) !!}
+                        {!! Form::select('priority',
+                        ['Priority'=>$Priority->pluck('priority_desc','priority_id')->toArray()],null,['class' =>
+                        'form-control select']) !!}
                     </div>
-                    
+
                 </div>
             </div>
-             
+
         </div>
     </div>
     <div class="box-footer">
@@ -257,10 +266,13 @@ class="active"
             helpTopic = $("#selectid").val();
             send(helpTopic);
         });
+
         function send(helpTopic) {
             $.ajax({
                 url: "{{url('/get-helptopic-form')}}",
-                data: {'helptopic': helpTopic},
+                data: {
+                    'helptopic': helpTopic
+                },
                 type: "GET",
                 dataType: "html",
                 success: function (response) {
@@ -287,45 +299,46 @@ class="active"
                 } else {
                     $('#duedate').addClass("has-error");
                     $('#clear-up').remove();
-                    $('#box-header1').append("<div id='clear-up'><br><br><div class='alert alert-danger alert-dismissable'><i class='fa fa-ban'></i><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button> Invalid Due date</div></div>");
+                    $('#box-header1').append(
+                        "<div id='clear-up'><br><br><div class='alert alert-danger alert-dismissable'><i class='fa fa-ban'></i><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button> Invalid Due date</div></div>"
+                    );
                     return false;
                 }
             }
         });
     });
-                $(document).ready(function(){                   
-                    $("#email").autocomplete({
-                        source:"{!!URL::route('post.newticket.autofill')!!}",
-                        minLength:1,
-                        select:function(evt, ui) {
-                            // this.form.phone_number.value = ui.item.phone_number;
-                            // this.form.user_name.value = ui.item.user_name;
-                            if(ui.item.first_name) {
-                                this.form.first_name.value = ui.item.first_name;
-                            }
-                            if(ui.item.last_name) {
-                                this.form.last_name.value = ui.item.last_name;
-                            }
-                            if(ui.item.country_code) {
-                                this.form.country_code.value = ui.item.country_code;
-                            }
-                            if(ui.item.phone_number) {
-                                this.form.phone_number.value = ui.item.phone_number;
-                            }
-                            if(ui.item.mobile) {
-                                this.form.mobile.value = ui.item.mobile;
-                            }
-                        }
-                    });
-                });
+    $(document).ready(function () {
+        $("#email").autocomplete({
+            source: "{!!URL::route('post.newticket.autofill')!!}",
+            minLength: 1,
+            select: function (evt, ui) {
+                // this.form.phone_number.value = ui.item.phone_number;
+                // this.form.user_name.value = ui.item.user_name;
+                if (ui.item.first_name) {
+                    this.form.first_name.value = ui.item.first_name;
+                }
+                if (ui.item.last_name) {
+                    this.form.last_name.value = ui.item.last_name;
+                }
+                if (ui.item.country_code) {
+                    this.form.country_code.value = ui.item.country_code;
+                }
+                if (ui.item.phone_number) {
+                    this.form.phone_number.value = ui.item.phone_number;
+                }
+                if (ui.item.mobile) {
+                    this.form.mobile.value = ui.item.mobile;
+                }
+            }
+        });
+    });
 
     $(function () {
-        $('#datemask').datepicker({changeMonth: true, changeYear: true}).mask('99/99/9999');
+        $('#datemask').datepicker({
+            changeMonth: true,
+            changeYear: true
+        }).mask('99/99/9999');
     });
 </script>
 
 @stop
-
-
-
-

@@ -37,7 +37,8 @@ class="active"
             <div class="box-body box-profile">
 
                 @if(Auth::user()->profile_pic)
-                <img src="{{asset('lb-faveo/profilepic')}}{{'/'}}{{ $agent->profile_pic }}"class="profile-user-img img-responsive img-circle" alt="User Image"/>
+                <img src="{{asset('lb-faveo/profilepic')}}{{'/'}}{{ $agent->profile_pic }}" class="profile-user-img img-responsive img-circle"
+                    alt="User Image" />
                 @else
                 <img src="{{ Gravatar::src($agent->email) }}" class="profile-user-img img-responsive img-circle" alt="User Image">
                 @endif
@@ -63,7 +64,7 @@ class="active"
                 <h3 class="box-title">About Me</h3>
             </div><!-- /.box-header -->
             <div class="box-body">
-                <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
+                <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
                 <p class="text-muted">
                     B.S. in Computer Science from the University of Tennessee at Knoxville
                 </p>

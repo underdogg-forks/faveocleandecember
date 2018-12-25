@@ -16,7 +16,7 @@
                 @if(Session::has('fails'))
                 <div class="alert alert-danger alert-dismissable">
                     <i class="fa fa-ban"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <b>{!! Lang::get('lang.alert') !!} !</b>            
+                    <b>{!! Lang::get('lang.alert') !!} !</b>
                     {{Session::get('fails')}}
                 </div>
                 @endif
@@ -50,19 +50,20 @@
                     }
                     if ($request->get('doUpdate') == true) {
                         ?>
-                        <div class="col-md-12" style="padding-top: 20px; padding-right: 20px;">
-                            <div class="box" style="border-top: 0px solid #3C8DBC;">
+                <div class="col-md-12" style="padding-top: 20px; padding-right: 20px;">
+                    <div class="box" style="border-top: 0px solid #3C8DBC;">
 
 
-                                <div class="box-header" style="padding: 20px; padding-top: 1px; ">
-                                    <h4 style="padding: 1px;font-size: 18px;margin-left: -7px; color:#021CA2;"><strong>&nbsp;Updating Status</strong>
+                        <div class="box-header" style="padding: 20px; padding-top: 1px; ">
+                            <h4 style="padding: 1px;font-size: 18px;margin-left: -7px; color:#021CA2;"><strong>&nbsp;Updating
+                                    Status</strong>
 
-                                        <br><br>
+                                <br><br>
 
 
-                                        </div>
-                                        <div class="box-body"  style="background-color: black; height: 410px; overflow: scroll;" id="data">
-                                            <?php
+                        </div>
+                        <div class="box-body" style="background-color: black; height: 410px; overflow: scroll;" id="data">
+                            <?php
                                             $updated = $controller->doUpdate();
                                             if ($updated === true) {
                                                 $controller->copyToActualDirectory($latest_version);
@@ -71,10 +72,10 @@
                                                 exit();
                                             }
                                             ?>
-                                        </div>
-                                </div>
-                            </div>
-                            <?php
+                        </div>
+                    </div>
+                </div>
+                <?php
                         }
                     } else{
                         echo '<p>Could not find latest realeases.</p>';
@@ -82,18 +83,16 @@
                     
                     ?>
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        window.setInterval(function () {
-            var elem = document.getElementById('data');
-            elem.scrollTop = elem.scrollHeight;
-        }, 500);
-    </script>
+<script>
+    window.setInterval(function () {
+        var elem = document.getElementById('data');
+        elem.scrollTop = elem.scrollHeight;
+    }, 500);
+</script>
 
-    @stop
-    
-   
+@stop

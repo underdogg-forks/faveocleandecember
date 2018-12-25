@@ -30,22 +30,24 @@ class="active"
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">{!! Lang::get('lang.plugins-list') !!}</h3>
-        <button type="button" class="btn btn-primary pull-right" id="Edit_Ticket" data-toggle="modal" data-target="#Edit"><b>{!! Lang::get('lang.add_plugin') !!}</b></button>        
+        <button type="button" class="btn btn-primary pull-right" id="Edit_Ticket" data-toggle="modal" data-target="#Edit"><b>{!!
+                Lang::get('lang.add_plugin') !!}</b></button>
         <div class="modal fade" id="Edit">
             <div class="modal-dialog">
-                <div class="modal-content">  
+                <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">{!! Lang::get('lang.add_plugin') !!}</h4>
                     </div>
                     <div class="modal-body">
                         {!! Form::open(['url'=>'post-plugin','files'=>true]) !!}
-                        <label>{!! Lang::get('lang.plugin') !!} :</label> 
+                        <label>{!! Lang::get('lang.plugin') !!} :</label>
                         <div class="btn bg-olive btn-file" style="color:blue">
                             {!! Lang::get('lang.upload_file') !!}<input type="file" name="plugin">
                         </div>
-                    </div><!-- /.modal-content -->   
+                    </div><!-- /.modal-content -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis">{!! Lang::get('lang.close') !!}</button>
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis">{!!
+                            Lang::get('lang.close') !!}</button>
                         <input type="submit" class="btn btn-primary pull-right" value="{!! Lang::get('lang.upload') !!}">
                     </div>
                     {!! Form::close() !!}
@@ -56,13 +58,13 @@ class="active"
     <div class="box-body">
         <div class="alert alert-info alert-dismissable">
             <i class="fa fa-info-circle"></i>
-            <b>{!! Lang::get('lang.plugin-info') !!}</b><br/>
+            <b>{!! Lang::get('lang.plugin-info') !!}</b><br />
             <a href="http://www.faveohelpdesk.com/plugins/" target="_blank">{!!Lang::get('lang.click-here')!!}</a>&nbsp;{!!Lang::get('lang.plugin-info-pro')!!}
         </div>
         @if (count($errors) > 0)
         <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i>
-            <b>{!! Lang::get('lang.alert') !!}!</b><br/>
+            <b>{!! Lang::get('lang.alert') !!}!</b><br />
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -93,8 +95,9 @@ class="active"
                 <script type="text/javascript" src="{{asset('lb-faveo/plugins/datatables/dataTables.bootstrap.js')}}"></script>
 
                 {!! Datatable::table()
-                ->addColumn('Name','Description','Author','Website','Version')       // these are the column headings to be shown
-                ->setUrl('getplugin')   // this is the route where data will be retrieved
+                ->addColumn('Name','Description','Author','Website','Version') // these are the column headings to be
+                shown
+                ->setUrl('getplugin') // this is the route where data will be retrieved
                 ->render() !!}
             </div>
         </div>

@@ -17,7 +17,9 @@ class="active"
 
 <!-- header -->
 @section('PageHeader')
-<div class="box-header" style="margin-top:-5px;margin-bottom:-15px;"><h3 class="box-title">{!! Lang::get('lang.organization_profile') !!}</h3></div>
+<div class="box-header" style="margin-top:-5px;margin-bottom:-15px;">
+    <h3 class="box-title">{!! Lang::get('lang.organization_profile') !!}</h3>
+</div>
 @stop
 <!-- /header -->
 
@@ -41,7 +43,8 @@ class="active"
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-aqua">
                 <!--<div class="box-header">-->
-                <a style="color:#fff" href="{{route('organizations.edit', $orgs->id)}}" data-toggle="tooltip" data-placement="left" class="pull-right" title="Edit"><i class="fa fa-edit"></i></a>
+                <a style="color:#fff" href="{{route('organizations.edit', $orgs->id)}}" data-toggle="tooltip"
+                    data-placement="left" class="pull-right" title="Edit"><i class="fa fa-edit"></i></a>
                 <!--</div>-->
                 <h3 class="widget-user-username">{{$orgs->name}}</h3>
                 <h5 class="widget-user-desc">{!! $orgs->website !!}</h5>
@@ -49,26 +52,31 @@ class="active"
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
                     @if($orgs->phone)<li><a>
-                            <b>{!! Lang::get('lang.phone') !!}</b>  
+                            <b>{!! Lang::get('lang.phone') !!}</b>
                             <span class="pull-right"> {{$orgs->phone}}</span></a></li>@endif
                     @if($orgs->address)<li><a>
-                            <b>{!! Lang::get('lang.address') !!}</b>  
-                            <br/> <center>{!! $orgs->address !!}</center></a></li>@endif
+                            <b>{!! Lang::get('lang.address') !!}</b>
+                            <br />
+                            <center>{!! $orgs->address !!}</center>
+                        </a></li>@endif
                     @if($orgs->internal_notes)<li><a>
-                            <b>{!! Lang::get('lang.internal_notes') !!}</b>  
-                            <br/> <center>{!! $orgs->internal_notes !!}</center></a></li>@endif
+                            <b>{!! Lang::get('lang.internal_notes') !!}</b>
+                            <br />
+                            <center>{!! $orgs->internal_notes !!}</center>
+                        </a></li>@endif
                 </ul>
-                <button data-toggle="modal" data-target="#assign_head" id="button_select" class="btn btn-primary btn-flat btn-block">{!! Lang::get('lang.select_organization_manager') !!}</button>
+                <button data-toggle="modal" data-target="#assign_head" id="button_select" class="btn btn-primary btn-flat btn-block">{!!
+                    Lang::get('lang.select_organization_manager') !!}</button>
             </div>
         </div>
-        <div id="refresh1"> 
+        <div id="refresh1">
             @if($org_hd->head > 0)
             <?php $users = App\User::where('id', '=', $org_hd->head)->first(); ?>
             <div class="box box-widget widget-user-2">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-yellow">
                     <div class="widget-user-image">
-                        <img class="img-circle"  src="{{ Gravatar::src( $users->email) }}" alt="User Avatar">
+                        <img class="img-circle" src="{{ Gravatar::src( $users->email) }}" alt="User Avatar">
                     </div><!-- /.widget-user-image -->
                     <h3 class="widget-user-username">{!! $users->user_name !!}</h3>
                     <h5 class="widget-user-desc">{!! Lang::get('lang.organization-s_head') !!}</h5>
@@ -76,7 +84,8 @@ class="active"
                 <div class="box-footer no-padding">
                     <ul class="nav nav-stacked">
                         <li><a href="#">{!! Lang::get('lang.e-mail') !!} <span class="pull-right">{!! $users->email !!}</span></a></li>
-                        <li><a href="#">{!! Lang::get('lang.phone') !!} <span class="pull-right">{!! $users->phone_number !!}</span></a></li>
+                        <li><a href="#">{!! Lang::get('lang.phone') !!} <span class="pull-right">{!!
+                                    $users->phone_number !!}</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -93,10 +102,11 @@ class="active"
                 <div class="pull-right" style="margin-top:-25px;margin-bottom:-25px;">
                     <?php echo $user_orgs->setPath(route('organizations.show', $orgs->id))->render(); ?>
                 </div>
-            </div>   
+            </div>
             <div class="box-body">
                 <table class="table table-hover table-bordered">
-                    <tbody><tr>
+                    <tbody>
+                        <tr>
                             <th>{!! Lang::get('lang.name') !!}</th>
                             <th>{!! Lang::get('lang.email') !!}</th>
                             <th>{!! Lang::get('lang.phone') !!}</th>
@@ -121,7 +131,7 @@ class="active"
                         @endforeach
                     </tbody>
                 </table>
-            </div>    
+            </div>
         </div>
 
         <?php
@@ -140,7 +150,8 @@ class="active"
         ?>
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab">{!! Lang::get('lang.open_tickets') !!} ({{$open}})</a></li>
+                <li class="active"><a href="#tab_1" data-toggle="tab">{!! Lang::get('lang.open_tickets') !!}
+                        ({{$open}})</a></li>
                 <li><a href="#tab_2" data-toggle="tab">{!! Lang::get('lang.closed_tickets') !!} ({{$counted}})</a></li>
                 <li><a href="#tab_3" data-toggle="tab">{!! Lang::get('lang.deleted_tickets') !!} ({{$deleted}})</a></li>
             </ul>
@@ -181,25 +192,28 @@ class="active"
                             </div>
                         </div>
                         <div class="table-responsive" id="refresh">
-                            <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;" id="show" class="text-red"><b>Loading...</b></p>
+                            <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;"
+                                id="show" class="text-red"><b>Loading...</b></p>
                             <!-- table -->
                             <table class="table table-hover table-bordered">
                                 <thead>
-                                <th>
-                                </th>
-                                <th>{!! Lang::get('lang.subject') !!}</th>
-                                <th>{!! Lang::get('lang.ticket_id') !!}</th>
-                                <th>{!! Lang::get('lang.priority') !!}</th>
-                                <th>{!! Lang::get('lang.last_replier') !!}</th>
-                                <th>{!! Lang::get('lang.assigned_to') !!}</th>
-                                <th>{!! Lang::get('lang.last_activity') !!}</th>
+                                    <th>
+                                    </th>
+                                    <th>{!! Lang::get('lang.subject') !!}</th>
+                                    <th>{!! Lang::get('lang.ticket_id') !!}</th>
+                                    <th>{!! Lang::get('lang.priority') !!}</th>
+                                    <th>{!! Lang::get('lang.last_replier') !!}</th>
+                                    <th>{!! Lang::get('lang.assigned_to') !!}</th>
+                                    <th>{!! Lang::get('lang.last_activity') !!}</th>
                                 </thead>
                                 <tbody id="hello">
                                     <?php $tickets = App\Model\helpdesk\Ticket\Tickets::whereIn('user_id', $user_orga_relation_id)->where('status', '=', '1')->orderBy('id', 'DESC')->paginate(20); ?>
-                                    @foreach ($tickets  as $ticket)
-                                    <tr <?php if ($ticket->seen_by == null) { ?> style="color:green;" <?php }
+                                    @foreach ($tickets as $ticket)
+                                    <tr <?php if ($ticket->seen_by == null) { ?> style="color:green;"
+                                        <?php }
                                     ?> >
-                                        <td><input type="checkbox" class="icheckbox_flat-blue" name="select_all[]" value="{{$ticket->id}}"/></td>
+                                        <td><input type="checkbox" class="icheckbox_flat-blue" name="select_all[]"
+                                                value="{{$ticket->id}}" /></td>
                                         <?php
                                         //  collaborators
                                         $collaborators = App\Model\helpdesk\Ticket\Ticket_Collaborator::where('ticket_id', '=', $ticket->id)->get();
@@ -240,18 +254,20 @@ class="active"
                                             $assigned = $assigned_to->first_name . " " . $assigned_to->last_name;
                                         }
                                         ?>
-                                        <td class="mailbox-name"><a href="{!! route('ticket.thread',[$ticket->id]) !!}" title="{!! $title->title !!}">{{$string}}   </a> ({!! $count!!}) <i class="fa fa-comment"></i>
-                                            @if($collab > 0)&nbsp;<i class="fa fa-users"></i>@endif 
+                                        <td class="mailbox-name"><a href="{!! route('ticket.thread',[$ticket->id]) !!}"
+                                                title="{!! $title->title !!}">{{$string}} </a> ({!! $count!!}) <i class="fa fa-comment"></i>
+                                            @if($collab > 0)&nbsp;<i class="fa fa-users"></i>@endif
                                             @if($attach > 0)&nbsp;<i class="fa fa-paperclip"></i>@endif</td>
-                                        <td class="mailbox-Id"><a href="{!! route('ticket.thread',[$ticket->id]) !!}" title="{!! $title->title !!}">#{!! $ticket->ticket_number !!}</a></td>
+                                        <td class="mailbox-Id"><a href="{!! route('ticket.thread',[$ticket->id]) !!}"
+                                                title="{!! $title->title !!}">#{!! $ticket->ticket_number !!}</a></td>
                                         <?php $priority = App\Model\helpdesk\Ticket\Ticket_Priority::where('priority_id', '=', $ticket->priority_id)->first(); ?>
                                         <td class="mailbox-priority">@if($priority != null)<spam class="btn btn-{{$priority->priority_color}} btn-xs">{{$priority->priority}}</spam>@endif</td>
-                                <?php $from = App\User::where('id', '=', $ticket->user_id)->first(); ?> 
-                                <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
-                                <td>{!! $assigned !!}</td>
-                                <td class="mailbox-last-activity">{!! UTC::usertimezone($title->updated_at) !!}</td>
-                                </tr>
-                                @endforeach
+                                        <?php $from = App\User::where('id', '=', $ticket->user_id)->first(); ?>
+                                        <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
+                                        <td>{!! $assigned !!}</td>
+                                        <td class="mailbox-last-activity">{!! UTC::usertimezone($title->updated_at) !!}</td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table><!-- /.table -->
                             <div class="pull-right">
@@ -300,24 +316,27 @@ class="active"
                             </div>
                         </div>
                         <div class=" table-responsive" id="refresh">
-                            <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;" id="show" class="text-red"><b>Loading...</b></p>
+                            <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;"
+                                id="show" class="text-red"><b>Loading...</b></p>
                             <!-- table -->
                             <table class="table table-hover table-bordered">
                                 <thead>
-                                <th>
-                                </th>
-                                <th>{!! Lang::get('lang.subject') !!}</th>
-                                <th>{!! Lang::get('lang.ticket_id') !!}</th>
-                                <th>{!! Lang::get('lang.priority') !!}</th>
-                                <th>{!! Lang::get('lang.last_replier') !!}</th>
-                                <th>{!! Lang::get('lang.assigned_to') !!}</th>
-                                <th>{!! Lang::get('lang.last_activity') !!}</th>
+                                    <th>
+                                    </th>
+                                    <th>{!! Lang::get('lang.subject') !!}</th>
+                                    <th>{!! Lang::get('lang.ticket_id') !!}</th>
+                                    <th>{!! Lang::get('lang.priority') !!}</th>
+                                    <th>{!! Lang::get('lang.last_replier') !!}</th>
+                                    <th>{!! Lang::get('lang.assigned_to') !!}</th>
+                                    <th>{!! Lang::get('lang.last_activity') !!}</th>
                                 </thead>
                                 <tbody id="hello">
                                     <?php $tickets = App\Model\helpdesk\Ticket\Tickets::whereIn('user_id', $user_orga_relation_id)->where('status', '=', '2')->orderBy('id', 'DESC')->paginate(20); ?>
-                                    @foreach ($tickets  as $ticket)
-                                    <tr <?php if ($ticket->seen_by == null) { ?> style="color:green;" <?php } ?> >
-                                        <td ><input type="checkbox" class="icheckbox_flat-blue" name="select_all[]" value="{{$ticket->id}}"/></td>
+                                    @foreach ($tickets as $ticket)
+                                    <tr <?php if ($ticket->seen_by == null) { ?> style="color:green;"
+                                        <?php } ?> >
+                                        <td><input type="checkbox" class="icheckbox_flat-blue" name="select_all[]"
+                                                value="{{$ticket->id}}" /></td>
                                         <?php
                                         //  collaborators
                                         $collaborators = App\Model\helpdesk\Ticket\Ticket_Collaborator::where('ticket_id', '=', $ticket->id)->get();
@@ -359,18 +378,20 @@ class="active"
                                             $assigned = $assigned_to->first_name . " " . $assigned_to->last_name;
                                         }
                                         ?>
-                                        <td class="mailbox-name"><a href="{!! route('ticket.thread',[$ticket->id]) !!}" title="{!! $title->title !!}">{{$string}}   </a> ({!! $count!!}) <i class="fa fa-comment"></i>
-                                            @if($collab > 0)&nbsp;<i class="fa fa-users"></i>@endif 
+                                        <td class="mailbox-name"><a href="{!! route('ticket.thread',[$ticket->id]) !!}"
+                                                title="{!! $title->title !!}">{{$string}} </a> ({!! $count!!}) <i class="fa fa-comment"></i>
+                                            @if($collab > 0)&nbsp;<i class="fa fa-users"></i>@endif
                                             @if($attach > 0)&nbsp;<i class="fa fa-paperclip"></i>@endif</td>
-                                        <td class="mailbox-Id"><a href="{!! route('ticket.thread',[$ticket->id]) !!}" title="{!! $title->title !!}">#{!! $ticket->ticket_number !!}</a></td>
+                                        <td class="mailbox-Id"><a href="{!! route('ticket.thread',[$ticket->id]) !!}"
+                                                title="{!! $title->title !!}">#{!! $ticket->ticket_number !!}</a></td>
                                         <?php $priority = App\Model\helpdesk\Ticket\Ticket_Priority::where('priority_id', '=', $ticket->priority_id)->first(); ?>
                                         <td class="mailbox-priority">@if($priority != null)<spam class="btn btn-{{$priority->priority_color}} btn-xs">{{$priority->priority}}</spam>@endif</td>
-                                <?php $from = App\User::where('id', '=', $ticket->user_id)->first(); ?> 
-                                <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
-                                <td>{!! $assigned !!}</td>
-                                <td class="mailbox-last-activity">{!! UTC::usertimezone($title->updated_at) !!}</td>
-                                </tr>
-                                @endforeach
+                                        <?php $from = App\User::where('id', '=', $ticket->user_id)->first(); ?>
+                                        <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
+                                        <td>{!! $assigned !!}</td>
+                                        <td class="mailbox-last-activity">{!! UTC::usertimezone($title->updated_at) !!}</td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table><!-- /.table -->
 
@@ -422,25 +443,28 @@ class="active"
                             </div>
                         </div>
                         <div class=" table-responsive" id="refresh">
-                            <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;" id="show" class="text-red"><b>Loading...</b></p>
+                            <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;"
+                                id="show" class="text-red"><b>Loading...</b></p>
                             <!-- table -->
                             <table class="table table-hover table-bordered">
                                 <thead>
-                                <th>
-                                </th>
-                                <th>{!! Lang::get('lang.subject') !!}</th>
-                                <th>{!! Lang::get('lang.ticket_id') !!}</th>
-                                <th>{!! Lang::get('lang.priority') !!}</th>
-                                <th>{!! Lang::get('lang.last_replier') !!}</th>
-                                <th>{!! Lang::get('lang.assigned_to') !!}</th>
-                                <th>{!! Lang::get('lang.last_activity') !!}</th>
+                                    <th>
+                                    </th>
+                                    <th>{!! Lang::get('lang.subject') !!}</th>
+                                    <th>{!! Lang::get('lang.ticket_id') !!}</th>
+                                    <th>{!! Lang::get('lang.priority') !!}</th>
+                                    <th>{!! Lang::get('lang.last_replier') !!}</th>
+                                    <th>{!! Lang::get('lang.assigned_to') !!}</th>
+                                    <th>{!! Lang::get('lang.last_activity') !!}</th>
                                 </thead>
                                 <tbody id="hello">
                                     <?php $tickets = App\Model\helpdesk\Ticket\Tickets::whereIn('user_id', $user_orga_relation_id)->where('status', '=', '5')->orderBy('id', 'DESC')->paginate(20); ?>
-                                    @foreach ($tickets  as $ticket)
-                                    <tr <?php if ($ticket->seen_by == null) { ?> style="color:green;" <?php }
+                                    @foreach ($tickets as $ticket)
+                                    <tr <?php if ($ticket->seen_by == null) { ?> style="color:green;"
+                                        <?php }
                                     ?> >
-                                        <td ><input type="checkbox" class="icheckbox_flat-blue" name="select_all[]" value="{{$ticket->id}}"/></td>
+                                        <td><input type="checkbox" class="icheckbox_flat-blue" name="select_all[]"
+                                                value="{{$ticket->id}}" /></td>
                                         <?php
                                         //  collaborators
                                         $collaborators = App\Model\helpdesk\Ticket\Ticket_Collaborator::where('ticket_id', '=', $ticket->id)->get();
@@ -481,18 +505,20 @@ class="active"
                                             $assigned = $assigned_to->first_name . " " . $assigned_to->last_name;
                                         }
                                         ?>
-                                        <td class="mailbox-name"><a href="{!! route('ticket.thread',[$ticket->id]) !!}" title="{!! $title->title !!}">{{$string}}   </a> ({!! $count!!}) <i class="fa fa-comment"></i>
-                                            @if($collab > 0)&nbsp;<i class="fa fa-users"></i>@endif 
+                                        <td class="mailbox-name"><a href="{!! route('ticket.thread',[$ticket->id]) !!}"
+                                                title="{!! $title->title !!}">{{$string}} </a> ({!! $count!!}) <i class="fa fa-comment"></i>
+                                            @if($collab > 0)&nbsp;<i class="fa fa-users"></i>@endif
                                             @if($attach > 0)&nbsp;<i class="fa fa-paperclip"></i>@endif</td>
-                                        <td class="mailbox-Id"><a href="{!! route('ticket.thread',[$ticket->id]) !!}" title="{!! $title->title !!}">#{!! $ticket->ticket_number !!}</a></td>
+                                        <td class="mailbox-Id"><a href="{!! route('ticket.thread',[$ticket->id]) !!}"
+                                                title="{!! $title->title !!}">#{!! $ticket->ticket_number !!}</a></td>
                                         <?php $priority = App\Model\helpdesk\Ticket\Ticket_Priority::where('priority_id', '=', $ticket->priority_id)->first(); ?>
                                         <td class="mailbox-priority">@if($priority != null)<spam class="btn btn-{{$priority->priority_color}} btn-xs">{{$priority->priority}}</spam>@endif</td>
-                                <?php $from = App\User::where('id', '=', $ticket->user_id)->first(); ?> 
-                                <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
-                                <td>{!! $assigned !!}</td>
-                                <td class="mailbox-last-activity">{!! UTC::usertimezone($title->updated_at) !!}</td>
-                                </tr>
-                                @endforeach
+                                        <?php $from = App\User::where('id', '=', $ticket->user_id)->first(); ?>
+                                        <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
+                                        <td>{!! $assigned !!}</td>
+                                        <td class="mailbox-last-activity">{!! UTC::usertimezone($title->updated_at) !!}</td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table><!-- /.table -->
 
@@ -505,7 +531,7 @@ class="active"
                 </div><!-- /.tab-content -->
             </div><!-- nav-tabs-custom -->
         </div>
-        <!--  Report of organization  -->  
+        <!--  Report of organization  -->
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">
@@ -514,7 +540,7 @@ class="active"
             </div>
             <div class="box-body">
                 <form id="foo">
-                    <div  class="form-group">
+                    <div class="form-group">
                         <div class="row">
                             <div class='col-sm-3'>
                                 {!! Form::label('date', Lang::get("lang.start_date").':') !!}
@@ -532,7 +558,7 @@ class="active"
                             }
                             ?>
                             <script type="text/javascript">
-                                $(function() {
+                                $(function () {
                                     var timestring1 = "{!! $start_date !!}";
                                     var timestring2 = "{!! date('m/d/Y') !!}";
                                     $('#datepicker4').datetimepicker({
@@ -548,7 +574,7 @@ class="active"
                                 {!! Form::text('end_date',null,['class'=>'form-control','id'=>'datetimepicker3'])!!}
                             </div>
                             <script type="text/javascript">
-                                $(function() {
+                                $(function () {
                                     var timestring1 = "{!! $start_date !!}";
                                     var timestring2 = "{!! date('m/d/Y') !!}";
                                     $('#datetimepicker3').datetimepicker({
@@ -568,9 +594,15 @@ class="active"
                                     <style>
                                         #legend-holder { border: 1px solid #ccc; float: left; width: 25px; height: 25px; margin: 2px; }
                                     </style>
-                                    <div class="col-md-4"><span id="legend-holder" style="background-color: #6C96DF;"></span>&nbsp; <span class="lead"> <span id="total-created-tickets" ></span> {!! Lang::get('lang.tickets') !!} {!! Lang::get('lang.created') !!} </span></div> 
-                            <div class="col-md-4"><span id="legend-holder" style="background-color: #6DC5B2;"></span>&nbsp; <span class="lead"> <span id="total-reopen-tickets" class="lead"></span> {!! Lang::get('lang.tickets') !!} {!! Lang::get('lang.reopen') !!}  </span></div> 
-                            <div class="col-md-4"><span id="legend-holder" style="background-color: #E3B870;"></span>&nbsp; <span class="lead"> <span id="total-closed-tickets" class="lead"></span> {!! Lang::get('lang.tickets') !!} {!! Lang::get('lang.closed') !!}  </span></div> 
+                                    <div class="col-md-4"><span id="legend-holder" style="background-color: #6C96DF;"></span>&nbsp;
+                                        <span class="lead"> <span id="total-created-tickets"></span> {!!
+                                            Lang::get('lang.tickets') !!} {!! Lang::get('lang.created') !!} </span></div>
+                                    <div class="col-md-4"><span id="legend-holder" style="background-color: #6DC5B2;"></span>&nbsp;
+                                        <span class="lead"> <span id="total-reopen-tickets" class="lead"></span> {!!
+                                            Lang::get('lang.tickets') !!} {!! Lang::get('lang.reopen') !!} </span></div>
+                                    <div class="col-md-4"><span id="legend-holder" style="background-color: #E3B870;"></span>&nbsp;
+                                        <span class="lead"> <span id="total-closed-tickets" class="lead"></span> {!!
+                                            Lang::get('lang.tickets') !!} {!! Lang::get('lang.closed') !!} </span></div>
                                 </div>
                             </div>
                         </div>
@@ -578,280 +610,288 @@ class="active"
                 </form>
                 <div id="legendDiv"></div>
                 <div class="chart">
-                    <canvas class="chart-data" id="tickets-graph" width="1000" height="270"></canvas>   
+                    <canvas class="chart-data" id="tickets-graph" width="1000" height="270"></canvas>
                 </div>
             </div>
         </div>
 
         <!--<script type="text/javascript">-->
-        <div id = "refresh">
-            <script src = "{{asset("lb-faveo/plugins/chartjs/Chart.min.js")}}" type = "text/javascript" ></script>
+        <div id="refresh">
+            <script src="{{asset("lb-faveo/plugins/chartjs/Chart.min.js")}}" type="text/javascript"></script>
         </div>
         <script src="{{asset("lb-faveo/plugins/chartjs/Chart.min.js")}}" type="text/javascript"></script>
 
         <link type="text/css" href="{{asset("lb-faveo/css/bootstrap-datetimepicker4.7.14.min.css")}}" rel="stylesheet">
         <script type="text/javascript">
-                                $(document).ready(function() {
-                                    $.getJSON("../org-chart/<?php echo $orgs->id; ?>", function(result) {
-                                        var labels = [], open = [], closed = [], reopened = [], open_total = 0, closed_total = 0, reopened_total = 0;
-                                        for (var i = 0; i < result.length; i++) {
-                                            labels.push(result[i].date);
-                                            open.push(result[i].open);
-                                            closed.push(result[i].closed);
-                                            reopened.push(result[i].reopened);
+            $(document).ready(function () {
+                $.getJSON("../org-chart/<?php echo $orgs->id; ?>", function (result) {
+                    var labels = [],
+                        open = [],
+                        closed = [],
+                        reopened = [],
+                        open_total = 0,
+                        closed_total = 0,
+                        reopened_total = 0;
+                    for (var i = 0; i < result.length; i++) {
+                        labels.push(result[i].date);
+                        open.push(result[i].open);
+                        closed.push(result[i].closed);
+                        reopened.push(result[i].reopened);
 
-                                            open_total += parseInt(result[i].open);
-                                            closed_total += parseInt(result[i].closed);
-                                            reopened_total += parseInt(result[i].reopened);
-                                        }
-                                        var buyerData = {
-                                            labels: labels,
-                                            datasets: [
-                                                {
-                                                    label: "Open Tickets",
-                                                    fillColor: "rgba(93, 189, 255, 0.05)",
-                                                    strokeColor: "rgba(2, 69, 195, 0.9)",
-                                                    pointColor: "rgba(2, 69, 195, 0.9)",
-                                                    pointStrokeColor: "#c1c7d1",
-                                                    pointHighlightFill: "#fff",
-                                                    pointHighlightStroke: "rgba(220,220,220,1)",
-                                                    data: open
-                                                }
-                                                , {
-                                                    label: "Closed Tickets",
-                                                    fillColor: "rgba(255, 206, 96, 0.08)",
-                                                    strokeColor: "rgba(221, 129, 0, 0.94)",
-                                                    pointColor: "rgba(221, 129, 0, 0.94)",
-                                                    pointStrokeColor: "rgba(60,141,188,1)",
-                                                    pointHighlightFill: "#fff",
-                                                    pointHighlightStroke: "rgba(60,141,188,1)",
-                                                    data: closed
+                        open_total += parseInt(result[i].open);
+                        closed_total += parseInt(result[i].closed);
+                        reopened_total += parseInt(result[i].reopened);
+                    }
+                    var buyerData = {
+                        labels: labels,
+                        datasets: [{
+                            label: "Open Tickets",
+                            fillColor: "rgba(93, 189, 255, 0.05)",
+                            strokeColor: "rgba(2, 69, 195, 0.9)",
+                            pointColor: "rgba(2, 69, 195, 0.9)",
+                            pointStrokeColor: "#c1c7d1",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: open
+                        }, {
+                            label: "Closed Tickets",
+                            fillColor: "rgba(255, 206, 96, 0.08)",
+                            strokeColor: "rgba(221, 129, 0, 0.94)",
+                            pointColor: "rgba(221, 129, 0, 0.94)",
+                            pointStrokeColor: "rgba(60,141,188,1)",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(60,141,188,1)",
+                            data: closed
 
-                                                }
-                                                , {
-                                                    label: "Reopened Tickets",
-                                                    fillColor: "rgba(104, 255, 220, 0.06)",
-                                                    strokeColor: "rgba(0, 149, 115, 0.94)",
-                                                    pointColor: "rgba(0, 149, 115, 0.94)",
-                                                    pointStrokeColor: "rgba(60,141,188,1)",
-                                                    pointHighlightFill: "#fff",
-                                                    pointHighlightStroke: "rgba(60,141,188,1)",
-                                                    data: reopened
-                                                }
-                                            ]
-                                        };
-                                        $("#total-created-tickets").html(open_total);
-                                        $("#total-reopen-tickets").html(reopened_total);
-                                        $("#total-closed-tickets").html(closed_total);
-                                        var myLineChart = new Chart(document.getElementById("tickets-graph").getContext("2d")).Line(buyerData, {
-                                            showScale: true,
-                                            //Boolean - Whether grid lines are shown across the chart
-                                            scaleShowGridLines: true,
-                                            //String - Colour of the grid lines
-                                            scaleGridLineColor: "rgba(0,0,0,.05)",
-                                            //Number - Width of the grid lines
-                                            scaleGridLineWidth: 1,
-                                            //Boolean - Whether to show horizontal lines (except X axis)
-                                            scaleShowHorizontalLines: true,
-                                            //Boolean - Whether to show vertical lines (except Y axis)
-                                            scaleShowVerticalLines: true,
-                                            //Boolean - Whether the line is curved between points
-                                            bezierCurve: true,
-                                            //Number - Tension of the bezier curve between points
-                                            bezierCurveTension: 0.3,
-                                            //Boolean - Whether to show a dot for each point
-                                            pointDot: true,
-                                            //Number - Radius of each point dot in pixels
-                                            pointDotRadius: 1,
-                                            //Number - Pixel width of point dot stroke
-                                            pointDotStrokeWidth: 1,
-                                            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-                                            pointHitDetectionRadius: 10,
-                                            //Boolean - Whether to show a stroke for datasets
-                                            datasetStroke: true,
-                                            //Number - Pixel width of dataset stroke
-                                            datasetStrokeWidth: 1,
-                                            //Boolean - Whether to fill the dataset with a color
-                                            datasetFill: true,
-                                            //String - A legend template
-                                            //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-                                            maintainAspectRatio: true,
-                                            //Boolean - whether to make the chart responsive to window resizing
-                                            responsive: true,
-                                        });
+                        }, {
+                            label: "Reopened Tickets",
+                            fillColor: "rgba(104, 255, 220, 0.06)",
+                            strokeColor: "rgba(0, 149, 115, 0.94)",
+                            pointColor: "rgba(0, 149, 115, 0.94)",
+                            pointStrokeColor: "rgba(60,141,188,1)",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(60,141,188,1)",
+                            data: reopened
+                        }]
+                    };
+                    $("#total-created-tickets").html(open_total);
+                    $("#total-reopen-tickets").html(reopened_total);
+                    $("#total-closed-tickets").html(closed_total);
+                    var myLineChart = new Chart(document.getElementById("tickets-graph").getContext(
+                        "2d")).Line(buyerData, {
+                        showScale: true,
+                        //Boolean - Whether grid lines are shown across the chart
+                        scaleShowGridLines: true,
+                        //String - Colour of the grid lines
+                        scaleGridLineColor: "rgba(0,0,0,.05)",
+                        //Number - Width of the grid lines
+                        scaleGridLineWidth: 1,
+                        //Boolean - Whether to show horizontal lines (except X axis)
+                        scaleShowHorizontalLines: true,
+                        //Boolean - Whether to show vertical lines (except Y axis)
+                        scaleShowVerticalLines: true,
+                        //Boolean - Whether the line is curved between points
+                        bezierCurve: true,
+                        //Number - Tension of the bezier curve between points
+                        bezierCurveTension: 0.3,
+                        //Boolean - Whether to show a dot for each point
+                        pointDot: true,
+                        //Number - Radius of each point dot in pixels
+                        pointDotRadius: 1,
+                        //Number - Pixel width of point dot stroke
+                        pointDotStrokeWidth: 1,
+                        //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+                        pointHitDetectionRadius: 10,
+                        //Boolean - Whether to show a stroke for datasets
+                        datasetStroke: true,
+                        //Number - Pixel width of dataset stroke
+                        datasetStrokeWidth: 1,
+                        //Boolean - Whether to fill the dataset with a color
+                        datasetFill: true,
+                        //String - A legend template
+                        //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                        maintainAspectRatio: true,
+                        //Boolean - whether to make the chart responsive to window resizing
+                        responsive: true,
+                    });
 
-                                    });
-                                    $('#click me').click(function() {
-                                        $('#foo').submit();
-                                    });
-                                    $('#foo').submit(function(event) {
-                                        // get the form data
-                                        // there are many ways to get this data using jQuery (you can use the class or id also)
-                                        var date1 = $('#datepicker4').val();
-                                        var date2 = $('#datetimepicker3').val();
-                                        var formData = date1.split("/").join('-');
-                                        var dateData = date2.split("/").join('-');
+                });
+                $('#click me').click(function () {
+                    $('#foo').submit();
+                });
+                $('#foo').submit(function (event) {
+                    // get the form data
+                    // there are many ways to get this data using jQuery (you can use the class or id also)
+                    var date1 = $('#datepicker4').val();
+                    var date2 = $('#datetimepicker3').val();
+                    var formData = date1.split("/").join('-');
+                    var dateData = date2.split("/").join('-');
 
-                                        // process the form
-                                        $.ajax({
-                                            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                                            url: '../org-chart-range/<?php echo $orgs->id; ?>/' + dateData + '/' + formData, // the url where we want to POST
-                                            data: formData, // our data object
-                                            dataType: 'json', // what type of data do we expect back from the server
+                    // process the form
+                    $.ajax({
+                        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                        url: '../org-chart-range/<?php echo $orgs->id; ?>/' + dateData + '/' +
+                            formData, // the url where we want to POST
+                        data: formData, // our data object
+                        dataType: 'json', // what type of data do we expect back from the server
 
-                                            success: function(result2) {
+                        success: function (result2) {
 
-                                                var labels = [], open = [], closed = [], reopened = [], open_total = 0, closed_total = 0, reopened_total = 0;
+                            var labels = [],
+                                open = [],
+                                closed = [],
+                                reopened = [],
+                                open_total = 0,
+                                closed_total = 0,
+                                reopened_total = 0;
 
-                                                for (var i = 0; i < result2.length; i++) {
+                            for (var i = 0; i < result2.length; i++) {
 
-                                                    labels.push(result2[i].date);
-                                                    open.push(result2[i].open);
-                                                    closed.push(result2[i].closed);
-                                                    reopened.push(result2[i].reopened);
+                                labels.push(result2[i].date);
+                                open.push(result2[i].open);
+                                closed.push(result2[i].closed);
+                                reopened.push(result2[i].reopened);
 
-                                                    open_total += parseInt(result2[i].open);
-                                                    closed_total += parseInt(result2[i].closed);
-                                                    reopened_total += parseInt(result2[i].reopened);
-                                                }
-                                                var buyerData = {
-                                                    labels: labels,
-                                                    datasets: [
-                                                        {
-                                                            label: "Open Tickets",
-                                                            fillColor: "rgba(93, 189, 255, 0.05)",
-                                                            strokeColor: "rgba(2, 69, 195, 0.9)",
-                                                            pointColor: "rgba(2, 69, 195, 0.9)",
-                                                            pointStrokeColor: "#c1c7d1",
-                                                            pointHighlightFill: "#fff",
-                                                            pointHighlightStroke: "rgba(220,220,220,1)",
-                                                            data: open
-                                                        }
-                                                        , {
-                                                            label: "Closed Tickets",
-                                                            fillColor: "rgba(255, 206, 96, 0.08)",
-                                                            strokeColor: "rgba(221, 129, 0, 0.94)",
-                                                            pointColor: "rgba(221, 129, 0, 0.94)",
-                                                            pointStrokeColor: "rgba(60,141,188,1)",
-                                                            pointHighlightFill: "#fff",
-                                                            pointHighlightStroke: "rgba(60,141,188,1)",
-                                                            data: closed
+                                open_total += parseInt(result2[i].open);
+                                closed_total += parseInt(result2[i].closed);
+                                reopened_total += parseInt(result2[i].reopened);
+                            }
+                            var buyerData = {
+                                labels: labels,
+                                datasets: [{
+                                    label: "Open Tickets",
+                                    fillColor: "rgba(93, 189, 255, 0.05)",
+                                    strokeColor: "rgba(2, 69, 195, 0.9)",
+                                    pointColor: "rgba(2, 69, 195, 0.9)",
+                                    pointStrokeColor: "#c1c7d1",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(220,220,220,1)",
+                                    data: open
+                                }, {
+                                    label: "Closed Tickets",
+                                    fillColor: "rgba(255, 206, 96, 0.08)",
+                                    strokeColor: "rgba(221, 129, 0, 0.94)",
+                                    pointColor: "rgba(221, 129, 0, 0.94)",
+                                    pointStrokeColor: "rgba(60,141,188,1)",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(60,141,188,1)",
+                                    data: closed
 
-                                                        }
-                                                        , {
-                                                            label: "Reopened Tickets",
-                                                            fillColor: "rgba(104, 255, 220, 0.06)",
-                                                            strokeColor: "rgba(0, 149, 115, 0.94)",
-                                                            pointColor: "rgba(0, 149, 115, 0.94)",
-                                                            pointStrokeColor: "rgba(60,141,188,1)",
-                                                            pointHighlightFill: "#fff",
-                                                            pointHighlightStroke: "rgba(60,141,188,1)",
-                                                            data: reopened
-                                                        }
-                                                    ]
-                                                };
-                                                $("#total-created-tickets").html(open_total);
-                                                $("#total-reopen-tickets").html(reopened_total);
-                                                $("#total-closed-tickets").html(closed_total);
-                                                var myLineChart = new Chart(document.getElementById("tickets-graph").getContext("2d")).Line(buyerData, {
-                                                    showScale: true,
-                                                    //Boolean - Whether grid lines are shown across the chart
-                                                    scaleShowGridLines: true,
-                                                    //String - Colour of the grid lines
-                                                    scaleGridLineColor: "rgba(0,0,0,.05)",
-                                                    //Number - Width of the grid lines
-                                                    scaleGridLineWidth: 1,
-                                                    //Boolean - Whether to show horizontal lines (except X axis)
-                                                    scaleShowHorizontalLines: true,
-                                                    //Boolean - Whether to show vertical lines (except Y axis)
-                                                    scaleShowVerticalLines: true,
-                                                    //Boolean - Whether the line is curved between points
-                                                    bezierCurve: true,
-                                                    //Number - Tension of the bezier curve between points
-                                                    bezierCurveTension: 0.3,
-                                                    //Boolean - Whether to show a dot for each point
-                                                    pointDot: true,
-                                                    //Number - Radius of each point dot in pixels
-                                                    pointDotRadius: 1,
-                                                    //Number - Pixel width of point dot stroke
-                                                    pointDotStrokeWidth: 1,
-                                                    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-                                                    pointHitDetectionRadius: 10,
-                                                    //Boolean - Whether to show a stroke for datasets
-                                                    datasetStroke: true,
-                                                    //Number - Pixel width of dataset stroke
-                                                    datasetStrokeWidth: 1,
-                                                    //Boolean - Whether to fill the dataset with a color
-                                                    datasetFill: true,
-                                                    //String - A legend template
-                                                    //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-                                                    maintainAspectRatio: true,
-                                                    //Boolean - whether to make the chart responsive to window resizing
-                                                    responsive: true
-                                                });
-                                                myLineChart.options.responsive = false;
-                                                $("#tickets-graph").remove();
-                                                $(".chart").html("<canvas id='tickets-graph' width='1000' height='270'></canvas>");
-                                                var myLineChart1 = new Chart(document.getElementById("tickets-graph").getContext("2d")).Line(buyerData, {
-                                                    showScale: true,
-                                                    //Boolean - Whether grid lines are shown across the chart
-                                                    scaleShowGridLines: true,
-                                                    //String - Colour of the grid lines
-                                                    scaleGridLineColor: "rgba(0,0,0,.05)",
-                                                    //Number - Width of the grid lines
-                                                    scaleGridLineWidth: 1,
-                                                    //Boolean - Whether to show horizontal lines (except X axis)
-                                                    scaleShowHorizontalLines: true,
-                                                    //Boolean - Whether to show vertical lines (except Y axis)
-                                                    scaleShowVerticalLines: true,
-                                                    //Boolean - Whether the line is curved between points
-                                                    bezierCurve: true,
-                                                    //Number - Tension of the bezier curve between points
-                                                    bezierCurveTension: 0.3,
-                                                    //Boolean - Whether to show a dot for each point
-                                                    pointDot: true,
-                                                    //Number - Radius of each point dot in pixels
-                                                    pointDotRadius: 1,
-                                                    //Number - Pixel width of point dot stroke
-                                                    pointDotStrokeWidth: 1,
-                                                    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-                                                    pointHitDetectionRadius: 10,
-                                                    //Boolean - Whether to show a stroke for datasets
-                                                    datasetStroke: true,
-                                                    //Number - Pixel width of dataset stroke
-                                                    datasetStrokeWidth: 1,
-                                                    //Boolean - Whether to fill the dataset with a color
-                                                    datasetFill: true,
-                                                    //String - A legend template
-                                                    //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-                                                    maintainAspectRatio: true,
-                                                    //Boolean - whether to make the chart responsive to window resizing
-                                                    responsive: true
-                                                });
+                                }, {
+                                    label: "Reopened Tickets",
+                                    fillColor: "rgba(104, 255, 220, 0.06)",
+                                    strokeColor: "rgba(0, 149, 115, 0.94)",
+                                    pointColor: "rgba(0, 149, 115, 0.94)",
+                                    pointStrokeColor: "rgba(60,141,188,1)",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(60,141,188,1)",
+                                    data: reopened
+                                }]
+                            };
+                            $("#total-created-tickets").html(open_total);
+                            $("#total-reopen-tickets").html(reopened_total);
+                            $("#total-closed-tickets").html(closed_total);
+                            var myLineChart = new Chart(document.getElementById(
+                                "tickets-graph").getContext("2d")).Line(buyerData, {
+                                showScale: true,
+                                //Boolean - Whether grid lines are shown across the chart
+                                scaleShowGridLines: true,
+                                //String - Colour of the grid lines
+                                scaleGridLineColor: "rgba(0,0,0,.05)",
+                                //Number - Width of the grid lines
+                                scaleGridLineWidth: 1,
+                                //Boolean - Whether to show horizontal lines (except X axis)
+                                scaleShowHorizontalLines: true,
+                                //Boolean - Whether to show vertical lines (except Y axis)
+                                scaleShowVerticalLines: true,
+                                //Boolean - Whether the line is curved between points
+                                bezierCurve: true,
+                                //Number - Tension of the bezier curve between points
+                                bezierCurveTension: 0.3,
+                                //Boolean - Whether to show a dot for each point
+                                pointDot: true,
+                                //Number - Radius of each point dot in pixels
+                                pointDotRadius: 1,
+                                //Number - Pixel width of point dot stroke
+                                pointDotStrokeWidth: 1,
+                                //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+                                pointHitDetectionRadius: 10,
+                                //Boolean - Whether to show a stroke for datasets
+                                datasetStroke: true,
+                                //Number - Pixel width of dataset stroke
+                                datasetStrokeWidth: 1,
+                                //Boolean - Whether to fill the dataset with a color
+                                datasetFill: true,
+                                //String - A legend template
+                                //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                                maintainAspectRatio: true,
+                                //Boolean - whether to make the chart responsive to window resizing
+                                responsive: true
+                            });
+                            myLineChart.options.responsive = false;
+                            $("#tickets-graph").remove();
+                            $(".chart").html(
+                                "<canvas id='tickets-graph' width='1000' height='270'></canvas>"
+                            );
+                            var myLineChart1 = new Chart(document.getElementById(
+                                "tickets-graph").getContext("2d")).Line(buyerData, {
+                                showScale: true,
+                                //Boolean - Whether grid lines are shown across the chart
+                                scaleShowGridLines: true,
+                                //String - Colour of the grid lines
+                                scaleGridLineColor: "rgba(0,0,0,.05)",
+                                //Number - Width of the grid lines
+                                scaleGridLineWidth: 1,
+                                //Boolean - Whether to show horizontal lines (except X axis)
+                                scaleShowHorizontalLines: true,
+                                //Boolean - Whether to show vertical lines (except Y axis)
+                                scaleShowVerticalLines: true,
+                                //Boolean - Whether the line is curved between points
+                                bezierCurve: true,
+                                //Number - Tension of the bezier curve between points
+                                bezierCurveTension: 0.3,
+                                //Boolean - Whether to show a dot for each point
+                                pointDot: true,
+                                //Number - Radius of each point dot in pixels
+                                pointDotRadius: 1,
+                                //Number - Pixel width of point dot stroke
+                                pointDotStrokeWidth: 1,
+                                //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+                                pointHitDetectionRadius: 10,
+                                //Boolean - Whether to show a stroke for datasets
+                                datasetStroke: true,
+                                //Number - Pixel width of dataset stroke
+                                datasetStrokeWidth: 1,
+                                //Boolean - Whether to fill the dataset with a color
+                                datasetFill: true,
+                                //String - A legend template
+                                //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                                maintainAspectRatio: true,
+                                //Boolean - whether to make the chart responsive to window resizing
+                                responsive: true
+                            });
 
 
-                                            }
-                                        });
-                                        // using the done promise callback
-                                        // stop the form from submitting the normal way and refreshing the page
-                                        event.preventDefault();
-                                    });
-                                });
+                        }
+                    });
+                    // using the done promise callback
+                    // stop the form from submitting the normal way and refreshing the page
+                    event.preventDefault();
+                });
+            });
 
-                                jQuery(document).ready(function() {
-                                    // Close a ticket
-                                    $('#close').on('click', function(e) {
-                                        $.ajax({
-                                            type: "GET",
-                                            url: "agen",
-                                            beforeSend: function() {
-                                            },
-                                            success: function(response) {
-                                            }
-                                        })
-                                        return false;
-                                    });
-                                });
+            jQuery(document).ready(function () {
+                // Close a ticket
+                $('#close').on('click', function (e) {
+                    $.ajax({
+                        type: "GET",
+                        url: "agen",
+                        beforeSend: function () {},
+                        success: function (response) {}
+                    })
+                    return false;
+                });
+            });
         </script>
         <script src="{{asset("lb-faveo/js/bootstrap-datetimepicker4.7.14.min.js")}}" type="text/javascript"></script>
         <script src="{{asset("lb-faveo/plugins/moment-develop/moment.js")}}" type="text/javascript"></script>
@@ -864,7 +904,8 @@ class="active"
         <div class="modal-content">
             {!! Form::model($orgs->id, ['id'=>'org_head','method' => 'PATCH'] )!!}
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" id="dismiss" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" id="dismiss" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">{!! Lang::get('lang.assign') !!}</h4>
             </div>
             <div id="assign_alert" class="alert alert-success alert-dismissable" style="display:none;">
@@ -877,7 +918,7 @@ class="active"
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-6" id="assign_loader" style="display:none;">
-                        <img src="{{asset("lb-faveo/dist/img/gifloader.gif")}}"><br/><br/><br/>
+                        <img src="{{asset("lb-faveo/dist/img/gifloader.gif")}}"><br /><br /><br />
                     </div>
                 </div>
                 <div id="assign_body">
@@ -889,14 +930,15 @@ class="active"
                         <optgroup label="Select Organizations">
                             @foreach($org_heads as $org_head)
                             <?php $user_org_heads = App\User::where('id', '=', $org_head->user_id)->first(); ?>
-                            <option  value="{{$user_org_heads->id}}">{!! $user_org_heads->user_name !!}</option>
+                            <option value="{{$user_org_heads->id}}">{!! $user_org_heads->user_name !!}</option>
                             @endforeach
                         </optgroup>
                     </select>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis4">{!! Lang::get('lang.close') !!}</button>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis4">{!!
+                    Lang::get('lang.close') !!}</button>
                 <button type="submit" class="btn btn-success pull-right" id="submt2">{!! Lang::get('lang.assign') !!}</button>
             </div>
             {!! Form::close()!!}
@@ -905,40 +947,40 @@ class="active"
 </div><!-- /.modal -->
 
 <script type="text/javascript">
-// Assign a ticket
-                                jQuery(document).ready(function($) {
-// create org
-                                    $('#org_head').on('submit', function() {
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "../head-org/{!! $orgs->id !!}",
-                                            dataType: "html",
-                                            data: $(this).serialize(),
-                                            beforeSend: function() {
-                                                $("#assign_body").hide();
-                                                $("#assign_loader").show();
-                                            },
-                                            success: function(response) {
-                                                $("#assign_loader").hide();
-                                                $("#assign_body").show();
+    // Assign a ticket
+    jQuery(document).ready(function ($) {
+        // create org
+        $('#org_head').on('submit', function () {
+            $.ajax({
+                type: "POST",
+                url: "../head-org/{!! $orgs->id !!}",
+                dataType: "html",
+                data: $(this).serialize(),
+                beforeSend: function () {
+                    $("#assign_body").hide();
+                    $("#assign_loader").show();
+                },
+                success: function (response) {
+                    $("#assign_loader").hide();
+                    $("#assign_body").show();
 
-                                                if (response == 1) {
-                                                    message = "Organization head added Successfully."
-                                                    $("#dismiss").trigger("click");
-                                                    $("#refresh1").load("../organizations/{!! $orgs->id !!}  #refresh1");
-                                                    // $("#refresh2").load("../thread/1  #refresh2");
-                                                    // $("#show").show();
-                                                    $("#alert-success").show();
-                                                    $('#get-success').html(message);
-                                                    setInterval(function() {
-                                                        $("#alert-success").hide();
-                                                    }, 4000);
-                                                }
-                                            }
-                                        })
-                                        return false;
-                                    });
-                                });
+                    if (response == 1) {
+                        message = "Organization head added Successfully."
+                        $("#dismiss").trigger("click");
+                        $("#refresh1").load("../organizations/{!! $orgs->id !!}  #refresh1");
+                        // $("#refresh2").load("../thread/1  #refresh2");
+                        // $("#show").show();
+                        $("#alert-success").show();
+                        $('#get-success').html(message);
+                        setInterval(function () {
+                            $("#alert-success").hide();
+                        }, 4000);
+                    }
+                }
+            })
+            return false;
+        });
+    });
 </script>
 @stop
 <!-- /content -->

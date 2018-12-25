@@ -90,7 +90,7 @@
                         {!! $errors->first('mobile', '<spam class="help-block">:message</spam>') !!}
                         {!! Form::text('mobile',null,['class' => 'form-control']) !!}
                     </div>
-                    <div class="form-group {{ $errors->has('profile_pic') ? 'has-error' : '' }}" >
+                    <div class="form-group {{ $errors->has('profile_pic') ? 'has-error' : '' }}">
                         <!-- profile pic -->
                         <div class="btn btn-default btn-file">
                             {!! Form::label('profile_pic',Lang::get('lang.profilepicture')) !!}
@@ -110,7 +110,8 @@
             {!! Form::model($user,['url'=>'client-profile-password' , 'method' => 'PATCH']) !!}
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>{!! Lang::get('lang.change_password') !!}	{!! Form::submit(Lang::get('lang.update'),['class'=>'form-group btn btn-primary pull-right'])!!}</h4>
+                    <h4>{!! Lang::get('lang.change_password') !!} {!!
+                        Form::submit(Lang::get('lang.update'),['class'=>'form-group btn btn-primary pull-right'])!!}</h4>
                 </div>
                 <div class="box-body">
                     @if(Session::has('success2'))
@@ -140,14 +141,16 @@
                     <!-- new password -->
                     <div class="form-group has-feedback {{ $errors->has('new_password') ? 'has-error' : '' }}">
                         {!! Form::label('new_password',Lang::get('lang.newpassword')) !!}
-                        {!! Form::password('new_password',['placeholder'=>'New Password','class' => 'form-control']) !!}
+                        {!! Form::password('new_password',['placeholder'=>'New Password','class' => 'form-control'])
+                        !!}
                         {!! $errors->first('new_password', '<spam class="help-block">:message</spam>') !!}
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <!-- cofirm password -->
                     <div class="form-group has-feedback {{ $errors->has('confirmpassword') ? 'has-error' : '' }}">
                         {!! Form::label('confirm_password',Lang::get('lang.confirm_password')) !!}
-                        {!! Form::password('confirm_password',['placeholder'=>'Confirm Password','class' => 'form-control']) !!}
+                        {!! Form::password('confirm_password',['placeholder'=>'Confirm Password','class' =>
+                        'form-control']) !!}
                         {!! $errors->first('confirm_password', '<spam class="help-block">:message</spam>') !!}
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>

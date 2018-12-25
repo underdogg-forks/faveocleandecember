@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <i class="fa fa-ban"></i>  
+                    <i class="fa fa-ban"></i>
                     <strong>{!! Lang::get('lang.alert') !!} !</strong>
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -27,7 +27,7 @@
                 @endif
                 @if(Session::has('success'))
                 <div class="alert alert-success alert-dismissable">
-                    <i class="fa fa-check-circle"></i>  
+                    <i class="fa fa-check-circle"></i>
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     {{Session::get('success')}}
                 </div>
@@ -57,8 +57,8 @@
                         {!! Form::label('subject',Lang::get('lang.subject')) !!}
                         {!! Form::text('subject',null,['class' => 'form-control', 'id' =>'subject']) !!}
                     </div>
-                    <div class="col-md-3 form-group" id = "use-subject">
-                        <br/>
+                    <div class="col-md-3 form-group" id="use-subject">
+                        <br />
                         {!! Form::hidden('variable','0') !!}
                         {!! Form::checkbox('variable','1') !!}
                         {!! Form::label('subject',Lang::get('lang.use_subject')) !!}
@@ -80,8 +80,8 @@
 {!! Form::close() !!}
 
 <script>
-    $(document).ready(function() {
-        $("#subject").keyup(function() {
+    $(document).ready(function () {
+        $("#subject").keyup(function () {
             var subject = document.getElementById('subject').value;
             if (subject) {
                 $("#use-subject").show();

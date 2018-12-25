@@ -32,7 +32,8 @@ class="active"
 {!! Form::model($alerts,['url' => 'postalert/'.$alerts->id, 'method' => 'PATCH']) !!}
 <div class="box box-primary">
     <div class="box-header">
-        <h4 class="box-title">{{Lang::get('lang.alert_notices_setitngs')}}</h4> {!! Form::submit(Lang::get('lang.submit'),['class'=>' btn btn-primary pull-right'])!!}
+        <h4 class="box-title">{{Lang::get('lang.alert_notices_setitngs')}}</h4> {!!
+        Form::submit(Lang::get('lang.submit'),['class'=>' btn btn-primary pull-right'])!!}
     </div>
 
 </div>
@@ -47,7 +48,7 @@ class="active"
 @if(Session::has('fails'))
 <div class="alert alert-danger alert-dismissable">
     <i class="fa fa-ban"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <b>{!! lang::get('lang.alert') !!}!</b><br/>
+    <b>{!! lang::get('lang.alert') !!}!</b><br />
     {!!Session::get('fails')!!}
 </div>
 @endif
@@ -64,7 +65,8 @@ class="active"
                 <div class="form-group">
                     <!-- Status:     Enable   Disable     -->
                     {!! Form::label('tickets__statuses',Lang::get('lang.status').":") !!}&nbsp;&nbsp;
-                    {!! Form::radio('tickets__statuses',1) !!} {!! Lang::get('lang.enable') !!} &nbsp;&nbsp; {!! Form::radio('tickets__statuses',0) !!}  {!! Lang::get('lang.disable') !!}
+                    {!! Form::radio('tickets__statuses',1) !!} {!! Lang::get('lang.enable') !!} &nbsp;&nbsp; {!!
+                    Form::radio('tickets__statuses',0) !!} {!! Lang::get('lang.disable') !!}
                 </div>
                 <div class="form-group">
                     <!-- Admin Email -->
@@ -79,7 +81,8 @@ class="active"
             </div><!-- /.box-body -->
         </div><!-- /.box -->
         <!-- /.box -->
-    </div><!--/.col (left) -->
+    </div>
+    <!--/.col (left) -->
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -89,7 +92,8 @@ class="active"
                 <!-- Status:     Enable      Disable      -->
                 <div class="form-group">
                     {!! Form::label('assignment_status',Lang::get('lang.status').":") !!}
-                    {!! Form::radio('assignment_status',1) !!} {!! Lang::get('lang.enable') !!} &nbsp;&nbsp; {!! Form::radio('assignment_status',0) !!}  {!! Lang::get('lang.disable') !!}
+                    {!! Form::radio('assignment_status',1) !!} {!! Lang::get('lang.enable') !!} &nbsp;&nbsp; {!!
+                    Form::radio('assignment_status',0) !!} {!! Lang::get('lang.disable') !!}
                 </div>
                 <!-- Assigned Agent / Team -->
                 <div class="form-group">
@@ -103,6 +107,7 @@ class="active"
                 </div>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
-    </div><!--/.col (left) -->
+    </div>
+    <!--/.col (left) -->
 </div>
 @stop

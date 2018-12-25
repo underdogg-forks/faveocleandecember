@@ -40,7 +40,7 @@ class="active"
     <li class="error-message-padding">{{Session::get('fails')}}</li>
 </div>
 @endif
-<!-- -->    
+<!-- -->
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">{!! Lang::get('lang.form_name') !!} : {!! $form->formname !!}</h3>
@@ -52,8 +52,8 @@ class="active"
         ?>
 
         {!! $form !!}
-          
-<!--        <script>
+
+        <!--        <script>
             $("[name='{{$field->name}}']").on('change', function () {
                 var valueid = $("[name='{{$field->name}}']").val();
                 alert(valueid);
@@ -73,7 +73,7 @@ class="active"
                 });
             }
         </script>-->
-        @endforeach         
+        @endforeach
     </div>
 </div>
 @stop

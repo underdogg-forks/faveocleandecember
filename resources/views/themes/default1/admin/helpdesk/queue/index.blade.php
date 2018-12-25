@@ -69,11 +69,13 @@ class="active"
                     <td>{!! $queue->getStatus() !!}</td>
                     <td>{!! $queue->getAction() !!}</td>
                 </tr>
-                @empty 
-                <tr><td>No Records</td></tr>
+                @empty
+                <tr>
+                    <td>No Records</td>
+                </tr>
                 @endforelse
             </tbody>
-        </table> 
+        </table>
     </div>
 </div>
 @stop

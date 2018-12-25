@@ -33,7 +33,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p>{{Session::get('failed')}}</p>                
+            <p>{{Session::get('failed')}}</p>
         </div>
         @endif
         @if(Session::has('errors'))
@@ -42,7 +42,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('days'))
             <li class="error-message-padding">{!! $errors->first('days', ':message') !!}</li>
             @endif
@@ -57,14 +57,16 @@ class="active"
             @endif
         </div>
         @endif
-        {!! Form::model($security,['route'=>['close-workflow.update', $security->id],'method'=>'PATCH','files' => true]) !!}
+        {!! Form::model($security,['route'=>['close-workflow.update', $security->id],'method'=>'PATCH','files' =>
+        true]) !!}
         <div class="form-group {{ $errors->has('days') ? 'has-error' : '' }}">
             <div class="row">
                 <div class="col-md-3">
                     <label for="title">{!! Lang::get('lang.no_of_days') !!}: <span class="text-red"> *</span></label>
                 </div>
-                <div  class="col-md-9">
-                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.close-msg1') !!}</div>
+                <div class="col-md-9">
+                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.close-msg1')
+                        !!}</div>
                     {!! Form::text('days',null,['class'=>'form-control'])!!}
                 </div>
             </div>
@@ -87,13 +89,14 @@ class="active"
                 </div>     
             </div>
         </div> -->
-        <div class="form-group {{ $errors->has('send_email') ? 'has-error' : '' }}"> 
+        <div class="form-group {{ $errors->has('send_email') ? 'has-error' : '' }}">
             <div class="row">
                 <div class="col-md-3">
                     <label for="title">{!! Lang::get('lang.send_email_to_user') !!}:</label>
                 </div>
                 <div class="col-md-6">
-                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.close-msg4') !!}</div>
+                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.close-msg4')
+                        !!}</div>
                     <div class="row">
                         <div class="col-xs-3">
                             {!! Form::radio('send_email','1') !!} {{Lang::get('lang.yes')}}
@@ -101,19 +104,22 @@ class="active"
                         <div class="col-xs-3">
                             {!! Form::radio('send_email','0') !!} {{Lang::get('lang.no')}}
                         </div>
-                    </div>       
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}"> 
+        <div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
             <div class="row">
                 <div class="col-md-3">
                     <label for="title">{!! Lang::get('lang.ticket_status') !!}:</label>
                 </div>
                 <div class="col-md-6">
-                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.close-msg3') !!}</div>
+                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.close-msg3')
+                        !!}</div>
                     <?php $user = \App\Model\helpdesk\Ticket\Ticket_Status::where('state', '=', 'closed')->get(); ?>
-                    {!! Form::select('status',[ Lang::get('lang.status')=>$user->pluck('name','id')->toArray()],null,['class' => 'form-control']) !!}	
+                    {!! Form::select('status',[
+                    Lang::get('lang.status')=>$user->pluck('name','id')->toArray()],null,['class' => 'form-control'])
+                    !!}
                 </div>
             </div>
         </div>

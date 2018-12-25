@@ -54,14 +54,15 @@ class="active"
 
 
         </div>
-        <a href="{{url('labels/create')}}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus"></span> &nbsp; New Label</a>
+        <a href="{{url('labels/create')}}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus"></span>
+            &nbsp; New Label</a>
 
     </div>
     <div class="box-body">
-        {!! 
+        {!!
         Datatable::table()
         ->addColumn('Title','Order','Status','Action')
-        ->setUrl(url('labels-ajax'))   
+        ->setUrl(url('labels-ajax'))
         ->render()
         !!}
     </div>

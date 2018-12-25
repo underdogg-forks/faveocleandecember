@@ -5,7 +5,8 @@
 @section('PageHeader')
 <h3>
    Dashboard
-   {{--  <!-- <small>Add</small> -->  --}}
+   {{--
+   <!-- <small>Add</small> --> --}}
 </h3>
 @stop
 <!-- /header -->

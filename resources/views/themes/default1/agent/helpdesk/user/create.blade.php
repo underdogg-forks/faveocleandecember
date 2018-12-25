@@ -41,7 +41,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('first_name'))
             <li class="error-message-padding">{!! $errors->first('first_name', ':message') !!}</li>
             @endif
@@ -70,7 +70,7 @@ class="active"
             <li class="error-message-padding">{!! $errors->first('active', ':message') !!}</li>
             @endif
         </div>
-        @endif        
+        @endif
         <div class="row">
             <!-- First name : first name : Required -->
             <div class="col-xs-6 form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
@@ -93,7 +93,7 @@ class="active"
                 @endif
                 {!! Form::email('email',null,['class' => 'form-control']) !!}
             </div>
-            
+
             <div class="col-xs-6 form-group {{ $errors->has('user_name') ? 'has-error' : '' }}">
                 {!! Form::label('user_name',Lang::get('lang.user_name')) !!}<span class="text-red"> *</span>
                 {!! Form::text('user_name',null,['class' => 'form-control']) !!}
@@ -102,29 +102,31 @@ class="active"
         <div class="row">
             <div class="col-xs-6 form-group {{ $errors->has('organization') ? 'has-error' : '' }}">
                 {!! Form::label('organization',Lang::get('lang.organization')) !!}
-                {!! Form::select('org_id',[''=>'Select','Organization'=>$org],null,['class' => 'form-control','id'=>'org']) !!}
-                
+                {!! Form::select('org_id',[''=>'Select','Organization'=>$org],null,['class' =>
+                'form-control','id'=>'org']) !!}
+
             </div>
         </div>
         <div class="row">
             <div class="col-xs-1 form-group {{ $errors->has('country_code') ? 'has-error' : '' }}">
                 {!! Form::label('country_code',Lang::get('lang.country-code')) !!}
                 @if ($email_mandatory->status == 0 || $settings->status == 1)
-                     <span class="text-red"> *</span>
+                <span class="text-red"> *</span>
                 @endif
                 <!-- {!! $errors->first('country_code', '<spam class="help-block">:message</spam>') !!} -->
-                {!! Form::text('country_code',null,['class' => 'form-control', 'placeholder' => $phonecode, 'title' => Lang::get('lang.enter-country-phone-code')]) !!}
+                {!! Form::text('country_code',null,['class' => 'form-control', 'placeholder' => $phonecode, 'title' =>
+                Lang::get('lang.enter-country-phone-code')]) !!}
             </div>
             <!-- mobile Number : Text :  -->
             <div class="col-md-3 form-group {{ $errors->has('mobile') ? 'has-error' : '' }}">
                 {!! Form::label('mobile',Lang::get('lang.mobile')) !!}
                 @if ($email_mandatory->status == 0 || $settings->status == 1)
-                     <span class="text-red"> *</span>
+                <span class="text-red"> *</span>
                 @endif
                 {!! Form::input('number', 'mobile',null,['class' => 'form-control']) !!}
             </div>
             <div class="col-xs-1 form-group {{ $errors->has('ext') ? 'has-error' : '' }}">
-                <label for="ext">{!! Lang::get('lang.ext') !!}</label>  
+                <label for="ext">{!! Lang::get('lang.ext') !!}</label>
                 {!! Form::text('ext',null,['class' => 'form-control']) !!}
             </div>
             <div class="col-xs-3 form-group {{ $errors->has('phone_number') ? 'has-error' : '' }}">
@@ -150,7 +152,8 @@ class="active"
         </div>
         <!-- Send email to user about registration password -->
         <div class="form-group">
-            <input type="checkbox" name="send_email" checked> &nbsp;<label> {{ Lang::get('lang.send_password_via_email')}}</label>
+            <input type="checkbox" name="send_email" checked> &nbsp;<label> {{
+                Lang::get('lang.send_password_via_email')}}</label>
         </div>
     </div>
     <div class="box-footer">

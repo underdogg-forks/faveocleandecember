@@ -60,12 +60,12 @@ class="active"
             {!!Session::get('fails')!!}
         </div>
         @endif
-        
+
         <div class="row">
 
             <div class="col-md-6">
                 <div class="form-group">
-                {!! Form::label('www','WWW/non-WWW') !!}
+                    {!! Form::label('www','WWW/non-WWW') !!}
                 </div>
                 <div class="col-md-4 ">
                     <p> {!! Form::radio('www','yes',$www['www'],['class'=>'option']) !!} WWW</p>
@@ -74,11 +74,11 @@ class="active"
                     <p> {!! Form::radio('www','no',$www['nonwww'],['class'=>'option']) !!} Non WWW</p>
                 </div>
             </div>
- 
+
 
             <div class="col-md-6 form-group">
                 <div class="form-group">
-                {!! Form::label('option','SSl') !!}
+                    {!! Form::label('option','SSl') !!}
                 </div>
                 <div class="col-md-4">
                     <p> {!! Form::radio('ssl','yes',$https['https'],['class'=>'option']) !!} HTTPS</p>
@@ -88,7 +88,7 @@ class="active"
                 </div>
             </div>
         </div>
-       
+
     </div>
     <div class="box-footer">
         {!! Form::submit(Lang::get('lang.submit'),['class'=>'btn btn-primary'])!!}

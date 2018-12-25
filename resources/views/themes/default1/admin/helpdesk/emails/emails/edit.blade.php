@@ -80,28 +80,32 @@ class="active"
             <div class="col-xs-4 form-group {{ $errors->has('department') ? 'has-error' : '' }}">
                 {!! Form::label('department',Lang::get('lang.department')) !!}
                 {!! $errors->first('department', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('department', [''=>'--System Default--','departments'=>$departments->pluck('name','id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!!Form::select('department', [''=>'--System
+                Default--','departments'=>$departments->pluck('name','id')->toArray()],null,['class' => 'form-control
+                select']) !!}
             </div>
             <!-- priority -->
             <div class="col-xs-4 form-group {{ $errors->has('priority') ? 'has-error' : '' }}">
                 {!! Form::label('priority',Lang::get('lang.priority')) !!}
                 {!! $errors->first('priority', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('priority', [''=>'--System Default--','Priorities'=>$priority->pluck('priority_desc','priority_id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!!Form::select('priority', [''=>'--System
+                Default--','Priorities'=>$priority->pluck('priority_desc','priority_id')->toArray()],null,['class' =>
+                'form-control select']) !!}
             </div>
             <!-- help topic -->
             <div class="col-xs-4 form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
                 {!! Form::label('help_topic',Lang::get('lang.help_topic')) !!}
                 {!! $errors->first('help_topic', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('help_topic', [''=>'--System Default--','Help Topics'=>$helps->pluck('topic','id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!!Form::select('help_topic', [''=>'--System Default--','Help
+                Topics'=>$helps->pluck('topic','id')->toArray()],null,['class' => 'form-control select']) !!}
             </div>
             <!-- status -->
             <div class="col-xs-2 form-group">
                 {!! Form::label('auto_response', Lang::get('lang.auto_response')) !!}
             </div>
             <div class="col-xs-3 form-group">
-                <input type="checkbox" name="auto_response" id="auto_response" <?php
-                if ($emails->auto_response == 1) {
-                    echo "checked='checked'";
+                <input type="checkbox" name="auto_response" id="auto_response" <?php if ($emails->auto_response == 1) {
+                echo "checked='checked'";
                 }
                 ?>> {!!Lang::get('lang.disable_for_this_email_address')!!}
             </div>
@@ -119,9 +123,9 @@ class="active"
                 </div>
                 <div class="col-xs-2 form-group">
                     <!--{!! Form::radio('fetching_status','1',true) !!} {{Lang::get('lang.enable')}}-->
-                    <input type="checkbox" name="fetching_status" id="fetching_status"  <?php
-                    if ($emails->fetching_status == 1) {
-                        echo "checked='checked'";
+                    <input type="checkbox" name="fetching_status" id="fetching_status" <?php if ($emails->fetching_status
+                    == 1) {
+                    echo "checked='checked'";
                     }
                     ?>> {{Lang::get('lang.enable')}}
                 </div>
@@ -134,7 +138,8 @@ class="active"
             <div class="col-xs-2 form-group {!! $errors->has('fetching_protocol') ? 'has-error' : ''!!}" id="fetching_protocol_error">
                 {!! Form::label('fetching_protocol',Lang::get('lang.fetching_protocol')) !!}
                 {!! $errors->first('fetching_protocol', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('fetching_protocol',['imap' => 'IMAP', 'pop' => 'POP3'],null,['class' => 'form-control select', 'id' => 'fetching_protocol']) !!}
+                {!!Form::select('fetching_protocol',['imap' => 'IMAP', 'pop' => 'POP3'],null,['class' => 'form-control
+                select', 'id' => 'fetching_protocol']) !!}
             </div>
             <div class="col-xs-2 form-group  {!! $errors->has('fetching_host') ? 'has-error' : ''!!}" id="fetching_host_error">
                 {!! Form::label('fetching_host',Lang::get('lang.host_name')) !!}
@@ -149,33 +154,35 @@ class="active"
             <div class="col-xs-2 form-group {!! $errors->has('fetching_encryption') ? 'has-error' : ''!!}" id="fetching_encryption_error">
                 {!! Form::label('fetching_encryption',Lang::get('lang.encryption')) !!}
                 {!! $errors->first('fetching_encryption', '<spam class="help-block">:message</spam>') !!}
-                <select name="fetching_encryption" class='form-control'  id='fetching_encryption'>
+                <select name="fetching_encryption" class='form-control' id='fetching_encryption'>
                     <option value=""> -----Select----- </option>
-  
-                    <option <?php
-                    if ($emails->fetching_encryption == 'ssl' || $emails->fetching_encryption === 'ssl') {
+
+                    <option <?php if ($emails->fetching_encryption == 'ssl' || $emails->fetching_encryption === 'ssl')
+                        {
                         echo 'selected="selected"';
-                    }
-                    ?> value="ssl">SSL</option>
-                    <option <?php
-                    if ($emails->fetching_encryption == 'tls' || $emails->fetching_encryption === 'tls') {
+                        }
+                        ?> value="ssl">SSL</option>
+                    <option <?php if ($emails->fetching_encryption == 'tls' || $emails->fetching_encryption === 'tls')
+                        {
                         echo 'selected="selected"';
-                    }
-                    ?> value="tls">TLS</option>
-                    <option <?php
-                    if ($emails->fetching_encryption == 'starttls' || $emails->fetching_encryption === 'starttls') {
+                        }
+                        ?> value="tls">TLS</option>
+                    <option <?php if ($emails->fetching_encryption == 'starttls' || $emails->fetching_encryption ===
+                        'starttls') {
                         echo 'selected="selected"';
-                    }
-                    ?> value="starttls">STARTTLS</option>
+                        }
+                        ?> value="starttls">STARTTLS</option>
                 </select>
             </div>
             <div class="col-xs-2 form-group {!! $errors->has('imap_authentication') ? 'has-error' : ''!!}" id="imap_authentication_error">
                 {!! Form::label('fetching_authentication',Lang::get('lang.authentication')) !!}
-                {!!Form::select('imap_authentication',['normal' => 'Normal Password'],null,['class' => 'form-control select', 'id' => 'imap_authentication']) !!}
+                {!!Form::select('imap_authentication',['normal' => 'Normal Password'],null,['class' => 'form-control
+                select', 'id' => 'imap_authentication']) !!}
             </div>
             <div class="col-xs-2 form-group">
                 <br>
-                <input type="checkbox" name="imap_validate" id="imap_validate">&nbsp; {!! Lang::get('lang.validate_certificates_from_tls_or_ssl_server') !!}
+                <input type="checkbox" name="imap_validate" id="imap_validate">&nbsp; {!!
+                Lang::get('lang.validate_certificates_from_tls_or_ssl_server') !!}
             </div>
         </div>
     </div>
@@ -186,34 +193,35 @@ class="active"
         <div class="row">
             <!-- status -->
             <div class="form-group">
-                <div class="col-xs-1 form-group"> 
-                    {!! Form::label('sending_status',Lang::get('lang.status')) !!} 
-                </div> 
-                <div class="col-xs-2 form-group"> 
-                    <input type="checkbox" name="sending_status" id="sending_status" <?php
-                    if ($emails->sending_status == 1) {
-                        echo "checked='checked'";
+                <div class="col-xs-1 form-group">
+                    {!! Form::label('sending_status',Lang::get('lang.status')) !!}
+                </div>
+                <div class="col-xs-2 form-group">
+                    <input type="checkbox" name="sending_status" id="sending_status" <?php if ($emails->sending_status
+                    == 1) {
+                    echo "checked='checked'";
                     }
-                    ?>> {!! Lang::get('lang.enable') !!} 
-                </div> 
-                <div class="col-xs-2 form-group"> 
-                    <!--<input type="radio" name="sending_status" id="sending_status" value=""> {!! Lang::get('lang.disabled') !!}--> 
-                </div> 
+                    ?>> {!! Lang::get('lang.enable') !!}
+                </div>
+                <div class="col-xs-2 form-group">
+                    <!--<input type="radio" name="sending_status" id="sending_status" value=""> {!! Lang::get('lang.disabled') !!}-->
+                </div>
             </div>
         </div>
         <div class="row">
             <!-- Encryption -->
             <div class="col-xs-2 form-group {!! $errors->has('sending_protocol') ? 'has-error' : ''!!}" id="sending_protocol_error">
                 {!! Form::label('sending_protocol',Lang::get('lang.transfer_protocol')) !!}
-                {!! $errors->first('sending_protocol', '<spam class="help-block">:message</spam>') !!} 
-                {!!Form::select('sending_protocol',[''=>'Select','Drives'=>$services],$emails->getCurrentDrive(),['class' => 'form-control select','id'=>'service']) !!}
-            </div> 
+                {!! $errors->first('sending_protocol', '<spam class="help-block">:message</spam>') !!}
+                {!!Form::select('sending_protocol',[''=>'Select','Drives'=>$services],$emails->getCurrentDrive(),['class'
+                => 'form-control select','id'=>'service']) !!}
+            </div>
             <!-- sending hoost -->
             <div class="col-xs-2 form-group {!! $errors->has('sending_host') ? 'has-error' : ''!!}" id="sending_host_error">
                 {!! Form::label('sending_host',Lang::get('lang.host_name')) !!}
-                {!! $errors->first('sending_host', '<spam class="help-block">:message</spam>') !!} 
+                {!! $errors->first('sending_host', '<spam class="help-block">:message</spam>') !!}
                 {!! Form::text('sending_host',null,['class' => 'form-control']) !!}
-            </div> 
+            </div>
             <!-- sending port -->
             <div class="col-xs-2 form-group {!! $errors->has('sending_port') ? 'has-error' : ''!!}" id="sending_port_error">
                 {!! Form::label('sending_port',Lang::get('lang.port_number')) !!}
@@ -223,16 +231,19 @@ class="active"
             <!-- Encryption -->
             <div class="col-xs-2 form-group {!! $errors->has('sending_encryption') ? 'has-error' : ''!!}" id="sending_encryption_error">
                 {!! Form::label('sending_encryption',Lang::get('lang.encryption')) !!}
-                {!! $errors->first('sending_encryption', '<spam class="help-block">:message</spam>') !!} 
-                {!!Form::select('sending_encryption',[''=>'-----Select-----','ssl' => 'SSL', 'tls' => 'TLS', 'starttls' => 'STARTTLS'],null,['class' => 'form-control select']) !!}
-            </div> 
+                {!! $errors->first('sending_encryption', '<spam class="help-block">:message</spam>') !!}
+                {!!Form::select('sending_encryption',[''=>'-----Select-----','ssl' => 'SSL', 'tls' => 'TLS', 'starttls'
+                => 'STARTTLS'],null,['class' => 'form-control select']) !!}
+            </div>
             <div class="col-xs-2 form-group {!! $errors->has('smtp_authentication') ? 'has-error' : ''!!}" id="smtp_authentication_error">
                 {!! Form::label('sending_authentication',Lang::get('lang.authentication')) !!}
-                {!!Form::select('smtp_authentication',['normal' => 'Normal Password'],null,['class' => 'form-control select', 'id' => 'smtp_authentication']) !!}
+                {!!Form::select('smtp_authentication',['normal' => 'Normal Password'],null,['class' => 'form-control
+                select', 'id' => 'smtp_authentication']) !!}
             </div>
             <div class="col-xs-2 form-group">
                 <br>
-                <input type="checkbox" name="smtp_validate" id="smtp_validate">&nbsp; {!! Lang::get('lang.validate_certificates_from_tls_or_ssl_server') !!}
+                <input type="checkbox" name="smtp_validate" id="smtp_validate">&nbsp; {!!
+                Lang::get('lang.validate_certificates_from_tls_or_ssl_server') !!}
             </div>
         </div>
         <div id="response"></div>
@@ -242,12 +253,15 @@ class="active"
             {!! Form::textarea('internal_notes',null,['class' => 'form-control','size' => '30x10']) !!}
         </div>
     </div>
-    <input type="hidden" name="count" value="{{$count}}"> 
+    <input type="hidden" name="count" value="{{$count}}">
     <div class="box-footer">
         <div class="form-group">
-            <input type="checkbox" name="sys_email" @if($sys_email->sys_email == $emails->id) checked  @endif @if($count > 1 && $sys_email->sys_email == $emails->id) disabled @endif">&nbsp;&nbsp;{{Lang::get('lang.make-system-default-mail')}}
+            <input type="checkbox" name="sys_email" @if($sys_email->sys_email == $emails->id) checked @endif @if($count
+            > 1 && $sys_email->sys_email == $emails->id) disabled
+            @endif">&nbsp;&nbsp;{{Lang::get('lang.make-system-default-mail')}}
         </div>
-        {!! Form::button('<i id="spin" class="fa fa-spinner" style="display:none;"></i> <b>' . Lang::get("lang.update").'</b>' ,['class'=>'btn btn-primary', 'type' => 'submit'])!!}
+        {!! Form::button('<i id="spin" class="fa fa-spinner" style="display:none;"></i> <b>' .
+            Lang::get("lang.update").'</b>' ,['class'=>'btn btn-primary', 'type' => 'submit'])!!}
     </div>
 </div>
 {!!Form::close()!!}
@@ -256,16 +270,25 @@ class="active"
         <div class="modal-content">
             <div class="modal-header">
                 <div id="head">
-                    <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close" style="display:none;"><span aria-hidden="true">×</span></button>
-                    <div class="col-md-5"></div><div class="col-md-2"><img src="{{asset("lb-faveo/media/images/gifloader.gif")}}" ></div><div class="col-md-5"></div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <center><h3 style="color:#80DE02;">Testing incoming & outgoing mail server</h3></center>
-                    <br/>
-                    <center><h4>Please wait while testing is in progress ...</h4></center>
-                    <center><h4>(Please do not use "Refresh" or "Back" button)</h4></center>
-                    <br/>
+                    <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close" style="display:none;"><span
+                            aria-hidden="true">×</span></button>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"><img src="{{asset("lb-faveo/media/images/gifloader.gif")}}"></div>
+                    <div class="col-md-5"></div>
+                    <br />
+                    <br />
+                    <br />
+                    <center>
+                        <h3 style="color:#80DE02;">Testing incoming & outgoing mail server</h3>
+                    </center>
+                    <br />
+                    <center>
+                        <h4>Please wait while testing is in progress ...</h4>
+                    </center>
+                    <center>
+                        <h4>(Please do not use "Refresh" or "Back" button)</h4>
+                    </center>
+                    <br />
                 </div>
             </div>
         </div>
@@ -302,7 +325,9 @@ class="active"
                 });
 
                 $("#head").html(res);
-                $('html, body').animate({scrollTop: $("#form").offset().top}, 500);
+                $('html, body').animate({
+                    scrollTop: $("#form").offset().top
+                }, 500);
             },
             error: function (json) {
                 $("#close").trigger("click");
@@ -310,8 +335,12 @@ class="active"
                 $.each(json.responseJSON.errors, function (idx, topic) {
                     res += "<li>" + topic + "</li>";
                 });
-                $("#head").html("<div class='alert alert-danger'><strong>Whoops!</strong> There were some problems with your input.<br><br><ul>" + res + "</ul></div>");
-                $('html, body').animate({scrollTop: $("#form").offset().top}, 500);
+                $("#head").html(
+                    "<div class='alert alert-danger'><strong>Whoops!</strong> There were some problems with your input.<br><br><ul>" +
+                    res + "</ul></div>");
+                $('html, body').animate({
+                    scrollTop: $("#form").offset().top
+                }, 500);
             }
         });
         return false;
@@ -324,11 +353,19 @@ class="active"
             serviceid = $("#service").val();
             send(serviceid);
         });
+
         function send(serviceid) {
             $.ajax({
                 url: "{{url('mail/config/service')}}",
                 dataType: "html",
-                data: {'service': serviceid,'emailid':{{$emails->id}}},
+                data: {
+                    'service': serviceid,
+                    'emailid': {
+                        {
+                            $emails - > id
+                        }
+                    }
+                },
                 success: function (response) {
                     $("#response").html(response);
                 },

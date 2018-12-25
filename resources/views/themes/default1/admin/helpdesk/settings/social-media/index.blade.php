@@ -76,7 +76,7 @@ class="active"
                             <td>
                                 @if($social->checkActive('facebook')===true)
                                 <span style="color: green">Active</span>
-                                @else 
+                                @else
                                 <span style="color: red">Inactive</span>
                                 @endif
                             </td>
@@ -89,7 +89,7 @@ class="active"
                             <td>
                                 @if($social->checkActive('google')===true)
                                 <span style="color: green">Active</span>
-                                @else 
+                                @else
                                 <span style="color: red">Inactive</span>
                                 @endif
                             </td>
@@ -102,7 +102,7 @@ class="active"
                             <td>
                                 @if($social->checkActive('github')===true)
                                 <span style="color: green">Active</span>
-                                @else 
+                                @else
                                 <span style="color: red">Inactive</span>
                                 @endif
                             </td>
@@ -115,7 +115,7 @@ class="active"
                             <td>
                                 @if($social->checkActive('twitter')===true)
                                 <span style="color: green">Active</span>
-                                @else 
+                                @else
                                 <span style="color: red">Inactive</span>
                                 @endif
                             </td>
@@ -128,7 +128,7 @@ class="active"
                             <td>
                                 @if($social->checkActive('linkedin')===true)
                                 <span style="color: green">Active</span>
-                                @else 
+                                @else
                                 <span style="color: red">Inactive</span>
                                 @endif
                             </td>
@@ -141,7 +141,7 @@ class="active"
                             <td>
                                 @if($social->checkActive('bitbucket')===true)
                                 <span style="color: green">Active</span>
-                                @else 
+                                @else
                                 <span style="color: red">Inactive</span>
                                 @endif
                             </td>

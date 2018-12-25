@@ -32,7 +32,7 @@ class="active"
 {!! Form::open(array('action' => 'Admin\helpdesk\AgentController@store' , 'method' => 'post') )!!}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{!! Lang::get('lang.create_an_agent') !!}</h3>	
+        <h3 class="box-title">{!! Lang::get('lang.create_an_agent') !!}</h3>
     </div>
     <div class="box-body">
         @if(Session::has('errors'))
@@ -41,7 +41,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('user_name'))
             <li class="error-message-padding">{!! $errors->first('user_name', ':message') !!}</li>
             @endif
@@ -87,13 +87,13 @@ class="active"
         </div>
         @endif
         @if(Session::has('fails2'))
-            <div class="alert alert-danger alert-dismissable">
+        <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i>
             <b>Alert!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
-                <li class="error-message-padding">{!! Session::get('fails2') !!}</li>
-            </div>
+            <br />
+            <li class="error-message-padding">{!! Session::get('fails2') !!}</li>
+        </div>
         @endif
         <div class="row">
             <!-- username -->
@@ -119,14 +119,16 @@ class="active"
                 {!! Form::email('email',null,['class' => 'form-control']) !!}
             </div>
             <div class="col-xs-1 form-group {{ $errors->has('ext') ? 'has-error' : '' }}">
-                <label for="ext">{!! Lang::get('lang.ext') !!}</label>	
+                <label for="ext">{!! Lang::get('lang.ext') !!}</label>
                 {!! Form::text('ext',null,['class' => 'form-control']) !!}
             </div>
             <!--country code-->
             <div class="col-xs-1 form-group {{  $errors->has('country_code') ? 'has-error' : '' }}">
 
-                {!! Form::label('country_code',Lang::get('lang.country-code')) !!} @if($send_otp->status ==1)<span class="text-red"> *</span>@endif
-                {!! Form::text('country_code',null,['class' => 'form-control', 'placeholder' => $phonecode, 'title' => Lang::get('lang.enter-country-phone-code')]) !!}
+                {!! Form::label('country_code',Lang::get('lang.country-code')) !!} @if($send_otp->status ==1)<span
+                    class="text-red"> *</span>@endif
+                {!! Form::text('country_code',null,['class' => 'form-control', 'placeholder' => $phonecode, 'title' =>
+                Lang::get('lang.enter-country-phone-code')]) !!}
 
             </div>
             <!-- phone -->
@@ -136,7 +138,8 @@ class="active"
             </div>
             <!-- Mobile -->
             <div class="col-xs-3 form-group {{ $errors->has('mobile') ? 'has-error' : '' }}">
-                {!! Form::label('mobile',Lang::get('lang.mobile_number')) !!}@if($send_otp->status ==1)<span class="text-red"> *</span>@endif
+                {!! Form::label('mobile',Lang::get('lang.mobile_number')) !!}@if($send_otp->status ==1)<span class="text-red">
+                    *</span>@endif
                 {!! Form::input('number', 'mobile',null,['class' => 'form-control']) !!}
             </div>
         </div>
@@ -183,20 +186,25 @@ class="active"
             <!-- assigned group -->
             <div class="col-xs-4 form-group {{ $errors->has('group') ? 'has-error' : '' }}">
                 {!! Form::label('assign_group',Lang::get('lang.assigned_group')) !!} <span class="text-red"> *</span>
-                {!!Form::select('group',[''=>Lang::get('lang.select_a_group'),Lang::get('lang.groups')=>$groups->pluck('name','id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!!Form::select('group',[''=>Lang::get('lang.select_a_group'),Lang::get('lang.groups')=>$groups->pluck('name','id')->toArray()],null,['class'
+                => 'form-control select']) !!}
             </div>
 
-           <!-- primary department -->
+            <!-- primary department -->
             <div class="col-xs-4 form-group {{ $errors->has('primary_department') ? 'has-error' : '' }}">
                 {!! Form::label('primary_dpt', Lang::get('lang.primary_department')) !!} <span class="text-red"> *</span>
 
-                {!!Form::select('primary_department', [''=>Lang::get('lang.select_a_department'), Lang::get('lang.departments')=>$departments->pluck('name','id')->toArray()],'',['class' => 'form-control select']) !!}
+                {!!Form::select('primary_department', [''=>Lang::get('lang.select_a_department'),
+                Lang::get('lang.departments')=>$departments->pluck('name','id')->toArray()],'',['class' =>
+                'form-control select']) !!}
             </div>
 
             <!-- timezone -->
             <div class="col-xs-4 form-group {{ $errors->has('agent_time_zone') ? 'has-error' : '' }}">
                 {!! Form::label('agent_tzone',Lang::get('lang.agent_time_zone')) !!} <span class="text-red"> *</span>
-                {!! Form::select('agent_time_zone', [''=>Lang::get('lang.select_a_time_zone'),Lang::get('lang.time_zones')=>$timezones->pluck('name','id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!! Form::select('agent_time_zone',
+                [''=>Lang::get('lang.select_a_time_zone'),Lang::get('lang.time_zones')=>$timezones->pluck('name','id')->toArray()],null,['class'
+                => 'form-control select']) !!}
             </div>
         </div>
         <!-- Assign team -->
@@ -204,14 +212,15 @@ class="active"
             {!! Form::label('agent_tzone',Lang::get('lang.assigned_team')) !!} <span class="text-red"> *</span>
             @foreach($teams as $key => $val)
             <div class="form-group ">
-                <input type="checkbox" name="team[]" value="{!! $val !!}"  > {!! $key !!}<br/>
+                <input type="checkbox" name="team[]" value="{!! $val !!}"> {!! $key !!}<br />
             </div>
             @endforeach
         </div>
         <!-- Send email to user about registration password -->
-        <br/>
+        <br />
         <div class="form-group">
-            <input type="checkbox" name="send_email" checked> &nbsp;<label> {{ Lang::get('lang.send_password_via_email')}}</label>
+            <input type="checkbox" name="send_email" checked> &nbsp;<label> {{
+                Lang::get('lang.send_password_via_email')}}</label>
         </div>
     </div>
     <div class="box-footer">
@@ -221,11 +230,11 @@ class="active"
 {!!Form::close()!!}
 
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         //Initialize Select2 Elements
         $(".select2").select2();
     });
-    </script>
+</script>
 
 
 

@@ -16,19 +16,19 @@
         </br><i class="fa fa-user"></i> <b>{{$user->user_name}}</b>
     </a>
 </li>
-<li >
-        @if($tickets->assigned_to > 0)
-        <a href="{!! URL('') !!}">
+<li>
+    @if($tickets->assigned_to > 0)
+    <a href="{!! URL('') !!}">
         <span>ASSIGNED TO</span>
         </br> {{$assignedto->first_name}}
-        </a>
-        @else
-        <a href="">
+    </a>
+    @else
+    <a href="">
         <span>UNASSIGNED</span>
-        </a>
-        @endif
+    </a>
+    @endif
 </li>
-@stop 
+@stop
 
 @section('content')
 <!-- Main content -->
@@ -38,11 +38,15 @@
         <div class="pull-right">
             <!-- <button type="button" class="btn btn-default"><i class="fa fa-edit" style="color:green;"> </i> Edit</button> -->
 
-            <button type="button" class="btn btn-default" id="Edit_Ticket" data-toggle="modal" data-target="#Edit"><i class="fa fa-edit" style="color:green;"> </i> Edit</button>
+            <button type="button" class="btn btn-default" id="Edit_Ticket" data-toggle="modal" data-target="#Edit"><i
+                    class="fa fa-edit" style="color:green;"> </i> Edit</button>
 
-            <a href="{{url('ticket/print/'.$tickets->id)}}" target="_blank" class="btn btn-default"><i class="fa fa-print" style="color:blue;"> </i> Print</a>
+            <a href="{{url('ticket/print/'.$tickets->id)}}" target="_blank" class="btn btn-default"><i class="fa fa-print"
+                    style="color:blue;"> </i> Print</a>
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="d1"><i class="fa fa-exchange" style="color:teal;" id="hidespin"> </i><i class="fa fa-spinner fa-spin" style="color:teal; display:none;" id="spin"></i>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="d1"><i class="fa fa-exchange"
+                        style="color:teal;" id="hidespin"> </i><i class="fa fa-spinner fa-spin" style="color:teal; display:none;"
+                        id="spin"></i>
                     Change Status <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -55,37 +59,39 @@
             </div>
 
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="d2"><i class="fa fa-cogs" style="color:teal;"> </i>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="d2"><i class="fa fa-cogs"
+                        style="color:teal;"> </i>
                     More <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu pull-right">
-                 
+
                     <li id="delete"><a href="#"><i class="fa fa-trash-o" style="color:red;"> </i>Delete Ticket</a></li>
-                    <li  data-toggle="modal" data-target="#banemail"><a href="#" ><i class="fa fa-ban" style="color:red;" > </i> Ban Email</a></li>
-                  </ul>
+                    <li data-toggle="modal" data-target="#banemail"><a href="#"><i class="fa fa-ban" style="color:red;">
+                            </i> Ban Email</a></li>
+                </ul>
             </div>
-           
+
         </div>
     </div>
     <!-- ticket details Table -->
     <div class="box-body">
-    <div id="alert11" class="alert alert-success alert-dismissable" style="display:none;">
-        <button id="dismiss11" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i>Alert!</h4>
-        <div id="message-success1"></div>
-    </div>
-    <div id="alert12" class="alert alert-warning alert-dismissable" style="display:none;">
-        <button id="dismiss12" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-warning"></i>Alert!</h4>
-        <div id="message-warning1"></div>
-    </div>
-    <div id="alert13" class="alert alert-danger alert-dismissable" style="display:none;">
-        <button id="dismiss13" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-ban"></i>Alert!</h4>
-        <div id="message-danger1"></div>
-    </div>
+        <div id="alert11" class="alert alert-success alert-dismissable" style="display:none;">
+            <button id="dismiss11" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i>Alert!</h4>
+            <div id="message-success1"></div>
+        </div>
+        <div id="alert12" class="alert alert-warning alert-dismissable" style="display:none;">
+            <button id="dismiss12" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-warning"></i>Alert!</h4>
+            <div id="message-warning1"></div>
+        </div>
+        <div id="alert13" class="alert alert-danger alert-dismissable" style="display:none;">
+            <button id="dismiss13" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i>Alert!</h4>
+            <div id="message-danger1"></div>
+        </div>
         <div class="row">
-            <section class="content"  >
+            <section class="content">
                 <div class="col-md-12">
                     <?php
 $priority = App\Model\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first();
@@ -122,23 +128,40 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                     </div>
                 </div>
                 <div id="show2" style="display:none;">
-                        <div class="col-md-4">
-                        </div>
-                        <div class="col-md-4">
-                            <img src="{{asset("dist/img/gifloader.gif")}}"><br/><br/><br/>
-                        </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{asset("dist/img/gifloader.gif")}}"><br /><br /><br />
+                    </div>
                 </div>
                 <div id="hide2">
-                <div class="col-md-6">
-                    <table class="table table-hover"id="refresh">
-                        <tr><td><b>Status:</b></td>       <div><?php $status = App\Model\Ticket\Ticket_Status::where('id', '=', $tickets->status)->first();?><td title="{{$status->properties}}">{{$status->name}}</td></div></tr>
-                        <tr><td><b>Priority:</b></td>     <?php $priority = App\Model\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first();?><td title="{{$priority->priority_desc}}">{{$priority->priority_desc}}</td></tr>
-                        <tr><td><b>Department:</b></td>   <?php $help_topic = App\Model\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first();?><td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td></tr>
-                        <tr><td><b>Email:</b></td>        <td>{{$user->email}}</td></tr>
-                    </table>
-                </div>
-                <div class="col-md-6">
-<?php 
+                    <div class="col-md-6">
+                        <table class="table table-hover" id="refresh">
+                            <tr>
+                                <td><b>Status:</b></td>
+                                <div>
+                                    <?php $status = App\Model\Ticket\Ticket_Status::where('id', '=', $tickets->status)->first();?>
+                                    <td title="{{$status->properties}}">{{$status->name}}</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td><b>Priority:</b></td>
+                                <?php $priority = App\Model\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first();?>
+                                <td title="{{$priority->priority_desc}}">{{$priority->priority_desc}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Department:</b></td>
+                                <?php $help_topic = App\Model\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first();?>
+                                <td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Email:</b></td>
+                                <td>{{$user->email}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <?php 
     $user_phone = App\User::where('mobile','=',$thread->user_id)->first();
 
     $TicketData = App\Model\Ticket\Ticket_Thread::where('ticket_id', '=', $thread->ticket_id)->max('id');
@@ -160,13 +183,26 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                             $ticket_source = $tickets->source;
 
 ?>
-                    <table class="table table-hover">
-                        @if($user_phone != null)<tr><td><b>Phone:</b></td>          <td>{{$user_phone->mobile}}</td></tr>@endif
-                        <tr><td><b>Source:</b></td>         <td>{{$ticket_source}}</td></tr>
-                        <tr><td><b>Help Topic:</b></td>     <?php $help_topic = App\Model\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first();?><td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td></tr>
-                        <tr><td><b>Last Message:</b></td>   <td>{{$username}}</td></tr>
-                    </table>
-                </div>
+                        <table class="table table-hover">
+                            @if($user_phone != null)<tr>
+                                <td><b>Phone:</b></td>
+                                <td>{{$user_phone->mobile}}</td>
+                            </tr>@endif
+                            <tr>
+                                <td><b>Source:</b></td>
+                                <td>{{$ticket_source}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Help Topic:</b></td>
+                                <?php $help_topic = App\Model\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first();?>
+                                <td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Last Message:</b></td>
+                                <td>{{$username}}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </section>
         </div>
@@ -177,7 +213,8 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
     <div class='col-xs-12'>
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#General" data-toggle="tab" style="color:green;" id="aa"><i class="fa fa-reply-all"> </i> Reply</a></li>
+                <li class="active"><a href="#General" data-toggle="tab" style="color:green;" id="aa"><i class="fa fa-reply-all">
+                        </i> Reply</a></li>
                 <!-- <li><a href="#Reply" data-toggle="tab" style="color:orange;"><i class="fa fa-mail-forward" > </i> Forward</a></li> -->
             </ul>
             <div class="tab-content">
@@ -198,18 +235,20 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                 </div>
                 <div class="tab-pane active" id="General">
                     <div class="form-group">
-        
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{$tickets->id}}assign"><i class="fa fa-hand-o-right" style="color:orange;"> </i> Assign</button>
-        
-                        <button type="button" id="internal" class="btn btn-default"><i class="fa fa-file-text" style="color:blue;"> </i>  Internal Notes</button>
-                        
+
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{$tickets->id}}assign"><i
+                                class="fa fa-hand-o-right" style="color:orange;"> </i> Assign</button>
+
+                        <button type="button" id="internal" class="btn btn-default"><i class="fa fa-file-text" style="color:blue;">
+                            </i> Internal Notes</button>
+
                     </div>
                     <!-- ticket reply -->
                     <div id="show3" style="display:none;">
                         <div class="col-md-4">
                         </div>
                         <div class="col-md-4">
-                            <img src="{{asset("dist/img/gifloader.gif")}}"><br/><br/><br/>
+                            <img src="{{asset("dist/img/gifloader.gif")}}"><br /><br /><br />
                         </div>
                         </br>
                         </br>
@@ -221,29 +260,33 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                         </br>
                     </div>
 
-                    {!! Form::model($tickets->id, ['id'=>'form3','method' => 'PATCH', 'enctype'=>'multipart/form-data'] )!!}
+                    {!! Form::model($tickets->id, ['id'=>'form3','method' => 'PATCH', 'enctype'=>'multipart/form-data']
+                    )!!}
                     <div id="t1">
 
                         <div class="form-group">
                             <div class="row">
-                            <!-- to -->
+                                <!-- to -->
                                 <input type="hidden" name="ticket_ID" value="{{$tickets->id}}">
                                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                                     <div class="col-md-2">
                                         {!! Form::label('To', 'To:') !!}
                                     </div>
                                     <div class="col-md-10">
-                                        {!! Form::text('To',$user->email,['id'=>'email','class'=>'form-control','style'=>'width:55%'])!!}
-                                        {!! $errors->first('To', '<spam class="help-block text-red">:message</spam>') !!}
-                        
-                                        <input type="checkbox"> <a href="#" onclick="AddCcc()" data-toggle="modal" data-target="#addccc"> Add Ccc </a>
+                                        {!!
+                                        Form::text('To',$user->email,['id'=>'email','class'=>'form-control','style'=>'width:55%'])!!}
+                                        {!! $errors->first('To', '<spam class="help-block text-red">:message</spam>')
+                                        !!}
+
+                                        <input type="checkbox"> <a href="#" onclick="AddCcc()" data-toggle="modal"
+                                            data-target="#addccc"> Add Ccc </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                            <!-- responnse -->
+                                <!-- responnse -->
                                 <div class="col-md-2">
                                     <label>Response:</label>
                                 </div>
@@ -258,16 +301,18 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                         </div>
                         <div class="form-group">
                             <div class="row">
-                            <!-- reply content -->
+                                <!-- reply content -->
                                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                                     <div class="col-md-2">
                                         {!! Form::label('Reply Content', 'reply_content:') !!}
                                     </div>
                                     <div class="col-md-10">
                                         <textarea style="width:98%;height:200px;" name="reply_content" id="reply_content"></textarea>
-                                        {!! $errors->first('reply_content', '<spam class="help-block text-red">:message</spam>') !!}
-                                        <br/>
-                                        {{-- <div type="file" class="btn btn-default btn-file"><i class="fa fa-paperclip"> </i> Attachment<input type="file" name="attachment[]" multiple/></div><br/>
+                                        {!! $errors->first('reply_content', '<spam class="help-block text-red">:message</spam>')
+                                        !!}
+                                        <br />
+                                        {{-- <div type="file" class="btn btn-default btn-file"><i class="fa fa-paperclip">
+                                            </i> Attachment<input type="file" name="attachment[]" multiple /></div><br />
                                         Max. 10MB --}}
                                     </div>
                                 </div>
@@ -279,7 +324,8 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-10">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o" style="color:white;"> </i> Update</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"
+                                                style="color:white;"> </i> Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -293,14 +339,16 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                         <div id="t4">
                             <div class="form-group">
                                 <div class="row">
-                                <!-- internal note -->
+                                    <!-- internal note -->
                                     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                                         <div class="col-md-2">
                                             <label>Internal Note</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea class="form-control" name="InternalContent" id="InternalContent" style="width:98%; height:150px;"></textarea>
-                                            {!! $errors->first('InternalContent', '<spam class="help-block text-red">:message</spam>') !!}
+                                            <textarea class="form-control" name="InternalContent" id="InternalContent"
+                                                style="width:98%; height:150px;"></textarea>
+                                            {!! $errors->first('InternalContent', '<spam class="help-block text-red">:message</spam>')
+                                            !!}
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +358,8 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                                     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10">
-                                            <button type="submit"  class="btn btn-primary"><i class="fa fa-check-square-o" style="color:white;"> </i> Update</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"
+                                                    style="color:white;"> </i> Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -387,9 +436,9 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
         </div>
         <!-- ticket  conversations -->
         <!-- row -->
-        <div class="row" >
+        <div class="row">
             <div id="refresh1">
-                <div class="col-md-12" >
+                <div class="col-md-12">
                     <!-- The time line -->
                     <ul class="timeline">
                         <!-- timeline time label -->
@@ -397,8 +446,8 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
 $conversations = App\Model\Ticket\Ticket_Thread::where('ticket_id', '=', $tickets->id)->paginate(10);
 foreach ($conversations as $conversation) {
 	?>
-                            <li class="time-label">
-                                <?php
+                        <li class="time-label">
+                            <?php
 $ConvDate1 = $conversation->created_at;
 	$ConvDate = explode(' ', $ConvDate1);
 
@@ -408,24 +457,26 @@ $ConvDate1 = $conversation->created_at;
 	if (isset($data) && $date == $data) {
 
 	} else {
-		?> <span class="bg-green">
-                                        {{date_format($conversation->created_at, 'd/m/Y')}}
-                                    </span> <?php
+		?>
+                            <span class="bg-green">
+                                {{date_format($conversation->created_at, 'd/m/Y')}}
+                            </span>
+                            <?php
 $data = $ConvDate[0];
 	}
     $role = App\User::where('id','=',$conversation->user_id)->first();
 	?>
-                            </li>
-                            <li>
-                                <?php if($conversation->is_internal) { ?>
-                                <i class="fa fa-tag bg-purple" title="Posted by System"></i>
-                                    <?php }else{ if ($role->role == 'agent' || $role->role == 'admin') { ?>
-                                    <i class="fa fa-mail-reply-all bg-yellow" title="Posted by Support Team"></i>
-                                <?php } elseif ($role->role == 'user') {  ?>
-                                    <i class="fa fa-user bg-aqua" title="Posted by Customer"></i>
-                                <?php } else { ?>
-                                    <i class="fa fa-mail-reply-all bg-purple" title="Posted by System"></i>
-    <?php } }
+                        </li>
+                        <li>
+                            <?php if($conversation->is_internal) { ?>
+                            <i class="fa fa-tag bg-purple" title="Posted by System"></i>
+                            <?php }else{ if ($role->role == 'agent' || $role->role == 'admin') { ?>
+                            <i class="fa fa-mail-reply-all bg-yellow" title="Posted by Support Team"></i>
+                            <?php } elseif ($role->role == 'user') {  ?>
+                            <i class="fa fa-user bg-aqua" title="Posted by Customer"></i>
+                            <?php } else { ?>
+                            <i class="fa fa-mail-reply-all bg-purple" title="Posted by System"></i>
+                            <?php } }
     $attachment = App\Model\Ticket\Ticket_attachments::where('thread_id','=',$conversation->id)->first();
     if($attachment == null ) {
         $body = $conversation->body;
@@ -489,7 +540,7 @@ $data = $ConvDate[0];
     }
 	?>
 
-    <?php
+                            <?php
                             $string = $body;                        
                             $start = "<head>";
                             $end = "</head>";                            
@@ -507,9 +558,10 @@ $data = $ConvDate[0];
                             }
 
     ?>
-                                <div class="timeline-item">
-                                    <span id="date" class="time"  style="color:#fff;"><i class="fa fa-clock-o"> </i> {{date_format($conversation->created_at, 'd/m/Y H:i:s')}}</span>
-                                    <h3 class="timeline-header"  style="background-color:<?php 
+                            <div class="timeline-item">
+                                <span id="date" class="time" style="color:#fff;"><i class="fa fa-clock-o"> </i>
+                                    {{date_format($conversation->created_at, 'd/m/Y H:i:s')}}</span>
+                                <h3 class="timeline-header" style="background-color:<?php 
                                     if($conversation->is_internal)
                                     {
                                         $color = '#046380'; 
@@ -533,13 +585,15 @@ $data = $ConvDate[0];
                                     }
                                         ?>;
                                         ">
-                                        <a href="#" style="color:#fff;"><?php if($role->role == "user") {echo $role->user_name; } else { echo $role->first_name . " " . $role->last_name; } ?> </a></h3>
-                                    <div class="timeline-body">
-                                          {!! $body !!}
+                                    <a href="#" style="color:#fff;">
+                                        <?php if($role->role == "user") {echo $role->user_name; } else { echo $role->first_name . " " . $role->last_name; } ?>
+                                    </a></h3>
+                                <div class="timeline-body">
+                                    {!! $body !!}
 
-                                    </div>
-                                    <div class="timeline-footer" >
-                                        <?php 
+                                </div>
+                                <div class="timeline-footer">
+                                    <?php 
                                         $attachments = App\Model\Ticket\Ticket_attachments::where('thread_id','=',$conversation->id)->get();
                                         $i = 0;
                                         foreach($attachments as $attachment) {
@@ -552,7 +606,7 @@ $data = $ConvDate[0];
                                         echo "<hr style='height:1px;color:#2D3244;background-color:#2D3244;''><h4 class='box-title'><b>".$i." </b> Attachments</h4>";
                                         }
                                         ?>
-                                        <ul class='mailbox-attachments clearfix'>
+                                    <ul class='mailbox-attachments clearfix'>
                                         <?php
                                         foreach($attachments as $attachment)
                                         {
@@ -576,18 +630,18 @@ $data = $ConvDate[0];
                                             }
                                         }
                                         ?>
-                                        </ul>
-                                    </div>
+                                    </ul>
                                 </div>
-                            </li>
-                            <?php $lastid = $conversation->id?>
-<?php }
+                            </div>
+                        </li>
+                        <?php $lastid = $conversation->id?>
+                        <?php }
 ?>
                         <li>
                             <i class="fa fa-clock-o bg-gray"></i>
                         </li>
                         <ul class="pull-right">
-<?php echo $conversations->setPath(url('/thread/' . $tickets->id))->render();?>
+                            <?php echo $conversations->setPath(url('/thread/' . $tickets->id))->render();?>
                         </ul>
                     </ul>
                 </div><!-- /.col -->
@@ -602,7 +656,7 @@ $data = $ConvDate[0];
 <div>
     <!-- Edit Ticket modal -->
 
-    <div class="modal fade" id="Edit" >
+    <div class="modal fade" id="Edit">
         <div class="modal-dialog" style="width:60%;height:70%;">
             <div class="modal-content">
                 {!! Form::model($tickets->id, ['id'=>'form','method' => 'PATCH'] )!!}
@@ -627,7 +681,7 @@ $data = $ConvDate[0];
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-9">
-                            <img src="{{asset("dist/img/gifloader.gif")}}"><br/><br/><br/>
+                            <img src="{{asset("dist/img/gifloader.gif")}}"><br /><br /><br />
                         </div>
                     </div>
                 </div>
@@ -653,7 +707,7 @@ $data = $ConvDate[0];
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">Close</button>
-                    <button id="ban" type="button" class="btn btn-warning pull-right" >Ban Email</button>
+                    <button id="ban" type="button" class="btn btn-warning pull-right">Ban Email</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -668,10 +722,10 @@ $data = $ConvDate[0];
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Change Owner for ticket <b>#{!! $tickets->ticket_number !!}</b></h4>
                 </div>
-                <div class="modal-body" >
+                <div class="modal-body">
                     <div class="form-group has-feedback">
                         <!-- <input type="text" class="form-control" id="search" name="search" placeholder="Search Users"\> -->
-<?php $users = App\User::where('role', '=', 'user')->get();?>
+                        <?php $users = App\User::where('role', '=', 'user')->get();?>
                         Add another Owner
                         <select name="SelectOwner" class="form-control">
                             @foreach($users as $user)
@@ -683,14 +737,16 @@ $data = $ConvDate[0];
                         <!-- <spam class="glyphicon glyphicon-search form-control-feedback"></spam> -->
                     </div>
                     <div class="row">
-                        <div class="col-md-2"><spam class="glyphicon glyphicon-user fa-5x"></spam></div>
+                        <div class="col-md-2">
+                            <spam class="glyphicon glyphicon-user fa-5x"></spam>
+                        </div>
                         <div class="col-md-10">
-<?php $user = App\User::where('id', '=', $tickets->user_id)->first();?>
+                            <?php $user = App\User::where('id', '=', $tickets->user_id)->first();?>
 
-                            <b>User Details</b><br/>
-                            {!! $user->user_name !!}<br/>{!! $user->email !!}<br/>
+                            <b>User Details</b><br />
+                            {!! $user->user_name !!}<br />{!! $user->email !!}<br />
                             @if($user->phone != null)
-                            <b>Contact Informations</b><br/>
+                            <b>Contact Informations</b><br />
                             {!! $user->phone !!}
                             @endif
                         </div>
@@ -699,7 +755,7 @@ $data = $ConvDate[0];
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">Close</button>
-                    <button id="ban" type="button" class="btn btn-warning pull-right" >Submit</button>
+                    <button id="ban" type="button" class="btn btn-warning pull-right">Submit</button>
                 </div>
                 {!! Form::close() !!}
             </div><!-- /.modal-content -->
@@ -718,9 +774,9 @@ $data = $ConvDate[0];
                     <p>Whome do you want to assign ticket?</p>
 
                     <select id="asssign" class="form-control" name="user">
-<?php $assign = App\User::where('role', '=', 'agent')->get();?>
+                        <?php $assign = App\User::where('role', '=', 'agent')->get();?>
                         @foreach($assign as $user)
-                        <option  value="{{$user->email}}">{{$user->user_name}}</option>
+                        <option value="{{$user->email}}">{{$user->user_name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -762,7 +818,7 @@ $data = $ConvDate[0];
                 <div class="modal-body">
                     <div class="callout callout-info">
                         <i class="icon fa fa-info"> </i>&nbsp;&nbsp;&nbsp; Search existing users or add new users
-                        
+
                     </div>
                     <input type="text" class="form-control">
                 </div>
@@ -779,24 +835,23 @@ $data = $ConvDate[0];
 
 <!-- scripts used on page -->
 <script type="text/javascript">
+    function AddCcc() {
 
-function AddCcc(){
-    
-}
+    }
 
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
         // Close a ticket
-        $('#close').on('click', function(e) {
+        $('#close').on('click', function (e) {
             $.ajax({
                 type: "GET",
                 url: "../ticket/close/{{$tickets->id}}",
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#hidespin").hide();
                     $("#spin").show();
                     $("#hide2").hide();
                     $("#show2").show();
                 },
-                success: function(response) {
+                success: function (response) {
                     $("#refresh").load("../thread/{{$tickets->id}}   #refresh");
                     $("#show2").hide();
                     $("#spin").hide();
@@ -806,22 +861,24 @@ function AddCcc(){
                     var message = "Success! Your Ticket have been Closed";
                     $("#alert11").show();
                     $('#message-success1').html(message);
-                    setInterval(function(){$("#alert11").hide(); },4000);   
+                    setInterval(function () {
+                        $("#alert11").hide();
+                    }, 4000);
                 }
             })
             return false;
         });
 
         // Resolved  a ticket
-        $('#resolved').on('click', function(e) {
+        $('#resolved').on('click', function (e) {
             $.ajax({
                 type: "GET",
                 url: "../ticket/resolve/{{$tickets->id}}",
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#hide2").hide();
                     $("#show2").show();
                 },
-                success: function(response) {
+                success: function (response) {
                     $("#refresh").load("../thread/{{$tickets->id}}  #refresh");
                     $("#d1").trigger("click");
                     $("#hide2").show();
@@ -829,22 +886,24 @@ function AddCcc(){
                     var message = "Success! Your Ticket have been Resolved";
                     $("#alert11").show();
                     $('#message-success1').html(message);
-                    setInterval(function(){$("#alert11").hide(); },4000);   
+                    setInterval(function () {
+                        $("#alert11").hide();
+                    }, 4000);
                 }
             })
             return false;
         });
 
         // Open a ticket
-        $('#open').on('click', function(e) {
+        $('#open').on('click', function (e) {
             $.ajax({
                 type: "GET",
                 url: "../ticket/open/{{$tickets->id}}",
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#hide2").hide();
                     $("#show2").show();
                 },
-                success: function(response) {
+                success: function (response) {
                     $("#refresh").load("../thread/{{$tickets->id}}   #refresh");
                     $("#d1").trigger("click");
                     $("#hide2").show();
@@ -852,7 +911,9 @@ function AddCcc(){
                     var message = "Success! Your Ticket have been Opened";
                     $("#alert11").show();
                     $('#message-success1').html(message);
-                    setInterval(function(){$("#alert11").hide(); },4000);   
+                    setInterval(function () {
+                        $("#alert11").hide();
+                    }, 4000);
 
                 }
             })
@@ -860,15 +921,15 @@ function AddCcc(){
         });
 
         // delete a ticket
-        $('#delete').on('click', function(e) {
+        $('#delete').on('click', function (e) {
             $.ajax({
                 type: "GET",
                 url: "../ticket/delete/{{$tickets->id}}",
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#hide2").hide();
                     $("#show2").show();
-                },                
-                success: function(response) {
+                },
+                success: function (response) {
                     $("#refresh").load("../thread/{{$tickets->id}}   #refresh");
                     $("#d2").trigger("click");
                     $("#hide2").show();
@@ -876,65 +937,66 @@ function AddCcc(){
                     var message = "Success! Your Ticket have been moved to Trash";
                     $("#alert11").show();
                     $('#message-success1').html(message);
-                    setInterval(function(){$("#alert11").hide(); },4000);   
+                    setInterval(function () {
+                        $("#alert11").hide();
+                    }, 4000);
                 }
             })
             return false;
         });
 
         // ban email
-        $('#ban').on('click', function(e) {
+        $('#ban').on('click', function (e) {
             $.ajax({
                 type: "GET",
                 url: "../email/ban/{{$tickets->id}}",
-                success: function(response) {
+                success: function (response) {
                     $("#dismis2").trigger("click");
                     $("#refresh").load("../thread/{{$tickets->id}}   #refresh");
                     var message = "Success! This Email have been banned";
                     $("#alert11").show();
                     $('#message-success1').html(message);
-                    setInterval(function(){$("#alert11").hide(); },4000);   
+                    setInterval(function () {
+                        $("#alert11").hide();
+                    }, 4000);
                 }
             })
             return false;
         });
 
         // internal note
-        $('#internal').click(function() {
+        $('#internal').click(function () {
             $('#t1').hide();
             $('#t2').show();
         });
 
         // comment a ticket
-        $('#aa').click(function() {
+        $('#aa').click(function () {
             $('#t1').show();
             $('#t2').hide();
         });
 
-// Edit a ticket
-        $('#form').on('submit', function() {
+        // Edit a ticket
+        $('#form').on('submit', function () {
 
             $.ajax({
                 type: "POST",
                 url: "../ticket/post/edit/{{$tickets->id}}",
                 dataType: "html",
                 data: $(this).serialize(),
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#hide").hide();
                     $("#show").show();
                 },
-                success: function(response) {
+                success: function (response) {
                     $("#show").hide();
                     $("#hide").show();
                     $("#dismis").trigger("click");
                     $("#refresh1").load("../thread/{{$tickets->id}}   #refresh1");
                     $("#refresh2").load("../thread/{{$tickets->id}}   #refresh2");
-                    if (response == 1)
-                    {
+                    if (response == 1) {
                         alert('Updated successfully');
-                    }
-                    else if (response == 0)
-                    {
+                    } else if (response == 0) {
                         alert('Please check all your fields');
                     }
 
@@ -943,8 +1005,8 @@ function AddCcc(){
             return false;
         });
 
-// Assign a ticket
-        $('#form1').on('submit', function() {
+        // Assign a ticket
+        $('#form1').on('submit', function () {
             $.ajax({
                 type: "POST",
                 url: "../ticket/assign/{{ $tickets->id }}",
@@ -954,7 +1016,7 @@ function AddCcc(){
                 //     $("#hide").hide();
                 //     $("#show").show();
                 // },
-                success: function(response) {
+                success: function (response) {
                     $("#dismis4").trigger("click");
                     // $("#RefreshAssign").load( "../thread/{{$tickets->id}} #RefreshAssign");
                     // $("#General").load( "../thread/{{$tickets->id}} #General");
@@ -963,38 +1025,41 @@ function AddCcc(){
             return false;
         });
 
-// Internal Note
-        $('#form2').on('submit', function() {
+        // Internal Note
+        $('#form2').on('submit', function () {
             $.ajax({
                 type: "POST",
                 url: "../internal/note/{{ $tickets->id }}",
                 dataType: "html",
                 data: $(this).serialize(),
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#t2").hide();
                     $("#show3").show();
 
                 },
-                success: function(response) {
+                success: function (response) {
 
-                    if (response == 1)
-                    {
+                    if (response == 1) {
                         $("#refresh1").load("../thread/{{$tickets->id}}   #refresh1");
                         // $("#t4").load("../thread/{{$tickets->id}}   #t4");
-                        var message = "Success! You have successfully replied to your ticket";
+                        var message =
+                            "Success! You have successfully replied to your ticket";
                         $("#alert21").show();
                         $('#message-success2').html(message);
-                        setInterval(function(){$("#alert21").hide();  },4000);   
-                        
+                        setInterval(function () {
+                            $("#alert21").hide();
+                        }, 4000);
 
-                    }
-                    else
-                    {
+
+                    } else {
                         // alert('fail');
-                        var message = "Fail! For some reason your message was not posted. Please try again later";
+                        var message =
+                            "Fail! For some reason your message was not posted. Please try again later";
                         $("#alert23").show();
                         $('#message-danger2').html(message);
-                        setInterval(function(){$("#alert23").hide(); },4000);   
+                        setInterval(function () {
+                            $("#alert23").hide();
+                        }, 4000);
                         // $( "#dismis4" ).trigger( "click" );
 
                     }
@@ -1005,38 +1070,41 @@ function AddCcc(){
             return false;
         });
 
-// Ticket Reply
-        $('#form3').on('submit', function() {
+        // Ticket Reply
+        $('#form3').on('submit', function () {
             $.ajax({
                 type: "POST",
                 url: "../thread/reply/{{ $tickets->id }}",
                 dataType: "html",
                 data: $(this).serialize(),
-                beforeSend: function() {
+                beforeSend: function () {
 
                     $("#t1").hide();
                     $("#show3").show();
                 },
 
-                success: function(response) {
+                success: function (response) {
 
-                    if (response == 1)
-                    {
+                    if (response == 1) {
                         $("#refresh1").load("../thread/{{$tickets->id}}  #refresh1");
                         // $("#t1").load("../thread/{{$tickets->id}}  #t1");
-                        var message = "Success! You have successfully replied to your ticket";
+                        var message =
+                            "Success! You have successfully replied to your ticket";
                         $("#alert21").show();
                         $('#message-success2').html(message);
-                        setInterval(function(){$("#alert21").hide(); },4000);   
-                    }
-                    else
-                    {
+                        setInterval(function () {
+                            $("#alert21").hide();
+                        }, 4000);
+                    } else {
                         // alert('fail');
                         // $( "#dismis4" ).trigger( "click" );
-                        var message = "Fail! For some reason your reply was not posted. Please try again later";
+                        var message =
+                            "Fail! For some reason your reply was not posted. Please try again later";
                         $("#alert23").show();
                         $('#message-danger2').html(message);
-                        setInterval(function(){$("#alert23").hide(); },4000);   
+                        setInterval(function () {
+                            $("#alert23").hide();
+                        }, 4000);
                     }
                     $("#show3").hide();
                     $("#t1").show();
@@ -1045,28 +1113,29 @@ function AddCcc(){
             return false;
         });
 
-// Surrender
-        $('#Surrender').on('click', function() {
+        // Surrender
+        $('#Surrender').on('click', function () {
             $.ajax({
                 type: "GET",
                 url: "../ticket/surrender/{{ $tickets->id }}",
-                success: function(response) {
+                success: function (response) {
 
-                    if (response == 1)
-                    {
+                    if (response == 1) {
                         // alert('ticket has been un assigned');
                         var message = "Success! You have Unassigned your ticket";
                         $("#alert21").show();
                         $('#message-success2').html(message);
-                        setInterval(function(){$("#dismiss21").trigger("click"); },2000);   
+                        setInterval(function () {
+                            $("#dismiss21").trigger("click");
+                        }, 2000);
                         // $("#refresh1").load( "http://localhost/faveo/public/thread/{{$tickets->id}}   #refresh1");
-                    }
-                    else
-                    {
+                    } else {
                         var message = "Fail! For some reason your request failed";
                         $("#alert23").show();
                         $('#message-danger2').html(message);
-                        setInterval(function(){$("#dismiss23").trigger("click"); },2000);      
+                        setInterval(function () {
+                            $("#dismiss23").trigger("click");
+                        }, 2000);
                         // alert('fail');
                         // $( "#dismis4" ).trigger( "click" );
                     }
@@ -1077,83 +1146,83 @@ function AddCcc(){
         });
     });
 
-// editor
-        // bkLib.onDomLoaded(function() {
-        //     nicEditors.editors.push(
-        //     new nicEditor().panelInstance(
-        //         document.getElementById('body'),
-        //         document.getElementById('body2')
-        //         )
-        //     );
-        // });
+    // editor
+    // bkLib.onDomLoaded(function() {
+    //     nicEditors.editors.push(
+    //     new nicEditor().panelInstance(
+    //         document.getElementById('body'),
+    //         document.getElementById('body2')
+    //         )
+    //     );
+    // });
 
 
-// editor2
-        // bkLib.onDomLoaded(function() {
-        //     nicEditors.editors.push(
-            // new nicEditor().panelInstance(
-            //     document.getElementById('body2')
-            //     )
-            // );
-        //     );
-        // });
+    // editor2
+    // bkLib.onDomLoaded(function() {
+    //     nicEditors.editors.push(
+    // new nicEditor().panelInstance(
+    //     document.getElementById('body2')
+    //     )
+    // );
+    //     );
+    // });
 
 
-   
 
 
-// // Change Owner
-//     jQuery(document).ready(function($) {
-//         $('#form4').on('submit', function() {
-//             $.ajax({
-//                 type: "POST",
-//                 url: "../change/owner/{{ $tickets->id }}",
-//                 dataType: "html",
-//                 data: $(this).serialize(),
-//                 success: function(response) {
 
-//                     if (response == 1)
-//                     {
-//                         $("#refresh1").load("../thread/{{$tickets->id}}  #refresh1");
-//                     }
-//                     else
-//                     {
-//                         alert('fail');
-//                         // $( "#dismis4" ).trigger( "click" );
-//                     }
-//                 }
-//             })
-//             return false;
-//         });
-//     });
+    // // Change Owner
+    //     jQuery(document).ready(function($) {
+    //         $('#form4').on('submit', function() {
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "../change/owner/{{ $tickets->id }}",
+    //                 dataType: "html",
+    //                 data: $(this).serialize(),
+    //                 success: function(response) {
+
+    //                     if (response == 1)
+    //                     {
+    //                         $("#refresh1").load("../thread/{{$tickets->id}}  #refresh1");
+    //                     }
+    //                     else
+    //                     {
+    //                         alert('fail');
+    //                         // $( "#dismis4" ).trigger( "click" );
+    //                     }
+    //                 }
+    //             })
+    //             return false;
+    //         });
+    //     });
 
 
-// jQuery(document).ready(function(cash) {
-//     $('select').on('change', function (e) {
-//         $('#submt2').on('click', function (e) {
-//         var data1 = $(this).children('option:selected').data('id');
+    // jQuery(document).ready(function(cash) {
+    //     $('select').on('change', function (e) {
+    //         $('#submt2').on('click', function (e) {
+    //         var data1 = $(this).children('option:selected').data('id');
 
-//             $.ajax({
-//                 type        :   "GET",
-//                 url         :   "http://localhost/faveo/public/ticket/assign/{{$tickets->id}}",
-//                 dataType    :   'html',
-//                 data        :   ({data2:data1}) ,
-//                 success : function(response) {
+    //             $.ajax({
+    //                 type        :   "GET",
+    //                 url         :   "http://localhost/faveo/public/ticket/assign/{{$tickets->id}}",
+    //                 dataType    :   'html',
+    //                 data        :   ({data2:data1}) ,
+    //                 success : function(response) {
 
-//                             alert(response);
-//                 }
-//             })
-//             return false;
-//         });
-//     });
-// });
+    //                             alert(response);
+    //                 }
+    //             })
+    //             return false;
+    //         });
+    //     });
+    // });
 
 
 
 
     // Auto Populate Change Owner
     $("#search").autocomplete({
-        source: function(request, response) {
+        source: function (request, response) {
             $.ajax({
                 url: 'http://localhost/faveo/public/change/owner',
                 dataType: "json",
@@ -1161,8 +1230,8 @@ function AddCcc(){
                     name_startsWith: request.term,
                     type: 'product'
                 },
-                success: function(data) {
-                    response($.map(data, function(item) {
+                success: function (data) {
+                    response($.map(data, function (item) {
                         return {
                             label: item,
                             value: item
@@ -1175,7 +1244,7 @@ function AddCcc(){
         minLength: 0
     });
     $('#item').autocomplete({
-        source: function(request, response) {
+        source: function (request, response) {
             $.ajax({
                 url: 'http://localhost/LAKSA/public/select',
                 dataType: "json",
@@ -1184,8 +1253,8 @@ function AddCcc(){
                     type: 'product_table',
                     row_num: 1
                 },
-                success: function(data) {
-                    response($.map(data, function(item) {
+                success: function (data) {
+                    response($.map(data, function (item) {
                         var code = item.split("|");
                         return {
                             label: code[0],
@@ -1198,7 +1267,7 @@ function AddCcc(){
         },
         autoFocus: true,
         minLength: 0,
-        select: function(event, ui) {
+        select: function (event, ui) {
             var names = ui.item.data.split("|");
             console.log(names[0], names[1], names[2]);
             $('#item').val(names[0]);
@@ -1207,9 +1276,7 @@ function AddCcc(){
         }
     });
     //End of Autopopulate
-
-
 </script>
 @stop
 
-                            {{-- // <script type="text/javascript" src="{{asset('nicedit.js')}}"></script> --}}
+{{-- // <script type="text/javascript" src="{{asset('nicedit.js')}}"></script> --}}

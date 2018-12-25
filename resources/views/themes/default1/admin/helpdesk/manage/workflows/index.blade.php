@@ -30,7 +30,8 @@ class="active"
         <div class="box box-primary">
             <div class="box-header">
                 <h3 class="box-title">{!! Lang::get('lang.ticket_workflow') !!}</h3>
-                <a href="{!! URL::route('workflow.create') !!}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> &nbsp;{!! Lang::get('lang.create') !!}</a>
+                <a href="{!! URL::route('workflow.create') !!}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span>
+                    &nbsp;{!! Lang::get('lang.create') !!}</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -60,7 +61,7 @@ class="active"
                 Lang::get('lang.created'),
                 Lang::get('lang.updated'),
                 Lang::get('lang.action')) // these are the column headings to be shown
-                ->setUrl(route('workflow.list'))   // this is the route where data will be retrieved
+                ->setUrl(route('workflow.list')) // this is the route where data will be retrieved
                 ->render() !!}
             </div>
             <!-- </div> -->
@@ -70,7 +71,7 @@ class="active"
     <!-- /.col -->
 </div>
 <script>
-    $(function() {
+    $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable({
             "paging": true,

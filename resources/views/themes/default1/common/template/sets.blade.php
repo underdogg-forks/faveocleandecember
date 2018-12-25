@@ -9,7 +9,8 @@
     <div class="box-header with-border">
         <h3 class="box-title">{!! Lang::get('lang.list_of_templates_sets') !!}</h3>
         <div class="box-tools pull-right">
-            <button class="btn btn-box-tool" data-toggle="modal" data-target="#create" title="Create" id="2create"><i class="fa fa-plus-circle fa-2x"></i></button>
+            <button class="btn btn-box-tool" data-toggle="modal" data-target="#create" title="Create" id="2create"><i
+                    class="fa fa-plus-circle fa-2x"></i></button>
 
         </div>
     </div><!-- /.box-header -->
@@ -54,11 +55,11 @@
                     <td>
                         @if($ratName == $set->name)
                         <a style='color:green'>Active</a>
-                         @else()
-                          <a style='color:red'>Inactive</a>
-                          @endif
+                        @else()
+                        <a style='color:red'>Inactive</a>
+                        @endif
 
-                       
+
                     <td>
                         <?php
                         $settings = DB::table('email__settings')->whereId(1)->first();
@@ -69,18 +70,24 @@
                         }
                         ?>
                         @if($set->name == $settings->template)
-                       <button class="btn btn-success btn-sm {!! $dis !!}" data-toggle="modal" data-target="">{!! Lang::get('lang.activate_this_set') !!}</button>
+                        <button class="btn btn-success btn-sm {!! $dis !!}" data-toggle="modal" data-target="">{!!
+                            Lang::get('lang.activate_this_set') !!}</button>
                         @else()
-                        {!! link_to_route('active.template-set',Lang::get('lang.activate_this_set'),[$set->name],['class'=>'btn btn-success btn-sm $dis']) !!}
-                         @endif
+                        {!!
+                        link_to_route('active.template-set',Lang::get('lang.activate_this_set'),[$set->name],['class'=>'btn
+                        btn-success btn-sm $dis']) !!}
+                        @endif
 
-                        {!! link_to_route('show.templates',Lang::get('lang.show'),[$set->id],['class'=>'btn btn-success btn-sm']) !!}
+                        {!! link_to_route('show.templates',Lang::get('lang.show'),[$set->id],['class'=>'btn btn-success
+                        btn-sm']) !!}
                         <div class="modal fade" id="{{$set->id}}">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    {!! Form::model($set,['route'=>['template-sets.update', $set->id],'method'=>'PATCH','files' => true]) !!}
+                                    {!! Form::model($set,['route'=>['template-sets.update',
+                                    $set->id],'method'=>'PATCH','files' => true]) !!}
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title">{!! Lang::get('lang.edit_details') !!}</h4>
                                     </div>
                                     <div class="modal-body">
@@ -95,9 +102,10 @@
                                         <div class="form-group">
                                             {!! Form::submit('Update Details',['class'=>'btn btn-primary'])!!}
                                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                        </div></div>
+                                        </div>
+                                    </div>
                                     {!! Form::close() !!}
-                                </div> 
+                                </div>
                             </div>
                         </div>
                         <?php
@@ -108,12 +116,14 @@
                             $dis = "";
                         }
                         ?>
-                        <button class="btn btn-danger btn-sm {!! $dis !!}" data-toggle="modal" data-target="#{{$set->id}}delete">{!! Lang::get('lang.delete') !!}</button>
+                        <button class="btn btn-danger btn-sm {!! $dis !!}" data-toggle="modal" data-target="#{{$set->id}}delete">{!!
+                            Lang::get('lang.delete') !!}</button>
                         <div class="modal fade" id="{{$set->id}}delete">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title">{!! Lang::get('lang.delete') !!}</h4>
                                     </div>
                                     <div class="modal-body">
@@ -121,11 +131,13 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                        {!! link_to_route('sets.delete',Lang::get('lang.delete'),[$set->id],['id'=>'delete','class'=>'btn btn-danger btn-sm']) !!}
+                                        {!!
+                                        link_to_route('sets.delete',Lang::get('lang.delete'),[$set->id],['id'=>'delete','class'=>'btn
+                                        btn-danger btn-sm']) !!}
                                     </div>
-                                </div> 
+                                </div>
                             </div>
-                        </div> 
+                        </div>
                     </td>
                 </tr>
                 @endforeach
@@ -151,12 +163,12 @@
                 </div>
                 @if($error == "The name field is required.")
                 <script type="text/javascript">
-                    $(document).ready(function() {
+                    $(document).ready(function () {
                         $("#2create").click();
                     });
                 </script>
                 @endif
-                @endforeach 
+                @endforeach
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                     <label for="title">{!! Lang::get('lang.name') !!}:<span style="color:red;">*</span></label><br>
                     {!! Form::text('name',null,['class'=>'form-control'])!!}
@@ -165,15 +177,17 @@
             <div class="modal-footer">
                 <div class="form-group">
                     {!! Form::submit(Lang::get('lang.create_set'),['class'=>'btn btn-primary'])!!}
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{!! Lang::get('lang.close') !!}</button>
-                </div></div>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{!!
+                        Lang::get('lang.close') !!}</button>
+                </div>
+            </div>
             {!! Form::close() !!}
-        </div> 
+        </div>
     </div>
-</div>  
+</div>
 <!-- set script -->
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $("#example1").dataTable();
         $('#example2').dataTable({
             "bPaginate": true,

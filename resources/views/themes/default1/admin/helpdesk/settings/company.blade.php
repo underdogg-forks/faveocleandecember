@@ -61,7 +61,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('company_name'))
             <li class="error-message-padding">{!! $errors->first('company_name', ':message') !!}</li>
             @endif
@@ -118,7 +118,8 @@ class="active"
                 <?php $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first(); ?>
                 @if($companys->logo != null)
                 <div class="col-md-2 image" data-content="{{Lang::get('lang.click-delete')}}">
-                    <img src="{{asset('uploads/company')}}{{'/'}}{{$company->logo}}" alt="User Image" id="company-logo" width="100px" style="border:1px solid #DCD1D1" />
+                    <img src="{{asset('uploads/company')}}{{'/'}}{{$company->logo}}" alt="User Image" id="company-logo"
+                        width="100px" style="border:1px solid #DCD1D1" />
                 </div>
                 @endif
             </div>
@@ -127,17 +128,19 @@ class="active"
     <div class="box-footer">
         {!! Form::submit(Lang::get('lang.submit'),['class'=>'form-group btn btn-primary'])!!}
     </div>
-    <!-- Modal -->   
-    <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: none; padding-right: 15px;background-color: rgba(0, 0, 0, 0.7);">
+    <!-- Modal -->
+    <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+        style="display: none; padding-right: 15px;background-color: rgba(0, 0, 0, 0.7);">
         <div class="modal-dialog" role="document">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close closemodal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <button type="button" class="close closemodal" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
                         <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
-                    <div class="modal-body" id="custom-alert-body" >
+                    <div class="modal-body" id="custom-alert-body">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary pull-left yes" data-dismiss="modal"></button>
@@ -149,18 +152,18 @@ class="active"
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(".image").on("click", function() {
+    $(document).ready(function () {
+        $(".image").on("click", function () {
             $("#myModal").css("display", "block");
             $("#myModalLabel").html("{!! Lang::get('lang.delete-logo') !!}");
             $(".yes").html("{!! Lang::get('lang.yes') !!}");
             $(".no").html("{{Lang::get('lang.cancel')}}");
             $("#custom-alert-body").html("{{Lang::get('lang.confirm')}}");
         });
-        $('.no,.closemodal').on("click", function() {
+        $('.no,.closemodal').on("click", function () {
             $("#myModal").css("display", "none");
         });
-        $('.yes').on('click', function() {
+        $('.yes').on('click', function () {
             var src = $('#company-logo').attr('src').split('/');
             var file = src[src.length - 1];
 
@@ -170,8 +173,10 @@ class="active"
                 type: "GET",
                 url: "{{route('delete.logo')}}",
                 dataType: "html",
-                data: {data1: path},
-                success: function(data) {
+                data: {
+                    data1: path
+                },
+                success: function (data) {
                     if (data == "true") {
                         var msg = "Logo deleted succesfully."
                         $("#logo-display").css("display", "none");

@@ -1,6 +1,6 @@
 @extends('themes.default1.agent.layout.agent')
 
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('article')
 active
@@ -15,7 +15,7 @@ class="active"
 @stop
 
 @section('content')
- <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 {!! Form::model($article,['url' => 'article/'.$article->id , 'method' => 'PATCH'] )!!}
 <div class="row">
     <div class="content-header">
@@ -41,7 +41,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif
@@ -62,16 +62,16 @@ class="active"
             @endif
         </div>
         @endif
-    </div>  
+    </div>
     <div class="col-md-8">
         <div class="box box-primary box-body">
             <div class="row">
-                <div class="col-md-6 form-group {{ $errors->has('name') ? 'has-error' : '' }}" >
+                <div class="col-md-6 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                     {!! Form::label('name',Lang::get('lang.name')) !!} <span class="text-red"> *</span>
 
                     {!! Form::text('name',null,['class' => 'form-control']) !!}
                 </div>
-                <div class="col-md-6 form-group {{ $errors->has('slug') ? 'has-error' : '' }}" >
+                <div class="col-md-6 form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
                     {!! Form::label('slug',Lang::get('lang.slug')) !!} <span class="text-red"> *</span>
 
                     {!! Form::text('slug',null,['class' => 'form-control']) !!}
@@ -82,10 +82,12 @@ class="active"
                 {!! Form::label('description',Lang::get('lang.description')) !!} <span class="text-red"> *</span>
 
                 <div class="form-group" style="background-color:white">
-                    {!! Form::textarea('description',$article->description,['class' => 'form-control','id'=>'editor','size' => '128x20','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
+                    {!! Form::textarea('description',$article->description,['class' =>
+                    'form-control','id'=>'editor','size' =>
+                    '128x20','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
                 </div>
                 <script>
-  CKEDITOR.replace( 'description', {
+                    CKEDITOR.replace( 'description', {
     filebrowserImageBrowseUrl: "{{url('laravel-filemanager?type=Images')}}",
     filebrowserImageUploadUrl: "{{url('laravel-filemanager/upload?type=Images')}}",
     filebrowserBrowseUrl: "{{url('laravel-filemanager?type=Files')}}",
@@ -126,14 +128,14 @@ class="active"
                                 <div class="col-xs-1">
                                     {!! Form::radio('status','1',true) !!}
                                 </div>
-                                <div class="col-xs-4">  
+                                <div class="col-xs-4">
                                     {{Lang::get('lang.public')}}
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-1">
                                         {!! Form::radio('status','0',null) !!}
                                     </div>
-                                    <div class="col-xs-4"> 
+                                    <div class="col-xs-4">
                                         {{Lang::get('lang.private')}}
                                     </div>
                                 </div>
@@ -159,10 +161,11 @@ class="active"
                             </div>
                             <div class="col-md-12">
                                 <span>
-                                    {!! Form::selectMonth('month', $month)  !!}
-                                    {!! Form::selectRange('day', 1, 31, $day)  !!}
-                                    {!! Form::text('year',$year,['style'=>'width: 50px;'])  !!}@
-                                    <input type="text" name="hour" value="{{$hour}}" style="width: 30px;">:<input type="text" name="minute" value="{{$minute}}" style="width: 30px;" >
+                                    {!! Form::selectMonth('month', $month) !!}
+                                    {!! Form::selectRange('day', 1, 31, $day) !!}
+                                    {!! Form::text('year',$year,['style'=>'width: 50px;']) !!}@
+                                    <input type="text" name="hour" value="{{$hour}}" style="width: 30px;">:<input type="text"
+                                        name="minute" value="{{$minute}}" style="width: 30px;">
                                 </span>
                             </div>
                         </div>
@@ -174,71 +177,75 @@ class="active"
                                 {!! Form::submit(Lang::get('lang.publish'),['class'=>'btn btn-primary'])!!}
                             </div>
                             <div class="col-md-4">
-                                <a href="#" data-toggle="modal" data-target="#deletearticle{{$article->id}}"  class="btn btn-danger pull-right">{{Lang::get('lang.delete')}}</a>
+                                <a href="#" data-toggle="modal" data-target="#deletearticle{{$article->id}}" class="btn btn-danger pull-right">{{Lang::get('lang.delete')}}</a>
                             </div>
                             <div class="col-md-4">
                                 <a href="{{url('show/'.$article->slug)}}" target="_blank" class="btn btn-primary">{{Lang::get('lang.show')}}</a>
                             </div>
                         </div>
                     </div>
-                    </li>
-                    <li>
-                        <div class="col-md-4">
-                            <div class="box box-default">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">{{Lang::get('lang.category')}} <span class="text-red"> *</span></h3>
-                                </div>
-                                <div class="box-body" style="height:190px; overflow-y:auto;">
-                                    <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
-                                        {{-- {!! Form::label('category_id','Category') !!} --}}
-                                        @foreach($category->toArray() as $key=>$val)
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-1">
-                                                    <input type="radio" name="category_id[]" value="<?php echo $val; ?>" <?php
-                                                    if (in_array($val, $assign->all())) {
-                                                        echo ('checked');
-                                                    }
-                                                    ?> ></div>
-                                                <div class="col-md-10">
-                                                    <?php echo $key; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="box-footer" style="background-color:#f5f5f5;">
-                                    <span class="btn btn-info btn-sm" data-toggle="modal" data-target="#j">{!! Lang::get('lang.addcategory') !!}</span>
-                                    <div class="modal" id="j">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                {!! Form::open(['method'=>'post','action'=>'Agent\kb\CategoryController@store']) !!}
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title">{{Lang::get('lang.addcategory')}}</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    @include('themes.default1.agent.kb.category.form')
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <div class="form-group">
-                                                        {!! Form::submit(Lang::get('lang.add'))!!}
-                                                    </div>
-                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{!! Lang::get('lang.close') !!}</button>
-                                                </div>
-                                                {!! Form::close() !!}
-                                            </div>
-                                        </div>
+        </li>
+        <li>
+            <div class="col-md-4">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{Lang::get('lang.category')}} <span class="text-red"> *</span></h3>
+                    </div>
+                    <div class="box-body" style="height:190px; overflow-y:auto;">
+                        <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
+                            {{-- {!! Form::label('category_id','Category') !!} --}}
+                            @foreach($category->toArray() as $key=>$val)
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-1">
+                                        <input type="radio" name="category_id[]" value="<?php echo $val; ?>" <?php if
+                                            (in_array($val, $assign->all())) {
+                                        echo ('checked');
+                                        }
+                                        ?> ></div>
+                                    <div class="col-md-10">
+                                        <?php echo $key; ?>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
-                    </li>
-                    </ul>
-    
-<script>
-    $(function() {
+                    </div>
+                    <div class="box-footer" style="background-color:#f5f5f5;">
+                        <span class="btn btn-info btn-sm" data-toggle="modal" data-target="#j">{!!
+                            Lang::get('lang.addcategory') !!}</span>
+                        <div class="modal" id="j">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    {!! Form::open(['method'=>'post','action'=>'Agent\kb\CategoryController@store'])
+                                    !!}
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">{{Lang::get('lang.addcategory')}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        @include('themes.default1.agent.kb.category.form')
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="form-group">
+                                            {!! Form::submit(Lang::get('lang.add'))!!}
+                                        </div>
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{!!
+                                            Lang::get('lang.close') !!}</button>
+                                    </div>
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <script>
+        $(function() {
         
         $('input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue'
@@ -250,24 +257,24 @@ class="active"
     });        
 </script>
 
-                    @stop
-                    <!-- /content -->
-                    
-                    
-                    <div class="modal fade" id="deletearticle{{$article->id}}">
-        			<div class="modal-dialog">
-            			<div class="modal-content">
-                			<div class="modal-header">
-                    			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    			<h4 class="modal-title">Are You Sure ?</h4>
-                			</div>
-                			<div class="modal-body">
-                				{{$article->name}}
-                			</div>
-                			<div class="modal-footer">
-                    			<button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">Close</button>
-                    			<a href='{{url("article/delete/$article->slug")}}'><button class="btn btn-danger">delete</button></a>
-                			</div>
-            			</div><!-- /.modal-content -->
-        			</div><!-- /.modal-dialog -->
-    			</div>
+    @stop
+    <!-- /content -->
+
+
+    <div class="modal fade" id="deletearticle{{$article->id}}">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Are You Sure ?</h4>
+                </div>
+                <div class="modal-body">
+                    {{$article->name}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">Close</button>
+                    <a href='{{url("article/delete/$article->slug")}}'><button class="btn btn-danger">delete</button></a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>

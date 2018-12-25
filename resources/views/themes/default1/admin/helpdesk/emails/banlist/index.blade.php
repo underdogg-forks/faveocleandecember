@@ -30,7 +30,8 @@ class="active"
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h2 class="box-title">{{Lang::get('lang.list_of_banned_emails')}}</h2><a href="{{route('banlist.create')}}" class="pull-right btn btn-primary">{{Lang::get('lang.ban_email')}}</a>
+        <h2 class="box-title">{{Lang::get('lang.list_of_banned_emails')}}</h2><a href="{{route('banlist.create')}}"
+            class="pull-right btn btn-primary">{{Lang::get('lang.ban_email')}}</a>
     </div>
     <div class="box-body">
         <!-- check whether success or not -->
@@ -65,7 +66,10 @@ class="active"
                 <td> {!! UTC::usertimezone($ban->updated_at) !!} </td>
                 <!-- Deleting Fields -->
                 <td>
-                    <a href="{{route('banlist.edit',$ban->id)}}" class="btn btn-info btn-xs btn-flat"><i class="fa fa-edit" style="color:black;"> </i> {!! Lang::get('lang.edit') !!}</a> <a href="{{route('banlist.delete',$ban->id)}}" class="btn btn-danger btn-xs btn-flat"><i class="fa fa-trash" style="color:black;"> </i> {!! Lang::get('lang.delete') !!}</a>
+                    <a href="{{route('banlist.edit',$ban->id)}}" class="btn btn-info btn-xs btn-flat"><i class="fa fa-edit"
+                            style="color:black;"> </i> {!! Lang::get('lang.edit') !!}</a> <a href="{{route('banlist.delete',$ban->id)}}"
+                        class="btn btn-danger btn-xs btn-flat"><i class="fa fa-trash" style="color:black;"> </i> {!!
+                        Lang::get('lang.delete') !!}</a>
                 </td>
                 @endforeach
             </tr>

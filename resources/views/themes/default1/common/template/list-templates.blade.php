@@ -22,7 +22,7 @@
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p>{{Session::get('failed')}}</p>                
+            <p>{{Session::get('failed')}}</p>
         </div>
         @endif
         <table id="example1" class="table table-bordered table-striped">
@@ -40,7 +40,8 @@
                     <td>{!! $type->name !!}</td>
                     <td>{!! $template->name !!}</td>
                     <td>
-                        {!! link_to_route('templates.edit', Lang::get('lang.edit_templates'),[$template->id],['class'=>'btn btn-success btn-sm']) !!}
+                        {!! link_to_route('templates.edit',
+                        Lang::get('lang.edit_templates'),[$template->id],['class'=>'btn btn-success btn-sm']) !!}
                     </td>
                 </tr>
                 @endforeach
@@ -51,17 +52,17 @@
 
 <!-- status script -->
 <script type="text/javascript">
-$(function() {
-    $("#example1").dataTable();
-    $('#example2').dataTable({
-        "bPaginate": true,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bSort": true,
-        "bInfo": true,
-        "bAutoWidth": false
+    $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
     });
-});
 </script>
 <script src="{{asset("lb-faveo/plugins/datatables/jquery.dataTables.js")}}" type="text/javascript"></script>
 <script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}" type="text/javascript"></script>

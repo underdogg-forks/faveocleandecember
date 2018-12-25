@@ -1,5 +1,5 @@
 @extends('themes.default1.agent.layout.agent')
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('category')
 active
@@ -17,7 +17,7 @@ class="active"
 {!! Form::open(array('action' => 'Agent\kb\CategoryController@store' , 'method' => 'post') )!!}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h4 class="box-title">{!! Lang::get('lang.addcategory') !!}</h4> 
+        <h4 class="box-title">{!! Lang::get('lang.addcategory') !!}</h4>
     </div>
     <div class="box-body">
         @if(Session::has('success'))
@@ -42,7 +42,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif
@@ -57,7 +57,7 @@ class="active"
             @endif
             @if($errors->first('description'))
             <li class="error-message-padding">{!! $errors->first('description', ':message') !!}</li>
-            @endif          
+            @endif
         </div>
         @endif
         <div class="row">
@@ -67,7 +67,8 @@ class="active"
             </div>
             <div class="col-xs-3 form-group {{ $errors->has('parent') ? 'has-error' : '' }}">
                 {!! Form::label('parent',Lang::get('lang.parent')) !!}
-                {!!Form::select('parent',[''=>'Select a Category','Categories'=>$category],null,['class' => 'form-control select']) !!}
+                {!!Form::select('parent',[''=>'Select a Category','Categories'=>$category],null,['class' =>
+                'form-control select']) !!}
             </div>
             <div class="col-xs-3 form-group {{ $errors->has('status') ? 'has-error' : '' }}">
                 {!! Form::label('status',Lang::get('lang.status')) !!}
@@ -82,7 +83,8 @@ class="active"
             </div>
             <div class="col-md-12 form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                 {!! Form::label('description',Lang::get('lang.description')) !!}<span class="text-red"> *</span>
-                {!! Form::textarea('description',null,['class' => 'form-control','id'=>'description','placeholder'=>Lang::get('lang.enter_the_description') ]) !!}
+                {!! Form::textarea('description',null,['class' =>
+                'form-control','id'=>'description','placeholder'=>Lang::get('lang.enter_the_description') ]) !!}
             </div>
         </div>
     </div>
@@ -91,22 +93,22 @@ class="active"
     </div>
 </div>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $("textarea").wysihtml5();
     });
 </script>
 
 <script>
-    $(function() {
-        
+    $(function () {
+
         $('input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue'
         });
         $('input[type="radio"]').iCheck({
             radioClass: 'iradio_flat-blue'
         });
-    
-    });        
+
+    });
 </script>
 
 @stop

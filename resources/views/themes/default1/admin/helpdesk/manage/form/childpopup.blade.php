@@ -1,4 +1,4 @@
-<a href="#child"  data-toggle="modal" class="btn btn-primary" data-target="#child{{$field->id}}">Add Child</a>
+<a href="#child" data-toggle="modal" class="btn btn-primary" data-target="#child{{$field->id}}">Add Child</a>
 <div class="modal fade" id="child{{$field->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -13,9 +13,11 @@
                     @forelse($field->values()->get() as $value)
                     <div class="col-md-12">
                         <b>{{$value->field_value}}</b>
-                         {!! Form::select($value->id,[''=>'Select','Forms'=>$select_forms],$value->childId(),['class'=>'form-control']) !!}
+                        {!!
+                        Form::select($value->id,[''=>'Select','Forms'=>$select_forms],$value->childId(),['class'=>'form-control'])
+                        !!}
                     </div>
-                    @empty 
+                    @empty
                     <div class="col-md-12">
                         <p>No values</p>
                     </div>

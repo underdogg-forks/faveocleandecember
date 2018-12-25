@@ -293,85 +293,85 @@
                 <ul id="side-bar" class="sidebar-menu">
                     @if($replaceside==0)
                     @yield('sidebar')
-                        <li class="header">{!! Lang::get('lang.Tickets') !!}</li>
+                    <li class="header">{!! Lang::get('lang.Tickets') !!}</li>
 
-                        <li @yield('inbox')>
-                            <a href="{{ url('tickets')}}" id="load-inbox">
-                                <i class="fa fa-envelope"></i> <span>{!! Lang::get('lang.inbox') !!}</span> <small class="label pull-right bg-green">{{$tickets
-                                    -> count()}}</small>
-                            </a>
-                        </li>
-                        <li @yield('myticket')>
-                            <a href="{{url('/tickets?show=mytickets')}}" id="load-myticket">
-                                <i class="fa fa-user"></i> <span>{!! Lang::get('lang.my_tickets') !!} </span>
-                                <small class="label pull-right bg-green">{{$myticket -> count()}}</small>
-                            </a>
-                        </li>
-                        <li @yield('unassigned')>
-                            <a href="{{url('/tickets?assigned[]=0')}}" id="load-unassigned">
-                                <i class="fa fa-th"></i> <span>{!! Lang::get('lang.unassigned') !!}</span>
-                                <small class="label pull-right bg-green">{{$unassigned -> count()}}</small>
-                            </a>
-                        </li>
-                        <li @yield('overdue')>
-                            <a href="{{url('/tickets?show=overdue')}}" id="load-unassigned">
-                                <i class="fa fa-calendar-times-o"></i> <span>{!! Lang::get('lang.overdue') !!}</span>
-                                <small class="label pull-right bg-green">{{$overdues->count()}}</small>
-                            </a>
-                        </li>
+                    <li @yield('inbox')>
+                        <a href="{{ url('tickets')}}" id="load-inbox">
+                            <i class="fa fa-envelope"></i> <span>{!! Lang::get('lang.inbox') !!}</span> <small class="label pull-right bg-green">{{$tickets
+                                -> count()}}</small>
+                        </a>
+                    </li>
+                    <li @yield('myticket')>
+                        <a href="{{url('/tickets?show=mytickets')}}" id="load-myticket">
+                            <i class="fa fa-user"></i> <span>{!! Lang::get('lang.my_tickets') !!} </span>
+                            <small class="label pull-right bg-green">{{$myticket -> count()}}</small>
+                        </a>
+                    </li>
+                    <li @yield('unassigned')>
+                        <a href="{{url('/tickets?assigned[]=0')}}" id="load-unassigned">
+                            <i class="fa fa-th"></i> <span>{!! Lang::get('lang.unassigned') !!}</span>
+                            <small class="label pull-right bg-green">{{$unassigned -> count()}}</small>
+                        </a>
+                    </li>
+                    <li @yield('overdue')>
+                        <a href="{{url('/tickets?show=overdue')}}" id="load-unassigned">
+                            <i class="fa fa-calendar-times-o"></i> <span>{!! Lang::get('lang.overdue') !!}</span>
+                            <small class="label pull-right bg-green">{{$overdues->count()}}</small>
+                        </a>
+                    </li>
 
-                        <li @yield('trash')>
-                            <a href="{{url('/tickets?show=trash')}}">
-                                <i class="fa fa-trash-o"></i> <span>{!! Lang::get('lang.trash') !!}</span>
-                                <small class="label pull-right bg-green">{{$deleted -> count()}}</small>
-                            </a>
-                        </li>
-
-
+                    <li @yield('trash')>
+                        <a href="{{url('/tickets?show=trash')}}">
+                            <i class="fa fa-trash-o"></i> <span>{!! Lang::get('lang.trash') !!}</span>
+                            <small class="label pull-right bg-green">{{$deleted -> count()}}</small>
+                        </a>
+                    </li>
 
 
 
 
 
 
-{{--  <li class="header">{!! Lang::get('lang.Departments') !!}</li>
-$flattened = $departments->flatMap(function ($values) {
-return $values->keyBy('status');
-});
-$statuses = $flattened->keys();
 
 
-$segments = \Request::segments();
-$segment = "";
-foreach($segments as $seg){
-$segment.="/".$seg;
-}
-if(count($segments) > 2) {
-$dept2 = $segments[1];
-$status2 = $segments[2];
-} else {
-$dept2 = '';
-$status2 = '';
-}
+                    {{-- <li class="header">{!! Lang::get('lang.Departments') !!}</li>
+                    $flattened = $departments->flatMap(function ($values) {
+                    return $values->keyBy('status');
+                    });
+                    $statuses = $flattened->keys();
 
-foreach($departments as $name=>$dept)
 
-<li class="treeview @if($dept2 === $name) @yield('ticket-bar') @endif ">
-<a href="#">
-<i class="fa fa-folder-open"></i> <span>{!! $name !!}</span> <i class="fa fa-angle-left pull-right"></i>
-</a>
-foreach($statuses as $status)
-if($dept->get($status))
-<ul class="treeview-menu">
-<li @if($status2==$dept->get($status)->status && $dept2 === $name) @yield('inbox') @endif><a
-href="{!! url('tickets?departments='.$name.'&status='.$dept->get($status)->status) !!}"><i
-class="fa fa-circle-o"></i> {!!$dept->get($status)->status !!}<small class="label pull-right bg-green">{{$dept->get($status)->count}}</small></a></li>
-</ul>
-endif
-endforeach
+                    $segments = \Request::segments();
+                    $segment = "";
+                    foreach($segments as $seg){
+                    $segment.="/".$seg;
+                    }
+                    if(count($segments) > 2) {
+                    $dept2 = $segments[1];
+                    $status2 = $segments[2];
+                    } else {
+                    $dept2 = '';
+                    $status2 = '';
+                    }
 
-</li>
-endforeach --}}
+                    foreach($departments as $name=>$dept)
+
+                    <li class="treeview @if($dept2 === $name) @yield('ticket-bar') @endif ">
+                        <a href="#">
+                            <i class="fa fa-folder-open"></i> <span>{!! $name !!}</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        foreach($statuses as $status)
+                        if($dept->get($status))
+                        <ul class="treeview-menu">
+                            <li @if($status2==$dept->get($status)->status && $dept2 === $name) @yield('inbox') @endif><a
+                                    href="{!! url('tickets?departments='.$name.'&status='.$dept->get($status)->status) !!}"><i
+                                        class="fa fa-circle-o"></i> {!!$dept->get($status)->status !!}<small class="label pull-right bg-green">{{$dept->get($status)->count}}</small></a></li>
+                        </ul>
+                        endif
+                        endforeach
+
+                    </li>
+                    endforeach --}}
 
 
 
@@ -379,7 +379,7 @@ endforeach --}}
                     @else
 
                     <?php \Event::fire('service.desk.agent.sidebar', array()); ?>
-                    @endif 
+                    @endif
                 </ul>
             </section>
             <!-- /.sidebar -->

@@ -15,7 +15,7 @@ class="active"
 @section('PageHeader')
 <h1>{{Lang::get('lang.tickets')}}</h1>
 <style>
- .tooltip1 {
+    .tooltip1 {
      position: relative;
      /*display: inline-block;*/
      /*border-bottom: 1px dotted black;*/
@@ -54,7 +54,8 @@ if (Auth::user()->role == 'agent') {
 <!-- Main content -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"> {!! Lang::get('lang.closed') !!} </h3> <small id="title_refresh">{!! $tickets !!}  {!! Lang::get('lang.tickets') !!}</small>
+        <h3 class="box-title"> {!! Lang::get('lang.closed') !!} </h3> <small id="title_refresh">{!! $tickets !!} {!!
+            Lang::get('lang.tickets') !!}</small>
     </div><!-- /.box-header -->
     <div class="box-body">
         @if(Session::has('success'))
@@ -72,7 +73,7 @@ if (Auth::user()->role == 'agent') {
             {{Session::get('fails')}}
         </div>
         @endif
-        
+
         {!! Form::open(['id'=>'modalpopup', 'route'=>'select_all','method'=>'post']) !!}
         <!--<div class="mailbox-controls">-->
         <!-- Check all button -->
@@ -80,31 +81,35 @@ if (Auth::user()->role == 'agent') {
         {{-- <a class="btn btn-default btn-sm" id="click"><i class="fa fa-refresh"></i></a> --}}
         <input type="submit" class="btn btn-default text-orange btn-sm" name="submit" id="delete" value="{!! Lang::get('lang.delete') !!}">
         <input type="submit" class="btn btn-default text-blue btn-sm" name="submit" id="close" value="{!! Lang::get('lang.open') !!}">
-        
-        
-        <!--</div>-->
-        <p><p/>
-        <div class="mailbox-messages"  id="refresh">
-            <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;" id="show" class="text-red"><b>{!! Lang::get('lang.loading') !!}...</b></p>
-            <!-- table -->
-            {!!$table->render('vendor.Chumper.template')!!}
 
-        </div><!-- /.mail-box-messages -->
-        {!! Form::close() !!}
+
+        <!--</div>-->
+        <p>
+            <p />
+            <div class="mailbox-messages" id="refresh">
+                <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;" id="show"
+                    class="text-red"><b>{!! Lang::get('lang.loading') !!}...</b></p>
+                <!-- table -->
+                {!!$table->render('vendor.Chumper.template')!!}
+
+            </div><!-- /.mail-box-messages -->
+            {!! Form::close() !!}
     </div><!-- /.box-body -->
 </div><!-- /. box -->
 
-<!-- Modal -->   
-<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: none; padding-right: 15px;background-color: rgba(0, 0, 0, 0.7);">
+<!-- Modal -->
+<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+    style="display: none; padding-right: 15px;background-color: rgba(0, 0, 0, 0.7);">
     <div class="modal-dialog" role="document">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close closemodal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <button type="button" class="close closemodal" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
-                <div class="modal-body" id="custom-alert-body" >
+                <div class="modal-body" id="custom-alert-body">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary pull-left yes" data-dismiss="modal">{{Lang::get('lang.ok')}}</button>
@@ -119,9 +124,9 @@ if (Auth::user()->role == 'agent') {
 {!! $table->script('vendor.Chumper.ticket-javascript') !!}
 <script>
     var option = null;
-    $(function() {
+    $(function () {
         //Enable check and uncheck all functionality
-        $(".checkbox-toggle").click(function() {
+        $(".checkbox-toggle").click(function () {
             var clicks = $(this).data('clicks');
             if (clicks) {
                 //Uncheck all checkboxes
@@ -138,9 +143,9 @@ if (Auth::user()->role == 'agent') {
 
 
 
-    $(function() {
+    $(function () {
         // Enable check and uncheck all functionality
-        $(".checkbox-toggle").click(function() {
+        $(".checkbox-toggle").click(function () {
             var clicks = $(this).data('clicks');
             if (clicks) {
                 //Uncheck all checkboxes
@@ -154,25 +159,25 @@ if (Auth::user()->role == 'agent') {
     });
 
 
-    $(document).ready(function() { /// Wait till page is loaded
-        $('#click').click(function() {
+    $(document).ready(function () { /// Wait till page is loaded
+        $('#click').click(function () {
             $('#refresh').load('closed #refresh');
             $('#title_refresh').load('closed #title_refresh');
             $('#count_refresh').load('closed #count_refresh');
             $("#show").show();
         });
 
-        $('#delete').on('click', function() {
+        $('#delete').on('click', function () {
             option = 0;
             $('#myModalLabel').html("{{Lang::get('lang.delete-tickets')}}");
         });
 
-        $('#close').on('click', function() {
+        $('#close').on('click', function () {
             option = 1;
             $('#myModalLabel').html("{{Lang::get('lang.open-tickets')}}");
         });
 
-        $("#modalpopup").on('submit', function(e) {
+        $("#modalpopup").on('submit', function (e) {
             e.preventDefault();
             var msg = "{{Lang::get('lang.confirm')}}";
             var values = getValues();
@@ -187,13 +192,13 @@ if (Auth::user()->role == 'agent') {
             $("#myModal").css("display", "block");
         });
 
-        $(".closemodal, .no").click(function() {
+        $(".closemodal, .no").click(function () {
 
             $("#myModal").css("display", "none");
 
         });
 
-        $('.yes').click(function() {
+        $('.yes').click(function () {
             var values = getValues();
             if (values == "") {
                 $("#myModal").css("display", "none");
@@ -211,7 +216,7 @@ if (Auth::user()->role == 'agent') {
         });
 
         function getValues() {
-            var values = $('.selectval:checked').map(function() {
+            var values = $('.selectval:checked').map(function () {
                 return $(this).val();
             }).get();
             return values;

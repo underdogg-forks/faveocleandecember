@@ -61,8 +61,8 @@
           <i class="fa fa-arrows fa-fw"></i>
         </a>
         {{--<a href="javascript:notImp()">--}}
-        {{--<i class="fa fa-rotate-left fa-fw"></i>--}}
-        {{--</a>--}}
+          {{--<i class="fa fa-rotate-left fa-fw"></i>--}}
+          {{--</a>--}}
         @endif
       </td>
     </tr>

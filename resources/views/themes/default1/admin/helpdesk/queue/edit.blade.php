@@ -74,13 +74,14 @@ class="active"
 
 </div>
 <script>
-
     $(document).ready(function () {
         var queueid = '{{$queue->id}}';
         $.ajax({
             url: "{{url('form/queue')}}",
             dataType: "html",
-            data: {'queueid': queueid},
+            data: {
+                'queueid': queueid
+            },
             success: function (response) {
                 $("#response").html(response);
             },

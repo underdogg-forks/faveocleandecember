@@ -23,21 +23,21 @@ class="active"
 <div class="box box-primary">
     <div class="box-body">
         <div class="row">
-                @foreach($fields as $field)
-                <?php
+            @foreach($fields as $field)
+            <?php
                 $form = App\Http\Controllers\Admin\helpdesk\FormController::getForm($field);
                 ?>
-                <div class="col-md-10">
+            <div class="col-md-10">
                 {!! $form !!}
-                </div>
-                @if($field->values()->get()->count()>0)
-                <div class="col-md-2">
-                    @include('themes.default1.admin.helpdesk.manage.form.childpopup')
-                </div>
-                @endif
-                @endforeach
-
             </div>
+            @if($field->values()->get()->count()>0)
+            <div class="col-md-2">
+                @include('themes.default1.admin.helpdesk.manage.form.childpopup')
+            </div>
+            @endif
+            @endforeach
+
+        </div>
 
     </div>
 </div>

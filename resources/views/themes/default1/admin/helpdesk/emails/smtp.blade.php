@@ -49,11 +49,11 @@ class="active"
                 {!! $errors->first('driver', '<spam class="help-block">:message</spam>') !!}
                 <select name="driver" class="form-control">
                     <option <?php if ($settings->driver == "mail") {
-    echo "selected='selected'";
-} ?> value="mail">mail</option>
+                        echo "selected='selected'";
+                        } ?> value="mail">mail</option>
                     <option <?php if ($settings->driver == "smtp") {
-    echo "selected='selected'";
-} ?>  value="smtp">smtp</option>
+                        echo "selected='selected'";
+                        } ?> value="smtp">smtp</option>
                 </select>
             </div>
 
@@ -74,11 +74,11 @@ class="active"
                 {!! $errors->first('encryption', '<spam class="help-block">:message</spam>') !!}
                 <select name="encryption" class="form-control">
                     <option <?php if ($settings->encryption == "ssl") {
-    echo "selected='selected'";
-} ?>  value="ssl">SSL</option>
+                        echo "selected='selected'";
+                        } ?> value="ssl">SSL</option>
                     <option <?php if ($settings->encryption == "tls") {
-    echo "selected='selected'";
-} ?> value="tls">TLS</option>
+                        echo "selected='selected'";
+                        } ?> value="tls">TLS</option>
                 </select>
             </div>
 

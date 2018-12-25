@@ -6,11 +6,12 @@
         </a>
     </li>
     @foreach($dirs as $key => $dir_name)
-        <li>
-            <a class="pointer" id="folder_{{ $key }}" data-id="{{ $dir_name }}" onclick="clickFolder('folder_{{ $key }}', 0)">
-                <i class="fa fa-folder folder-item" data-id="{{ $dir_name }}" id="{{ $dir_name }}-folder"></i> {{ $dir_name }}
-            </a>
-        </li>
+    <li>
+        <a class="pointer" id="folder_{{ $key }}" data-id="{{ $dir_name }}" onclick="clickFolder('folder_{{ $key }}', 0)">
+            <i class="fa fa-folder folder-item" data-id="{{ $dir_name }}" id="{{ $dir_name }}-folder"></i> {{ $dir_name
+            }}
+        </a>
+    </li>
     @endforeach
     <a id="add-folder" class="add-folder btn btn-default btn-xs" style='margin-top:15px;'>
         <i class="fa fa-plus"></i> {{ Lang::get('laravel-filemanager::lfm.menu-new') }}
@@ -23,10 +24,11 @@
         </a>
     </li>
     @foreach($shares as $key => $dir_name)
-        <li>
-            <a class="pointer" id="shared_{{ $key }}" data-id="{{ $dir_name }}" onclick="clickSharedFolder('shared_{{ $key }}', 0)">
-                <i class="fa fa-folder folder-item" data-id="{{ $dir_name }}" id="{{ $dir_name }}-folder-shared"></i> {{ $dir_name }}
-            </a>
-        </li>
+    <li>
+        <a class="pointer" id="shared_{{ $key }}" data-id="{{ $dir_name }}" onclick="clickSharedFolder('shared_{{ $key }}', 0)">
+            <i class="fa fa-folder folder-item" data-id="{{ $dir_name }}" id="{{ $dir_name }}-folder-shared"></i> {{
+            $dir_name }}
+        </a>
+    </li>
     @endforeach
 </ul>

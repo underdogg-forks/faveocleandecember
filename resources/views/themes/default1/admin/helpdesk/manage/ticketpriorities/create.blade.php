@@ -30,7 +30,7 @@ class="active"
 <!-- open a form -->
 
 <form action="{!!URL::route('priority.create1')!!}" method="post" role="form">
-{{ csrf_field() }}
+    {{ csrf_field() }}
     <div class="box box-primary">
         <div class="box-header with-border">
             <h2 class="box-title">{{Lang::get('lang.create')}}</h2>
@@ -42,7 +42,7 @@ class="active"
                 <i class="fa fa-ban"></i>
                 <b>Alert!</b>
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <br/>
+                <br />
                 @if($errors->first('priority'))
                 <li class="error-message-padding">{!! $errors->first('priority', ':message') !!}</li>
                 @endif
@@ -62,7 +62,7 @@ class="active"
                 <div class="col-md-6">
                     <div class="form-group {{ $errors->has('priority') ? 'has-error' : '' }}">
                         {!! Form::label('priority',Lang::get('lang.priority')) !!} <span class="text-red"> *</span>
-                        <input type="text" class="form-control" name="priority" value="" >
+                        <input type="text" class="form-control" name="priority" value="">
                     </div>
                 </div>
                 <!-- Grace Period text form Required -->
@@ -71,14 +71,15 @@ class="active"
                         {!! Form::label('priority_desc',Lang::get('lang.priority_desc')) !!}<span class="text-red"> *</span>
                         <input type="text" name="priority_desc" class="form-control">
                     </div>
-                </div> 
+                </div>
             </div>
             <!-- Priority Color -->
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group {{ $errors->has('priority_color') ? 'has-error' : '' }}">
                         {!! Form::label('priority_color',Lang::get('lang.priority_color')) !!}<span class="text-red"> *</span>
-                        <input class="form-control my-colorpicker1 colorpicker-element" id="colorpicker" type="text" name="priority_color">
+                        <input class="form-control my-colorpicker1 colorpicker-element" id="colorpicker" type="text"
+                            name="priority_color">
 
                     </div>
                 </div>
@@ -86,20 +87,20 @@ class="active"
                 <div class="col-md-3">
                     <div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
                         {!! Form::label('status',Lang::get('lang.status')) !!}&nbsp;<span class="text-red"> *</span>
-                        <input type="radio"  name="status" value="1" checked>{{Lang::get('lang.active')}}
-                        <input type="radio"  name="status" value="0" >{{Lang::get('lang.inactive')}}
-                    </div>       
+                        <input type="radio" name="status" value="1" checked>{{Lang::get('lang.active')}}
+                        <input type="radio" name="status" value="0">{{Lang::get('lang.inactive')}}
+                    </div>
                 </div>
 
                 <!-- Show radio: required: public|private -->
                 <div class="col-md-3">
                     <div class="form-group {{ $errors->has('ispublic') ? 'has-error' : '' }}">
                         {!! Form::label('ispublic',Lang::get('lang.visibility')) !!}&nbsp;<span class="text-red"> *</span>
-                        <input type="radio"  name="ispublic" value="1" checked>public
-                        <input type="radio"  name="ispublic" value="0" >private
-                    </div>       
+                        <input type="radio" name="ispublic" value="1" checked>public
+                        <input type="radio" name="ispublic" value="0">private
+                    </div>
                 </div>
-            </div>  
+            </div>
             <!-- Admin Note  : Textarea :  -->
             <div class="row">
                 <div class="col-md-12">

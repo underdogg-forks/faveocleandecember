@@ -1,5 +1,5 @@
 @extends('themes.default1.client.layout.client')
-@section('content')               
+@section('content')
 <?php
 $tickets = App\Model\helpdesk\Ticket\Tickets::where('id', '=', \Crypt::decrypt($id))->first();
 $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Crypt::decrypt($id))->first();
@@ -10,26 +10,33 @@ $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Cryp
     <div class="box-header">
         <div class="row">
             <div class="col-md-9">
-                <section class="content-header"><h3 class="box-title"><i class="fa fa-user"> </i> {{$thread->title}} </h3> ( {{$tickets->ticket_number}} )
+                <section class="content-header">
+                    <h3 class="box-title"><i class="fa fa-user"> </i> {{$thread->title}} </h3> (
+                    {{$tickets->ticket_number}} )
                 </section>
-            </div> 
+            </div>
             <div class="col-md-3">
                 <div class="pull-right">
 
-                    <!-- <button type="button" class="btn btn-default"><i class="fa fa-edit" style="color:green;"> </i> Edit</button> -->                            
-                    {{-- <button type="button" class="btn btn-default"><i class="fa fa-print" style="color:blue;"> </i> {!! link_to_route('ticket.print','Print',[$tickets->id]) !!}</button> --}}
+                    <!-- <button type="button" class="btn btn-default"><i class="fa fa-edit" style="color:green;"> </i> Edit</button> -->
+                    {{-- <button type="button" class="btn btn-default"><i class="fa fa-print" style="color:blue;"> </i>
+                        {!! link_to_route('ticket.print','Print',[$tickets->id]) !!}</button> --}}
                     <!-- </div> -->
                     @if( $common_setting->status == '1')
-                    <div class="btn-group"> 
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exchange" style="color:teal;"> </i> 
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exchange"
+                                style="color:teal;"> </i>
                             {!! Lang::get('lang.change_status') !!} <span class="caret"></span>
                         </button>
                         <?php $statuses = \App\Model\helpdesk\Ticket\Ticket_Status::all(); ?>
 
                         <ul class="dropdown-menu">
-                            <li><a href="#" id="open"><i class="fa fa-folder-open" style="color:#FFD600;"> </i>{!! Lang::get('lang.open') !!}</a></li>
-                            <li><a href="#" id="close"><i class="fa fa-check" style="color:#15F109;"> </i>{!! Lang::get('lang.close') !!}</a></li>
-                            <li><a href="#" id="resolved"><i class="fa fa-check-circle " style="color:#0EF1BE;"> </i> {!! Lang::get('lang.resolved') !!}</a></li>
+                            <li><a href="#" id="open"><i class="fa fa-folder-open" style="color:#FFD600;"> </i>{!!
+                                    Lang::get('lang.open') !!}</a></li>
+                            <li><a href="#" id="close"><i class="fa fa-check" style="color:#15F109;"> </i>{!!
+                                    Lang::get('lang.close') !!}</a></li>
+                            <li><a href="#" id="resolved"><i class="fa fa-check-circle " style="color:#0EF1BE;"> </i>
+                                    {!! Lang::get('lang.resolved') !!}</a></li>
                         </ul>
                     </div>@endif
                     {!! Form::close() !!}
@@ -38,15 +45,16 @@ $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Cryp
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="ticketratings pull-right">    
-                    <table><tbody>
+                <div class="ticketratings pull-right">
+                    <table>
+                        <tbody>
                             <?php $ratings = App\Model\helpdesk\Ratings\Rating::orderby('display_order')->get(); ?>
-                        <form id="foo">
-                            {!! csrf_field() !!}
-                            @foreach($ratings as $rating) 
+                            <form id="foo">
+                                {!! csrf_field() !!}
+                                @foreach($ratings as $rating)
 
-                            @if($rating->rating_area == 'Helpdesk Area')
-                            <?php
+                                @if($rating->rating_area == 'Helpdesk Area')
+                                <?php
                             $rating_value = App\Model\helpdesk\Ratings\RatingRef::where('rating_id', '=', $rating->id)->where('ticket_id', '=', $tickets->id)->first();
                             if ($rating_value == null) {
                                 $ratingval = '0';
@@ -55,19 +63,24 @@ $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Cryp
                             }
                             ?>
 
-                            <tr>
-                                <th><div class="ticketratingtitle">{!! $rating->name !!} &nbsp;</div></th>&nbsp
+                                <tr>
+                                    <th>
+                                        <div class="ticketratingtitle">{!! $rating->name !!} &nbsp;</div>
+                                    </th>&nbsp
 
-                            <td>
-                                <?php for ($i = 1; $i <= $rating->rating_scale; $i++) { ?>
-                                    <input type="radio" class="star" id="star5" name="{!! $rating->name !!}" value="{!! $i !!}"<?php echo ($ratingval == $i) ? 'checked' : '' ?> />
-                                <?php } ?>
-                            </td> 
-                            </tr>
+                                    <td>
+                                        <?php for ($i = 1; $i <= $rating->rating_scale; $i++) { ?>
+                                        <input type="radio" class="star" id="star5" name="{!! $rating->name !!}" value="{!! $i !!}"
+                                            <?php echo ($ratingval==$i) ? 'checked' : '' ?> />
+                                        <?php } ?>
+                                    </td>
+                                </tr>
 
-                            @endif
-                            @endforeach
-                        </form></tbody> </table> 
+                                @endif
+                                @endforeach
+                            </form>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -79,30 +92,31 @@ $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Cryp
                 <div class="col-xs-5">
                 </div>
                 <div class="col-xs-1">
-                    <img src="{{asset("lb-faveo/media/images/gifloader.gif")}}"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <img src="{{asset("lb-faveo/media/images/gifloader.gif")}}"><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 </div>
                 <div class="col-xs-6">
                 </div>
             </div>
-            <section class="content"  id="refresh" style="margin-bottom:-10px;margin-top:-10px">
-                <div class="col-md-12"> 
+            <section class="content" id="refresh" style="margin-bottom:-10px;margin-top:-10px">
+                <div class="col-md-12">
                     <?php
                     $priority = App\Model\helpdesk\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first();
                     ?>
                     <div class="callout callout-default ">
                         <div class="row">
-                            <div class="col-md-3"> 
+                            <div class="col-md-3">
                                 <?php
                                 $sla = $tickets->sla;
                                 $SlaPlan = App\Model\helpdesk\Manage\Sla_plan::where('id', '=', $sla)->first();
                                 ?>
-                                <b>{!! Lang::get('lang.sla_plan') !!}: {{$SlaPlan->grace_period}} </b> 
+                                <b>{!! Lang::get('lang.sla_plan') !!}: {{$SlaPlan->grace_period}} </b>
                             </div>
-                            <div class="col-md-3"> 
-                                <b>{!! Lang::get('lang.created_date') !!}: </b> {{ UTC::usertimezone($tickets->created_at) }}
+                            <div class="col-md-3">
+                                <b>{!! Lang::get('lang.created_date') !!}: </b> {{
+                                UTC::usertimezone($tickets->created_at) }}
                             </div>
-                            <div class="col-md-3"> 
-                                <b>{!! Lang::get('lang.due_date') !!}: </b> 
+                            <div class="col-md-3">
+                                <b>{!! Lang::get('lang.due_date') !!}: </b>
                                 <?php
                                 $time = $tickets->created_at;
                                 $time = date_create($time);
@@ -115,25 +129,32 @@ $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Cryp
                                 @foreach($response as $last)
                                 <?php $ResponseDate = $last->created_at; ?>
                                 @endforeach
-                                <b>{!! Lang::get('lang.last_response') !!}: </b> {{ UTC::usertimezone($ResponseDate)}} 
+                                <b>{!! Lang::get('lang.last_response') !!}: </b> {{ UTC::usertimezone($ResponseDate)}}
                             </div>
                         </div>
                     </div>
-                </div>      
-                <div class="col-md-6"> 
+                </div>
+                <div class="col-md-6">
                     <table class="table table-hover">
                         <!-- <tr><th></th><th></th></tr> -->
-                        <tr><td><b>{!! Lang::get('lang.status') !!}:</b></td>       <?php $status = App\Model\helpdesk\Ticket\Ticket_Status::where('id', '=', $tickets->status)->first(); ?>
+                        <tr>
+                            <td><b>{!! Lang::get('lang.status') !!}:</b></td>
+                            <?php $status = App\Model\helpdesk\Ticket\Ticket_Status::where('id', '=', $tickets->status)->first(); ?>
 
                             @if($status->id == 1)
-                            <td title="{{$status->properties}}" style="color:orange">{{$status->name}}</td></tr>
+                            <td title="{{$status->properties}}" style="color:orange">{{$status->name}}</td>
+                        </tr>
                         @elseif($status->id == 2)
-                        <td title="{{$status->properties}}" style="color:green">{{$status->name}}</td></tr>
+                        <td title="{{$status->properties}}" style="color:green">{{$status->name}}</td>
+                        </tr>
                         @elseif($status->id == 3)
-                        <td title="{{$status->properties}}" style="color:green">{{$status->name}}</td></tr>
+                        <td title="{{$status->properties}}" style="color:green">{{$status->name}}</td>
+                        </tr>
                         @endif
 
-                        <tr><td><b>{!! Lang::get('lang.priority') !!}:</b></td>     <?php $priority = App\Model\helpdesk\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first(); ?>
+                        <tr>
+                            <td><b>{!! Lang::get('lang.priority') !!}:</b></td>
+                            <?php $priority = App\Model\helpdesk\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first(); ?>
 
                             @if($priority->priority_id == 1)
                             <td title="{{$priority->priority_desc}}" style="color:green">{{$priority->priority_desc}}</td>
@@ -144,25 +165,34 @@ $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Cryp
                             @endif
 
                         </tr>
-                        <tr><td><b>{!! Lang::get('lang.department') !!}:</b></td>   
+                        <tr>
+                            <td><b>{!! Lang::get('lang.department') !!}:</b></td>
                             <?php
                             $help_topic = App\Model\helpdesk\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first();
                             $department = App\Model\helpdesk\Agent\Department::where('id', '=', $help_topic->department)->first();
                             ?>
-                            <td title="{{ $department->name }}">{!! $department->name !!}</td></tr>
+                            <td title="{{ $department->name }}">{!! $department->name !!}</td>
+                        </tr>
                     </table>
                     <!-- </div> -->
                 </div>
-                <div class="col-md-6"> 
+                <div class="col-md-6">
                     <!-- <div class="callout callout-success"> -->
                     <table class="table table-hover">
                         <!-- <tr><th></th><th></th></tr> -->
-                        <tr><td><b>{!! Lang::get('lang.help_topic') !!}:</b></td>     <?php $help_topic = App\Model\helpdesk\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first(); ?><td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td></tr>
-                        <tr><td><b>{!! Lang::get('lang.last_message') !!}:</b></td>   <td>{{ucwords($last->poster)}}</td></tr>
+                        <tr>
+                            <td><b>{!! Lang::get('lang.help_topic') !!}:</b></td>
+                            <?php $help_topic = App\Model\helpdesk\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first(); ?>
+                            <td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>{!! Lang::get('lang.last_message') !!}:</b></td>
+                            <td>{{ucwords($last->poster)}}</td>
+                        </tr>
                     </table>
                 </div>
                 <!-- </div> -->
-            </section> 
+            </section>
         </div>
     </div>
 </div>
@@ -174,21 +204,29 @@ foreach ($conversations as $conversation) {
     $role = $conversation->user;
     $body = $conversation->thread($conversation->body);
     ?>
-    <ol class="comment-list" >
-        <li class="comment">
-            <article class="comment-body">
-                <footer class="comment-meta"<?php if ($role->role == "user") { ?> style="background-color: hsla(100, 100%, 51%, 0.15)" <?php } else { ?> style="background-color:#FFFCB3" <?php } ?>  > 
-                    <div class="comment-author">
+<ol class="comment-list">
+    <li class="comment">
+        <article class="comment-body">
+            <footer class="comment-meta" <?php if ($role->role == "user") { ?> style="background-color: hsla(100, 100%,
+                51%, 0.15)"
+                <?php } else { ?> style="background-color:#FFFCB3"
+                <?php } ?> >
+                <div class="comment-author">
 
-                        <img src="{{$role->profile_pic}}"alt="" height="50" width="50" class="avatar" <?php if ($role->role == "user") { ?>style="box-shadow: 0 1px 3px #00FF26;" <?php } else { ?> style="box-shadow: 0 1px 3px #FFEC00;" <?php } ?> >
-                        @if($role->role == "user")
-                        <b class="fn"><a href="#" rel="external" class="url">{{$role->user_name}}</a></b>
-                        @else
-                        <b class="fn"><a href="#" rel="external" class="url">{{$role->first_name." ".$role->last_name}}</a></b>
-                        <div class="ticketratings pull-right">   <table><tbody>
-                                    @foreach($ratings as $rating) 
-                                    @if($rating->rating_area == 'Comment Area')
-                                    <?php
+                    <img src="{{$role->profile_pic}}" alt="" height="50" width="50" class="avatar" <?php if ($role->role
+                    == "user") { ?>style="box-shadow: 0 1px 3px #00FF26;"
+                    <?php } else { ?> style="box-shadow: 0 1px 3px #FFEC00;"
+                    <?php } ?> >
+                    @if($role->role == "user")
+                    <b class="fn"><a href="#" rel="external" class="url">{{$role->user_name}}</a></b>
+                    @else
+                    <b class="fn"><a href="#" rel="external" class="url">{{$role->first_name." ".$role->last_name}}</a></b>
+                    <div class="ticketratings pull-right">
+                        <table>
+                            <tbody>
+                                @foreach($ratings as $rating)
+                                @if($rating->rating_area == 'Comment Area')
+                                <?php
                                     $rating_value = App\Model\helpdesk\Ratings\RatingRef::where('rating_id', '=', $rating->id)->where('thread_id', '=', $conversation->id)->first();
                                     if ($rating_value == null) {
                                         $ratingval = '0';
@@ -197,37 +235,43 @@ foreach ($conversations as $conversation) {
                                     }
                                     ?>
                                 <form class="foo2">
-                                {{ csrf_field() }}
+                                    {{ csrf_field() }}
                                     <tr>
-                                        <th><div class="ticketratingtitle">{!! $rating->name !!} &nbsp;</div></th>&nbsp
+                                        <th>
+                                            <div class="ticketratingtitle">{!! $rating->name !!} &nbsp;</div>
+                                        </th>&nbsp
 
-                                    <td>
-                                        <?php for ($i = 1; $i <= $rating->rating_scale; $i++) { ?>
-                                            <input type="radio" class="star" id="star5" name="{!! $rating->name !!},{!! $conversation->id !!}" value="{!! $i !!}"<?php echo ($ratingval == $i) ? 'checked' : '' ?> />
-                                        <?php } ?>
-    <!--    <input type="radio" class="star" id="star4" name="rating" value="2"<?php echo ($tickets->rating == '2') ? 'checked' : '' ?> />
+                                        <td>
+                                            <?php for ($i = 1; $i <= $rating->rating_scale; $i++) { ?>
+                                            <input type="radio" class="star" id="star5" name="{!! $rating->name !!},{!! $conversation->id !!}"
+                                                value="{!! $i !!}" <?php echo ($ratingval==$i) ? 'checked' : '' ?> />
+                                            <?php } ?>
+                                            <!--    <input type="radio" class="star" id="star4" name="rating" value="2"<?php echo ($tickets->rating == '2') ? 'checked' : '' ?> />
     <input type="radio" class="star" id="star3" name="rating" value="3"<?php echo ($tickets->rating == '3') ? 'checked' : '' ?>/>
     <input type="radio" class="star" id="star2" name="rating" value="4"<?php echo ($tickets->rating == '4') ? 'checked' : '' ?>/>
     <input type="radio" class="star" id="star1" name="rating" value="5"<?php echo ($tickets->rating == '5') ? 'checked' : '' ?> />-->
-                                    </td> 
+                                        </td>
                                     </tr>
                                 </form>
                                 @endif
                                 @endforeach
-                                </tbody></table></div>
-                        @endif
-                    </div><!-- .comment-author -->
-                    <div class="comment-metadata">
-                        <small class="date text-muted">
-                            <time datetime="2013-10-23T01:50:50+00:00"><i class="fa fa-clock-o"> </i> {{ UTC::usertimezone($conversation->created_at) }}</time>
-                        </small>
-                    </div><!-- .comment-metadata -->
-                </footer><!-- .comment-meta -->
-                <div class="comment-content">
-                   @if($conversation->firstContent()=='yes')
-                                        <div class="embed-responsive{{$conversation->id}} embed-responsive-16by9 "></div>
-                                            <script>
-                                            setTimeout(function(){
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+                </div><!-- .comment-author -->
+                <div class="comment-metadata">
+                    <small class="date text-muted">
+                        <time datetime="2013-10-23T01:50:50+00:00"><i class="fa fa-clock-o"> </i> {{
+                            UTC::usertimezone($conversation->created_at) }}</time>
+                    </small>
+                </div><!-- .comment-metadata -->
+            </footer><!-- .comment-meta -->
+            <div class="comment-content">
+                @if($conversation->firstContent()=='yes')
+                <div class="embed-responsive{{$conversation->id}} embed-responsive-16by9 "></div>
+                <script>
+                    setTimeout(function(){
                                                 var $iframe="Id{{$conversation->id}}";
                                                 $('<iframe src="javascript:void(0)" id='+$iframe+' class="iframe" frameborder="0"  scrolling="no" width="100%" style="height:1px"></iframe>').appendTo(".embed-responsive{{$conversation->id}}");
                                                 setTimeout(function(){
@@ -243,36 +287,38 @@ foreach ($conversations as $conversation) {
                                                     frameid.style.height=iframe_height+"px";
                                                 }, 1000);
                                             }, 0);
-                                            </script>                                            @else 
-                                            {!! $conversation->body !!}
-                                            @endif
-                                            
-                    @if($conversation->id == $ij->id)
-                    <?php $ticket_form_datas = App\Model\helpdesk\Ticket\Ticket_Form_Data::where('ticket_id', '=', $tickets->id)->get(); ?>
-                    @if(isset($ticket_form_datas))
+                                            </script>
+                @else
+                {!! $conversation->body !!}
+                @endif
 
-                    <br/>
-                    <table class="table table-bordered">
-                        <tbody>
-                            @foreach($ticket_form_datas as $ticket_form_data)
-                            <tr>
-                                <td style="width: 30%">{!! $ticket_form_data->getFieldKeyLabel() !!}</td>
-                                <td>{!! removeUnderscore($ticket_form_data->content) !!}</td>
-                            </tr>
-                            @endforeach
-                        </tbody></table>
+                @if($conversation->id == $ij->id)
+                <?php $ticket_form_datas = App\Model\helpdesk\Ticket\Ticket_Form_Data::where('ticket_id', '=', $tickets->id)->get(); ?>
+                @if(isset($ticket_form_datas))
 
-                    @endif
-                    @endif
-                </div><!-- .comment-content -->
-                <br/><br/>
-                <div class="timeline-footer" style="margin-bottom:-5px">
-                    @if(!$conversation->is_internal)
-                    @if($conversation->user_id != null)
-                    <?php Event::fire(new App\Events\Timeline($conversation, $role, $user)); ?>
-                    @endif
-                    @endif
-                    <?php
+                <br />
+                <table class="table table-bordered">
+                    <tbody>
+                        @foreach($ticket_form_datas as $ticket_form_data)
+                        <tr>
+                            <td style="width: 30%">{!! $ticket_form_data->getFieldKeyLabel() !!}</td>
+                            <td>{!! removeUnderscore($ticket_form_data->content) !!}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                @endif
+                @endif
+            </div><!-- .comment-content -->
+            <br /><br />
+            <div class="timeline-footer" style="margin-bottom:-5px">
+                @if(!$conversation->is_internal)
+                @if($conversation->user_id != null)
+                <?php Event::fire(new App\Events\Timeline($conversation, $role, $user)); ?>
+                @endif
+                @endif
+                <?php
                     $attachments = App\Model\helpdesk\Ticket\Ticket_attachments::where('thread_id', '=', $conversation->id)->get();
                     $i = 0;
                     foreach ($attachments as $attachment) {
@@ -284,8 +330,8 @@ foreach ($conversations as $conversation) {
                         echo "<hr style='border-top: 1px dotted #FFFFFF;margin-top:0px;margin-bottom:0px;background-color:#8B8C90;'><h4 class='box-title'><b>" . $i . " </b> Attachments</h4>";
                     }
                     ?>
-                    <ul class='mailbox-attachments clearfix'>
-                        <?php
+                <ul class='mailbox-attachments clearfix'>
+                    <?php
                         foreach ($attachments as $attachment) {
                             $size = $attachment->size;
                             $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
@@ -305,13 +351,13 @@ foreach ($conversations as $conversation) {
                             }
                         }
                         ?>
-                    </ul>
-                </div>
-            </article><!-- .comment-body -->
-        </li><!-- .comment -->    
-    </ol>
+                </ul>
+            </div>
+        </article><!-- .comment-body -->
+    </li><!-- .comment -->
+</ol>
 
-    <?php
+<?php
     ?>
 
 
@@ -320,7 +366,7 @@ foreach ($conversations as $conversation) {
 <div class="pull-right" style="margin-top:-30px;margin-bottom:-30px">
     <?php echo $conversations->setPath(url('check_ticket/{' . $id . '}'))->render(); ?>
 </div>
-<br/><br/>
+<br /><br />
 @if(Session::has('success1'))
 <div class="alert alert-success alert-dismissable" id='formabc'>
     <i class="fa  fa-check-circle"></i>
@@ -339,8 +385,9 @@ foreach ($conversations as $conversation) {
 @endif
 <?php $id2 = Crypt::decrypt($id); ?>
 <div id="respond" class="comment-respond form-border">
-    <h3 id="reply-title" class="comment-reply-title section-title"><i class="line"></i>{!! Lang::get('lang.leave_a_reply') !!}</h3>
-    @if(Auth::user()) 
+    <h3 id="reply-title" class="comment-reply-title section-title"><i class="line"></i>{!!
+        Lang::get('lang.leave_a_reply') !!}</h3>
+    @if(Auth::user())
     {!! Form::open(['url'=>'post/reply/'.$id2.'#formabc']) !!}
     @else
     {!! Form::open(['url'=>'post-ticket-reply/'.$id.'#formabc']) !!}
@@ -351,11 +398,12 @@ foreach ($conversations as $conversation) {
                 <div class="form-group ">
                     <textarea class="form-control" id="reply-input" name="comment" cols="30" rows="8"></textarea>
                 </div>
-            </div>                                              
+            </div>
         </div>
     </div>
     <div class="text-right">
-        <button type="submit" onClick="return checkFunction();" class="btn btn-custom btn-lg">{!! Lang::get('lang.post_comment') !!}</button>
+        <button type="submit" onClick="return checkFunction();" class="btn btn-custom btn-lg">{!!
+            Lang::get('lang.post_comment') !!}</button>
     </div>
     {!! Form::close() !!}
 </div>
@@ -414,11 +462,10 @@ foreach ($conversations as $conversation) {
             // process the form
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: '../rating/' +<?php echo $tickets->id ?>, // the url where we want to POST
+                url: '../rating/' + <?php echo $tickets->id ?>, // the url where we want to POST
                 data: formData, // our data object
                 dataType: 'json', // what type of data do we expect back from the server
-                success: function () {
-                }
+                success: function () {}
             });
             // using the done promise callback
             // stop the form from submitting the normal way and refreshing the page
@@ -433,11 +480,10 @@ foreach ($conversations as $conversation) {
             // process the form
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: '../rating2/' +<?php echo $tickets->id ?>, // the url where we want to POST
+                url: '../rating2/' + <?php echo $tickets->id ?>, // the url where we want to POST
                 data: formData, // our data object
                 dataType: 'json', // what type of data do we expect back from the server
-                success: function () {
-                }
+                success: function () {}
             });
             // using the done promise callback
             // stop the form from submitting the normal way and refreshing the page

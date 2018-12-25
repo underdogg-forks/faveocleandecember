@@ -1,38 +1,40 @@
 @extends('themes.default1.client.layout.client')
 
 @section('title')
-    Article List -
+Article List -
 @stop
 
 @section('kb')
-    class = "active"
+class = "active"
 @stop
 
 @section('content')
 <div id="content" class="site-content col-md-9 archive-list archive-article">
     @foreach($article as $arti)
-            <article class="hentry">
-                <header class="entry-header">
-                    <i class="fa fa-list-alt fa-2x fa-fw pull-left text-muted"></i>
-                    <h2 class="entry-title h4"><a href="{{url('show/'.$arti->slug)}}" onclick="toggle_visibility('foo');">{{$arti->name}}</a></h2>
-                </header><!-- .entry-header -->
-                <?php $str = $arti->description; ?>
-                <?php $excerpt = App\Http\Controllers\Client\kb\UserController::getExcerpt($str, $startPos = 0, $maxLength = 200); ?>
-                <blockquote class="archive-description">
-                    <?php $content = trim(preg_replace("/<img[^>]+\>/i", "", $excerpt), " \t.") ?>
-                    {!! strip_tags($content) !!}
-                    <p><a class="readmore-link" href="{{url('show/'.$arti->slug)}}">{!! Lang::get('lang.read_more') !!}</a></p>
-                </blockquote>    
-                <footer class="entry-footer">
-                    <div class="entry-meta text-muted">
-                        <span class="date"><i class="fa fa-clock-o fa-fw"></i> <time datetime="2013-10-22T20:01:58+00:00">{{$arti->created_at->format('l, d-m-Y')}}</time></span>
-                    </div><!-- .entry-meta -->
-                </footer><!-- .entry-footer -->
-            </article><!-- .hentry -->
-    {{-- <hr> --}}
+    <article class="hentry">
+        <header class="entry-header">
+            <i class="fa fa-list-alt fa-2x fa-fw pull-left text-muted"></i>
+            <h2 class="entry-title h4"><a href="{{url('show/'.$arti->slug)}}" onclick="toggle_visibility('foo');">{{$arti->name}}</a></h2>
+        </header><!-- .entry-header -->
+        <?php $str = $arti->description; ?>
+        <?php $excerpt = App\Http\Controllers\Client\kb\UserController::getExcerpt($str, $startPos = 0, $maxLength = 200); ?>
+        <blockquote class="archive-description">
+            <?php $content = trim(preg_replace("/<img[^>]+\>/i", "", $excerpt), " \t.") ?>
+            {!! strip_tags($content) !!}
+            <p><a class="readmore-link" href="{{url('show/'.$arti->slug)}}">{!! Lang::get('lang.read_more') !!}</a></p>
+        </blockquote>
+        <footer class="entry-footer">
+            <div class="entry-meta text-muted">
+                <span class="date"><i class="fa fa-clock-o fa-fw"></i> <time datetime="2013-10-22T20:01:58+00:00">{{$arti->created_at->format('l,
+                        d-m-Y')}}</time></span>
+            </div><!-- .entry-meta -->
+        </footer><!-- .entry-footer -->
+    </article><!-- .hentry -->
+    {{--
+    <hr> --}}
     @endforeach
     <div class="pagination">
-<?php echo $article->render(); ?>
+        <?php echo $article->render(); ?>
     </div>
 </div>
 @stop
@@ -42,7 +44,7 @@
 <ul class="nav nav-pills nav-stacked nav-categories">
 
     @foreach($categorys as $category)
-<?php
+    <?php
 $num = \App\Model\kb\Relationship::where('category_id','=', $category->id)->get();
 $article_id = $num->pluck('article_id');
 $numcount = count($article_id);

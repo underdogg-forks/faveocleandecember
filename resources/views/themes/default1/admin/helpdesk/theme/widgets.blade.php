@@ -32,7 +32,7 @@ class="active"
         @if(Session::has('fails'))
         <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i>
-            <b>{!! Lang::get('lang.alert') !!} !</b> 
+            <b>{!! Lang::get('lang.alert') !!} !</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             {{Session::get('fails')}}
         </div>
@@ -41,8 +41,8 @@ class="active"
         ->addColumn(Lang::get('lang.name'),
         Lang::get('lang.title'),
         Lang::get('lang.content'),
-        Lang::get('lang.action'))  // these are the column headings to be shown
-        ->setUrl('list-widget')  // this is the route where data will be retrieved
+        Lang::get('lang.action')) // these are the column headings to be shown
+        ->setUrl('list-widget') // this is the route where data will be retrieved
         ->render() !!}
     </div>
 </div>

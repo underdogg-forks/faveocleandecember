@@ -26,7 +26,7 @@ class="active"
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h4 class="box-title">{{Lang::get('lang.send-mail-to-diagnos')}}</h4>	
+            <h4 class="box-title">{{Lang::get('lang.send-mail-to-diagnos')}}</h4>
         </div>
         <div class="box-body">
             @if(Session::has('success') && !Session::has('fails'))
@@ -41,7 +41,7 @@ class="active"
             <div class="alert alert-warning alert-dismissable">
                 <i class="fa fa-ban"></i>
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <b>{!! Lang::get('lang.alert') !!} !</b><br/>
+                <b>{!! Lang::get('lang.alert') !!} !</b><br />
                 <li class="error-message-padding">{{Session::get('fails')}}</li>
             </div>
             @endif
@@ -51,7 +51,7 @@ class="active"
                 <i class="fa fa-ban"></i>
                 <b>{!! Lang::get('lang.alert') !!} !</b>
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <br/>
+                <br />
                 @if($errors->first('from'))
                 <li class="error-message-padding">{!! $errors->first('from', ':message') !!}</li>
                 @endif
@@ -119,9 +119,9 @@ class="active"
                 <div class="col-md-2"></div>
                 <div class="col-md-2">
                     {!! Form::submit(Lang::get('lang.send'),['class'=>'form-group btn btn-primary'])!!}
-                </div>            
+                </div>
             </div>
-            
+
         </div>
     </div>
 </form>

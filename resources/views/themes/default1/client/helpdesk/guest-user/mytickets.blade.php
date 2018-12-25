@@ -23,7 +23,8 @@ class="active"
                 <input type="text" class="form-control input-sm" placeholder="Search Mail"/>
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
-        </div> --><!-- /.box-tools -->
+        </div> -->
+        <!-- /.box-tools -->
     </div><!-- /.box-header -->
     <div class="box-body no-padding">
         <div class="mailbox-controls">
@@ -42,38 +43,39 @@ if ($counted < 20) {
 ?>
             </div>
         </div>
-        <div class=" table-responsive mailbox-messages"  id="refresh">
-        <!-- table -->
+        <div class=" table-responsive mailbox-messages" id="refresh">
+            <!-- table -->
             <table class="table table-hover table-striped">
                 <thead>
-                <th>
-                </th>
-                <th>
-                    Subject
-                </th>
-                <th>
-                    Ticket ID
-                </th>
-                <th>
-                    Priority
-                </th>
-                <th>
-                    Last Replier
-                </th>
-                <th>
-                    Last Activity
-                </th>
-                <th>
-                    Reply Due
-                </th>
+                    <th>
+                    </th>
+                    <th>
+                        Subject
+                    </th>
+                    <th>
+                        Ticket ID
+                    </th>
+                    <th>
+                        Priority
+                    </th>
+                    <th>
+                        Last Replier
+                    </th>
+                    <th>
+                        Last Activity
+                    </th>
+                    <th>
+                        Reply Due
+                    </th>
                 </thead>
                 <tbody id="hello">
                     <?php $tickets = App\Model\Ticket\Tickets::where('status', '=', 1)->orderBy('id', 'DESC')->paginate(20);?>
 
-                     @foreach ($tickets  as $ticket )
-                    <tr <?php if ($ticket->seen_by == null) {?> style="color:green;" <?php }
+                    @foreach ($tickets as $ticket )
+                    <tr <?php if ($ticket->seen_by == null) {?> style="color:green;"
+                        <?php }
 ?> >
-                        <td><input type="checkbox" value="{{$ticket->id}}"/></td>
+                        <td><input type="checkbox" value="{{$ticket->id}}" /></td>
                         <?php $title = App\Model\Ticket\Ticket_Thread::where('ticket_id', '=', $ticket->id)->first();
                         $string = strip_tags($title->title);
                         if (strlen($string) > 40) {
@@ -96,16 +98,19 @@ if ($counted < 20) {
                         {
                             $title = $title;
                         }   ?>
-                        <td class="mailbox-name"><a href="{!! URL('myticket',[$ticket->id]) !!}" title="{!! $title->title !!}">{{$string}}   </a> ({!! $count!!}) <i class="fa fa-comment"></i></td>
+                        <td class="mailbox-name"><a href="{!! URL('myticket',[$ticket->id]) !!}" title="{!! $title->title !!}">{{$string}}
+                            </a> ({!! $count!!}) <i class="fa fa-comment"></i></td>
                         <td class="mailbox-Id">#{!! $ticket->ticket_number !!}</td>
                         <?php $priority = App\Model\Ticket\Ticket_Priority::where('priority_id', '=', $ticket->priority_id)->first();?>
-                        <td class="mailbox-priority"><spam class="btn btn-{{$priority->priority_color}} btn-xs">{{$priority->priority}}</spam></td>
-                        
-                <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
-                <td class="mailbox-last-activity">{!! $title->updated_at !!}</td>
-                <td class="mailbox-date"></td>
-                </tr>
-                @endforeach
+                        <td class="mailbox-priority">
+                            <spam class="btn btn-{{$priority->priority_color}} btn-xs">{{$priority->priority}}</spam>
+                        </td>
+
+                        <td class="mailbox-last-reply" style="color:{!! $rep !!}">{!! $username !!}</td>
+                        <td class="mailbox-last-activity">{!! $title->updated_at !!}</td>
+                        <td class="mailbox-date"></td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table><!-- /.table -->
             <div class="pull-right">
@@ -117,7 +122,7 @@ if ($counted < 20) {
 
 
 <script>
-    $(function() {
+    $(function () {
         //Enable iCheck plugin for checkboxes
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"]').iCheck({
@@ -126,7 +131,7 @@ if ($counted < 20) {
         });
 
         //Enable check and uncheck all functionality
-        $(".checkbox-toggle").click(function() {
+        $(".checkbox-toggle").click(function () {
             var clicks = $(this).data('clicks');
             if (clicks) {
                 //Uncheck all checkboxes
@@ -139,7 +144,7 @@ if ($counted < 20) {
         });
 
         //Handle starring for glyphicon and font awesome
-        $(".mailbox-star").click(function(e) {
+        $(".mailbox-star").click(function (e) {
             e.preventDefault();
             //detect type
             var $this = $(this).find("a > i");
@@ -160,8 +165,8 @@ if ($counted < 20) {
     });
 
 
-    $(document).ready(function() { /// Wait till page is loaded
-        $('#click').click(function() {
+    $(document).ready(function () { /// Wait till page is loaded
+        $('#click').click(function () {
             $('#refresh').load('ticket #refresh');
         });
     });
@@ -199,6 +204,5 @@ if ($counted < 20) {
     //           }
     //     });
     // }); // jquery end
-
 </script>
 @stop

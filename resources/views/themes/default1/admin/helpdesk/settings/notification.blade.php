@@ -35,7 +35,7 @@ class="active"
                 <h3 class="box-title">{{Lang::get('lang.notification_settings')}}</h3>
             </div>
             <!-- check whether success or not -->
-            <div class="box-body table-responsive"style="overflow:hidden;">
+            <div class="box-body table-responsive" style="overflow:hidden;">
                 @if(Session::has('success'))
                 <div class="alert alert-success alert-dismissable">
                     <i class="fa fa-check-circle"></i>
@@ -61,7 +61,8 @@ class="active"
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <a href="{{ url('delete-read-notification') }}" class="btn btn-danger">{!! Lang::get('lang.del_all_read') !!}</a>
+                            <a href="{{ url('delete-read-notification') }}" class="btn btn-danger">{!!
+                                Lang::get('lang.del_all_read') !!}</a>
                         </div>
                     </div>
                     <br>
@@ -73,9 +74,11 @@ class="active"
                         </div>
                         <div class="col-md-6">
                             <form action="{{ url('delete-notification-log') }}" method="post">
-                            {{ csrf_field() }}
-                                <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.noti_msg2') !!}</div>
-                                <input type="number" class="form-control" name='no_of_days' placeholder="{!! lang::get('lang.enter_no_of_days') !!}" min='1'>
+                                {{ csrf_field() }}
+                                <div class="callout callout-default" style="font-style: oblique;">{!!
+                                    Lang::get('lang.noti_msg2') !!}</div>
+                                <input type="number" class="form-control" name='no_of_days' placeholder="{!! lang::get('lang.enter_no_of_days') !!}"
+                                    min='1'>
                                 <button type="submit" class="btn btn-primary">{!! Lang::get('lang.submit') !!}</button>
                             </form>
                         </div>

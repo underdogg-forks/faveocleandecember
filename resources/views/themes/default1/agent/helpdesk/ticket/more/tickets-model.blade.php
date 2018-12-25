@@ -1,13 +1,15 @@
-<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: none; padding-right: 15px;background-color: rgba(0, 0, 0, 0.7);">
+<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+    style="display: none; padding-right: 15px;background-color: rgba(0, 0, 0, 0.7);">
     <div class="modal-dialog" role="document">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close closemodal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <button type="button" class="close closemodal" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
-                <div class="modal-body" id="custom-alert-body" >
+                <div class="modal-body" id="custom-alert-body">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary pull-left yes" data-dismiss="modal">{{Lang::get('lang.ok')}}</button>
@@ -23,22 +25,23 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" id="merge-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" id="merge-close" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">{!! Lang::get('lang.merge-ticket') !!} </h4>
             </div><!-- /.modal-header-->
-            <div class ="modal-body">
+            <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4">
                     </div>
-                    <div class="col-md-6" id="merge_loader"  style="display:none;">
-                        <img src="{{asset("lb-faveo/media/images/gifloader.gif")}}"><br/><br/><br/>
+                    <div class="col-md-6" id="merge_loader" style="display:none;">
+                        <img src="{{asset("lb-faveo/media/images/gifloader.gif")}}"><br /><br /><br />
                     </div><!-- /.merge-loader -->
                 </div>
                 <div id="merge_body">
                     <div id="merge-body-alert">
                         <div class="row">
                             <div class="col-md-12">
-                                <div id="merge-succ-alert" class="alert alert-success alert-dismissable" style="display:none;" >
+                                <div id="merge-succ-alert" class="alert alert-success alert-dismissable" style="display:none;">
                                     <!--<button id="dismiss-merge" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
                                     <h4><i class="icon fa fa-check"></i>{!! Lang::get('lang.alert') !!}!</h4>
                                     <div id="message-merge-succ"></div>
@@ -60,13 +63,16 @@
                             </div>
                             <div class="col-md-6">
                                 <label>{!! Lang::get('lang.select-pparent-ticket') !!}</label>
-                                <select class="form-control" id="select-merge-parent"  name='p_id' data-placeholder="{!! Lang::get('lang.select_tickets') !!}" style="width: 100%;"><option value=""></option></select>
+                                <select class="form-control" id="select-merge-parent" name='p_id' data-placeholder="{!! Lang::get('lang.select_tickets') !!}"
+                                    style="width: 100%;">
+                                    <option value=""></option>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label>{!! Lang::get('lang.merge-reason') !!}</label>
-                                <textarea  name="reason" class="form-control" height="120px"></textarea>
+                                <textarea name="reason" class="form-control" height="120px"></textarea>
                             </div>
 
                         </div>
@@ -74,8 +80,9 @@
                 </div><!-- merge-body -->
             </div><!-- /.modal-body -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">{!! Lang::get('lang.close') !!}</button>
-                <input  type="submit" id="merge-btn" class="btn btn-primary pull-right" value="{!! Lang::get('lang.merge') !!}"></input>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">{!!
+                    Lang::get('lang.close') !!}</button>
+                <input type="submit" id="merge-btn" class="btn btn-primary pull-right" value="{!! Lang::get('lang.merge') !!}"></input>
                 {!! Form::close() !!}
             </div><!-- /.modal-footer -->
         </div><!-- /.modal-content -->
@@ -86,15 +93,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" id="assign-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" id="assign-close" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">{!! Lang::get('lang.assign-ticket') !!} </h4>
             </div><!-- /.modal-header-->
-            <div class ="modal-body">
+            <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4">
                     </div>
-                    <div class="col-md-6" id="assign_loader"  style="display:none;">
-                        <img src="{{asset("lb-faveo/media/images/gifloader.gif")}}"><br/><br/><br/>
+                    <div class="col-md-6" id="assign_loader" style="display:none;">
+                        <img src="{{asset("lb-faveo/media/images/gifloader.gif")}}"><br /><br /><br />
                     </div><!-- /.merge-loader -->
                 </div>
                 <div id="assign_body">
@@ -113,12 +121,12 @@
                                     ?>
                                     <optgroup label="Teams ( {!! $count_teams !!} )">
                                         @foreach($teams as $team)
-                                        <option  value="team_{{$team->id}}">{!! $team->name !!}</option>
+                                        <option value="team_{{$team->id}}">{!! $team->name !!}</option>
                                         @endforeach
                                     </optgroup>
                                     <optgroup label="Agents ( {!! $count_assign !!} )">
                                         @foreach($assign as $user)
-                                        <option  value="user_{{$user->id}}">{{$user->first_name." ".$user->last_name}}</option>
+                                        <option value="user_{{$user->id}}">{{$user->first_name." ".$user->last_name}}</option>
                                         @endforeach
                                     </optgroup>
                                 </select>
@@ -128,8 +136,9 @@
                 </div><!-- mereg-body-form -->
             </div><!-- merge-body -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">{!! Lang::get('lang.close') !!}</button>
-                <input  type="submit" id="merge-btn" class="btn btn-primary pull-right" value="{!! Lang::get('lang.assign') !!}"></input>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis2">{!!
+                    Lang::get('lang.close') !!}</button>
+                <input type="submit" id="merge-btn" class="btn btn-primary pull-right" value="{!! Lang::get('lang.assign') !!}"></input>
                 {!! Form::close() !!}
             </div><!-- /.modal-footer -->
         </div><!-- /.modal-content -->

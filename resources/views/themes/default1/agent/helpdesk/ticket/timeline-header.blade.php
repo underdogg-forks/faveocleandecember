@@ -24,15 +24,14 @@
 @foreach($collection->chunk(4) as $chunk)
 <div class="col-md-6">
     <table class="table table-responsive">
-            @foreach($chunk as $key=>$value)
-            <tr>
-                <td><b>{!! $key !!}:</b></td>
-                <td>{!!$value!!}</td>
-            </tr>
-            @endforeach
+        @foreach($chunk as $key=>$value)
+        <tr>
+            <td><b>{!! $key !!}:</b></td>
+            <td>{!!$value!!}</td>
+        </tr>
+        @endforeach
     </table>
 </div>
 @endforeach
 @include('themes.default1.agent.helpdesk.filters.tags')
 <?php Event::fire(new App\Events\TicketDetailTable($TicketData)); ?>
-        

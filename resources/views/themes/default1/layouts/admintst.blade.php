@@ -37,7 +37,7 @@
 
 <body class="skin-pink fixed">
     <div class="wrapper">
-Hello World
+        Hello World
         <header class="main-header">
             <a href="../../index2.html" class="logo"><b>Faveo </b>HELPDESK</a>
             <!-- Header Navbar: style can be found in header.less -->

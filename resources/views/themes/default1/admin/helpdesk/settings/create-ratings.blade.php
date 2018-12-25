@@ -44,7 +44,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif
@@ -78,17 +78,20 @@ class="active"
         <div class="form-group {{ $errors->has('rating_scale') ? 'has-error' : '' }}">
             {!! Form::label('rating_scale',Lang::get('lang.rating_scale')) !!}<span style="color:red;">*</span>
             <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.rating-msg1') !!}</div>
-            {!! Form::select('rating_scale',['1' => '1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8'],null,['class' => 'form-control']) !!}
+            {!! Form::select('rating_scale',['1' =>
+            '1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8'],null,['class' => 'form-control']) !!}
         </div>
         <div class="form-group {{ $errors->has('rating_area') ? 'has-error' : '' }}">
             {!! Form::label('rating_area',Lang::get('lang.rating_area')) !!}<span style="color:red;">*</span>
-            {!! Form::select('rating_area',['Helpdesk Area' => 'Helpdesk Area','Comment Area'=>'Comment Area'],null,['class' => 'form-control']) !!}
+            {!! Form::select('rating_area',['Helpdesk Area' => 'Helpdesk Area','Comment Area'=>'Comment
+            Area'],null,['class' => 'form-control']) !!}
         </div>
         <div class="form-group {{ $errors->has('restrict') ? 'has-error' : '' }}">
             <!-- gender -->
             {!! Form::label('gender',Lang::get('lang.rating_restrict')) !!}<span style="color:red;">*</span>
             <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.rating-msg2') !!}</div>
-            {!! Form::select('restrict',['General' => 'general','Support'=>'support'],null,['class' => 'form-control']) !!}
+            {!! Form::select('restrict',['General' => 'general','Support'=>'support'],null,['class' => 'form-control'])
+            !!}
         </div>
         <div class="form-group {{ $errors->has('allow_modification') ? 'has-error' : '' }}">
             <!-- Email user -->
@@ -101,7 +104,7 @@ class="active"
                 <div class="col-xs-2">
                     {!! Form::radio('allow_modification','0') !!} {{Lang::get('lang.no')}}
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
     <div class="box-footer">

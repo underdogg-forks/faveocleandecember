@@ -31,25 +31,25 @@ class="active"
 {!!Form::model($teams, ['url'=>'teams/'.$teams->id , 'method'=> 'PATCH'])!!}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{!! Lang::get('lang.edit_a_team') !!}</h3>	
+        <h3 class="box-title">{!! Lang::get('lang.edit_a_team') !!}</h3>
     </div>
     <div class="box-body">
         @if(Session::has('errors'))
-            <div class="alert alert-danger alert-dismissable">
-                <i class="fa fa-ban"></i>
-                <b>Alert!</b>
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <br/>
-                @if($errors->first('name'))
-                <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
-                @endif
-                @if($errors->first('team_lead'))
-                <li class="error-message-padding">{!! $errors->first('team_lead', ':message') !!}</li>
-                @endif
-                @if($errors->first('status'))
-                <li class="error-message-padding">{!! $errors->first('status', ':message') !!}</li>
-                @endif
-            </div>
+        <div class="alert alert-danger alert-dismissable">
+            <i class="fa fa-ban"></i>
+            <b>Alert!</b>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <br />
+            @if($errors->first('name'))
+            <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
+            @endif
+            @if($errors->first('team_lead'))
+            <li class="error-message-padding">{!! $errors->first('team_lead', ':message') !!}</li>
+            @endif
+            @if($errors->first('status'))
+            <li class="error-message-padding">{!! $errors->first('status', ':message') !!}</li>
+            @endif
+        </div>
         @endif
         <div class="row">
             <!-- name -->
@@ -60,7 +60,9 @@ class="active"
             <!-- team lead -->
             <div class="col-xs-6 form-group {{ $errors->has('team_lead') ? 'has-error' : '' }}">
                 {!! Form::label('team_lead',Lang::get('lang.team_lead')) !!}
-                {!! Form::select('team_lead',[''=>Lang::get('lang.select_a_team_lead'), Lang::get('lang.members')=>$user->pluck('full_name','id')->toArray()],null,['class' => 'form-control']) !!}	
+                {!! Form::select('team_lead',[''=>Lang::get('lang.select_a_team_lead'),
+                Lang::get('lang.members')=>$user->pluck('full_name','id')->toArray()],null,['class' => 'form-control'])
+                !!}
             </div>
         </div>
         <!-- status -->

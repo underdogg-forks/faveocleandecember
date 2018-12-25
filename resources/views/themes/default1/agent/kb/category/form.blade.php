@@ -1,22 +1,21 @@
-
-<div class="box-body" >
-@if(Session::has('success'))
-    <div class="alert alert-success alert-dismissable">
-        <i class="fa  fa-check-circle"></i>
-        <b>Success</b>
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{Session::get('success')}}
-    </div>
-    @endif
-    <!-- failure message -->
-    @if(Session::has('fails'))
-    <div class="alert alert-danger alert-dismissable">
-        <i class="fa fa-ban"></i>
-        <b>Fail!</b>
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{Session::get('fails')}}
-    </div>
-    @endif
+<div class="box-body">
+	@if(Session::has('success'))
+	<div class="alert alert-success alert-dismissable">
+		<i class="fa  fa-check-circle"></i>
+		<b>Success</b>
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		{{Session::get('success')}}
+	</div>
+	@endif
+	<!-- failure message -->
+	@if(Session::has('fails'))
+	<div class="alert alert-danger alert-dismissable">
+		<i class="fa fa-ban"></i>
+		<b>Fail!</b>
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		{{Session::get('fails')}}
+	</div>
+	@endif
 
 	<div class="row">
 
@@ -28,7 +27,7 @@
 
 		</div>
 
-		{{--  --}}
+		{{-- --}}
 
 		<div class="col-xs-4 form-group {{ $errors->has('status') ? 'has-error' : '' }}">
 
@@ -45,11 +44,11 @@
 		</div>
 
 	</div>
-		<div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
-				{!! Form::label('description',Lang::get('lang.description')) !!}
-				{!! $errors->first('description', '<spam class="help-block">:message</spam>') !!}
+	<div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
+		{!! Form::label('description',Lang::get('lang.description')) !!}
+		{!! $errors->first('description', '<spam class="help-block">:message</spam>') !!}
 
-					{!! Form::textarea('description',null,['class' => 'form-control','size' => '50x10','id'=>'myNicEditor','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
-		</div>
+		{!! Form::textarea('description',null,['class' => 'form-control','size' =>
+		'50x10','id'=>'myNicEditor','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
+	</div>
 </div>
-

@@ -5,6 +5,6 @@
 @forelse($ticket->thread as $thread)
 {!! $thread->body !!}
 <hr>
-@empty 
+@empty
 
 @endforelse

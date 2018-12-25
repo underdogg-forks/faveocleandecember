@@ -1,19 +1,19 @@
 @extends('themes.default1.agent.layout.agent')
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('widget')
-    active
+active
 @stop
 @section('side1')
-    class="active"
+class="active"
 @stop
 
 @section('content')
 
-	{!! Form::model($side,['url' => 'side1/'.$side->id, 'method' => 'PATCH','files'=>true]) !!}
+{!! Form::model($side,['url' => 'side1/'.$side->id, 'method' => 'PATCH','files'=>true]) !!}
 
 <!-- <div class="form-group {{ $errors->has('company_name') ? 'has-error' : '' }}"> -->
-	<!-- table  -->
+<!-- table  -->
 
 <div class="box box-primary">
     @if(Session::has('success'))
@@ -34,41 +34,43 @@
     </div>
     @endif
     <div class="box-header">
-        <h3 class="box-title">{{Lang::get('lang.sidewidget1')}}</h3>  {!! Form::submit(Lang::get('lang.save'),['class'=>'form-group btn btn-primary pull-right'])!!}
+        <h3 class="box-title">{{Lang::get('lang.sidewidget1')}}</h3> {!!
+        Form::submit(Lang::get('lang.save'),['class'=>'form-group btn btn-primary pull-right'])!!}
     </div>
 
     <div class="box-body">
 
-    <div class="row">
+        <div class="row">
 
 
-    <div class="col-md-10">
+            <div class="col-md-10">
 
-        <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
+                <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
 
-            {!! Form::label('title',Lang::get('lang.title')) !!}
-            {!! $errors->first('title', '<spam class="help-block">:message</spam>') !!}
-            {!! Form::text('title',null,['class' => 'form-control']) !!}
+                    {!! Form::label('title',Lang::get('lang.title')) !!}
+                    {!! $errors->first('title', '<spam class="help-block">:message</spam>') !!}
+                    {!! Form::text('title',null,['class' => 'form-control']) !!}
+
+                </div>
+
+                <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
+                    {!! Form::label('content',Lang::get('lang.content')) !!}
+                    {!! $errors->first('content', '<spam class="help-block">:message</spam>') !!}
+                    {!! Form::textarea('content',null,['class' => 'form-control','size' =>
+                    '128x10','id'=>'footer','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-            {!! Form::label('content',Lang::get('lang.content')) !!}
-            {!! $errors->first('content', '<spam class="help-block">:message</spam>') !!}
-            {!! Form::textarea('content',null,['class' => 'form-control','size' => '128x10','id'=>'footer','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
-        </div>
-
     </div>
-
-    </div>
-
-    </div>
-<script type="text/javascript">
+    <script type="text/javascript">
         $(function () {
             $("textarea").wysihtml5();
         });
-</script>
-@stop
-@section('FooterInclude')
+    </script>
+    @stop
+    @section('FooterInclude')
 
-@stop
+    @stop

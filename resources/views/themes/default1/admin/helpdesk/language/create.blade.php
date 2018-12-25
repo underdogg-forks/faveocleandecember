@@ -61,7 +61,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('language-name'))
             <li class="error-message-padding">{!! $errors->first('language-name', ':message') !!}</li>
             @endif

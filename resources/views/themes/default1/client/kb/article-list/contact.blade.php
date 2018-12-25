@@ -1,7 +1,7 @@
 @extends('themes.default1.client.layout.client')
 
 @section('contact')
-    class = "active"
+class = "active"
 @stop
 
 @section('check')

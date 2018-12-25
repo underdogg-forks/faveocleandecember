@@ -8,7 +8,7 @@
             <table class="table table-compact table-striped">
                 <thead></thead>
                 <tbody>
-                @if ($scaled)
+                    @if ($scaled)
                     <tr>
                         <td>{{ Lang::get('laravel-filemanager::lfm.resize-ratio') }}</td>
                         <td>{{ number_format($ratio, 2) }}</td>
@@ -19,23 +19,23 @@
                             {{ Lang::get('laravel-filemanager::lfm.resize-true') }}
                         </td>
                     </tr>
-                @endif
-                <tr>
-                    <td>{{ Lang::get('laravel-filemanager::lfm.resize-old-height') }}</td>
-                    <td>{{ $original_height }}px</td>
-                </tr>
-                <tr>
-                    <td>{{ Lang::get('laravel-filemanager::lfm.resize-old-width') }}</td>
-                    <td>{{ $original_width }}px</td>
-                </tr>
-                <tr>
-                    <td>{{ Lang::get('laravel-filemanager::lfm.resize-new-height') }}</td>
-                    <td><span id="height_display"></span></td>
-                </tr>
-                <tr>
-                    <td>{{ Lang::get('laravel-filemanager::lfm.resize-new-width') }}</td>
-                    <td><span id="width_display"></span></td>
-                </tr>
+                    @endif
+                    <tr>
+                        <td>{{ Lang::get('laravel-filemanager::lfm.resize-old-height') }}</td>
+                        <td>{{ $original_height }}px</td>
+                    </tr>
+                    <tr>
+                        <td>{{ Lang::get('laravel-filemanager::lfm.resize-old-width') }}</td>
+                        <td>{{ $original_width }}px</td>
+                    </tr>
+                    <tr>
+                        <td>{{ Lang::get('laravel-filemanager::lfm.resize-new-height') }}</td>
+                        <td><span id="height_display"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{{ Lang::get('laravel-filemanager::lfm.resize-new-width') }}</td>
+                        <td><span id="width_display"></span></td>
+                    </tr>
                 </tbody>
             </table>
 

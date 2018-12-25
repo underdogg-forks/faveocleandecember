@@ -44,8 +44,8 @@ class="active"
         ->addColumn(Lang::get('lang.name'),
         Lang::get('lang.website'),
         Lang::get('lang.phone'),
-        Lang::get('lang.action'))  // these are the column headings to be shown
-        ->setUrl(route('org.list'))  // this is the route where data will be retrieved
+        Lang::get('lang.action')) // these are the column headings to be shown
+        ->setUrl(route('org.list')) // this is the route where data will be retrieved
         ->render() !!}
     </div>
 </div>

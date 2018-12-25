@@ -40,7 +40,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif
@@ -86,7 +86,7 @@ class="active"
     </div>
 </div>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $("textarea").wysihtml5();
     });
 </script>

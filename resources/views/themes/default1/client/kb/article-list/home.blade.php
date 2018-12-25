@@ -68,25 +68,27 @@ class = "active"
                         $article = $article->where('type', '1');
                         $article = $article->orderBy('publish_time','desc')->get();
                         ?>
-                        @forelse($article as $arti)
-                        <li>
-                            <i class="fa-li fa fa-list-alt fa-fw text-muted"></i>
-                            <h3 class="h5"><a href="#"><a href="{{url('show/'.$arti->slug)}}">{{$arti->name}}</a></h3>
-                            <span class="article-meta">{{$arti->created_at->format('l, d-m-Y')}}</span>
-                            <?php
+                    @forelse($article as $arti)
+                    <li>
+                        <i class="fa-li fa fa-list-alt fa-fw text-muted"></i>
+                        <h3 class="h5"><a href="#"><a href="{{url('show/'.$arti->slug)}}">{{$arti->name}}</a></h3>
+                        <span class="article-meta">{{$arti->created_at->format('l, d-m-Y')}}</span>
+                        <?php
                             $str = $arti->description;
                             $len = strlen($str);
 
                             $excerpt = App\Http\Controllers\Client\kb\UserController::getExcerpt($str, $startPos = 0, $maxLength = 20);
                             ?>
-                            {!! strip_tags($excerpt) !!} <br/><a class="more-link text-center" href="{{url('show/'.$arti->slug)}}" style="color: orange">{!! Lang::get('lang.read_more') !!}</a>
-                        </li>
-                        @empty
-                        <p>{!! Lang::get('lang.no_article') !!}</p>
-                        @endforelse
+                        {!! strip_tags($excerpt) !!} <br /><a class="more-link text-center" href="{{url('show/'.$arti->slug)}}"
+                            style="color: orange">{!! Lang::get('lang.read_more') !!}</a>
+                    </li>
+                    @empty
+                    <p>{!! Lang::get('lang.no_article') !!}</p>
+                    @endforelse
                     <?php } ?>
                 </ul>
-                <p class="more-link text-center"><a href="{{url('category-list/'.$category->slug)}}" class="btn btn-custom btn-xs">{!! Lang::get('lang.view_all') !!}</a></p>
+                <p class="more-link text-center"><a href="{{url('category-list/'.$category->slug)}}" class="btn btn-custom btn-xs">{!!
+                        Lang::get('lang.view_all') !!}</a></p>
             </section>
         </div>
         @endforeach

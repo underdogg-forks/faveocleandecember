@@ -1,6 +1,6 @@
 @extends('themes.default1.agent.layout.agent')
 
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('pages')
 active
@@ -24,7 +24,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif
@@ -44,23 +44,24 @@ class="active"
         @endif
         <div class="col-md-9">
             <div class="box box-primary">
-                <div class="box-header with-border">  
+                <div class="box-header with-border">
                     <h3 class="box-title">{!! Lang::get('lang.addpages') !!}</h3>
                 </div>
-                <div class="box-body"> 
+                <div class="box-body">
                     <div class="row">
                         <div class="col-md-6 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             {!! Form::label('name',Lang::get('lang.name')) !!}<span class="text-red"> *</span>
 
                             {!! Form::text('name',null,['class' => 'form-control']) !!}
                         </div>
-                        
+
                     </div>
                     <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                         {!! Form::label('description',Lang::get('lang.description')) !!}
 
                         <div class="form-group" style="background-color:white">
-                            {!! Form::textarea('description',null,['class' => 'form-control color','size' => '110x15','id'=>'myNicEditor','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
+                            {!! Form::textarea('description',null,['class' => 'form-control color','size' =>
+                            '110x15','id'=>'myNicEditor','placeholder'=>Lang::get('lang.enter_the_description')]) !!}
                         </div>
                     </div>
                 </div>
@@ -109,21 +110,21 @@ class="active"
     </div>
 </div>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $("textarea").wysihtml5();
     });
 </script>
 
 <script>
-    $(function() {
-        
+    $(function () {
+
         $('input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue'
         });
         $('input[type="radio"]').iCheck({
             radioClass: 'iradio_flat-blue'
         });
-    
-    });        
+
+    });
 </script>
 @stop

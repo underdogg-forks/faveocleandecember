@@ -32,7 +32,7 @@ class="active"
 {!! Form::open(array('action' => 'Admin\helpdesk\GroupController@store' , 'method' => 'post') )!!}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"> {{Lang::get('lang.create_a_group')}} </h3> 
+        <h3 class="box-title"> {{Lang::get('lang.create_a_group')}} </h3>
     </div>
     <div class="box-body">
         @if(Session::has('errors'))
@@ -40,7 +40,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b> {!! Lang::get('lang.alert') !!}</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif

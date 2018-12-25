@@ -15,9 +15,9 @@ class="active"
 <!-- content -->
 @section('content')
 
-	<!-- <section class="content"> -->
+<!-- <section class="content"> -->
 <div class="box box-primary">
-	
+
 	<div class="box-header">
 		<h3 class="box-title">hi</h3>
 	</div>
@@ -26,5 +26,5 @@ class="active"
 		<pre>hello</pre>
 	</div>
 
-@stop
-<!-- /content -->
+	@stop
+	<!-- /content -->

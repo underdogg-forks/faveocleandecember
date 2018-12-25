@@ -31,7 +31,7 @@ class="active"
 {!! Form::model($systems,['url' => 'postsystem/'.$systems->id, 'method' => 'PATCH' , 'id'=>'formID']) !!}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{{Lang::get('lang.system-settings')}}</h3> 
+        <h3 class="box-title">{{Lang::get('lang.system-settings')}}</h3>
     </div>
     <!-- Helpdesk Status: radio Online Offline -->
     <div class="box-body">
@@ -47,7 +47,7 @@ class="active"
         @if(Session::has('fails'))
         <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <b>{!! Lang::get('lang.alert') !!}!</b><br/>
+            <b>{!! Lang::get('lang.alert') !!}!</b><br />
             <li class="error-message-padding">{!!Session::get('fails')!!}</li>
         </div>
         @endif
@@ -57,7 +57,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('user_name'))
             <li class="error-message-padding">{!! $errors->first('user_name', ':message') !!}</li>
             @endif
@@ -73,7 +73,7 @@ class="active"
         </div>
         @endif
         <div class="row">
-           
+
             <!-- Helpdesk Name/Title: text Required   -->
             <div class="col-md-4">
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -82,8 +82,8 @@ class="active"
                     {!! Form::text('name',$systems->name,['class' => 'form-control']) !!}
                 </div>
             </div>
-             <!-- Helpdesk URL:      text   Required -->
-             <div class="col-md-4">
+            <!-- Helpdesk URL:      text   Required -->
+            <div class="col-md-4">
                 <div class="form-group {{ $errors->has('url') ? 'has-error' : '' }}">
                     {!! Form::label('url',Lang::get('lang.url')) !!}
                     {!! $errors->first('url', '<spam class="help-block">:message</spam>') !!}
@@ -95,7 +95,8 @@ class="active"
                 <div class="form-group {{ $errors->has('time_zone') ? 'has-error' : '' }}">
                     {!! Form::label('time_zone',Lang::get('lang.timezone')) !!}
                     {!! $errors->first('time_zone', '<spam class="help-block">:message</spam>') !!}
-                    {!!Form::select('time_zone',['Time Zones'=>$timezones->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
+                    {!!Form::select('time_zone',['Time
+                    Zones'=>$timezones->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
                 </div>
             </div>
         </div>
@@ -105,10 +106,11 @@ class="active"
                 <div class="form-group {{ $errors->has('date_time_format') ? 'has-error' : '' }}">
                     {!! Form::label('date_time_format',Lang::get('lang.date_time')) !!}
                     {!! $errors->first('date_time_format', '<spam class="help-block">:message</spam>') !!}
-                    {!! Form::select('date_time_format',['Date Time Formats'=>$date_time->pluck('format','id')->toArray()],null,['class' => 'form-control']) !!}
+                    {!! Form::select('date_time_format',['Date Time
+                    Formats'=>$date_time->pluck('format','id')->toArray()],null,['class' => 'form-control']) !!}
                 </div>
             </div>
-           
+
             <div class="col-md-4">
                 <div class="form-group">
                     {!! Form::label('status',Lang::get('lang.status')) !!}
@@ -127,16 +129,18 @@ class="active"
                     {!! Form::label('user_set_ticket_status',Lang::get('lang.user_set_ticket_status')) !!}
                     <div class="row">
                         <div class="col-xs-5">
-                            <input type="radio" name="user_set_ticket_status" value="0" @if($common_setting->status == '0')checked="true" @endif>&nbsp;{{Lang::get('lang.no')}}
+                            <input type="radio" name="user_set_ticket_status" value="0" @if($common_setting->status ==
+                            '0')checked="true" @endif>&nbsp;{{Lang::get('lang.no')}}
                         </div>
                         <div class="col-xs-6">
-                            <input type="radio" name="user_set_ticket_status" value="1" @if($common_setting->status == '1')checked="true" @endif>&nbsp;{{Lang::get('lang.yes')}}
+                            <input type="radio" name="user_set_ticket_status" value="1" @if($common_setting->status ==
+                            '1')checked="true" @endif>&nbsp;{{Lang::get('lang.yes')}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">    
+        <div class="row">
             <div class="col-md-4" data-toggle="tooltip" title="{!! Lang::get('lang.the_rtl_support_is_only_applicable_to_the_outgoing_mails') !!}">
                 <div class="form-group">
                     {!! Form::label('status',Lang::get('lang.rtl')) !!}
@@ -145,7 +149,8 @@ class="active"
                             <?php
                             $rtl = App\Model\helpdesk\Settings\CommonSettings::where('option_name', '=', 'enable_rtl')->first();
                             ?>
-                            <input type="checkbox" name="enable_rtl" @if($rtl->option_value == 1) checked @endif> {{Lang::get('lang.enable')}}
+                            <input type="checkbox" name="enable_rtl" @if($rtl->option_value == 1) checked @endif>
+                            {{Lang::get('lang.enable')}}
                         </div>
                     </div>
                 </div>
@@ -155,10 +160,12 @@ class="active"
                     {!! Form::label('send_otp',Lang::get('lang.allow_unverified_users_to_create_ticket')) !!}
                     <div class="row">
                         <div class="col-xs-5">
-                            <input type="radio" name="send_otp" value="0" @if($send_otp->status == '0')checked="true" @endif>&nbsp;{{Lang::get('lang.yes')}}
+                            <input type="radio" name="send_otp" value="0" @if($send_otp->status == '0')checked="true"
+                            @endif>&nbsp;{{Lang::get('lang.yes')}}
                         </div>
                         <div class="col-xs-6">
-                            <input type="radio" name="send_otp" value="1" @if($send_otp->status == '1')checked="true" @endif>&nbsp;{{Lang::get('lang.no')}}
+                            <input type="radio" name="send_otp" value="1" @if($send_otp->status == '1')checked="true"
+                            @endif>&nbsp;{{Lang::get('lang.no')}}
                         </div>
                     </div>
                 </div>
@@ -168,16 +175,18 @@ class="active"
                     {!! Form::label('email_mandatory',Lang::get('lang.make-email-mandatroy')) !!}
                     <div class="row">
                         <div class="col-xs-5">
-                            <input type="radio" name="email_mandatory" value="1" @if($email_mandatory->status == '1')checked="true" @endif>&nbsp;{{Lang::get('lang.yes')}}
+                            <input type="radio" name="email_mandatory" value="1" @if($email_mandatory->status ==
+                            '1')checked="true" @endif>&nbsp;{{Lang::get('lang.yes')}}
                         </div>
                         <div class="col-xs-6">
-                            <input type="radio" name="email_mandatory" value="0" @if($email_mandatory->status == '0')checked="true" @endif>&nbsp;{{Lang::get('lang.no')}}
+                            <input type="radio" name="email_mandatory" value="0" @if($email_mandatory->status ==
+                            '0')checked="true" @endif>&nbsp;{{Lang::get('lang.no')}}
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
+
+
         </div>
     </div>
     <div class="box-footer">

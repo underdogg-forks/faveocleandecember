@@ -17,13 +17,14 @@ class="active"
 @stop
 
 @section('profileimg')
-<img src="{{Auth::user()->profile_pic}}" class="img-circle" alt="User Image" width="100%"/>
+<img src="{{Auth::user()->profile_pic}}" class="img-circle" alt="User Image" width="100%" />
 @stop
 
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><b>{!! Lang::get('lang.profile') !!}</b>&nbsp;&nbsp;<a href="{{URL::route('agent-profile-edit')}}"><i class="fa fa-fw fa-edit"> </i></a></h3>
+        <h3 class="box-title"><b>{!! Lang::get('lang.profile') !!}</b>&nbsp;&nbsp;<a href="{{URL::route('agent-profile-edit')}}"><i
+                    class="fa fa-fw fa-edit"> </i></a></h3>
         @if(Session::has('success'))
         <br><br>
         <div class="alert alert-success alert-dismissable">
@@ -70,22 +71,28 @@ class="active"
             <div class="box-body">
                 <div class="form-group row">
                     @if($user->gender == 1)
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.gender') !!}:</label></div> <div class='col-xs-7'>{{ 'Male' }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.gender') !!}:</label></div>
+                    <div class='col-xs-7'>{{ 'Male' }}</div>
                     @else
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.gender') !!}:</label></div> <div class='col-xs-7'>{{ 'Female' }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.gender') !!}:</label></div>
+                    <div class='col-xs-7'>{{ 'Female' }}</div>
                     @endif
                 </div>
                 <div class="form-group  row">
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.department') !!}:</label></div> <div class='col-xs-7'> {{ $dept }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.department') !!}:</label></div>
+                    <div class='col-xs-7'> {{ $dept }}</div>
                 </div>
                 <div class="form-group  row">
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.group') !!}:</label></div> <div class='col-xs-7'> {{ $grp }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.group') !!}:</label></div>
+                    <div class='col-xs-7'> {{ $grp }}</div>
                 </div>
                 <div class="form-group  row">
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.company') !!}:</label></div> <div class='col-xs-7'> {{ $user->company }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.company') !!}:</label></div>
+                    <div class='col-xs-7'> {{ $user->company }}</div>
                 </div>
                 <div class="form-group  row">
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.role') !!}:</label></div> <div class='col-xs-7'>  {{ $user->role }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.role') !!}:</label></div>
+                    <div class='col-xs-7'> {{ $user->role }}</div>
                 </div>
             </div>
         </div>
@@ -95,13 +102,16 @@ class="active"
             </div>
             <div class="box-body">
                 <div class="form-group row">
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.email') !!}:</label></div> <div class='col-xs-7'> {{ $user->email }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.email') !!}:</label></div>
+                    <div class='col-xs-7'> {{ $user->email }}</div>
                 </div>
                 <div class="form-group row">
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.phone_number') !!}:</label></div> <div class='col-xs-7'> {{ $user->ext }}{{ $user->phone_number }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.phone_number') !!}:</label></div>
+                    <div class='col-xs-7'> {{ $user->ext }}{{ $user->phone_number }}</div>
                 </div>
                 <div class="form-group row">
-                    <div class='col-xs-4'><label>{!! Lang::get('lang.mobile') !!}:</label></div> <div class='col-xs-7'> {{ $user->mobile }}</div>
+                    <div class='col-xs-4'><label>{!! Lang::get('lang.mobile') !!}:</label></div>
+                    <div class='col-xs-7'> {{ $user->mobile }}</div>
                 </div>
             </div>
         </div>

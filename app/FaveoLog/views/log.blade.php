@@ -21,17 +21,18 @@ class="active"
 @stop
 @section('content')
 <style>
-
-
     .stack {
         font-size: 0.85em;
     }
+
     .date {
         min-width: 75px;
     }
+
     .text {
         word-break: break-all;
     }
+
     a.llv-active {
         z-index: 2;
         background-color: #f5f5f5;
@@ -42,7 +43,7 @@ class="active"
     <div class="box box-primary">
         <div class="box-header with-border">
             <h4>System Logs</h4>
-            
+
         </div>
         <div class="box-body">
             <div class="row">
@@ -74,14 +75,17 @@ class="active"
 
                             @foreach($logs as $key => $log)
                             <tr>
-                                <td class="text-{{{$log['level_class']}}}"><span class="glyphicon glyphicon-{{{$log['level_img']}}}-sign" aria-hidden="true"></span> &nbsp;{{ucfirst($log['level'])}}</td>
+                                <td class="text-{{{$log['level_class']}}}"><span class="glyphicon glyphicon-{{{$log['level_img']}}}-sign"
+                                        aria-hidden="true"></span> &nbsp;{{ucfirst($log['level'])}}</td>
                                 <td class="text">{{ucfirst($log['context'])}}</td>
                                 <td class="date">{{{$log['date']}}}</td>
                                 <td class="text">
-                                    @if ($log['stack']) <a class="pull-right expand btn btn-default btn-xs" data-display="stack{{{$key}}}"><span class="glyphicon glyphicon-search"></span></a>@endif
+                                    @if ($log['stack']) <a class="pull-right expand btn btn-default btn-xs"
+                                        data-display="stack{{{$key}}}"><span class="glyphicon glyphicon-search"></span></a>@endif
                                     {{{$log['text']}}}
                                     @if (isset($log['in_file'])) <br />{{{$log['in_file']}}}@endif
-                                    @if ($log['stack']) <div class="stack" id="stack{{{$key}}}" style="display: none; white-space: pre-wrap;">{{{ trim($log['stack']) }}}</div>@endif
+                                    @if ($log['stack']) <div class="stack" id="stack{{{$key}}}" style="display: none; white-space: pre-wrap;">{{{
+                                        trim($log['stack']) }}}</div>@endif
                                 </td>
                             </tr>
                             @endforeach
@@ -90,9 +94,11 @@ class="active"
                     </table>
                     @endif
                     <div>
-                        <a href="?dl={{ base64_encode($current_file) }}"><span class="glyphicon glyphicon-download-alt"></span> Download file</a>
+                        <a href="?dl={{ base64_encode($current_file) }}"><span class="glyphicon glyphicon-download-alt"></span>
+                            Download file</a>
                         -
-                        <a id="delete-log" href="?del={{ base64_encode($current_file) }}"><span class="glyphicon glyphicon-trash"></span> Delete file</a>
+                        <a id="delete-log" href="?del={{ base64_encode($current_file) }}"><span class="glyphicon glyphicon-trash"></span>
+                            Delete file</a>
                     </div>
                 </div>
             </div>
@@ -107,26 +113,26 @@ class="active"
 <!--<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>-->
 <script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 <script>
-$(document).ready(function () {
-    $('#table-log').DataTable({
-        "order": [1, 'desc'],
-        "stateSave": true,
-        "stateSaveCallback": function (settings, data) {
-            window.localStorage.setItem("datatable", JSON.stringify(data));
-        },
-        "stateLoadCallback": function (settings) {
-            var data = JSON.parse(window.localStorage.getItem("datatable"));
-            if (data)
-                data.start = 0;
-            return data;
-        }
+    $(document).ready(function () {
+        $('#table-log').DataTable({
+            "order": [1, 'desc'],
+            "stateSave": true,
+            "stateSaveCallback": function (settings, data) {
+                window.localStorage.setItem("datatable", JSON.stringify(data));
+            },
+            "stateLoadCallback": function (settings) {
+                var data = JSON.parse(window.localStorage.getItem("datatable"));
+                if (data)
+                    data.start = 0;
+                return data;
+            }
+        });
+        $('.table-container').on('click', '.expand', function () {
+            $('#' + $(this).data('display')).toggle();
+        });
+        $('#delete-log').click(function () {
+            return confirm('Are you sure?');
+        });
     });
-    $('.table-container').on('click', '.expand', function () {
-        $('#' + $(this).data('display')).toggle();
-    });
-    $('#delete-log').click(function () {
-        return confirm('Are you sure?');
-    });
-});
 </script>
 @stop

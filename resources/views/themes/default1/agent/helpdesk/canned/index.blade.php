@@ -20,7 +20,9 @@ class="active"
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h2 class="box-title">{!! Lang::get('lang.canned_response') !!}</h2><a href="{{route('canned.create')}}" class="btn btn-primary pull-right">{!! Lang::get('lang.create_canned_response') !!}</a></div>
+        <h2 class="box-title">{!! Lang::get('lang.canned_response') !!}</h2><a href="{{route('canned.create')}}" class="btn btn-primary pull-right">{!!
+            Lang::get('lang.create_canned_response') !!}</a>
+    </div>
     <div class="box-body table-responsive">
         <?php
         $Canneds = App\Model\helpdesk\Agent_panel\Canned::where('user_id', '=', Auth::user()->id)->paginate(20);
@@ -44,7 +46,7 @@ class="active"
         </div>
         @endif
         <!-- Agent table -->
-        <table class="table table-bordered table-hover" id="example1"  >
+        <table class="table table-bordered table-hover" id="example1">
             <tr>
                 <th width="100px">{{Lang::get('lang.name')}}</th>
                 <th width="100px">{{Lang::get('lang.action')}}</th>
@@ -52,10 +54,12 @@ class="active"
             @foreach($Canneds as $Canned)
             <tr>
                 <td>{{$Canned->title }}</td>
-                <td> 
+                <td>
                     {!! Form::open(['route'=>['canned.destroy', $Canned->id],'method'=>'DELETE']) !!}
-                    <a data-toggle="modal" data-target="#view{!! $Canned->id !!}" href="#" class="btn btn-info btn-xs btn-flat" onClick="updateModelTitle('{{$Canned->title}}')">{!! Lang::get('lang.view') !!}</a>
-                    <a href="{!! URL::route('canned.edit',$Canned->id) !!}" class="btn btn-primary btn-xs btn-flat">{!! Lang::get('lang.edit') !!}</a>
+                    <a data-toggle="modal" data-target="#view{!! $Canned->id !!}" href="#" class="btn btn-info btn-xs btn-flat"
+                        onClick="updateModelTitle('{{$Canned->title}}')">{!! Lang::get('lang.view') !!}</a>
+                    <a href="{!! URL::route('canned.edit',$Canned->id) !!}" class="btn btn-primary btn-xs btn-flat">{!!
+                        Lang::get('lang.edit') !!}</a>
                     {!! Form::button('<i class="fa fa-trash" style="color:black;"> </i> '.Lang::get('lang.delete'),
                     ['type' => 'submit',
                     'class'=> 'btn btn-warning btn-xs btn-flat',
@@ -69,14 +73,18 @@ class="active"
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title"></h4>
                         </div>
                         <div class="modal-body">
-                            <p><pre>{!! $Canned->message !!}</pre></p>
+                            <p>
+                                <pre>{!! $Canned->message !!}</pre>
+                            </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis6">{!! Lang::get('lang.close') !!}</button>
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="dismis6">{!!
+                                Lang::get('lang.close') !!}</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -86,10 +94,10 @@ class="active"
     </div>
 </div>
 <script>
-    function updateModelTitle(title){
+    function updateModelTitle(title) {
         $('.modal-title').html(title);
     }
-    $(function() {
+    $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable({
             "paging": true,
@@ -102,4 +110,4 @@ class="active"
     });
 </script>
 @stop
-<!-- /content --> 
+<!-- /content -->

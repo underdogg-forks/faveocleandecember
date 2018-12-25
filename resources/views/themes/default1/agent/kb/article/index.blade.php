@@ -1,6 +1,6 @@
 @extends('themes.default1.agent.layout.agent')
 
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('article')
 active
@@ -40,9 +40,9 @@ class="active"
         {!! Datatable::table()
         ->addColumn(Lang::get('lang.name'),
         Lang::get('lang.publish_time'),
-        Lang::get('lang.action'))       // these are the column headings to be shown
-        ->setOrder(array(1=>'desc')) 
-        ->setUrl(route('api.article'))   // this is the route where data will be retrieved
+        Lang::get('lang.action')) // these are the column headings to be shown
+        ->setOrder(array(1=>'desc'))
+        ->setUrl(route('api.article')) // this is the route where data will be retrieved
         ->render() !!}
     </div>
 </div>

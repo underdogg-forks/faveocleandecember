@@ -1,6 +1,6 @@
 @extends('themes.default1.agent.layout.agent')
 
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('category')
 active
@@ -42,8 +42,8 @@ class="active"
                 {!! Datatable::table()
                 ->addColumn(Lang::get('lang.name'),
                 Lang::get('lang.create'),
-                Lang::get('lang.action'))       // these are the column headings to be shown
-                ->setUrl(route('api.category'))   // this is the route where data will be retrieved
+                Lang::get('lang.action')) // these are the column headings to be shown
+                ->setUrl(route('api.category')) // this is the route where data will be retrieved
                 ->render() !!}
             </div>
         </div>

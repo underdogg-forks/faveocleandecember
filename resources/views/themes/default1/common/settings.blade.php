@@ -41,7 +41,9 @@
                 <table class="table table-condensed">
 
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.company')}}</h3></td>
+                        <td>
+                            <h3 class="box-title">{{Lang::get('message.company')}}</h3>
+                        </td>
                         <td>{!! Form::submit(Lang::get('message.update'),['class'=>'btn btn-primary pull-right'])!!}</td>
 
                     </tr>
@@ -95,7 +97,8 @@
                         <td>
                             <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
 
-                                {!! Form::textarea('address',null,['class' => 'form-control','size' => '128x10','id'=>'address']) !!}
+                                {!! Form::textarea('address',null,['class' => 'form-control','size' =>
+                                '128x10','id'=>'address']) !!}
                                 <p><i> {{Lang::get('message.enter-company-address')}}</i> </p>
                             </div>
                         </td>
@@ -109,7 +112,7 @@
 
                                 {!! Form::file('logo') !!}
                                 <p><i> {{Lang::get('message.enter-the-company-logo')}}</i> </p>
-                                @if($setting->logo) 
+                                @if($setting->logo)
                                 <img src="{{asset('cart/img/logo/'.$setting->logo)}}" class="img-thumbnail" style="height: 100px;">
                                 @endif
                             </div>
@@ -118,7 +121,9 @@
                     </tr>
 
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.smtp')}}</h3></td>
+                        <td>
+                            <h3 class="box-title">{{Lang::get('message.smtp')}}</h3>
+                        </td>
                         <td></td>
                     </tr>
                     <tr>
@@ -128,7 +133,8 @@
                             <div class="form-group {{ $errors->has('driver') ? 'has-error' : '' }}">
 
 
-                                {!! Form::select('driver',['mail'=>'Mail','smtp'=>'SMTP'],null,['class' => 'form-control']) !!}
+                                {!! Form::select('driver',['mail'=>'Mail','smtp'=>'SMTP'],null,['class' =>
+                                'form-control']) !!}
                                 <p><i> {{Lang::get('message.select-email-driver')}}</i> </p>
 
 
@@ -205,7 +211,9 @@
                     </tr>
 
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.error-log')}}</h3></td>
+                        <td>
+                            <h3 class="box-title">{{Lang::get('message.error-log')}}</h3>
+                        </td>
                         <td></td>
                     </tr>
 
@@ -216,8 +224,8 @@
                             <div class="form-group {{ $errors->has('error_log') ? 'has-error' : '' }}">
 
 
-                                {!! Form::radio('error_log','1',true) !!}<span>   {{Lang::get('message.yes')}}</span>
-                                {!! Form::radio('error_log','0') !!}<span>   {{Lang::get('message.no')}}</span>
+                                {!! Form::radio('error_log','1',true) !!}<span> {{Lang::get('message.yes')}}</span>
+                                {!! Form::radio('error_log','0') !!}<span> {{Lang::get('message.no')}}</span>
                                 <p><i> {{Lang::get('message.enable-error-logging')}}</i> </p>
 
 
@@ -241,9 +249,11 @@
                         </td>
 
                     </tr>
-                    
+
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.templates')}}</h3></td>
+                        <td>
+                            <h3 class="box-title">{{Lang::get('message.templates')}}</h3>
+                        </td>
                         <td></td>
                     </tr>
 
@@ -254,7 +264,9 @@
                             <div class="form-group {{ $errors->has('welcome_mail') ? 'has-error' : '' }}">
 
 
-                                {!! Form::select('welcome_mail',['Templates'=>$template->where('type',1)->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
+                                {!!
+                                Form::select('welcome_mail',['Templates'=>$template->where('type',1)->pluck('name','id')->toArray()],null,['class'=>'form-control'])
+                                !!}
                                 <p><i> {{Lang::get('message.choose-welcome-mail-template')}}</i> </p>
 
 
@@ -270,7 +282,9 @@
                             <div class="form-group {{ $errors->has('order_mail') ? 'has-error' : '' }}">
 
 
-                                {!! Form::select('order_mail',['Templates'=>$template->where('type',7)->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
+                                {!!
+                                Form::select('order_mail',['Templates'=>$template->where('type',7)->pluck('name','id')->toArray()],null,['class'=>'form-control'])
+                                !!}
                                 <p><i> {{Lang::get('message.choose-order-mail-template')}}</i> </p>
 
 
@@ -285,7 +299,9 @@
                             <div class="form-group {{ $errors->has('forgot_password') ? 'has-error' : '' }}">
 
 
-                                {!! Form::select('forgot_password',['Templates'=>$template->where('type',2)->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
+                                {!!
+                                Form::select('forgot_password',['Templates'=>$template->where('type',2)->pluck('name','id')->toArray()],null,['class'=>'form-control'])
+                                !!}
                                 <p><i> {{Lang::get('message.choose-forgot-password-mail-template')}}</i> </p>
 
 
@@ -295,13 +311,19 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! Form::label('subscription_going_to_end',Lang::get('message.subscription-going-to-end')) !!}</b></td>
+                        <td><b>{!!
+                                Form::label('subscription_going_to_end',Lang::get('message.subscription-going-to-end'))
+                                !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('subscription_going_to_end') ? 'has-error' : '' }}">
 
 
-                                {!! Form::select('subscription_going_to_end',['Templates'=>$template->where('type',4)->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
-                                <p><i> {{Lang::get('message.choose-subscription-going-to-end-notification-email-template')}}</i> </p>
+                                {!!
+                                Form::select('subscription_going_to_end',['Templates'=>$template->where('type',4)->pluck('name','id')->toArray()],null,['class'=>'form-control'])
+                                !!}
+                                <p><i>
+                                        {{Lang::get('message.choose-subscription-going-to-end-notification-email-template')}}</i>
+                                </p>
 
 
                             </div>
@@ -315,8 +337,11 @@
                             <div class="form-group {{ $errors->has('subscription_over') ? 'has-error' : '' }}">
 
 
-                                {!! Form::select('subscription_over',['Templates'=>$template->where('type',5)->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
-                                <p><i> {{Lang::get('message.choose-mail-template-to-notify-subscription-has-over')}}</i> </p>
+                                {!!
+                                Form::select('subscription_over',['Templates'=>$template->where('type',5)->pluck('name','id')->toArray()],null,['class'=>'form-control'])
+                                !!}
+                                <p><i> {{Lang::get('message.choose-mail-template-to-notify-subscription-has-over')}}</i>
+                                </p>
 
 
                             </div>
@@ -330,7 +355,9 @@
                             <div class="form-group {{ $errors->has('cart') ? 'has-error' : '' }}">
 
 
-                                {!! Form::select('cart',['Templates'=>$template->where('type',3)->pluck('name','id')->toArray()],null,['class'=>'form-control']) !!}
+                                {!!
+                                Form::select('cart',['Templates'=>$template->where('type',3)->pluck('name','id')->toArray()],null,['class'=>'form-control'])
+                                !!}
                                 <p><i> {{Lang::get('message.choose-shoping-cart-template')}}</i> </p>
 
 
@@ -338,7 +365,7 @@
                         </td>
 
                     </tr>
-                    
+
                     {!! Form::close() !!}
                 </table>
 

@@ -57,7 +57,7 @@ class="active"
                 <i class="fa fa-ban"></i>
                 <b>{!! Lang::get('lang.alert') !!}!</b>
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <br/>
+                <br />
                 @if($errors->first('name'))
                 <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
                 @endif
@@ -78,20 +78,19 @@ class="active"
             <div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
                 <label for="inputName" class="col-sm-2 control-label">{!! Lang::get('lang.name') !!}</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" placeholder="Name" id="name" name="name" value="{!! $workflow->name !!}" required>
+                    <input type="text" class="form-control" placeholder="Name" id="name" name="name" value="{!! $workflow->name !!}"
+                        required>
                 </div>
             </div>
             <div class="form-group {!! $errors->has('status') ? 'has-error' : '' !!}">
                 <label class="col-sm-2 control-label"> {!! lang::get('lang.status') !!}</label>
                 <div class="col-sm-6">
-                    <input type="radio" id="inputEmail2" name="status" value="1" <?php
-                    if ($workflow->status == 1) {
-                        echo "checked";
+                    <input type="radio" id="inputEmail2" name="status" value="1" <?php if ($workflow->status == 1) {
+                    echo "checked";
                     }
                     ?> >&nbsp;&nbsp;<label class="control-label" for="inputEmail2">{!! Lang::get('lang.active') !!}</label>&nbsp;&nbsp;
-                    <input type="radio" id="inputEmail1" name="status" value="0" <?php
-                    if ($workflow->status == 0) {
-                        echo "checked";
+                    <input type="radio" id="inputEmail1" name="status" value="0" <?php if ($workflow->status == 0) {
+                    echo "checked";
                     }
                     ?> >&nbsp;&nbsp;<label class="control-label" for="inputEmail1">{!! Lang::get('lang.inactive') !!}</label>&nbsp;&nbsp;
                 </div>
@@ -100,7 +99,9 @@ class="active"
                 <div>
                     <label for="Exceution" class="col-sm-2 control-label">{!! Lang::get('lang.execution_order') !!}</label>
                     <div class="col-sm-6">
-                        <input type="number" class="form-control" id="execution_order" name="execution_order" placeholder="{!! Lang::get('lang.execution_order') !!}" value="{!! $workflow->order !!}" required>
+                        <input type="number" class="form-control" id="execution_order" name="execution_order"
+                            placeholder="{!! Lang::get('lang.execution_order') !!}" value="{!! $workflow->order !!}"
+                            required>
                     </div>
                 </div>
             </div>
@@ -109,26 +110,22 @@ class="active"
                 <div class="col-sm-6">
                     <select class="form-control" name="target_channel" required>
                         <option value=""> -- {!! Lang::get('lang.select_a_channel') !!} -- </option>
-                        <option value="A-0" <?php
-                        if ($workflow->target == "A-0") {
+                        <option value="A-0" <?php if ($workflow->target == "A-0") {
                             echo "selected='selected'";
-                        }
-                        ?> >Any</option>
-                        <option value="A-1" <?php
-                        if ($workflow->target == "A-1") {
+                            }
+                            ?> >Any</option>
+                        <option value="A-1" <?php if ($workflow->target == "A-1") {
                             echo "selected='selected'";
-                        }
-                        ?> >Web Forms</option>
-                        <option value="A-4" <?php
-                        if ($workflow->target == "A-4") {
+                            }
+                            ?> >Web Forms</option>
+                        <option value="A-4" <?php if ($workflow->target == "A-4") {
                             echo "selected='selected'";
-                        }
-                        ?> >API Calls</option>
-                        <option value="A-2" <?php
-                        if ($workflow->target == "A-2") {
+                            }
+                            ?> >API Calls</option>
+                        <option value="A-2" <?php if ($workflow->target == "A-2") {
                             echo "selected='selected'";
-                        }
-                        ?> >Emails</option>
+                            }
+                            ?> >Emails</option>
 
                     </select>
                 </div>
@@ -153,7 +150,7 @@ class="active"
                             <div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table  class="table table-bordered table-hover">
+                                    <table class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <td>{!! Lang::get('lang.rules') !!}</td>
@@ -170,61 +167,62 @@ class="active"
                                                 <td>
                                                     <select class="form-control" name="rule[{!! $j-1 !!}][a]" required>
                                                         <option value="">-- {!! Lang::get('lang.select_one') !!} --</option>
-                                                        <option value="email" <?php
-                                                        if ($workflow_rule->matching_scenario == 'email') {
+                                                        <option value="email" <?php if ($workflow_rule->matching_scenario
+                                                            == 'email') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.email') !!}</option>
-                                                        <option value="email_name" <?php
-                                                        if ($workflow_rule->matching_scenario == 'email_name') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.email') !!}</option>
+                                                        <option value="email_name" <?php if ($workflow_rule->matching_scenario
+                                                            == 'email_name') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.email_name') !!}</option>
-                                                        <option value="subject" <?php
-                                                        if ($workflow_rule->matching_scenario == 'subject') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.email_name') !!}</option>
+                                                        <option value="subject" <?php if ($workflow_rule->matching_scenario
+                                                            == 'subject') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?>>{!! Lang::get('lang.subject') !!}</option>
-                                                        <option value="message"  <?php
-                                                        if ($workflow_rule->matching_scenario == 'message') {
+                                                            }
+                                                            ?>>{!! Lang::get('lang.subject') !!}</option>
+                                                        <option value="message" <?php if ($workflow_rule->matching_scenario
+                                                            == 'message') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.message') !!}/{!! Lang::get('lang.body') !!}</option>
+                                                            }
+                                                            ?> >{!! Lang::get('lang.message') !!}/{!!
+                                                            Lang::get('lang.body') !!}</option>
                                                     </select>
                                                 </td>
                                                 <td class="col-md-3">
                                                     <select class="form-control" name="rule[{!! $j-1 !!}][b]" required>
                                                         <option value="">-- {!! Lang::get('lang.select_one') !!} --</option>
-                                                        <option value="equal" <?php
-                                                        if ($workflow_rule->matching_relation == 'equal') {
+                                                        <option value="equal" <?php if ($workflow_rule->matching_relation
+                                                            == 'equal') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.equal_to') !!}</option>
-                                                        <option value="not_equal" <?php
-                                                        if ($workflow_rule->matching_relation == 'not_equal') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.equal_to') !!}</option>
+                                                        <option value="not_equal" <?php if ($workflow_rule->matching_relation
+                                                            == 'not_equal') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.not_equal_to') !!}</option>
-                                                        <option value="contains" <?php
-                                                        if ($workflow_rule->matching_relation == 'contains') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.not_equal_to') !!}</option>
+                                                        <option value="contains" <?php if ($workflow_rule->matching_relation
+                                                            == 'contains') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.contains') !!}</option>
-                                                        <option value="dn_contain" <?php
-                                                        if ($workflow_rule->matching_relation == 'dn_contain') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.contains') !!}</option>
+                                                        <option value="dn_contain" <?php if ($workflow_rule->matching_relation
+                                                            == 'dn_contain') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.does_not_contain') !!}</option>
-                                                        <option value="starts" <?php
-                                                        if ($workflow_rule->matching_relation == 'starts') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.does_not_contain') !!}</option>
+                                                        <option value="starts" <?php if ($workflow_rule->matching_relation
+                                                            == 'starts') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.starts_with') !!}</option>
-                                                        <option value="ends" <?php
-                                                        if ($workflow_rule->matching_relation == 'ends') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.starts_with') !!}</option>
+                                                        <option value="ends" <?php if ($workflow_rule->matching_relation
+                                                            == 'ends') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.ends_with') !!}</option>
+                                                            }
+                                                            ?> >{!! Lang::get('lang.ends_with') !!}</option>
                                                         <!--                                                        <option value="match" <?php
                                                         if ($workflow_rule->matching_relation == 'match') {
                                                             echo "selected='selected'";
@@ -238,15 +236,17 @@ class="active"
                                                     </select>
                                                 </td>
                                                 <td class="col-md-3">
-                                                    <input class="form-control" type="text" name="rule[{!! $j-1 !!}][c]" value="{!! $workflow_rule->matching_value !!}" required>
+                                                    <input class="form-control" type="text" name="rule[{!! $j-1 !!}][c]"
+                                                        value="{!! $workflow_rule->matching_value !!}" required>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <div class="tools"> 
+                                                    <div class="tools">
                                                         <span class="btnRemove1" data-toggle="modal" data-target="#">
-                                                            <a data-toggle="tooltip" data-placement="top" title="{!! Lang::get('lang.delete') !!}" onclick="document.getElementById('firstdata{!! $j !!}').innerHTML = ''">
+                                                            <a data-toggle="tooltip" data-placement="top" title="{!! Lang::get('lang.delete') !!}"
+                                                                onclick="document.getElementById('firstdata{!! $j !!}').innerHTML = ''">
                                                                 <i class="fa fa-trash-o"></i>
                                                             </a>
-                                                        </span> 
+                                                        </span>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -254,7 +254,7 @@ class="active"
                                         </tbody>
                                     </table>
                                     <div class="row" style="padding: 10px 15px 0px">
-                                        <div class="pull-right" >
+                                        <div class="pull-right">
                                             <a class="btn btn-primary btnAdd1">{!! Lang::get('lang.add') !!}</a>
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@ class="active"
                     <div class="tab-pane" id="close">
                         <div>
                             <div class="box-body">
-                                <table  class="table table-bordered table-hover">
+                                <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <td>{!! Lang::get('lang.condition') !!}</td>
@@ -283,50 +283,51 @@ class="active"
                                         <?php $i++; ?>
                                         <tr id="seconddata{!! $i !!}">
                                             <td>
-                                                <select class="form-control" onChange="selectdata({!! $i !!})" id="selected{!! $i !!}" name="action[{!! $i !!}][a]" required>
+                                                <select class="form-control" onChange="selectdata({!! $i !!})" id="selected{!! $i !!}"
+                                                    name="action[{!! $i !!}][a]" required>
                                                     <option value="">-- {!! Lang::get('lang.select_an_action') !!} --</option>
-                                                    <optgroup label="Ticket">        
-                                                        <option value="reject" <?php
-                                                        if ($workflow_action->condition == 'reject') {
+                                                    <optgroup label="Ticket">
+                                                        <option value="reject" <?php if ($workflow_action->condition ==
+                                                            'reject') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.reject_ticket') !!}</option>                        
-                                                        <option value="department" <?php
-                                                        if ($workflow_action->condition == 'department') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.reject_ticket') !!}</option>
+                                                        <option value="department" <?php if ($workflow_action->condition
+                                                            == 'department') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.set_department') !!}</option>
-                                                        <option value="priority" <?php
-                                                        if ($workflow_action->condition == 'priority') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.set_department') !!}</option>
+                                                        <option value="priority" <?php if ($workflow_action->condition
+                                                            == 'priority') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.set_priority') !!}</option>
-                                                        <option value="sla" <?php
-                                                        if ($workflow_action->condition == 'sla') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.set_priority') !!}</option>
+                                                        <option value="sla" <?php if ($workflow_action->condition ==
+                                                            'sla') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.set_sla_plan') !!}</option>
-                                                        <option value="team" <?php
-                                                        if ($workflow_action->condition == 'team') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.set_sla_plan') !!}</option>
+                                                        <option value="team" <?php if ($workflow_action->condition ==
+                                                            'team') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.assign_team') !!}</option>
-                                                        <option value="agent" <?php
-                                                        if ($workflow_action->condition == 'agent') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.assign_team') !!}</option>
+                                                        <option value="agent" <?php if ($workflow_action->condition ==
+                                                            'agent') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.assign_agent') !!}</option>
-                                                        <option value="helptopic" <?php
-                                                        if ($workflow_action->condition == 'helptopic') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.assign_agent') !!}</option>
+                                                        <option value="helptopic" <?php if ($workflow_action->condition
+                                                            == 'helptopic') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.set_help_topic') !!}</option>
-                                                        <option value="status" <?php
-                                                        if ($workflow_action->condition == 'status') {
+                                                            }
+                                                            ?> >{!! Lang::get('lang.set_help_topic') !!}</option>
+                                                        <option value="status" <?php if ($workflow_action->condition ==
+                                                            'status') {
                                                             echo "selected='selected'";
-                                                        }
-                                                        ?> >{!! Lang::get('lang.set_ticket_status') !!}</option>
-                                                    </optgroup> 
+                                                            }
+                                                            ?> >{!! Lang::get('lang.set_ticket_status') !!}</option>
+                                                    </optgroup>
                                                 </select>
                                             </td>
                                             <td id="fill{!! $i !!}">
@@ -429,12 +430,13 @@ class="active"
 
                                             </td>
                                             <td style="text-align: center">
-                                                <div class="tools"> 
+                                                <div class="tools">
                                                     <span class="btnRemove" data-toggle="modal" data-target="#">
-                                                        <a data-toggle="tooltip" data-placement="top" title="Delete" onclick="document.getElementById('seconddata{!! $i !!}').innerHTML = ''">
+                                                        <a data-toggle="tooltip" data-placement="top" title="Delete"
+                                                            onclick="document.getElementById('seconddata{!! $i !!}').innerHTML = ''">
                                                             <i class="fa fa-trash-o"></i>
                                                         </a>
-                                                    </span> 
+                                                    </span>
                                                 </div>
                                             </td>
                                         </tr>
@@ -443,7 +445,7 @@ class="active"
                                 </table>
                                 <div class="row" style="padding: 10px 15px 0px">
                                     <div class="pull-right">
-                                        <a class="btn btn-primary btnAdd">{!! Lang::get('lang.add') !!}</a>                                            
+                                        <a class="btn btn-primary btnAdd">{!! Lang::get('lang.add') !!}</a>
                                     </div>
                                 </div>
                             </div>
@@ -454,7 +456,8 @@ class="active"
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="delect">
                         <div>
-                            <textarea name="internal_note" class="textarea" placeholder="Please Enter an internal note for your team!" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>       
+                            <textarea name="internal_note" class="textarea" placeholder="Please Enter an internal note for your team!"
+                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -472,123 +475,130 @@ class="active"
     <!-- /.row -->
 </form>
 <script>
-            $(function() {
-            $("#example1").DataTable();
-                    $('#example2').DataTable({
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
             "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false
-            });
-            });
-            function getSelectVal(val) {
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
 
-            $.ajax({
+    function getSelectVal(val) {
+
+        $.ajax({
             type: "POST",
-                    url: "",
-                    data: 'select_box=' + val,
-                    success: function(data) {
-                    $("#select-list").html(data);
-                    }
-            });
+            url: "",
+            data: 'select_box=' + val,
+            success: function (data) {
+                $("#select-list").html(data);
             }
+        });
+    }
 
 
-    $(document).ready(function() {
-    var x = 0;
-            var n = {!! $i !!};
-            $('.btnAdd').click(function() {
-    n++;
+    $(document).ready(function () {
+        var x = 0;
+        var n = {!!$i!!
+        };
+        $('.btnAdd').click(function () {
+            n++;
             $('.buttons').append('<tr id="firstdata1">' +
-            '<td>' +
-            '<select class="form-control" onChange="selectdata(' + n + ')" name="action[' + n + '][a]" id="selected' + n + '" required>' +
-            '<option value="">-- {!! Lang::get("lang.select_an_action") !!} --</option>' +
-            '<optgroup label="Ticket">' +
-            '<option value="reject">{!! Lang::get("lang.reject_ticket") !!}</option>' +
-            '<option value="department">{!! Lang::get("lang.set_department") !!}</option>' +
-            '<option value="priority">{!! Lang::get("lang.set_priority") !!}</option>' +
-            '<option value="sla">{!! Lang::get("lang.set_sla_plan") !!}</option>' +
-            '<option value="team">{!! Lang::get("lang.assign_team") !!}</option>' +
-            '<option value="agent">{!! Lang::get("lang.assign_agent") !!} </option>' +
-            '<option value="helptopic">{!! Lang::get("lang.set_help_topic") !!} </option>' +
-            '<option value="status">{!! Lang::get("lang.set_ticket_status") !!} </option>' +
-            '</select>' +
-            '</td>' +
-            '<td id="fill' + n + '">' +
-            '</td>' +
-            '<td style="text-align: center">' +
-            '<div class="tools">' +
-            '<span class="btnRemove" data-toggle="modal" data-target="#">' +
-            '<a data-toggle="tooltip" data-placement="top" title="Delete">' +
-            '<i class="fa fa-trash-o"></i>' +
-            '</a>' +
-            '</span>' +
-            '</div>' +
-            '</td>' +
-            '</tr>'); // end append
-            $('div .btnRemove').last().click(function(e) {
-    e.preventDefault();
-            $(this).closest('tr').remove();
-            x--;
+                '<td>' +
+                '<select class="form-control" onChange="selectdata(' + n + ')" name="action[' + n +
+                '][a]" id="selected' + n + '" required>' +
+                '<option value="">-- {!! Lang::get("lang.select_an_action") !!} --</option>' +
+                '<optgroup label="Ticket">' +
+                '<option value="reject">{!! Lang::get("lang.reject_ticket") !!}</option>' +
+                '<option value="department">{!! Lang::get("lang.set_department") !!}</option>' +
+                '<option value="priority">{!! Lang::get("lang.set_priority") !!}</option>' +
+                '<option value="sla">{!! Lang::get("lang.set_sla_plan") !!}</option>' +
+                '<option value="team">{!! Lang::get("lang.assign_team") !!}</option>' +
+                '<option value="agent">{!! Lang::get("lang.assign_agent") !!} </option>' +
+                '<option value="helptopic">{!! Lang::get("lang.set_help_topic") !!} </option>' +
+                '<option value="status">{!! Lang::get("lang.set_ticket_status") !!} </option>' +
+                '</select>' +
+                '</td>' +
+                '<td id="fill' + n + '">' +
+                '</td>' +
+                '<td style="text-align: center">' +
+                '<div class="tools">' +
+                '<span class="btnRemove" data-toggle="modal" data-target="#">' +
+                '<a data-toggle="tooltip" data-placement="top" title="Delete">' +
+                '<i class="fa fa-trash-o"></i>' +
+                '</a>' +
+                '</span>' +
+                '</div>' +
+                '</td>' +
+                '</tr>'); // end append
+            $('div .btnRemove').last().click(function (e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+                x--;
+            });
+        });
     });
-    });
-    });
-            $(document).ready(function() {
-    var x = 0;
-            var n = {!! $j !!};
-            $('.btnAdd1').click(function() {
-    n++;
+    $(document).ready(function () {
+        var x = 0;
+        var n = {!!$j!!
+        };
+        $('.btnAdd1').click(function () {
+            n++;
             $('.button1').append('<tr>' +
-            '<td>' +
-            '<select class="form-control" name="rule[' + n + '][a]" required>' +
-            '<option>-- {!! Lang::get("lang.select_one") !!} --</option>' +
-            '<option value="email">{!! Lang::get("lang.email") !!}</option>' +
-            '<option value="email_name">{!! Lang::get("lang.email_name") !!}</option>' +
-            '<option value="subject">{!! Lang::get("lang.subject") !!}</option>' +
-            '<option value="message">{!! Lang::get("lang.message") !!}/{!! Lang::get("lang.body") !!}</option>' +
-            '</select>' +
-            '</td>' +
-            '<td class="col-md-3">' +
-            '<select class="form-control" name="rule[' + n + '][b]" required>' +
-            '<option value="">-- {!! Lang::get("lang.select_one") !!} --</option>' +
-            '<option value="equal">{!! Lang::get("lang.equal_to") !!}</option>' +
-            '<option value="not_equal">{!! Lang::get("lang.not_equal_to") !!}</option>' +
-            '<option value="contains">{!! Lang::get("lang.contains") !!}</option>' +
-            '<option value="dn_contain">{!! Lang::get("lang.does_not_contain") !!}</option>' +
-            '<option value="starts">{!! Lang::get("lang.starts_with") !!}</option>' +
-            '<option value="ends">{!! Lang::get("lang.ends_with") !!}</option>' +
-            '</select>' +
-            '</td>' +
-            '<td class="col-md-3"> <input class="form-control" type="text" name="rule[' + n + '][c]" required> </td>' +
-            '<td style="text-align: center">' +
-            '<div class="tools"> <span class="btnRemove1" data-toggle="modal" data-target="#"><a data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o"></i></a></span> </div>' +
-            '</td>' +
-            '</tr>'); // end append
-            $('div .btnRemove1').last().click(function(e) {
-    e.preventDefault();
-            $(this).closest('tr').remove();
-            x--;
+                '<td>' +
+                '<select class="form-control" name="rule[' + n + '][a]" required>' +
+                '<option>-- {!! Lang::get("lang.select_one") !!} --</option>' +
+                '<option value="email">{!! Lang::get("lang.email") !!}</option>' +
+                '<option value="email_name">{!! Lang::get("lang.email_name") !!}</option>' +
+                '<option value="subject">{!! Lang::get("lang.subject") !!}</option>' +
+                '<option value="message">{!! Lang::get("lang.message") !!}/{!! Lang::get("lang.body") !!}</option>' +
+                '</select>' +
+                '</td>' +
+                '<td class="col-md-3">' +
+                '<select class="form-control" name="rule[' + n + '][b]" required>' +
+                '<option value="">-- {!! Lang::get("lang.select_one") !!} --</option>' +
+                '<option value="equal">{!! Lang::get("lang.equal_to") !!}</option>' +
+                '<option value="not_equal">{!! Lang::get("lang.not_equal_to") !!}</option>' +
+                '<option value="contains">{!! Lang::get("lang.contains") !!}</option>' +
+                '<option value="dn_contain">{!! Lang::get("lang.does_not_contain") !!}</option>' +
+                '<option value="starts">{!! Lang::get("lang.starts_with") !!}</option>' +
+                '<option value="ends">{!! Lang::get("lang.ends_with") !!}</option>' +
+                '</select>' +
+                '</td>' +
+                '<td class="col-md-3"> <input class="form-control" type="text" name="rule[' + n +
+                '][c]" required> </td>' +
+                '<td style="text-align: center">' +
+                '<div class="tools"> <span class="btnRemove1" data-toggle="modal" data-target="#"><a data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o"></i></a></span> </div>' +
+                '</td>' +
+                '</tr>'); // end append
+            $('div .btnRemove1').last().click(function (e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+                x--;
+            });
+        });
     });
-    });
-    });
-            function selectdata(id) {
-            var selected_data = document.getElementById('selected' + id).value;
-                    $.ajax({
-                    url: "{!! url('workflow/action-rule') !!}" + "/" + id,
-                            type: "get",
-                            data: {option: selected_data},
-                            headers: {
-                            'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-                            },
-                            success: function(data) {
-                            //adds the echoed response to our container
-                            $("#fill" + id).html(data);
-                            }
-                    });
-            }
 
+    function selectdata(id) {
+        var selected_data = document.getElementById('selected' + id).value;
+        $.ajax({
+            url: "{!! url('workflow/action-rule') !!}" + "/" + id,
+            type: "get",
+            data: {
+                option: selected_data
+            },
+            headers: {
+                'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+            },
+            success: function (data) {
+                //adds the echoed response to our container
+                $("#fill" + id).html(data);
+            }
+        });
+    }
 </script>
 
 @stop

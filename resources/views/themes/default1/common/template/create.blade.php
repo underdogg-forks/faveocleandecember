@@ -4,7 +4,8 @@
 
     <div class="content-header">
         {!! Form::open(['route'=>'templates.store','method'=>'post']) !!}
-        <h4>{{Lang::get('lang.templates')}}	{!! Form::submit(Lang::get('lang.save'),['class'=>'form-group btn btn-primary pull-right'])!!}</h4>
+        <h4>{{Lang::get('lang.templates')}} {!! Form::submit(Lang::get('lang.save'),['class'=>'form-group btn
+            btn-primary pull-right'])!!}</h4>
 
     </div>
 
@@ -58,10 +59,10 @@
                         {!! Form::select('type',[''=>'Select','Type'=>$type],null,['class' => 'form-control']) !!}
 
                     </div>
-                                        
+
 
                 </div>
-<!--                <div class="row">
+                <!--                <div class="row">
                     <div class="col-md-12 form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
          
                         {!! Form::label('subject',Lang::get('lang.subject')) !!}
@@ -72,11 +73,11 @@
 
                 <div class="row">
                     <div class="col-md-12 form-group {{ $errors->has('message') ? 'has-error' : '' }}">
-                       
-                        
+
+
                         {!! Form::label('message',Lang::get('lang.content'),['class'=>'required']) !!}
                         {!! Form::textarea('message',null,['class'=>'form-control','id'=>'textarea']) !!}
-                       
+
                     </div>
 
 

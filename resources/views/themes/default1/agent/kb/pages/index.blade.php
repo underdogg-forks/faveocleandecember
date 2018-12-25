@@ -1,6 +1,6 @@
 @extends('themes.default1.agent.layout.agent')
 
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('pages')
 active
@@ -17,7 +17,8 @@ class="active"
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h2 class="box-title">{{Lang::get('lang.pages')}}</h2></div>
+        <h2 class="box-title">{{Lang::get('lang.pages')}}</h2>
+    </div>
     <div class="box-body">
         <!-- check whether success or not -->
         @if(Session::has('success'))
@@ -41,8 +42,8 @@ class="active"
                 {!! Datatable::table()
                 ->addColumn(Lang::get('lang.name'),
                 Lang::get('lang.created'),
-                Lang::get('lang.action'))       // these are the column headings to be shown
-                ->setUrl(route('api.page'))   // this is the route where data will be retrieved
+                Lang::get('lang.action')) // these are the column headings to be shown
+                ->setUrl(route('api.page')) // this is the route where data will be retrieved
                 ->render() !!}
             </div>
         </div>

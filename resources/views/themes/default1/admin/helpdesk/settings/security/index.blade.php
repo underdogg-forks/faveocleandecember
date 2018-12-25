@@ -33,7 +33,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang/alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p>{{Session::get('failed')}}</p>                
+            <p>{{Session::get('failed')}}</p>
         </div>
         @endif
         @if(Session::has('errors'))
@@ -41,7 +41,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('lockout_message'))
             <li class="error-message-padding">{!! $errors->first('lockout_message', ':message') !!}</li>
             @endif
@@ -59,8 +59,9 @@ class="active"
                 <div class="col-md-3">
                     <label for="title">Lockout Message: <span class="text-red"> *</span></label>
                 </div>
-                <div  class="col-md-9">
-                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.security_msg1') !!}</div>
+                <div class="col-md-9">
+                    <div class="callout callout-default" style="font-style: oblique;">{!!
+                        Lang::get('lang.security_msg1') !!}</div>
                     {!! Form::textarea('lockout_message',null,['class'=>'form-control'])!!}
                 </div>
             </div>
@@ -71,19 +72,23 @@ class="active"
                     <label for="title">{!! Lang::get('lang.max_attempt') !!}: <span class="text-red"> *</span></label>
                 </div>
                 <div class="col-md-9">
-                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.security_msg2') !!}</div>
-                    <span>{!! Form::text('backlist_threshold',null,['class'=>'form-control'])!!} {!! Lang::get('lang.lockouts') !!}</span>
-                </div>     
+                    <div class="callout callout-default" style="font-style: oblique;">{!!
+                        Lang::get('lang.security_msg2') !!}</div>
+                    <span>{!! Form::text('backlist_threshold',null,['class'=>'form-control'])!!} {!!
+                        Lang::get('lang.lockouts') !!}</span>
+                </div>
             </div>
         </div>
-        <div class="form-group {{ $errors->has('lockout_period') ? 'has-error' : '' }}"> 
+        <div class="form-group {{ $errors->has('lockout_period') ? 'has-error' : '' }}">
             <div class="row">
                 <div class="col-md-3">
                     <label for="title">Lockout Period: <span class="text-red"> *</span></label>
                 </div>
                 <div class="col-md-8">
-                    <div class="callout callout-default" style="font-style: oblique;">{!! Lang::get('lang.security_msg3') !!}</div>
-                    <span> {!! Form::text('lockout_period',null,['class'=>'form-control'])!!} {!! Lang::get('lang.minutes') !!}</span>
+                    <div class="callout callout-default" style="font-style: oblique;">{!!
+                        Lang::get('lang.security_msg3') !!}</div>
+                    <span> {!! Form::text('lockout_period',null,['class'=>'form-control'])!!} {!!
+                        Lang::get('lang.minutes') !!}</span>
                 </div>
             </div>
         </div>

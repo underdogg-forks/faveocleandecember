@@ -31,7 +31,7 @@ class="active"
 {!! Form::model($emails,['url' => 'postemail/'.$emails->id, 'method' => 'PATCH']) !!}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{{Lang::get('lang.email-settings')}}</h3>             
+        <h3 class="box-title">{{Lang::get('lang.email-settings')}}</h3>
     </div>
     <div class="box-body">
         <!-- check whether success or not -->
@@ -57,7 +57,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('sys_email'))
             <li class="error-message-padding">{!! $errors->first('sys_email', ':message') !!}</li>
             @endif

@@ -19,10 +19,10 @@ $category_id = $all->pluck('category_id')->toArray();
         <li class="active">{{$arti->name}}</li>
     </ol>
 </div>
-@stop	
+@stop
 @section('title')
-    {!! $arti->name !!} -
-@stop	
+{!! $arti->name !!} -
+@stop
 @section('content')
 <div id="content" class="site-content col-md-9">
     <!--
@@ -40,7 +40,8 @@ $category_id = $all->pluck('category_id')->toArray();
             <h1 class="entry-title">{{$arti->name}}</h1>
 
             <div class="entry-meta text-muted">
-                <span class="date"><i class="fa fa-film fa-fw"></i> <time datetime="2013-09-19T20:01:58+00:00">{{$arti->created_at->format('l, d-m-Y')}}</time></span>
+                <span class="date"><i class="fa fa-film fa-fw"></i> <time datetime="2013-09-19T20:01:58+00:00">{{$arti->created_at->format('l,
+                        d-m-Y')}}</time></span>
                 <span class="category"><i class="fa fa-folder-open-o fa-fw"></i> <a href="#">{{$category->name}}</a></span>
             </div><!-- .entry-meta -->
         </header><!-- .entry-header -->
@@ -61,13 +62,15 @@ $category_id = $all->pluck('category_id')->toArray();
                 <article class="comment-body">
                     <footer class="comment-meta">
                         <div class="comment-author">
-                            <img src="{{asset("lb-faveo/media/images/avatar_1.png")}}" alt="" height="50" width="50" class="avatar" />
+                            <img src="{{asset("lb-faveo/media/images/avatar_1.png")}}" alt="" height="50" width="50"
+                                class="avatar" />
                             <b class="fn"><a href="#" rel="external" class="url">{!! $comment->name !!}</a></b>
                         </div><!-- .comment-author -->
 
                         <div class="comment-metadata">
                             <small class="date text-muted">
-                                <time datetime="2013-10-23T01:50:50+00:00">{!! $comment->created_at->format('l, d-m-Y') !!}</time>
+                                <time datetime="2013-10-23T01:50:50+00:00">{!! $comment->created_at->format('l, d-m-Y')
+                                    !!}</time>
                             </small>
                         </div><!-- .comment-metadata -->
                     </footer><!-- .comment-meta -->
@@ -111,39 +114,40 @@ $category_id = $all->pluck('category_id')->toArray();
                         <div class="form-group {{ $errors->has('comment') ? 'has-   error' : '' }}">
                             {!! Form::label('comment',Lang::get('lang.message')) !!}
                             {!! $errors->first('comment', '<spam class="help-block">:message</spam>') !!}
-                            {!! Form::textarea('comment',null,['class' => 'form-control','size' => '30x8','id'=>'comment']) !!}
+                            {!! Form::textarea('comment',null,['class' => 'form-control','size' =>
+                            '30x8','id'=>'comment']) !!}
                         </div>
-                    </div>												
+                    </div>
                 </div>
             </div>
-          
+
 
             {!! Form::close() !!}
         </div><!-- #respond -->
     </div>
-</div>						
+</div>
 
 <script type="text/javascript">
-        $(function () {
-            $("textarea").wysihtml5();
-        });
+    $(function () {
+        $("textarea").wysihtml5();
+    });
 </script>
 
 @stop
 
 @section('title')
-    @if(isset($category->name))
-        {!! $category->name !!} -
-    @endif
+@if(isset($category->name))
+{!! $category->name !!} -
+@endif
 @stop
 
 @section('category')
 <h2 class="section-title h4 clearfix">{!! Lang::get('lang.categories') !!}<small class="pull-right"><i class="fa fa-hdd-o fa-fw"></i></small></h2>
 <ul class="nav nav-pills nav-stacked nav-categories">
 
-<?php $categorys = App\Model\kb\Category::all(); ?>
+    <?php $categorys = App\Model\kb\Category::all(); ?>
     @foreach($categorys as $category)
-<?php
+    <?php
 $num = \App\Model\kb\Relationship::where('category_id','=', $category->id)->get();
 $article_id = $num->pluck('article_id');
 $numcount = count($article_id);

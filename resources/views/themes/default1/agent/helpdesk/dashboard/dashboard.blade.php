@@ -196,9 +196,9 @@ class="active"
             </div>
         </form>
         <!--<div id="legendDiv"></div>-->
-        {{--  <div class="chart">
+        {{-- <div class="chart">
             <canvas class="chart-data" id="tickets-graph" width="1000" height="250"></canvas>
-        </div>  --}}
+        </div> --}}
     </div><!-- /.box-body -->
 </div><!-- /.box -->
 <div class="box">

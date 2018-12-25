@@ -26,7 +26,8 @@
         <input type="hidden" name="token" value="{{ $token }}">
         <!-- Email -->
         <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-            <input type="email" class="form-control" name="email" placeholder="{!! Lang::get('lang.e-mail') !!}" value="{{ $email }}" readonly>
+            <input type="email" class="form-control" name="email" placeholder="{!! Lang::get('lang.e-mail') !!}" value="{{ $email }}"
+                readonly>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <!-- password -->

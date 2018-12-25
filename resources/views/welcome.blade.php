@@ -1,48 +1,51 @@
 <html>
-    <head>
-        <title>Tickets</title>
 
-        <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<head>
+    <title>Tickets</title>
 
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                color: red;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+    <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            color: red;
+            display: table;
+            font-weight: 100;
+            font-family: 'Lato';
+        }
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+        .container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-            .title {
-                font-size: 96px;
-                margin-bottom: 40px;
-            }
+        .content {
+            text-align: center;
+            display: inline-block;
+        }
 
-            .quote {
-                font-size: 24px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Tickets</div>
-                <div class="quote">Ticket base System Under Construction</div>
-            </div>
+        .title {
+            font-size: 96px;
+            margin-bottom: 40px;
+        }
+
+        .quote {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="title">Tickets</div>
+            <div class="quote">Ticket base System Under Construction</div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

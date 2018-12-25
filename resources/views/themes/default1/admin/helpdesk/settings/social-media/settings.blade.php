@@ -43,7 +43,7 @@ class="active"
             </ul>
         </div>
         @endif
-        
+
         <!-- check whether success or not -->
         @if(Session::has('warn'))
         <div class="alert alert-warning alert-dismissable">
@@ -74,21 +74,24 @@ class="active"
                 <div class="form-group {{ $errors->has('client_id') ? 'has-error' : '' }}">
                     {!! Form::label('client_id',Lang::get('lang.client_id')) !!}
                     {!! $errors->first('client_id', '<spam class="help-block">:message</spam>') !!}
-                    {!! Form::text('client_id',$social->getvalueByKey($provider,'client_id'),['class' => 'form-control']) !!}
+                    {!! Form::text('client_id',$social->getvalueByKey($provider,'client_id'),['class' =>
+                    'form-control']) !!}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group {{ $errors->has('client_secret') ? 'has-error' : '' }}">
                     {!! Form::label('client_secret',Lang::get('lang.client_secret')) !!}
                     {!! $errors->first('client_secret', '<spam class="help-block">:message</spam>') !!}
-                    {!! Form::text('client_secret',$social->getvalueByKey($provider,'client_secret'),['class' => 'form-control']) !!}
+                    {!! Form::text('client_secret',$social->getvalueByKey($provider,'client_secret'),['class' =>
+                    'form-control']) !!}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group {{ $errors->has('redirect') ? 'has-error' : '' }}">
                     {!! Form::label('redirect',Lang::get('lang.redirect')) !!}
                     {!! $errors->first('redirect', '<spam class="help-block">:message</spam>') !!}
-                    {!! Form::text('redirect',$social->getvalueByKey($provider,'redirect'),['class' => 'form-control']) !!}
+                    {!! Form::text('redirect',$social->getvalueByKey($provider,'redirect'),['class' => 'form-control'])
+                    !!}
                 </div>
             </div>
             <div class="col-md-6">
@@ -97,7 +100,7 @@ class="active"
                         <div class="col-md-12">
                             {!! Form::label('status',Lang::get('lang.status')) !!}
                             {!! $errors->first('status', '<spam class="help-block">:message</spam>') !!}
-                            
+
                         </div>
                         <div class="col-md-6">
                             <p>{!! Form::radio('status',1,$social->checkActive($provider))!!} Active</p>

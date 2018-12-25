@@ -1,5 +1,5 @@
 @extends('themes.default1.agent.layout.agent')
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('settings')
 class="active"
@@ -11,7 +11,7 @@ class="active"
 {!! Form::model($settings,['url' => 'postsettings/'.$settings->id, 'method' => 'PATCH','files'=>true]) !!}
 
 <div class="box-header" style="margin:-5px;margin-top:-25px;">
-    <h3 class="box-title">{{Lang::get('lang.kb-settings')}}</h3> 
+    <h3 class="box-title">{{Lang::get('lang.kb-settings')}}</h3>
 </div>
 <!-- Custom Tabs -->
 <div class="nav-tabs-custom">
@@ -43,17 +43,19 @@ class="active"
                 <i class="fa fa-ban"></i>
                 <b>{!! Lang::get('lang.alert') !!}!</b>
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <br/>
+                <br />
                 @if($errors->first('pagination'))
                 <li class="error-message-padding">{!! $errors->first('pagination', ':message') !!}</li>
-                @endif         
+                @endif
             </div>
             @endif
             <!-- Name text form Required -->
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('pagination',Lang::get('lang.numberofelementstodisplay')) !!} <span class="text-red"> *</span>
-                    <input type="number" class="form-control" name='pagination' value="{!! $settings->pagination !!}" min="2">
+                    {!! Form::label('pagination',Lang::get('lang.numberofelementstodisplay')) !!} <span class="text-red">
+                        *</span>
+                    <input type="number" class="form-control" name='pagination' value="{!! $settings->pagination !!}"
+                        min="2">
                 </div>
             </div>
         </div><!-- /.tab-pane -->
@@ -63,7 +65,7 @@ class="active"
     </div>
 </div><!-- /.tab-content -->
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $("textarea").wysihtml5();
     });
 </script>

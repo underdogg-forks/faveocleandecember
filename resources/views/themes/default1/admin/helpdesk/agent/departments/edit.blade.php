@@ -42,7 +42,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>Alert!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif
@@ -83,12 +83,15 @@ class="active"
             <!-- sla -->
             <div class="col-xs-6 form-group {{ $errors->has('slaplan') ? 'has-error' : '' }}">
                 {!! Form::label('slaplan',Lang::get('lang.SLA_plan')) !!}
-                {!!Form::select('slaplan_id', [''=>Lang::get('lang.select_a_sla'), Lang::get('lang.sla_plans')=>$slas->pluck('grace_period','id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!!Form::select('slaplan_id', [''=>Lang::get('lang.select_a_sla'),
+                Lang::get('lang.sla_plans')=>$slas->pluck('grace_period','id')->toArray()],null,['class' =>
+                'form-control select']) !!}
             </div>
             <!-- manager -->
             <div class="col-xs-6 form-group {{ $errors->has('manager') ? 'has-error' : '' }}">
                 {!! Form::label('manager',Lang::get('lang.manager')) !!}
-                {!!Form::select('manager',[null=>Lang::get('lang.select_a_manager'),Lang::get('lang.manager')=>$user->pluck('full_name','id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!!Form::select('manager',[null=>Lang::get('lang.select_a_manager'),Lang::get('lang.manager')=>$user->pluck('full_name','id')->toArray()],null,['class'
+                => 'form-control select']) !!}
             </div>
         </div>
     </div>
@@ -100,15 +103,18 @@ class="active"
             <!-- sla -->
             <div class="col-xs-6 form-group {{ $errors->has('outgoing_email') ? 'has-error' : '' }}">
                 {!! Form::label('outgoing_email',Lang::get('lang.outgoing_email')) !!}
-                {!!Form::select('outgoing_email', ['' => Lang::get('lang.system_default'), Lang::get('lang.emails')=>$emails->pluck('email_name','id')->toArray()],null,['class' => 'form-control select']) !!}
+                {!!Form::select('outgoing_email', ['' => Lang::get('lang.system_default'),
+                Lang::get('lang.emails')=>$emails->pluck('email_name','id')->toArray()],null,['class' => 'form-control
+                select']) !!}
             </div>
         </div>
         <div class="form-group">
-            <input type="checkbox" name="sys_department" @if($sys_department->department == $departments->id) checked disabled @endif> {{ Lang::get('lang.make-default-department')}}
+            <input type="checkbox" name="sys_department" @if($sys_department->department == $departments->id) checked
+            disabled @endif> {{ Lang::get('lang.make-default-department')}}
         </div>
     </div>
     <div class="box-footer">
-        {!! Form::submit(Lang::get('lang.update'),['class'=>'form-group btn btn-primary'])!!}    
+        {!! Form::submit(Lang::get('lang.update'),['class'=>'form-group btn btn-primary'])!!}
     </div>
     {!!Form::close()!!}
 </div>

@@ -1,6 +1,6 @@
 @extends('themes.default1.agent.layout.agent')
 
-@extends('themes.default1.agent.layout.sidebar')    
+@extends('themes.default1.agent.layout.sidebar')
 
 @section('category')
 active
@@ -39,7 +39,7 @@ active
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!}!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('name'))
             <li class="error-message-padding">{!! $errors->first('name', ':message') !!}</li>
             @endif
@@ -54,7 +54,7 @@ active
             @endif
             @if($errors->first('description'))
             <li class="error-message-padding">{!! $errors->first('description', ':message') !!}</li>
-            @endif          
+            @endif
         </div>
         @endif
         <div class="row">
@@ -66,7 +66,8 @@ active
             <div class="col-xs-3 form-group {{ $errors->has('parent') ? 'has-error' : '' }}">
                 {!! Form::label('parent',Lang::get('lang.parent')) !!}
 
-                {!!Form::select('parent',[''=>'Select a Group','Categorys'=>$categories],null,['class' => 'form-control select']) !!}
+                {!!Form::select('parent',[''=>'Select a Group','Categorys'=>$categories],null,['class' => 'form-control
+                select']) !!}
             </div>
             <div class="col-xs-3 form-group {{ $errors->has('status') ? 'has-error' : '' }}">
                 {!! Form::label('status',Lang::get('lang.status')) !!}
@@ -83,7 +84,8 @@ active
             <div class="col-md-12 form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                 {!! Form::label('description',Lang::get('lang.description')) !!}<span class="text-red"> *</span>
 
-                {!! Form::textarea('description',null,['class' => 'form-control','size' => '128x10','id'=>'description','placeholder'=>'Enter the description']) !!}
+                {!! Form::textarea('description',null,['class' => 'form-control','size' =>
+                '128x10','id'=>'description','placeholder'=>'Enter the description']) !!}
             </div>
         </div>
     </div>
@@ -92,22 +94,22 @@ active
     </div>
 </div>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $("textarea").wysihtml5();
     });
 </script>
 
 <script>
-    $(function() {
-        
+    $(function () {
+
         $('input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue'
         });
         $('input[type="radio"]').iCheck({
             radioClass: 'iradio_flat-blue'
         });
-    
-    });        
+
+    });
 </script>
 
 @stop

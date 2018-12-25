@@ -32,13 +32,14 @@ class="active"
 {!! Form::open(['action' => 'Admin\helpdesk\FormController@store','method' => 'post']) !!}
 <div class="box box-primary">
     <div class="box-header">
-        
-        <h2 class="box-title"style="margin-left:-10px">{{Lang::get('lang.create')}}</h2>{!! Form::submit(Lang::get('lang.save'),['class'=>'pull-right btn btn-primary'])!!}
+
+        <h2 class="box-title" style="margin-left:-10px">{{Lang::get('lang.create')}}</h2>{!!
+        Form::submit(Lang::get('lang.save'),['class'=>'pull-right btn btn-primary'])!!}
     </div>
     <div class="box-body">
-        
+
         <!-- title: text -->
-        <div class="box-body table-responsive no-padding"style="overflow:hidden">
+        <div class="box-body table-responsive no-padding" style="overflow:hidden">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
@@ -60,7 +61,8 @@ class="active"
                     <div class="form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                         {!! Form::label('type',Lang::get('lang.type')) !!}
                         {!! $errors->first('type', '<spam class="help-block">:message</spam>') !!}
-                        {!!Form::select('type', [''=>'Select a Type','types'=>$type->pluck('type','id')] ,null,['class' => 'form-control'] ) !!}
+                        {!!Form::select('type', [''=>'Select a Type','types'=>$type->pluck('type','id')] ,null,['class'
+                        => 'form-control'] ) !!}
                     </div>
                 </div>
                 <!-- declare table head Vissibility -->
@@ -68,7 +70,8 @@ class="active"
                     <div class="form-group {{ $errors->has('visibility') ? 'has-error' : '' }}">
                         {!! Form::label('visibility',Lang::get('lang.visibility')) !!}
                         {!! $errors->first('visibility', '<spam class="help-block">:message</spam>') !!}
-                        {!!Form::select('visibility', [''=>'Select a Visibility','visibilities' =>$visibility->pluck('visibility','id')],null,['class' => 'form-control'] ) !!}
+                        {!!Form::select('visibility', [''=>'Select a Visibility','visibilities'
+                        =>$visibility->pluck('visibility','id')],null,['class' => 'form-control'] ) !!}
                     </div>
                 </div>
                 <!-- declare table head variable -->
