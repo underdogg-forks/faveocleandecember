@@ -12,7 +12,7 @@ class CreateTemplateSetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('template_sets', function (Blueprint $table) {
+        Schema::create('email__templatesets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('active');
@@ -27,6 +27,6 @@ class CreateTemplateSetsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('template_sets');
+        Schema::drop('email__templatesets');
     }
 }

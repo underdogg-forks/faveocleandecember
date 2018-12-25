@@ -1,4 +1,4 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 
 @section('Staffs')
 active
@@ -36,7 +36,7 @@ class="active"
 <!-- <section class="content"> -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{!! Lang::get('lang.edit_an_agent') !!}</h3>	
+        <h3 class="box-title">{!! Lang::get('lang.edit_an_agent') !!}</h3>
     </div>
     <div class="box-body">
         @if(Session::has('errors'))
@@ -45,7 +45,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>Alert!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
+            <br />
             @if($errors->first('user_name'))
             <li class="error-message-padding">{!! $errors->first('user_name', ':message') !!}</li>
             @endif
@@ -84,17 +84,17 @@ class="active"
             @endif
             @if($errors->first('team'))
             <li class="error-message-padding">{!! $errors->first('team', ':message') !!}</li>
-            @endif 
+            @endif
         </div>
         @endif
         @if(Session::has('fails2'))
-            <div class="alert alert-danger alert-dismissable">
+        <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i>
             <b>Alert!</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <br/>
-                <li class="error-message-padding">{!! Session::get('fails2') !!}</li>
-            </div>
+            <br />
+            <li class="error-message-padding">{!! Session::get('fails2') !!}</li>
+        </div>
         @endif
         <div class="row">
             <!-- username -->
@@ -138,7 +138,7 @@ class="active"
 
             <div class="col-xs-1 form-group {{ $errors->has('ext') ? 'has-error' : '' }}">
 
-                <label for="ext">EXT</label>	
+                <label for="ext">EXT</label>
 
                 {!! Form::text('ext',null,['class' => 'form-control']) !!}
 
@@ -147,7 +147,8 @@ class="active"
             <div class="col-xs-1 form-group {{ Session::has('country_code') ? 'has-error' : '' }}">
 
                 {!! Form::label('country_code',Lang::get('lang.country-code')) !!}
-                {!! Form::text('country_code',null,['class' => 'form-control', 'placeholder' => $phonecode, 'title' => Lang::get('lang.enter-country-phone-code')]) !!}
+                {!! Form::text('country_code',null,['class' => 'form-control', 'placeholder' => $phonecode, 'title' =>
+                Lang::get('lang.enter-country-phone-code')]) !!}
 
             </div>
             <!-- phone -->
@@ -222,66 +223,72 @@ class="active"
             <!-- day light saving -->
             {{-- <div class="col-xs-6"> --}}
 
-            {{-- <div> --}}
-            {{-- <div class="row"> --}}
-            {{-- {!! Form::label('',Lang::get('lang.day_light_saving')) !!} --}}
-            {{-- <div class="col-xs-2"> --}}
-            {{-- {!! Form::checkbox('daylight_save',1,null,['class' => 'checkbox']) !!} --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
+                {{-- <div> --}}
+                    {{-- <div class="row"> --}}
+                        {{-- {!! Form::label('',Lang::get('lang.day_light_saving')) !!} --}}
+                        {{-- <div class="col-xs-2"> --}}
+                            {{-- {!! Form::checkbox('daylight_save',1,null,['class' => 'checkbox']) !!} --}}
+                            {{-- </div> --}}
+                        {{-- </div> --}}
+                    {{-- </div> --}}
 
-            <!-- limit access -->
-            {{-- <div > --}}
-            {{-- <div class="row"> --}}
-            {{-- {!! Form::label('limit_access',Lang::get('lang.limit_access')) !!} --}}
-            {{-- <div class="col-xs-2"> --}}
-            {{-- {!! Form::checkbox('limit_access',1,null,['class' => 'checkbox']) !!} --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
+                <!-- limit access -->
+                {{-- <div> --}}
+                    {{-- <div class="row"> --}}
+                        {{-- {!! Form::label('limit_access',Lang::get('lang.limit_access')) !!} --}}
+                        {{-- <div class="col-xs-2"> --}}
+                            {{-- {!! Form::checkbox('limit_access',1,null,['class' => 'checkbox']) !!} --}}
+                            {{-- </div> --}}
+                        {{-- </div> --}}
+                    {{-- </div> --}}
 
-            <!-- directory listing -->
-            {{-- <div> --}}
-            {{-- <div class="row"> --}}
-            {{-- {!! Form::label('directory_listing',Lang::get('lang.directory_listing')) !!} --}}
-            {{-- <div class="col-xs-2"> --}}
-            {{-- {!! Form::checkbox('directory_listing',1,null,['class' => 'checkbox']) !!} --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
+                <!-- directory listing -->
+                {{-- <div> --}}
+                    {{-- <div class="row"> --}}
+                        {{-- {!! Form::label('directory_listing',Lang::get('lang.directory_listing')) !!} --}}
+                        {{-- <div class="col-xs-2"> --}}
+                            {{-- {!! Form::checkbox('directory_listing',1,null,['class' => 'checkbox']) !!} --}}
+                            {{-- </div> --}}
+                        {{-- </div> --}}
+                    {{-- </div> --}}
 
-            <!-- vocation mode -->
-            {{-- <div> --}}
-            {{-- <div class="row"> --}}
-            {{-- {!! Form::label('vocation_mode',Lang::get('lang.vocation_mode')) !!} --}}
-            {{-- <div class="col-xs-2"> --}}
-            {{-- {!! Form::checkbox('vocation_mode',1,null,null,['class' => 'checkbox']) !!} --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
+                <!-- vocation mode -->
+                {{-- <div> --}}
+                    {{-- <div class="row"> --}}
+                        {{-- {!! Form::label('vocation_mode',Lang::get('lang.vocation_mode')) !!} --}}
+                        {{-- <div class="col-xs-2"> --}}
+                            {{-- {!! Form::checkbox('vocation_mode',1,null,null,['class' => 'checkbox']) !!} --}}
+                            {{-- </div> --}}
+                        {{-- </div> --}}
+                    {{-- </div> --}}
+                {{-- </div> --}}
         </div>
         <div class="row">
             <!-- assigned group -->
             <div class="col-xs-4 form-group {{ $errors->has('group') ? 'has-error' : '' }}">
                 {!! Form::label('assign_group', Lang::get('lang.assigned_group')) !!} <span class="text-red"> *</span>
 
-                {!!Form::select('group',[''=>Lang::get('lang.select_a_group'), Lang::get('lang.groups')=>$groups->pluck('name','id')->toArray()],$user->assign_group,['class' => 'form-control select']) !!}
+                {!!Form::select('group',[''=>Lang::get('lang.select_a_group'),
+                Lang::get('lang.groups')=>$groups->pluck('name','id')->toArray()],$user->assign_group,['class' =>
+                'form-control select']) !!}
             </div>
 
             <!-- primary department -->
             <div class="col-xs-4 form-group {{ $errors->has('primary_department') ? 'has-error' : '' }}">
                 {!! Form::label('primary_dpt', Lang::get('lang.primary_department')) !!} <span class="text-red"> *</span>
 
-                {!!Form::select('primary_department', [''=>Lang::get('lang.select_a_department'), Lang::get('lang.departments')=>$departments->pluck('name','id')->toArray()],$user->primary_dpt,['class' => 'form-control select']) !!}
+                {!!Form::select('primary_department', [''=>Lang::get('lang.select_a_department'),
+                Lang::get('lang.departments')=>$departments->pluck('name','id')->toArray()],$user->primary_dpt,['class'
+                => 'form-control select']) !!}
             </div>
 
             <!-- agent timezone -->
             <div class="col-xs-4 form-group {{ $errors->has('agent_time_zone') ? 'has-error' : '' }}">
                 {!! Form::label('agent_tzone', Lang::get('lang.agent_time_zone')) !!} <span class="text-red"> *</span>
 
-                {!!Form::select('agent_time_zone', [''=>Lang::get('lang.select_a_time_zone'), Lang::get('lang.time_zones')=>$timezones->pluck('name','id')->toArray()],$user->agent_tzone,['class' => 'form-control select']) !!}
+                {!!Form::select('agent_time_zone', [''=>Lang::get('lang.select_a_time_zone'),
+                Lang::get('lang.time_zones')=>$timezones->pluck('name','id')->toArray()],$user->agent_tzone,['class' =>
+                'form-control select']) !!}
             </div>
         </div>
 
@@ -291,11 +298,9 @@ class="active"
         </div>
         @foreach($teams as $key => $val)
         <div class="form-group ">
-            <input type="checkbox" name="team[]" value="<?php echo $val; ?> " <?php
-            if (in_array($val, $assign)) {
-                echo ('checked');
-            }
-            ?> > &nbsp;<?php echo "  " . $key; ?><br/>
+            <input type="checkbox" name="team[]" value="<?php echo $val; ?> " <?php if (in_array($val, $assign)) { echo
+                ('checked'); } ?> > &nbsp;
+            <?php echo "  " . $key; ?><br />
         </div>
         @endforeach
     </div>

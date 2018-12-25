@@ -30,7 +30,7 @@ use App\Model\helpdesk\Ticket\Ticket_Priority;
 use App\Model\helpdesk\Utility\Date_format;
 use App\Model\helpdesk\Utility\Date_time_format;
 use App\Model\helpdesk\Utility\Time_format;
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use App\Model\helpdesk\Workflow\WorkflowClose;
 // classes
 use DateTime;
@@ -140,14 +140,14 @@ class SettingsController extends Controller
      *
      * @param type System           $system
      * @param type Department       $department
-     * @param type Timezones        $timezone
+     * @param type Timezone         $timezone
      * @param type Date_format      $date
      * @param type Date_time_format $date_time
      * @param type Time_format      $time
      *
      * @return type Response
      */
-    public function getsystem(System $system, Department $department, Timezones $timezone, Date_format $date, Date_time_format $date_time, Time_format $time, CommonSettings $common_settings)
+    public function getsystem(System $system, Department $department, Timezone $timezone, Date_format $date, Date_time_format $date_time, Time_format $time, CommonSettings $common_settings)
     {
         try {
             /* fetch the values of system from system table */
@@ -526,7 +526,7 @@ class SettingsController extends Controller
             $alerts = $alert->whereId('1')->first();
             /* Insert Checkbox to DB */
             $alerts->assignment_status = $request->input('assignment_status');
-            $alerts->ticket_status = $request->input('ticket_status');
+            $alerts->ticket_status = $request->input('tickets__statuses');
             $alerts->overdue_department_member = $request->input('overdue_department_member');
             $alerts->sql_error = $request->input('sql_error');
             $alerts->excessive_failure = $request->input('excessive_failure');
@@ -613,9 +613,9 @@ class SettingsController extends Controller
     {
         try {
             /* fetch the values of company from company table */
-            $statuss = \DB::table('ticket_status')->get();
+            $statuses = \DB::table('tickets__statuses')->get();
             /* Direct to Company Settings Page */
-            return view('themes.default1.admin.helpdesk.settings.status', compact('statuss'));
+            return view('themes.default1.admin.helpdesk.settings.status', compact('statuses'));
         } catch (Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }
@@ -633,7 +633,7 @@ class SettingsController extends Controller
     {
         try {
             /* fetch the values of company from company table */
-            $status = \DB::table('ticket_status')->where('id', '=', $id)->first();
+            $status = \DB::table('tickets__statuses')->where('id', '=', $id)->first();
             /* Direct to Company Settings Page */
             return view('themes.default1.admin.helpdesk.settings.status-edit', compact('status'));
         } catch (Exception $e) {
@@ -657,14 +657,14 @@ class SettingsController extends Controller
             $statuss->name = $request->input('name');
             $statuss->icon_class = $request->input('icon_class');
             $statuss->email_user = $request->input('email_user');
-            $statuss->sort = $request->input('sort');
+            $statuss->sortorder = $request->input('sortorder');
             $delete = $request->input('deleted');
             if ($delete == 'yes') {
                 $statuss->state = 'delete';
             } else {
                 $statuss->state = $request->input('state');
             }
-            $statuss->sort = $request->input('sort');
+            $statuss->sortorder = $request->input('sortorder');
             $statuss->save();
             /* Direct to Company Settings Page */
             return redirect()->back()->with('success', Lang::get('lang.status_has_been_updated_successfully'));
@@ -688,14 +688,14 @@ class SettingsController extends Controller
             $statuss->name = $request->input('name');
             $statuss->icon_class = $request->input('icon_class');
             $statuss->email_user = $request->input('email_user');
-            $statuss->sort = $request->input('sort');
+            $statuss->sortorder = $request->input('sortorder');
             $delete = $request->input('delete');
             if ($delete == 'yes') {
                 $statuss->state = 'deleted';
             } else {
                 $statuss->state = $request->input('state');
             }
-            $statuss->sort = $request->input('sort');
+            $statuss->sortorder = $request->input('sortorder');
             $statuss->save();
             /* Direct to Company Settings Page */
             return redirect()->back()->with('success', Lang::get('lang.status_has_been_created_successfully'));

@@ -30,6 +30,7 @@ class TemplateRequest2 extends Request
     {
         return [
             'name'                  => 'required|unique:template',
+            //'name'                  => 'required|unique:email__template',
             'ban_status'            => 'required',
             'template_set_to_clone' => 'required',
             'language'              => 'required',

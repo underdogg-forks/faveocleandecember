@@ -119,9 +119,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('getdiagno', ['as' => 'getdiagno', 'uses' => 'Admin\helpdesk\TemplateController@formDiagno']); // for getting form for diagnostic
 
         Route::post('postdiagno', ['as' => 'postdiagno', 'uses' => 'Admin\helpdesk\TemplateController@postDiagno']); // for getting form for diagnostic
-        Route::resource('helptopic', 'Admin\helpdesk\HelptopicController'); // in helptopics module, for CRUD
+        Route::resource('helptopics', 'Admin\helpdesk\HelpTopicsController'); // in helptopics module, for CRUD
 
-        Route::resource('sla', 'Admin\helpdesk\SlaController'); // in SLA Plan module, for CRUD
+        Route::resource('slaplans', 'Admin\helpdesk\SlaPlansController'); // in SLA Plan module, for CRUD
 
         Route::resource('forms', 'Admin\helpdesk\FormController');
         Route::get('forms/add-child/{formid}', ['as' => 'forms.add.child', 'uses' => 'Admin\helpdesk\FormController@addChildForm']);
@@ -291,29 +291,42 @@ Route::group(['middleware' => ['web']], function () {
       |
      */
     Route::group(['middleware' => 'role.agent', 'middleware' => 'auth', 'middleware' => 'install', 'middleware' => 'update'], function () {
-        Route::post('chart-range/{date1}/{date2}', ['as' => 'post.chart', 'uses' => 'Agent\helpdesk\DashboardController@ChartData']);
-        Route::get('agen1', 'Agent\helpdesk\DashboardController@ChartData');
-        Route::post('chart-range', ['as' => 'post.chart', 'uses' => 'Agent\helpdesk\DashboardController@ChartData']);
-        Route::post('user-chart-range/{id}/{date1}/{date2}', ['as' => 'post.user.chart', 'uses' => 'Agent\helpdesk\DashboardController@userChartData']);
-        Route::get('user-agen/{id}', 'Agent\helpdesk\DashboardController@userChartData');
-        Route::get('user-agen1', 'Agent\helpdesk\DashboardController@userChartData');
-        Route::post('user-chart-range', ['as' => 'post.user.chart', 'uses' => 'Agent\helpdesk\DashboardController@userChartData']);
+        //Route::post('chart-range/{date1}/{date2}', ['as' => 'post.chart', 'uses' => 'Agent\helpdesk\DashboardController@CalendarData']);
+        //Route::get('agen1', 'Agent\helpdesk\DashboardController@CalendarData');
+        //Route::post('chart-range', ['as' => 'post.chart', 'uses' => 'Agent\helpdesk\DashboardController@CalendarData']);
+        //Route::post('user-chart-range/{id}/{date1}/{date2}', ['as' => 'post.user.chart', 'uses' => 'Agent\helpdesk\DashboardController@userCalendarData']);
+        //Route::get('user-agen/{id}', 'Agent\helpdesk\DashboardController@userCalendarData');
+        //Route::get('user-agen1', 'Agent\helpdesk\DashboardController@userCalendarData');
+        //Route::post('user-chart-range', ['as' => 'post.user.chart', 'uses' => 'Agent\helpdesk\DashboardController@userCalendarData']);
+
         Route::resource('user', 'Agent\helpdesk\UserController'); /* User router is used to control the CRUD of user */
+
         Route::get('user-export', ['as' => 'user.export', 'uses' => 'Agent\helpdesk\UserController@getExportUser']); /* User router is used to control the CRUD of user */
         Route::post('user-export', ['as' => 'user.export.post', 'uses' => 'Agent\helpdesk\UserController@exportUser']); /* User router is used to control the CRUD of user */
-
         Route::get('user-list', ['as' => 'user.list', 'uses' => 'Agent\helpdesk\UserController@user_list']);
-
         // Route::get('user/delete/{id}', ['as' => 'user.delete' , 'uses' => 'Agent\helpdesk\UserController@destroy']);
+
+
+
+
+
+
+
+
         Route::resource('organizations', 'Agent\helpdesk\OrganizationController'); /* organization router used to deal CRUD function of organization */
-        Route::get('get-organization', ['as' => 'org.get.ajax', 'uses' => 'Agent\helpdesk\OrganizationController@getOrgAjax']);
+        Route::get('get-organization', ['as' => 'org.get.ajax', 'uses' => 'Agent\helpdesk\OrganizationController@getOrgAjax']); // For the API of course
+
+        Route::resource('relations', 'Agent\helpdesk\OrganizationController'); /* organization router used to deal CRUD function of organization */
+        Route::get('get-relations', ['as' => 'org.get.ajax', 'uses' => 'Agent\helpdesk\OrganizationController@getOrgAjax']); // For the API of course
+
+
 
         Route::get('org-list', ['as' => 'org.list', 'uses' => 'Agent\helpdesk\OrganizationController@org_list']);
         Route::get('organization-autofill', ['as' => 'post.organization.autofill', 'uses' => 'Agent\helpdesk\OrganizationController@organizationAutofill']); //auto fill organization name
         Route::get('org/delete/{id}', ['as' => 'org.delete', 'uses' => 'Agent\helpdesk\OrganizationController@destroy']);
-        Route::get('org-chart/{id}', 'Agent\helpdesk\OrganizationController@orgChartData')->name('org-chart-data');
-//    Route::post('org-chart-range', ['as' => 'post.org.chart', 'uses' => 'Agent\helpdesk\OrganizationController@orgChartData']);
-        Route::post('org-chart-range/{id}/{date1}/{date2}', ['as' => 'post.org.chart', 'uses' => 'Agent\helpdesk\OrganizationController@orgChartData']);
+        //Route::get('org-chart/{id}', 'Agent\helpdesk\OrganizationController@orgCalendarData')->name('org-chart-data');
+//    Route::post('org-chart-range', ['as' => 'post.org.chart', 'uses' => 'Agent\helpdesk\OrganizationController@orgCalendarData']);
+        //Route::post('org-chart-range/{id}/{date1}/{date2}', ['as' => 'post.org.chart', 'uses' => 'Agent\helpdesk\OrganizationController@orgCalendarData']);
         Route::get('profile', ['as' => 'profile', 'uses' => 'Agent\helpdesk\UserController@getProfile']); /*  User profile get  */
 
         Route::get('profile-edit', ['as' => 'agent-profile-edit', 'uses' => 'Agent\helpdesk\UserController@getProfileedit']); /*  User profile edit get  */
@@ -354,9 +367,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/email/ban/{id}', ['as' => 'ban.email', 'uses' => 'Agent\helpdesk\TicketController@ban']); /*  Get Ban Email */
         Route::get('/ticket/surrender/{id}', ['as' => 'ticket.surrender', 'uses' => 'Agent\helpdesk\TicketController@surrender']); /*  Get Ticket Surrender */
         Route::get('/aaaa', 'Client\helpdesk\GuestController@ticket_number');
-        Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Agent\helpdesk\DashboardController@index']); /* To show dashboard pages */
+        Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Agent\helpdesk\DashboardController@index']); /* To show User Agent (Staff) dashboard pages */
 
-        Route::get('agen', 'Agent\helpdesk\DashboardController@ChartData');
+        //Route::get('agen', 'Agent\helpdesk\DashboardController@CalendarData');
         Route::get('image/{id}', ['as' => 'image', 'uses' => 'Agent\helpdesk\MailController@get_data']); /* get image */
         Route::get('thread/auto/{id}', 'Agent\helpdesk\TicketController@autosearch');
         Route::get('auto', 'Agent\helpdesk\TicketController@autosearch2');
@@ -394,9 +407,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('report', ['as' => 'report.index', 'uses' => 'Agent\helpdesk\ReportController@index']); /* To show dashboard pages */
 
         // default route to get the data for the first time
-        Route::get('help-topic-report', 'Agent\helpdesk\ReportController@chartdataHelptopic');
+        //Route::get('help-topic-report', 'Agent\helpdesk\ReportController@CalendardataHelptopic');
         // route to get the data on change
-        Route::post('help-topic-report/{date1}/{date2}/{id}', ['as' => 'report.helptopic', 'uses' => 'Agent\helpdesk\ReportController@chartdataHelptopic']); /* To show dashboard pages */
+        //Route::post('help-topic-report/{date1}/{date2}/{id}', ['as' => 'report.helptopic', 'uses' => 'Agent\helpdesk\ReportController@CalendarDataHelptopic']); /* To show dashboard pages */
         Route::post('help-topic-pdf', ['as' => 'help.topic.pdf', 'uses' => 'Agent\helpdesk\ReportController@helptopicPdf']);
         // Route to get details of agents
         Route::post('get-agents', ['as' => 'get-agents', 'uses' => 'Agent\helpdesk\UserController@getAgentDetails']);

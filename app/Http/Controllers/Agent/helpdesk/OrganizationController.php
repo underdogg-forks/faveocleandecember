@@ -290,7 +290,7 @@ class OrganizationController extends Controller
      *
      * @return type array
      */
-    public function orgChartData($id, $date111 = '', $date122 = '')
+/*     public function orgChartData($id, $date111 = '', $date122 = '')
     {
         $date11 = strtotime($date122);
         $date12 = strtotime($date111);
@@ -329,7 +329,7 @@ class OrganizationController extends Controller
 
         return '['.$last.']';
     }
-
+ */
     public function getOrgAjax(Request $request)
     {
         $org = new Organization();

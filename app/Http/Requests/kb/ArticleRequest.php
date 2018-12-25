@@ -25,7 +25,7 @@ class ArticleRequest extends Request
     {
         return [
             'name'        => 'required',
-            //'slug'        => 'required|unique:kb_article',
+            //'slug'        => 'required|unique:kb__articles',
             'description' => 'required',
             'category_id' => 'required',
         ];

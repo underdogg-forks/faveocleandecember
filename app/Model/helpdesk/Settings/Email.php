@@ -8,7 +8,7 @@ class Email extends BaseModel
 {
     /* Using Email table  */
 
-    protected $table = 'settings_email';
+    protected $table = 'email__settings';
     /* Set fillable fields in table */
     protected $fillable = [
         'id', 'template', 'sys_email', 'alert_email', 'admin_email', 'mta', 'email_fetching', 'strip',

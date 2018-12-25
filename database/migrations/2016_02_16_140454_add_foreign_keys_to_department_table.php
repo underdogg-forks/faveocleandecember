@@ -12,8 +12,8 @@ class AddForeignKeysToDepartmentTable extends Migration
      */
     public function up()
     {
-        Schema::table('department', function (Blueprint $table) {
-            $table->foreign('sla', 'department_ibfk_1')->references('id')->on('sla_plan')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+        Schema::table('core__departments', function (Blueprint $table) {
+            $table->foreign('slaplan_id', 'fk_departments_slaplans')->references('id')->on('tickets__slaplans')->onUpdate('NO ACTION')->onDelete('RESTRICT');
             $table->foreign('manager', 'department_ibfk_2')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
@@ -25,7 +25,7 @@ class AddForeignKeysToDepartmentTable extends Migration
      */
     public function down()
     {
-        Schema::table('department', function (Blueprint $table) {
+        Schema::table('core__departments', function (Blueprint $table) {
             $table->dropForeign('department_ibfk_1');
             $table->dropForeign('department_ibfk_2');
         });

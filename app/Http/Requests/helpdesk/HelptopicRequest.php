@@ -29,10 +29,11 @@ class HelptopicRequest extends Request
     public function rules()
     {
         return [
-            'topic' => 'required|unique:help_topic|max:50',
+            'topic' => 'required|unique:tickts__helptopics|max:50',
             // 'parent_topic' => 'required',
             // 'custom_form' => 'required',
-            'department' => 'required',
+            'department_id' => 'required',
+            //'department' => 'required',
             'priority'   => 'required',
             'sla_plan'   => 'required',
                 // 'auto_assign' => 'required',

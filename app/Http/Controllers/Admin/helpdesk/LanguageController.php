@@ -20,7 +20,7 @@ use UnAuth;
 use Validator;
 
 /**
- * SlaController.
+ * LangController.
  *
  * @author      Ladybird <info@ladybirdweb.com>
  */
@@ -84,7 +84,7 @@ class LanguageController extends Controller
         $path = base_path('resources/lang');
         $values = scandir($path);  //Extracts names of directories present in lang directory
         $values = array_slice($values, 2); // skips array element $value[0] = '.' & $value[1] = '..'
-        $sysLanguage = \Cache::get('language');
+        $sysLanguage = \Cache::get('languages');
 
         return \Datatable::collection(new Collection($values))
                         ->addColumn('language', function ($model) {

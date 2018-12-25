@@ -46,7 +46,7 @@ class PriorityController extends Controller
         $user_status = CommonSettings::where('option_name', '=', 'user_priority')->first();
         // dd( $user_status);
 
-        return view('themes.default1.admin.helpdesk.manage.ticket_priority.index', compact('user_status'));
+        return view('themes.default1.admin.helpdesk.manage.ticketpriorities.index', compact('user_status'));
     }
 
     /**
@@ -111,7 +111,7 @@ class PriorityController extends Controller
      */
     public function priorityCreate()
     {
-        return view('themes.default1.admin.helpdesk.manage.ticket_priority.create');
+        return view('themes.default1.admin.helpdesk.manage.ticketpriorities.create');
     }
 
     public function priorityCreate1(PriorityRequest $request)
@@ -136,7 +136,7 @@ class PriorityController extends Controller
     {
         $tk_priority = Ticket_Priority::wherepriority_id($priority_id)->first();
 
-        return view('themes.default1.admin.helpdesk.manage.ticket_priority.edit', compact('tk_priority'));
+        return view('themes.default1.admin.helpdesk.manage.ticketpriorities.edit', compact('tk_priority'));
     }
 
     /**
@@ -173,7 +173,7 @@ class PriorityController extends Controller
     {
         $default_priority = Ticket_Priority::where('is_default', '>', '0')->first();
         // dd($default_priority->is_default);
-        $topic = DB::table('help_topic')->where('priority', '=', $priority_id)->update(['priority' => $default_priority->is_default]);
+        $topic = DB::table('tickets__helptopics')->where('priority', '=', $priority_id)->update(['priority' => $default_priority->is_default]);
         // if ($topic > 0) {
         //     if ($topic > 1) {
         //         $text_topic = 'Emails';

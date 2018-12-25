@@ -1,4 +1,4 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 
 @section('Staffs')
 active
@@ -30,7 +30,8 @@ class="active"
 <div class="box box-primary">
     <div class="box-header">
         <h2 class="box-title">{!! Lang::get('lang.list_of_agents') !!} </h2><a href="{{route('agents.create')}}" class="btn btn-primary pull-right">
-        <span class="glyphicon glyphicon-plus"></span> &nbsp;{!! Lang::get('lang.create_an_agent') !!}</a></div>
+            <span class="glyphicon glyphicon-plus"></span> &nbsp;{!! Lang::get('lang.create_an_agent') !!}</a>
+    </div>
     <div class="box-body table-responsive">
         <?php
         $user = App\User::where('role', '!=', 'user')->orderBy('id', 'ASC')->paginate(10);
@@ -102,9 +103,12 @@ class="active"
                 {{-- <td>{{$use->Lastlogin_at}}</td> --}}
                 <td>
                     {!! Form::open(['route'=>['agents.destroy', $use->id],'method'=>'DELETE']) !!}
-                    <a href="{{route('agents.edit', $use->id)}}" class="btn btn-info btn-xs btn-flat"><i class="fa fa-edit" style="color:black;"> </i> {!! Lang::get('lang.edit') !!} </a>
+                    <a href="{{route('agents.edit', $use->id)}}" class="btn btn-info btn-xs btn-flat"><i class="fa fa-edit"
+                            style="color:black;"> </i> {!! Lang::get('lang.edit') !!} </a>
                     <!-- To pop up a confirm Message -->
-                    {{-- {!! Form::button(' <i class="fa fa-trash" style="color:black;"> </i> '  . Lang::get('lang.delete') ,['type' => 'submit', 'class'=> 'btn btn-warning btn-xs btn-flat','onclick'=>'return confirm("Are you sure?")']) !!} --}}
+                    {{-- {!! Form::button(' <i class="fa fa-trash" style="color:black;"> </i> ' .
+                    Lang::get('lang.delete') ,['type' => 'submit', 'class'=> 'btn btn-warning btn-xs
+                    btn-flat','onclick'=>'return confirm("Are you sure?")']) !!} --}}
                     {!! Form::close() !!}
                 </td>
             </tr>

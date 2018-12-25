@@ -1,6 +1,7 @@
-@extends('themes.default1.client.layout.client')
-@section('content')  
+@extends('themes.default1.client.layout.unauthclient')
+@section('content')
 <div id="page" class="hfeed site">
+Beautiful Error 500 Page
     <article class="hentry error404 text-center">
         <h1 class="error-title"><i class="fa fa-frown-o text-info"></i><span class="visible-print text-danger">0</span></h1>
         <h2 class="entry-title text-muted">{!! Lang::get('lang.sorry_something_went_wrong') !!}</h2>

@@ -62,7 +62,7 @@ class PhpMailController extends Controller
     public function mailfrom($reg, $dept_id)
     {
         $email_id = '';
-        $emails = Emails::where('department', '=', $dept_id)->first();
+        $emails = Emails::where('core__departments', '=', $dept_id)->first();
 
         $email = Email::find(1);
         if ($emails && $emails->sending_status) {
@@ -130,7 +130,7 @@ class PhpMailController extends Controller
         $email_address = $this->checkElement('email_address', $template_variables);
         $user = $this->checkElement('user', $template_variables);
 
-        $status = \DB::table('settings_email')->first();
+        $status = \DB::table('email__settings')->first();
 
         $template = TemplateType::where('name', '=', $template_type)->first();
 
@@ -278,7 +278,7 @@ class PhpMailController extends Controller
         $short = 'database';
         $field = [
             'driver' => 'database',
-            'table'  => 'jobs',
+            'table'  => 'core__cronjobs',
             'queue'  => 'default',
             'expire' => 60,
         ];

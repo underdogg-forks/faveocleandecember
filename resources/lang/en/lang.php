@@ -132,7 +132,7 @@ return [
     'create_email'                                                                     => 'Create email',
     'email_address'                                                                    => 'Email address',
     'email_name'                                                                       => 'Email name',
-    'help_topic'                                                                       => 'Help topic',
+    'tickets__helptopics'                                                                       => 'Help topic',
     'auto_response'                                                                    => 'Auto response',
     'host_name'                                                                        => 'Host name',
     'port_number'                                                                      => 'Port number',
@@ -527,12 +527,12 @@ return [
       |  Help Topic index Page
       |--------------------------------------
      */
-    'help_topics'       => 'Help topics',
+    'help_topics'       => 'HelpTopics',
     'topic'             => 'Topic',
     'type'              => 'Type',
-    'priority'          => 'Priority',
+    'priority'          => 'Priorities',
     'last_updated'      => 'Last updated',
-    'create_help_topic' => 'Create help topic',
+    'create_help_topic' => 'Create helptopic',
     'action'            => 'Action',
     /*
       |--------------------------------------
@@ -603,7 +603,7 @@ return [
       |  Work Flow
       |--------------------------------------
      */
-    'workflow'                      => 'Workflow',
+    'workflow'                      => 'Workflows',
     'ticket_workflow'               => 'Ticket workflow',
     'create_workflow'               => 'Create workflow',
     'edit_workflow'                 => 'Edit workflow',
@@ -1053,6 +1053,7 @@ return [
      */
     'subject'                                        => 'Subject',
     'ticket_id'                                      => 'Ticket ID',
+    'ticketpriorities'                               => 'Priorities',
     'priority'                                       => 'Priority',
     'from'                                           => 'From',
     'last_replier'                                   => 'Last replier',
@@ -1478,7 +1479,7 @@ return [
      * -----------------------------------------------------------------------------------
      */
     'ticket_priority'                                           => 'Ticket priority',
-    'priority'                                                  => 'Priority',
+    'priority'                                                  => 'Priorities',
     'priority_desc'                                             => 'Priority description',
     'priority_urgency'                                          => 'Priority urgency',
     'priority_id'                                               => 'Priority Id',

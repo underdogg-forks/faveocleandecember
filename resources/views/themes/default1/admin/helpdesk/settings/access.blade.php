@@ -1,4 +1,4 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 
 @section('Settings')
 class="active"

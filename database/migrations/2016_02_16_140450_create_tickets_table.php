@@ -30,7 +30,7 @@ class CreateTicketsTable extends Migration
             $table->integer('lock_by');
             $table->dateTime('lock_at')->nullable();
             $table->integer('source')->unsigned()->nullable()->index('source');
-            $table->integer('isoverdue');
+            $table->integer('is_overdue');
             $table->integer('reopened');
             $table->integer('isanswered');
             $table->integer('html');
@@ -44,7 +44,7 @@ class CreateTicketsTable extends Migration
             $table->dateTime('last_message_at')->nullable();
             $table->dateTime('last_response_at')->nullable();
             $table->integer('approval');
-            $table->integer('follow_up');
+            $table->integer('is_followup');
             $table->timestamps();
         });
     }

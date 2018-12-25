@@ -9,7 +9,7 @@ use App\Http\Requests\helpdesk\InstallerRequest;
 use App\Model\helpdesk\Settings\System;
 // models
 use App\Model\helpdesk\Utility\Date_time_format;
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use App\User;
 use Artisan;
 // classes
@@ -132,7 +132,7 @@ class InstallController extends Controller
 
         $request->session()->put('step3', 'step3');
         $request->session()->put('language', Input::get('language'));
-        $request->session()->put('timezone', Input::get('timezone'));
+        $request->session()->put('core__timezones', Input::get('core__timezones'));
         $request->session()->put('date', Input::get('date'));
         $request->session()->put('datetime', Input::get('datetime'));
 
@@ -248,7 +248,7 @@ class InstallController extends Controller
 
         $language = $request->input('language');
         // checking requested timezone for the admin and system
-        $timezones = Timezones::where('name', '=', $request->input('timezone'))->first();
+        $timezones = Timezone::where('name', '=', $request->input('core__timezones'))->first();
         if ($timezones == null) {
             return redirect()->back()->with('fails', 'Invalid time-zone');
         }
@@ -315,11 +315,11 @@ class InstallController extends Controller
     {
         // checking if the installation have been completed or not
         if (Cache::get('step6') == 'step6') {
-            $language = Cache::get('language');
+            $language = Cache::get('languages');
 
             try {
                 \Cache::flush();
-                \Cache::forever('language', $language);
+                \Cache::forever('languages', $language);
                 $this->updateInstalEnv();
 
                 return View::make('themes/default1/installer/helpdesk/view6');

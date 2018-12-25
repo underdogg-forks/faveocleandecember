@@ -1,4 +1,4 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 
 @section('PageHeader')
 <h1>{!! Lang::get('lang.template_set') !!}</h1>
@@ -44,7 +44,7 @@
                 <tr>
                     <td>{!! $set->name !!}</td>
                     <?php
-                    $status = DB::table('settings_email')->first();
+                    $status = DB::table('email__settings')->first();
                     if (strpos($status->template, '_') !== false) {
                         $ratName = str_replace('_', ' ', $status->template);
                     } else {
@@ -61,7 +61,7 @@
                        
                     <td>
                         <?php
-                        $settings = DB::table('settings_email')->whereId(1)->first();
+                        $settings = DB::table('email__settings')->whereId(1)->first();
                         if ($set->name == $settings->template) {
                             $dis = "disabled";
                         } else {
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <?php
-                        $settings = DB::table('settings_email')->whereId(1)->first();
+                        $settings = DB::table('email__settings')->whereId(1)->first();
                         if ($set->name == $settings->template) {
                             $dis = "disabled";
                         } else {

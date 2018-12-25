@@ -12,7 +12,7 @@ class CreateWorkflowRuleTable extends Migration
      */
     public function up()
     {
-        Schema::create('workflow_rules', function (Blueprint $table) {
+        Schema::create('workflow__rules', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('workflow_id')->unsigned();
             $table->string('matching_criteria');
@@ -22,8 +22,8 @@ class CreateWorkflowRuleTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('workflow_rules', function (Blueprint $table) {
-            $table->foreign('workflow_id', 'workflow_rules_1')->references('id')->on('workflow_name')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+        Schema::table('workflow__rules', function (Blueprint $table) {
+            $table->foreign('workflow_id', 'workflow_rules_1')->references('id')->on('workflow__name')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
 
@@ -34,9 +34,9 @@ class CreateWorkflowRuleTable extends Migration
      */
     public function down()
     {
-        Schema::table('workflow_rules', function (Blueprint $table) {
+        Schema::table('workflow__rules', function (Blueprint $table) {
             $table->dropForeign('workflow_rules_1');
         });
-        Schema::drop('workflow_rules');
+        Schema::drop('workflow__rules');
     }
 }

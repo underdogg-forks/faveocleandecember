@@ -12,7 +12,7 @@ class CreateTimezoneTable extends Migration
      */
     public function up()
     {
-        Schema::create('timezone', function (Blueprint $table) {
+        Schema::create('core__timezones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('location');
@@ -26,6 +26,6 @@ class CreateTimezoneTable extends Migration
      */
     public function down()
     {
-        Schema::drop('timezone');
+        Schema::drop('core__timezones');
     }
 }

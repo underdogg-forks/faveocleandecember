@@ -7,6 +7,6 @@ use App\BaseModel;
 class Time_format extends BaseModel
 {
     public $timestamps = false;
-    protected $table = 'time_format';
+    protected $table = 'core__timeformats';
     protected $fillable = ['id', 'format'];
 }

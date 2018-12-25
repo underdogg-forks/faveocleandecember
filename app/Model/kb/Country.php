@@ -6,6 +6,6 @@ use App\BaseModel;
 
 class Country extends BaseModel
 {
-    public $table = 'country';
+    public $table = 'kb__country';
     protected $fillable = ['country_code', 'country_name'];
 }

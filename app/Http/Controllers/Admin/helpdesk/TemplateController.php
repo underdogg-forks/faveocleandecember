@@ -198,7 +198,7 @@ class TemplateController extends Controller
     {
         $directory = str_replace('-', '/', $path);
         $dir = $directory.$template;
-        $status = \DB::table('settings_email')->first();
+        $status = \DB::table('email__settings')->first();
         if ($template == 'default' or $template == $status->template) {
             return \Redirect::back()->with('fails', 'You cannot delete a default or active directory!');
         }
@@ -219,7 +219,7 @@ class TemplateController extends Controller
 
     public function activateset($setname)
     {
-        \DB::table('settings_email')->update(['template' => $setname]);
+        \DB::table('email__settings')->update(['template' => $setname]);
 
         return \Redirect::back()->with('success', 'You have Successfully Activated this Set');
     }

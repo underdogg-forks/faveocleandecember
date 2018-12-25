@@ -12,12 +12,12 @@ class CreateSettingsSystemTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_system', function (Blueprint $table) {
+        Schema::create('core__systemsettings', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status');
             $table->string('url');
             $table->string('name');
-            $table->string('department');
+            $table->string('core__departments');
             $table->string('page_size');
             $table->string('log_level');
             $table->string('purge_log');
@@ -25,7 +25,7 @@ class CreateSettingsSystemTable extends Migration
             $table->integer('api_key_mandatory');
             $table->string('api_key');
             $table->string('name_format');
-            $table->integer('time_farmat')->unsigned()->nullable()->index('time_farmat');
+            $table->integer('core__timeformats')->unsigned()->nullable()->index('core__timeformats');
             $table->integer('date_format')->unsigned()->nullable()->index('date_format');
             $table->integer('date_time_format')->unsigned()->nullable()->index('date_time_format');
             $table->string('day_date_time');
@@ -43,6 +43,6 @@ class CreateSettingsSystemTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_system');
+        Schema::drop('core__systemsettings');
     }
 }

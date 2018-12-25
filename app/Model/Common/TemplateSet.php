@@ -6,6 +6,6 @@ use App\BaseModel;
 
 class TemplateSet extends BaseModel
 {
-    protected $table = 'template_sets';
+    protected $table = 'email__templatesets';
     protected $fillable = ['name', 'active'];
 }

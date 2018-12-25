@@ -11,7 +11,7 @@ use App\Http\Requests\kb\ProfileRequest;
 use App\Http\Requests\kb\SettingsRequests;
 use App\Model\helpdesk\Utility\Date_format;
 // Model
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use App\Model\kb\Comment;
 use App\Model\kb\Settings;
 use Auth;
@@ -55,7 +55,7 @@ class SettingsController extends Controller
      *
      * @return response
      */
-    public function settings(Settings $settings, Timezones $time, Date_format $date)
+    public function settings(Settings $settings, Timezone $time, Date_format $date)
     {
         /* get the setting where the id == 1 */
         $settings = $settings->whereId('1')->first();

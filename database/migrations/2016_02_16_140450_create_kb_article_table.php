@@ -12,13 +12,13 @@ class CreateKbArticleTable extends Migration
      */
     public function up()
     {
-        Schema::create('kb_article', function (Blueprint $table) {
+        Schema::create('kb__articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name');
+            $table->string('name', 100);
             $table->string('slug');
             $table->text('description', 65535);
-            $table->boolean('status');
-            $table->boolean('type');
+            $table->unsignedMediumInteger('status');
+            $table->unsignedMediumInteger('type');
             $table->dateTime('publish_time')->nullable();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateKbArticleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kb_article');
+        Schema::drop('kb__articles');
     }
 }

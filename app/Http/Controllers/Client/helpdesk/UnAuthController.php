@@ -266,7 +266,7 @@ class UnAuthController extends Controller
 
         $ticket_number = $tickets->ticket_number;
 
-        $sending_emails = Emails::where('department', '=', $ticket_status->dept_id)->first();
+        $sending_emails = Emails::where('core__departments', '=', $ticket_status->dept_id)->first();
         if ($sending_emails == null) {
             $from_email = $this->system_mail();
         } else {
@@ -331,7 +331,7 @@ class UnAuthController extends Controller
     {
         //if(Cache::has('language'))
         //{
-        //  return Cache::get('language');
+        //  return Cache::get('languages');
         //} else return 'false';
         // Cache::put('language',$)
         $path = base_path('resources/lang');  // Path to check available language packages
@@ -339,8 +339,8 @@ class UnAuthController extends Controller
             // dd(array_key_exists($lang, Config::get('languages')));
             // app()->setLocale($lang);
 
-            \Cache::forever('language', $lang);
-        // dd(Cache::get('language'));
+            \Cache::forever('languages', $lang);
+        // dd(Cache::get('languages'));
             // dd()
         } else {
             return false;
@@ -407,7 +407,7 @@ class UnAuthController extends Controller
                     $ticket->follow_up = 1;
                     $ticket->save();
                     //  Tickets::where('id', '=',$id)
-             // ->update(['follow_up' => 1]);
+             // ->update(['is_followup' => 1]);
 
             // }
                 }

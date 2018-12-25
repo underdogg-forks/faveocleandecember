@@ -12,9 +12,9 @@ class CreateSettingsAlertNoticeTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_alert_notice', function (Blueprint $table) {
+        Schema::create('settings__alert_notice', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('ticket_status');
+            $table->boolean('tickets__statuses');
             $table->boolean('ticket_admin_email');
             $table->boolean('ticket_department_manager');
             $table->boolean('ticket_department_member');
@@ -54,6 +54,6 @@ class CreateSettingsAlertNoticeTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_alert_notice');
+        Schema::drop('settings__alert_notice');
     }
 }

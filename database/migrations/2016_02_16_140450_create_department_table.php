@@ -12,11 +12,11 @@ class CreateDepartmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('department', function (Blueprint $table) {
+        Schema::create('core__departments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('type');
-            $table->integer('sla')->unsigned()->nullable()->index('sla');
+            $table->integer('slaplan_id')->unsigned()->nullable()->index('slaplan');
             $table->integer('manager')->unsigned()->nullable()->index('manager_2');
             $table->string('ticket_assignment');
             $table->string('outgoing_email');
@@ -38,6 +38,6 @@ class CreateDepartmentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('department');
+        Schema::drop('core__departments');
     }
 }

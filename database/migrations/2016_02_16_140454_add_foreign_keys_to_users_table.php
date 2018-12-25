@@ -14,7 +14,7 @@ class AddForeignKeysToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('assign_group', 'users_ibfk_1')->references('id')->on('groups')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('primary_dpt', 'users_ibfk_2')->references('id')->on('department')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('primary_dpt', 'users_ibfk_2')->references('id')->on('core__departments')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
 

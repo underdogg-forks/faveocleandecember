@@ -29,7 +29,7 @@ use App\Model\helpdesk\Utility\Limit_Login;
 use App\Model\helpdesk\Utility\Log_notification;
 use App\Model\helpdesk\Utility\MailboxProtocol;
 use App\Model\helpdesk\Utility\Time_format;
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use App\Model\helpdesk\Utility\Version_Check;
 use App\Model\helpdesk\Workflow\WorkflowClose;
 use App\Model\kb\Settings;
@@ -200,14 +200,15 @@ class DatabaseSeeder extends Seeder
             'Pacific/Fiji'            => '(GMT+12:00) Fiji', ];
 
         foreach ($timezone as $name => $location) {
-            Timezones::create(['name' => $name, 'location' => $location]);
+            Timezone::create(['name' => $name, 'location' => $location]);
         }
         /* Ticket status */
-        Ticket_status::create(['name' => 'Open', 'state' => 'open', 'mode' => '3', 'message' => 'Ticket have been Reopened by', 'flags' => '0', 'sort' => '1', 'properties' => 'Open tickets.']);
-        Ticket_status::create(['name' => 'Resolved', 'state' => 'closed', 'mode' => '1', 'message' => 'Ticket have been Resolved by', 'flags' => '0', 'sort' => '2', 'properties' => 'Resolved tickets.']);
-        Ticket_status::create(['name' => 'Closed', 'state' => 'closed', 'mode' => '3', 'message' => 'Ticket have been Closed by', 'flags' => '0', 'sort' => '3', 'properties' => 'Closed tickets. Tickets will still be accessible on client and staff panels.']);
-        Ticket_status::create(['name' => 'Archived', 'state' => 'archived', 'mode' => '3', 'message' => 'Ticket have been Archived by', 'flags' => '0', 'sort' => '4', 'properties' => 'Tickets only adminstratively available but no longer accessible on ticket queues and client panel.']);
-        Ticket_status::create(['name' => 'Deleted', 'state' => 'deleted', 'mode' => '3', 'message' => 'Ticket have been Deleted by', 'flags' => '0', 'sort' => '5', 'properties' => 'Tickets queued for deletion. Not accessible on ticket queues.']);
+        Ticket_status::create(['name' => 'Open', 'state' => 'open', 'mode' => '3', 'message' => 'Ticket has been Reopened by', 'flags' => '0', 'sort' => '1', 'properties' => 'Open tickets.']);
+        Ticket_status::create(['name' => 'Resolved', 'state' => 'closed', 'mode' => '1', 'message' => 'Ticket has been Resolved by', 'flags' => '0', 'sort' => '2', 'properties' => 'Resolved tickets.']);
+        Ticket_status::create(['name' => 'Closed', 'state' => 'closed', 'mode' => '3', 'message' => 'Ticket has been Closed by', 'flags' => '0', 'sort' => '3', 'properties' => 'Closed tickets. Tickets will still be accessible on client and staff panels.']);
+        Ticket_status::create(['name' => 'Archived', 'state' => 'archived', 'mode' => '3', 'message' => 'Ticket has been Archived by', 'flags' => '0', 'sort' => '4', 'properties' => 'Tickets only adminstratively available but no longer accessible on ticket queues and client panel.']);
+        Ticket_status::create(['name' => 'Deleted', 'state' => 'deleted', 'mode' => '3', 'message' => 'Ticket has
+         been Deleted by', 'flags' => '0', 'sort' => '5', 'properties' => 'Tickets queued for deletion. Not accessible on ticket queues.']);
         Ticket_status::create(['name' => 'Unverified', 'state' => 'unverified', 'mode' => '3', 'message' => 'User account verification required.', 'flags' => '0', 'sort' => '6', 'properties' => 'Ticket will be open after user verifies his/her account.']);
         Ticket_status::create(['name' => 'Request Approval', 'state' => 'unverified', 'mode' => '3', 'message' => 'Approval requested by', 'flags' => '0', 'sort' => '7', 'properties' => 'Ticket will be approve  after Admin verifies  this ticket']);
 
@@ -234,14 +235,10 @@ class DatabaseSeeder extends Seeder
         /* Languages */
         $languages = [
             'English'              => 'en',
-            'Italian'              => 'it',
             'German'               => 'de',
             'French'               => 'fr',
-            'Brazilian Portuguese' => 'pt_BR',
             'Dutch'                => 'nl',
-            'Spanish'              => 'es',
-            'Norwegian'            => 'nb_NO',
-            'Danish'               => 'da', ];
+            'Spanish'              => 'es',];
 
         foreach ($languages as $language => $locale) {
             Languages::create(['name' => $language, 'locale' => $locale]);
@@ -255,46 +252,27 @@ class DatabaseSeeder extends Seeder
         Groups::create(['name' => 'Group B', 'group_status' => '1', 'can_create_ticket' => '1', 'can_edit_ticket' => '0', 'can_post_ticket' => '0', 'can_close_ticket' => '1', 'can_assign_ticket' => '1', 'can_transfer_ticket' => '1', 'can_delete_ticket' => '1', 'can_ban_email' => '1', 'can_manage_canned' => '1', 'can_view_agent_stats' => '1', 'department_access' => '1']);
         Groups::create(['name' => 'Group C', 'group_status' => '1', 'can_create_ticket' => '0', 'can_edit_ticket' => '0', 'can_post_ticket' => '0', 'can_close_ticket' => '1', 'can_assign_ticket' => '0', 'can_transfer_ticket' => '0', 'can_delete_ticket' => '0', 'can_ban_email' => '0', 'can_manage_canned' => '0', 'can_view_agent_stats' => '0', 'department_access' => '0']);
         /* Department */
-        Department::create(['name' => 'Support', 'type' => '1', 'sla' => '1']);
-        Department::create(['name' => 'Sales', 'type' => '1', 'sla' => '1']);
-        Department::create(['name' => 'Operation', 'type' => '1', 'sla' => '1']);
+        Department::create(['name' => 'Support', 'type' => '1', 'slaplan_id' => '1']);
+        Department::create(['name' => 'Sales', 'type' => '1', 'slaplan_id' => '1']);
+        Department::create(['name' => 'Operation', 'type' => '1', 'slaplan_id' => '1']);
         /* Helptopic */
-        help_topic::create(['topic' => 'Support query', 'department' => '1', 'ticket_status' => '1', 'priority' => '2', 'sla_plan' => '1', 'ticket_num_format' => '1', 'status' => '1', 'type' => '1', 'auto_response' => '0']);
-        help_topic::create(['topic' => 'Sales query', 'department' => '2', 'ticket_status' => '1', 'priority' => '2', 'sla_plan' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
-        help_topic::create(['topic' => 'Operational query', 'department' => '3', 'ticket_status' => '1', 'priority' => '2', 'sla_plan' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
+        help_topic::create(['topic' => 'Support query', 'core__departments' => '1', 'tickets__statuses' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '1', 'type' => '1', 'auto_response' => '0']);
+        help_topic::create(['topic' => 'Sales query', 'core__departments' => '2', 'tickets__statuses' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
+        help_topic::create(['topic' => 'Operational query', 'core__departments' => '3', 'tickets__statuses' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
         /* Daily notification log */
         Log_notification::create(['log' => 'NOT-1']);
         /* System complete settings */
-        Alert::create(['id' => '1', 'ticket_status' => '1', 'ticket_admin_email' => '1', 'assignment_status' => '1', 'assignment_status' => '1', 'assignment_assigned_agent' => '1']);
+        Alert::create(['id' => '1', 'tickets__statuses' => '1', 'ticket_admin_email' => '1', 'assignment_status' => '1', 'assignment_status' => '1', 'assignment_assigned_agent' => '1']);
         Company::create(['id' => '1']);
         Email::create(['id' => '1', 'template' => 'default', 'email_fetching' => '1', 'notification_cron' => '1', 'all_emails' => '1', 'email_collaborator' => '1', 'attachment' => '1']);
         Responder::create(['id' => '1', 'new_ticket' => '1', 'agent_new_ticket' => '1']);
-        System::create(['id' => '1', 'status' => '1', 'department' => '1', 'date_time_format' => '1', 'time_zone' => '32']);
-        Ticket::create(['num_format' => '$$$$-####-####', 'num_sequence' => 'sequence', 'collision_avoid' => '2', 'priority' => '1', 'sla' => '2', 'help_topic' => '1', 'status' => '1']);
+        System::create(['id' => '1', 'status' => '1', 'core__departments' => '1', 'date_time_format' => '1', 'time_zone' => '32']);
+        Ticket::create(['num_format' => '$$$$-####-####', 'num_sequence' => 'sequence', 'collision_avoid' => '2', 'priority' => '1', 'sla' => '2', 'tickets__helptopics' => '1', 'status' => '1']);
 
         /* Version check */
         Version_Check::create(['id' => '1']);
         /* System widgets */
-        Widgets::create(['id' => '1', 'name' => 'footer1']);
-        Widgets::create(['id' => '2', 'name' => 'footer2']);
-        Widgets::create(['id' => '3', 'name' => 'footer3']);
-        Widgets::create(['id' => '4', 'name' => 'footer4']);
-//        Widgets::create(['id' => '5', 'name' => 'side1']);
-//        Widgets::create(['id' => '6', 'name' => 'side2']);
-        Widgets::create(['id' => '7', 'name' => 'linkedin']);
-        Widgets::create(['id' => '8', 'name' => 'stumble']);
-        Widgets::create(['id' => '9', 'name' => 'google']);
-        Widgets::create(['id' => '10', 'name' => 'deviantart']);
-        Widgets::create(['id' => '11', 'name' => 'flickr']);
-        Widgets::create(['id' => '12', 'name' => 'skype']);
-        Widgets::create(['id' => '13', 'name' => 'rss']);
-        Widgets::create(['id' => '14', 'name' => 'twitter']);
-        Widgets::create(['id' => '15', 'name' => 'facebook']);
-        Widgets::create(['id' => '16', 'name' => 'youtube']);
-        Widgets::create(['id' => '17', 'name' => 'vimeo']);
-        Widgets::create(['id' => '18', 'name' => 'pinterest']);
-        Widgets::create(['id' => '19', 'name' => 'dribbble']);
-        Widgets::create(['id' => '20', 'name' => 'instagram']);
+
         /* Knowledge base setting */
         Settings::create(['id' => 'id', 'pagination' => '10']);
         /* Counrty phone code and iso code */

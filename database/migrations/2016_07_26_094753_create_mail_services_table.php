@@ -13,7 +13,7 @@ class CreateMailServicesTable extends Migration
     public function up()
     {
         Schema::create(
-            'mail_services',
+            'email__mail_services',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name');
@@ -30,6 +30,6 @@ class CreateMailServicesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mail_services');
+        Schema::drop('email__mail_services');
     }
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\helpdesk\Settings\System;
 // models
 use App\Model\helpdesk\Utility\Date_time_format;
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use App\User;
 use Artisan;
 // classes
@@ -134,7 +134,7 @@ class InstallerApiController extends Controller
                 'email'     => $request->email,
                 'username'  => $request->username,
                 'password'  => $request->password,
-                'timezone'  => $request->timezone,
+                'core__timezones'  => $request->timezone,
                 'datetime'  => $request->datetime,
             ],
             [
@@ -143,7 +143,7 @@ class InstallerApiController extends Controller
                 'email'     => 'required|email|min:1',
                 'username'  => 'required|min:4',
                 'password'  => 'required|min:6',
-                'timezone'  => 'required|min:1',
+                'core__timezones'  => 'required|min:1',
                 'datetime'  => 'required|min:1',
             ]
         );
@@ -173,7 +173,7 @@ class InstallerApiController extends Controller
             Artisan::call('key:generate');
             Artisan::call('jwt:secret');
             // checking requested timezone for the admin and system
-            $timezones = Timezones::where('name', '=', $timezone)->first();
+            $timezones = Timezone::where('name', '=', $timezone)->first();
             if ($timezones == null) {
                 Artisan::call('migrate:reset', ['--force' => true]);
 

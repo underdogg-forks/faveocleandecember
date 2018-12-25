@@ -144,7 +144,7 @@ return [
     'create_email'                                                                     => 'Maak e-mailbericht',
     'email_address'                                                                    => 'E-mailadres',
     'email_name'                                                                       => 'E-mail naam',
-    'help_topic'                                                                       => 'Help Onderwerp',
+    'tickets__helptopics'                                                                       => 'Help Onderwerp',
     'auto_response'                                                                    => 'Automatisch beantwoorden',
     'host_name'                                                                        => 'Hostnaam',
     'port_number'                                                                      => 'Poortnummer',

@@ -59,7 +59,7 @@ class AgentLayout
             'followup_ticket'    => $this->followupTicket(),
             'deleted'            => $this->deleted(),
             'tickets'            => $this->inbox(),
-            'department'         => $this->departments(),
+            'departments'        => $this->departments(),
             'overdues'           => $this->overdues(),
             'due_today'          => $this->getDueToday(),
             'is_mail_conigured'  => $this->getEmailConfig(),
@@ -85,10 +85,10 @@ class AgentLayout
             $tickets = $tickets->where('tickets.dept_id', '=', \Auth::user()->primary_dpt);
         }
         $tickets = $tickets
-                ->leftJoin('department as dep', 'tickets.dept_id', '=', 'dep.id')
-                ->leftJoin('ticket_status', 'tickets.status', '=', 'ticket_status.id')
-                ->select('dep.name as name', 'ticket_status.name as status', \DB::raw('COUNT(ticket_status.name) as count'))
-                ->groupBy('dep.name', 'ticket_status.name')
+                ->leftJoin('core__departments as dep', 'tickets.dept_id', '=', 'dep.id')
+                ->leftJoin('tickets__statuses', 'tickets.status', '=', 'tickets__statuses.id')
+                ->select('dep.name as name', 'tickets__statuses.name as status', \DB::raw('COUNT(tickets__statuses.name) as count'))
+                ->groupBy('dep.name', 'tickets__statuses.name')
                 ->get();
         $grouped = $tickets->groupBy('name');
         $status = [];
@@ -130,9 +130,9 @@ class AgentLayout
     {
         $ticket = $this->tickets();
         if ($this->auth->role == 'admin') {
-            return $ticket->where('status', '1')->where('follow_up', '1')->select('id');
+            return $ticket->where('status', '1')->where('is_followup', '1')->select('id');
         } elseif ($this->auth->role == 'agent') {
-            return $ticket->where('status', '1')->where('follow_up', '1')->select('id');
+            return $ticket->where('status', '1')->where('is_followup', '1')->select('id');
         }
     }
 
@@ -155,9 +155,9 @@ class AgentLayout
             $table = $table->where('tickets.dept_id', '=', $id)->orWhere('assigned_to', '=', Auth::user()->id);
         }
 
-        return $table->Join('ticket_status', function ($join) {
-            $join->on('ticket_status.id', '=', 'tickets.status')
-                        ->whereIn('ticket_status.id', [1, 7]);
+        return $table->Join('tickets__statuses', function ($join) {
+            $join->on('tickets__statuses.id', '=', 'tickets.status')
+                        ->whereIn('tickets__statuses.id', [1, 7]);
         });
     }
 

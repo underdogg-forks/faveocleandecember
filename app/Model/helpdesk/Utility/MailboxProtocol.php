@@ -7,6 +7,6 @@ use App\BaseModel;
 class MailboxProtocol extends BaseModel
 {
     public $timestamps = false;
-    protected $table = 'mailbox_protocol';
+    protected $table = 'email__mailbox_protocols';
     protected $fillable = ['id', 'name', 'value'];
 }

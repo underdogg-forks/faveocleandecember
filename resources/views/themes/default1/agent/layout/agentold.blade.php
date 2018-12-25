@@ -23,7 +23,7 @@
         <link href="{{asset("lb-faveo/css/tabby.css")}}" rel="stylesheet" type="text/css"/>
 
         <link href="{{asset("lb-faveo/css/jquerysctipttop.css")}}" rel="stylesheet" type="text/css"/>
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
         <link href="{{asset("lb-faveo/css/editor.css")}}" rel="stylesheet" type="text/css"/>
 
         <link href="{{asset("lb-faveo/css/jquery.ui.css")}}" rel="stylesheet" rel="stylesheet"/>
@@ -260,7 +260,7 @@
                             $myticket = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', Auth::user()->id)->where('status', '1')->get();
                             $unassigned = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', '=', null)->where('status', '=', '1')->get();
                             $tickets = App\Model\helpdesk\Ticket\Tickets::whereIn('status',  array(1, 7))->get();
-                            $followup_ticket= App\Model\helpdesk\Ticket\Tickets::where('status', '1')->where('follow_up', '1')->get();
+                            $followup_ticket= App\Model\helpdesk\Ticket\Tickets::where('status', '1')->where('is_followup', '1')->get();
                             $closingapproval = App\Model\helpdesk\Ticket\Tickets::where('status', '7')->get();
 
                             $deleted = App\Model\helpdesk\Ticket\Tickets::where('status', '5')->get();
@@ -269,7 +269,7 @@
                             $myticket = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', Auth::user()->id)->where('status', '1')->get();
                             $unassigned = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', '=', null)->where('status', '=', '1')->where('dept_id', '=', Auth::user()->primary_dpt)->get();
                             $tickets = App\Model\helpdesk\Ticket\Tickets::whereIn('status',  array(1, 7))->where('dept_id', '=', Auth::user()->primary_dpt)->get();
-                            $followup_ticket= App\Model\helpdesk\Ticket\Tickets::where('status', '1')->where('follow_up', '1')->get();
+                            $followup_ticket= App\Model\helpdesk\Ticket\Tickets::where('status', '1')->where('is_followup', '1')->get();
                             $closingapproval = App\Model\helpdesk\Ticket\Tickets::where('status', '7')->get();
 
                             $deleted = App\Model\helpdesk\Ticket\Tickets::where('status', '5')->where('dept_id', '=', Auth::user()->primary_dpt)->get();

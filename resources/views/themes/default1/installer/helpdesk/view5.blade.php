@@ -183,7 +183,7 @@ active
                         </td>
                         <?php  
 
-                                    $timezonesList = \App\Model\helpdesk\Utility\Timezones::orderBy('name','ASC')->get();
+                                    $timezonesList = \App\Model\helpdesk\Utility\Timezone::orderBy('name','ASC')->get();
 
                                                  //
                                     foreach ($timezonesList as $timezone) {

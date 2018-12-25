@@ -34,7 +34,7 @@ use App\Model\helpdesk\Ticket\Ticket_Thread;
 use App\Model\helpdesk\Ticket\Tickets;
 use App\Model\helpdesk\Utility\CountryCode;
 use App\Model\helpdesk\Utility\Date_time_format;
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use App\User;
 use Auth;
 use Crypt;
@@ -226,7 +226,7 @@ class TicketController extends Controller
         if ($tickets == null) {
             return redirect()->route('inbox.ticket')->with('fails', \Lang::get('lang.invalid_attempt'));
         }
-        $avg = DB::table('ticket_thread')->where('ticket_id', '=', $id)->where('reply_rating', '!=', 0)->avg('reply_rating');
+        $avg = DB::table('tickets__threads')->where('ticket_id', '=', $id)->where('reply_rating', '!=', 0)->avg('reply_rating');
         $avg_rate = explode('.', $avg);
         $avg_rating = $avg_rate[0];
         $thread = Ticket_Thread::where('ticket_id', '=', $id)->first();
@@ -403,7 +403,7 @@ class TicketController extends Controller
 
             $line = '---Reply above this line---<br><br>';
             $collaborators = Ticket_Collaborator::where('ticket_id', '=', $ticket_id)->get();
-            $emails = Emails::where('department', '=', $tickets->dept_id)->first();
+            $emails = Emails::where('core__departments', '=', $tickets->dept_id)->first();
             if (!$email) {
                 $mail = false;
             }
@@ -453,19 +453,19 @@ class TicketController extends Controller
             return 1;
         } elseif (Input::get('sla_paln') == null) {
             return 2;
-        } elseif (Input::get('help_topic') == null) {
+        } elseif (Input::get('tickets__helptopics') == null) {
             return 3;
-        } elseif (Input::get('ticket_source') == null) {
+        } elseif (Input::get('tickets__sources') == null) {
             return 4;
-        } elseif (Input::get('ticket_priority') == null) {
+        } elseif (Input::get('tickets__priorities') == null) {
             return 5;
         } else {
             $ticket = $ticket->where('id', '=', $ticket_id)->first();
             $ticket->sla = Input::get('sla_paln');
             $ticket->help_topic_id = Input::get('help_topic');
-            $ticket->source = Input::get('ticket_source');
-            $ticket->priority_id = Input::get('ticket_priority');
-            $dept = Help_topic::select('department')->where('id', '=', $ticket->help_topic_id)->first();
+            $ticket->source = Input::get('tickets__sources');
+            $ticket->priority_id = Input::get('tickets__priorities');
+            $dept = Help_topic::select('department_id')->where('id', '=', $ticket->help_topic_id)->first();
             $ticket->dept_id = $dept->department;
             $ticket->save();
 
@@ -487,11 +487,11 @@ class TicketController extends Controller
     public function ticket_print($id)
     {
         $tickets = Tickets::
-                leftJoin('ticket_thread', function ($join) {
+                leftJoin('tickets__threads', function ($join) {
                     $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
                         ->whereNotNull('ticket_thread.title');
                 })
-                ->leftJoin('department', 'tickets.dept_id', '=', 'department.id')
+                ->leftJoin('core__departments', 'tickets.dept_id', '=', 'department.id')
                 ->leftJoin('help_topic', 'tickets.help_topic_id', '=', 'help_topic.id')
                 ->where('tickets.id', '=', $id)
                 ->select('ticket_thread.title', 'tickets.ticket_number', 'department.name as department', 'help_topic.topic as helptopic')
@@ -1141,7 +1141,7 @@ class TicketController extends Controller
         $ticket_number = $ticket_status->ticket_number;
 
         $system_from = $this->company();
-        $sending_emails = Emails::where('department', '=', $ticket_status->dept_id)->first();
+        $sending_emails = Emails::where('core__departments', '=', $ticket_status->dept_id)->first();
         if ($sending_emails == null) {
             $from_email = $this->system_mail();
         } else {
@@ -1796,7 +1796,7 @@ class TicketController extends Controller
     public static function usertimezone($utc)
     {
         $set = System::whereId('1')->first();
-        $timezone = Timezones::whereId($set->time_zone)->first();
+        $timezone = Timezone::whereId($set->time_zone)->first();
         $tz = $timezone->name;
         $format = $set->date_time_format;
         date_default_timezone_set($tz);
@@ -1815,7 +1815,7 @@ class TicketController extends Controller
     public static function timeOffset($utc)
     {
         $set = System::whereId('1')->first();
-        $timezone = Timezones::whereId($set->time_zone)->first();
+        $timezone = Timezone::whereId($set->time_zone)->first();
         $tz = $timezone->name;
         date_default_timezone_set($tz);
         $offset = date('Z', strtotime($utc));
@@ -1988,7 +1988,7 @@ class TicketController extends Controller
     public function checkLock($id)
     {
         $ticket = DB::table('tickets')->select('id', 'lock_at', 'lock_by')->where('id', '=', $id)->first();
-        $cad = DB::table('settings_ticket')->select('collision_avoid')->where('id', '=', 1)->first();
+        $cad = DB::table('tickets__settings')->select('collision_avoid')->where('id', '=', 1)->first();
         $cad = $cad->collision_avoid; //collision avoid duration defined in system
 
         $to_time = strtotime($ticket->lock_at); //last locking time

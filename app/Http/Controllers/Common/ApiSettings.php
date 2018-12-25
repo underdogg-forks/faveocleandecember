@@ -29,7 +29,7 @@ class ApiSettings extends Controller
     {
         try {
             /* fetch the values of system from system table */
-            $systems = DB::table('settings_system')->whereId('1')->first();
+            $systems = DB::table('core__systemsettings')->whereId('1')->first();
             $details = [];
             $ticket_detail = '';
             $settings = $this->api;
@@ -54,7 +54,7 @@ class ApiSettings extends Controller
 
         try {
             // dd($request->input());
-            DB::table('settings_system')
+            DB::table('core__systemsettings')
             ->where('id', 1)
             ->update(['api_enable'  => Input::get('api_enable'),
                 'api_key_mandatory' => Input::get('api_key_mandatory'),
@@ -81,7 +81,7 @@ class ApiSettings extends Controller
             $ticket = new Tickets();
             $ticketid = $detail->ticket_id;
             $data = $ticket
-                    ->join('ticket_thread', function ($join) use ($ticketid) {
+                    ->join('tickets__threads', function ($join) use ($ticketid) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
                         ->where('ticket_thread.ticket_id', '=', $ticketid);
                     })

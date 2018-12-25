@@ -12,7 +12,7 @@ class CreateTimeFormatTable extends Migration
      */
     public function up()
     {
-        Schema::create('time_format', function (Blueprint $table) {
+        Schema::create('core__timeformats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('format');
         });
@@ -25,6 +25,6 @@ class CreateTimeFormatTable extends Migration
      */
     public function down()
     {
-        Schema::drop('time_format');
+        Schema::drop('core__timeformats');
     }
 }

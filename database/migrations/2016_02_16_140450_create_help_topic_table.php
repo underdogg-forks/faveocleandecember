@@ -12,15 +12,15 @@ class CreateHelpTopicTable extends Migration
      */
     public function up()
     {
-        Schema::create('help_topic', function (Blueprint $table) {
+        Schema::create('tickets__helptopics', function (Blueprint $table) {
             $table->increments('id');
             $table->string('topic');
             $table->string('parent_topic');
             $table->integer('custom_form')->unsigned()->nullable()->index('custom_form');
-            $table->integer('department')->unsigned()->nullable()->index('department');
-            $table->integer('ticket_status')->unsigned()->nullable()->index('ticket_status');
+            $table->integer('core__departments')->unsigned()->nullable()->index('core__departments');
+            $table->integer('tickets__statuses')->unsigned()->nullable()->index('tickets__statuses');
             $table->integer('priority')->unsigned()->nullable()->index('priority');
-            $table->integer('sla_plan')->unsigned()->nullable()->index('sla_plan');
+            $table->integer('sla_plan')->unsigned()->nullable()->index('tickets__slaplans');
             $table->string('thank_page');
             $table->string('ticket_num_format');
             $table->string('internal_notes');
@@ -39,6 +39,6 @@ class CreateHelpTopicTable extends Migration
      */
     public function down()
     {
-        Schema::drop('help_topic');
+        Schema::drop('tickets__helptopics');
     }
 }

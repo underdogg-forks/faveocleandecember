@@ -13,7 +13,7 @@ class CreateQueueServicesTable extends Migration
     public function up()
     {
         Schema::create(
-            'queue_services',
+            'core__queueservices',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name');
@@ -31,6 +31,6 @@ class CreateQueueServicesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('queue_services');
+        Schema::drop('core__queueservices');
     }
 }

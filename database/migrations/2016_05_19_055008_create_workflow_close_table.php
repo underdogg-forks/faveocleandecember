@@ -12,7 +12,7 @@ class CreateWorkflowCloseTable extends Migration
      */
     public function up()
     {
-        Schema::create('workflow_close', function (Blueprint $table) {
+        Schema::create('workflow__close', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('days');
             $table->integer('condition');
@@ -29,6 +29,6 @@ class CreateWorkflowCloseTable extends Migration
      */
     public function down()
     {
-        Schema::drop('workflow_close');
+        Schema::drop('workflow__close');
     }
 }

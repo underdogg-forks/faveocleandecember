@@ -30,9 +30,9 @@ class HelptopicUpdate extends Request
     {
         return [
             'topic'      => 'required|max:50',
-            'department' => 'required',
+            'department_id' => 'required',
             'priority'   => 'required',
-            'sla_plan'   => 'required',
+            'slaplan'   => 'required',
         ];
     }
 }

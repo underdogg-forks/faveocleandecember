@@ -94,7 +94,7 @@ return [
     'create_email'                   => 'E-Mail erstellen',
     'email_address'                  => 'E-Mail-Addresse',
     'email_name'                     => 'E-Mail-Name',
-    'help_topic'                     => 'Hilfethema',
+    'tickets__helptopics'                     => 'Hilfethema',
     'auto_response'                  => 'Automatische Antwort',
     'host_name'                      => 'Hostname',
     'port_number'                    => 'Portnummer',

@@ -14,7 +14,7 @@ class AddForeignKeysToGroupAssignDepartmentTable extends Migration
     {
         Schema::table('group_assign_department', function (Blueprint $table) {
             $table->foreign('group_id', 'group_assign_department_ibfk_1')->references('id')->on('groups')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('department_id', 'group_assign_department_ibfk_2')->references('id')->on('department')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('department_id', 'group_assign_department_ibfk_2')->references('id')->on('core__departments')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
 

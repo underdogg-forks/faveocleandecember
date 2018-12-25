@@ -111,7 +111,7 @@ return [
     'email_address'                                                                        => 'Adresse email',
     'email_name'                                                                           => 'Nom d\'email',
     'email_to'                                                                             => 'Email to',
-    'help_topic'                                                                           => 'Rubrique d\'aide',
+    'tickets__helptopics'                                                                           => 'Rubrique d\'aide',
     'auto_response'                                                                        => 'Réponse automatique',
     'host_name'                                                                            => 'Nom d\'hôte',
     'port_number'                                                                          => 'Numéro de port',

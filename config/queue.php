@@ -34,7 +34,7 @@ return [
         ],
         'database' => [
             'driver' => 'database',
-            'table'  => 'jobs',
+            'table'  => 'core__cronjobs',
             'queue'  => 'default',
             'expire' => 60,
         ],

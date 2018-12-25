@@ -199,7 +199,7 @@ function faveoDate($date = '', $format = '', $tz = '')
         $format = is_numeric($system->date_time_format) ? DB::table('date_time_format')->where('id', $system->date_time_format)->value('format') : $system->date_time_format;
     }
     if (!$tz) {
-        $tz = is_numeric($system->time_zone) ? DB::table('timezone')->where('id', $system->time_zone)->value('name') : $system->time_zone;
+        $tz = is_numeric($system->time_zone) ? DB::table('core__timezones')->where('id', $system->time_zone)->value('name') : $system->time_zone;
     }
 
     try {
@@ -218,7 +218,7 @@ function timezone()
     $system = App\Model\helpdesk\Settings\System::select('time_zone')->first();
     $tz = 'UTC';
     if ($system) {
-        $tz = App\Model\helpdesk\Utility\Timezones::where('id', $system->time_zone)->first()->name;
+        $tz = App\Model\helpdesk\Utility\Timezone::where('id', $system->time_zone)->first()->name;
     }
 
     return $tz;

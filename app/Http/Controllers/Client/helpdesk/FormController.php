@@ -171,10 +171,10 @@ class FormController extends Controller
             $helptopic = $request->input('helptopic');
             $helpTopicObj = Help_topic::where('id', '=', $helptopic);
             if ($helpTopicObj->exists() && ($helpTopicObj->value('status') == 1)) {
-                $department = $helpTopicObj->value('department');
+                $department = $helpTopicObj->value('core__departments');
             } else {
                 $defaultHelpTopicID = Ticket::where('id', '=', '1')->first()->help_topic;
-                $department = Help_topic::where('id', '=', $defaultHelpTopicID)->value('department');
+                $department = Help_topic::where('id', '=', $defaultHelpTopicID)->value('core__departments');
             }
             $sla = $ticket_settings->first()->sla;
 

@@ -57,7 +57,7 @@ class ReportController extends Controller
      * @param type $date122
      * @param type $helptopic
      */
-    public function chartdataHelptopic(Request $request, $date111 = '', $date122 = '', $helptopic = '')
+/*     public function chartdataHelptopic(Request $request, $date111 = '', $date122 = '', $helptopic = '')
     {
         $date11 = strtotime($date122);
         $date12 = strtotime($date111);
@@ -254,7 +254,7 @@ class ReportController extends Controller
         $last = rtrim($return, ',');
 
         return '['.$last.']';
-    }
+    } */
 
     public function helptopicPdf(Request $request)
     {

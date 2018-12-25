@@ -11,7 +11,7 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         {{-- <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> --}}
         <link href="{{asset("lb-faveo/css/jquerysctipttop.css")}}" rel="stylesheet" type="text/css">
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
 @stop
 
 

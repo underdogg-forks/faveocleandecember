@@ -12,7 +12,7 @@ class CreateTemplateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('template_types', function (Blueprint $table) {
+        Schema::create('email__templatetypes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();

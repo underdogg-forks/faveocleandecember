@@ -13,15 +13,15 @@ class AddForeignKeysToTicketsTable extends Migration
     public function up()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            $table->foreign('user_id', 'tickets_ibfk_1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('dept_id', 'tickets_ibfk_2')->references('id')->on('department')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('team_id', 'tickets_ibfk_3')->references('id')->on('teams')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('priority_id', 'tickets_ibfk_4')->references('priority_id')->on('ticket_priority')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('sla', 'tickets_ibfk_5')->references('id')->on('sla_plan')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('help_topic_id', 'tickets_ibfk_6')->references('id')->on('help_topic')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('status', 'tickets_ibfk_7')->references('id')->on('ticket_status')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('source', 'tickets_ibfk_8')->references('id')->on('ticket_source')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('assigned_to', 'tickets_ibfk_9')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('user_id', 'fk_tickets_users')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('dept_id', 'fk_tickets_department')->references('id')->on('core__departments')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('team_id', 'fk_tickets_teams')->references('id')->on('core__teams')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('priority_id', 'fk_tickets_priorities')->references('priority_id')->on('tickets__priorities')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('sla', 'fk_tickets_slaplans')->references('id')->on('tickets__slaplans')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('help_topic_id', 'fk_tickets_helptopics')->references('id')->on('tickets__helptopics')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('status', 'fk_tickets_statuses')->references('id')->on('tickets__statuses')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('source', 'fk_tickets_sources')->references('id')->on('tickets__sources')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('assigned_to', 'fk_tickets_users')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
 
@@ -33,15 +33,15 @@ class AddForeignKeysToTicketsTable extends Migration
     public function down()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            $table->dropForeign('tickets_ibfk_1');
-            $table->dropForeign('tickets_ibfk_2');
-            $table->dropForeign('tickets_ibfk_3');
-            $table->dropForeign('tickets_ibfk_4');
-            $table->dropForeign('tickets_ibfk_5');
-            $table->dropForeign('tickets_ibfk_6');
-            $table->dropForeign('tickets_ibfk_7');
-            $table->dropForeign('tickets_ibfk_8');
-            $table->dropForeign('tickets_ibfk_9');
+            $table->dropForeign('fk_tickets_users');
+            $table->dropForeign('fk_tickets_department');
+            $table->dropForeign('fk_tickets_teams');
+            $table->dropForeign('fk_tickets_priorities');
+            $table->dropForeign('fk_tickets_slaplans');
+            $table->dropForeign('fk_tickets_helptopics');
+            $table->dropForeign('fk_tickets_statuses');
+            $table->dropForeign('fk_tickets_sources');
+            $table->dropForeign('fk_tickets_users');
         });
     }
 }

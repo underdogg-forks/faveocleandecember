@@ -1,11 +1,11 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 @section('HeadInclude')
 @stop
 <!-- header -->
 @section('PageHeader')
 <h3>
    Dashboard
-   <!-- <small>Add</small> -->
+   {{--  <!-- <small>Add</small> -->  --}}
 </h3>
 @stop
 <!-- /header -->

@@ -12,7 +12,7 @@ class CreateUserAssignOrganizationTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_assign_organization', function (Blueprint $table) {
+        Schema::create('crm__user_assign_organization', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('org_id')->unsigned()->nullable()->index('org_id');
             $table->integer('user_id')->unsigned()->nullable()->index('user_id');
@@ -27,6 +27,6 @@ class CreateUserAssignOrganizationTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_assign_organization');
+        Schema::drop('crm__user_assign_organization');
     }
 }

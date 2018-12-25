@@ -29,7 +29,7 @@ class DepartmentRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:department|max:30',
+            'name' => 'required|unique:core__departments|max:30',
         ];
     }
 }

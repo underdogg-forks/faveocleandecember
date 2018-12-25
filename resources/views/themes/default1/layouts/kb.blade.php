@@ -22,7 +22,7 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <link rel="stylesheet" href="{{asset("dist/css/tabby.css")}}" type="text/css">
         <link href="{{asset("downloads/jquerysctipttop.css")}}" rel="stylesheet" type="text/css">
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
         <link rel="stylesheet" href="{{asset("dist/css/editor.css")}}" type="text/css">
         {{-- jquery ui css --}}
         <link type="text/css" href="{{asset("downloads/jquery.ui.css")}}" rel="stylesheet">

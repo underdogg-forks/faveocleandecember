@@ -147,7 +147,7 @@ return [
     'create_email'                                                                     => 'Crear correo electrónico',
     'email_address'                                                                    => 'Dirección de correo electrónico',
     'email_name'                                                                       => 'Nombre de correo electrónico',
-    'help_topic'                                                                       => 'Tema de ayuda',
+    'tickets__helptopics'                                                                       => 'Tema de ayuda',
     'auto_response'                                                                    => 'Respuesta automática',
     'host_name'                                                                        => 'Nombre de host',
     'port_number'                                                                      => 'Número de puerto',

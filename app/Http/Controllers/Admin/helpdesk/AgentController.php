@@ -14,7 +14,7 @@ use App\Model\helpdesk\Agent\Department;
 use App\Model\helpdesk\Agent\Groups;
 use App\Model\helpdesk\Agent\Teams;
 use App\Model\helpdesk\Utility\CountryCode;
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use App\User;
 // classes
 use DB;
@@ -68,14 +68,14 @@ class AgentController extends Controller
      * creating a new agent.
      *
      * @param Assign_team_agent $team_assign_agent
-     * @param Timezones         $timezone
+     * @param Timezone          $timezone
      * @param Groups            $group
      * @param Department        $department
      * @param Teams             $team_all
      *
      * @return type view
      */
-    public function create(Timezones $timezone, Groups $group, Department $department, Teams $team_all, CountryCode $code)
+    public function create(Timezone $timezone, Groups $group, Department $department, Teams $team_all, CountryCode $code)
     {
         try {
             // gte all the teams
@@ -173,14 +173,14 @@ class AgentController extends Controller
      * @param type int               $id
      * @param type User              $user
      * @param type Assign_team_agent $team_assign_agent
-     * @param type Timezones         $timezone
+     * @param type Timezone          $timezone
      * @param type Groups            $group
      * @param type Department        $department
      * @param type Teams             $team
      *
      * @return type Response
      */
-    public function edit($id, User $user, Assign_team_agent $team_assign_agent, Timezones $timezone, Groups $group, Department $department, Teams $team, CountryCode $code)
+    public function edit($id, User $user, Assign_team_agent $team_assign_agent, Timezone $timezone, Groups $group, Department $department, Teams $team, CountryCode $code)
     {
         try {
             $location = GeoIP::getLocation();

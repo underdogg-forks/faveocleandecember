@@ -12,7 +12,7 @@ class CreateWorkflowNameTable extends Migration
      */
     public function up()
     {
-        Schema::create('workflow_name', function (Blueprint $table) {
+        Schema::create('workflow__name', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('status');
@@ -30,6 +30,6 @@ class CreateWorkflowNameTable extends Migration
      */
     public function down()
     {
-        Schema::drop('workflow_name');
+        Schema::drop('workflow__name');
     }
 }

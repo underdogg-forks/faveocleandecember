@@ -1,4 +1,4 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 
 @section('Settings')
 active
@@ -35,7 +35,7 @@ class="active"
                 <h3 class="box-title">{{Lang::get('lang.approval_settings')}}</h3>
             </div>
             <!-- check whether success or not -->
-            <div class="box-body table-responsive"style="overflow:hidden;">
+            <div class="box-body table-responsive" style="overflow:hidden;">
                 @if(Session::has('success'))
                 <div class="alert alert-success alert-dismissable">
                     <i class="fa fa-check-circle"></i>
@@ -61,11 +61,11 @@ class="active"
                                 {!! Form::label('del_noti', Lang::get('lang.close_all_ticket_for_approval')) !!}
                             </div>
                         </div>
-     
+
                         <div class="col-md-6">
                             <div class="btn-group" id="toggle_event_editing">
-                                <button type="button"  class="btn {{$approval_status->status == '0' ? 'btn-info' : 'btn-default'}} locked_active">OFF</button>
-                                <button type="button"  class="btn {{$approval_status->status == '1' ? 'btn-info' : 'btn-default'}} unlocked_inactive">ON</button>
+                                <button type="button" class="btn {{$approval_status->status == '0' ? 'btn-info' : 'btn-default'}} locked_active">OFF</button>
+                                <button type="button" class="btn {{$approval_status->status == '1' ? 'btn-info' : 'btn-default'}} unlocked_inactive">ON</button>
                             </div>
                             <!-- <div class="alert alert-info" id="switch_status"></div> -->
                         </div>
@@ -78,29 +78,34 @@ class="active"
 <script>
     $('#toggle_event_editing button').click(function () {
 
-        var settings_approval=1;
-         var settings_approval=0;
-        if ($(this).hasClass('locked_active') ) {
-         
+        var settings_approval = 1;
+        var settings_approval = 0;
+        if ($(this).hasClass('locked_active')) {
+
 
             settings_approval = 0
-        } if ( $(this).hasClass('unlocked_inactive')) {
-          
+        }
+        if ($(this).hasClass('unlocked_inactive')) {
+
             settings_approval = 1;
         }
 
         /* reverse locking status */
-        $('#toggle_event_editing button').eq(0).toggleClass('locked_inactive locked_active btn-default btn-info');
-        $('#toggle_event_editing button').eq(1).toggleClass('unlocked_inactive unlocked_active btn-info btn-default');
+        $('#toggle_event_editing button').eq(0).toggleClass(
+            'locked_inactive locked_active btn-default btn-info');
+        $('#toggle_event_editing button').eq(1).toggleClass(
+            'unlocked_inactive unlocked_active btn-info btn-default');
         $.ajax({
             type: 'post',
             url: '{{route("settingsUpdateApproval.settings")}}',
-            data: {settings_approval: settings_approval},
+            data: {
+                settings_approval: settings_approval
+            },
             success: function (result) {
                 // with('success', Lang::get('lang.approval_settings-created-successfully'));
                 // alert("Hi, testing");
                 alert(result);
-                location.reload(); 
+                location.reload();
             }
         });
     });

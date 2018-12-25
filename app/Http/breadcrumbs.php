@@ -113,17 +113,17 @@ Breadcrumbs::register('getdiagno', function ($breadcrumbs) {
     $breadcrumbs->push(Lang::get('lang.email_diagnostic'), route('getdiagno'));
 });
 
-Breadcrumbs::register('helptopic.index', function ($breadcrumbs) {
-    $breadcrumbs->parent('setting');
-    $breadcrumbs->push(Lang::get('lang.help_topics'), route('helptopic.index'));
+Breadcrumbs::register('helptopics.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('settings');
+    $breadcrumbs->push(Lang::get('lang.help_topics'), route('helptopics.index'));
 });
-Breadcrumbs::register('helptopic.create', function ($breadcrumbs) {
-    $breadcrumbs->parent('helptopic.index');
-    $breadcrumbs->push(Lang::get('lang.create'), route('helptopic.create'));
+Breadcrumbs::register('helptopics.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('helptopics.index');
+    $breadcrumbs->push(Lang::get('lang.create'), route('helptopics.create'));
 });
-Breadcrumbs::register('helptopic.edit', function ($breadcrumbs) {
-    $breadcrumbs->parent('helptopic.index');
-    $breadcrumbs->push(Lang::get('lang.edit'), url('helptopic/{helptopic}/edit'));
+Breadcrumbs::register('helptopics.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('helptopics.index');
+    $breadcrumbs->push(Lang::get('lang.edit'), url('helptopics/{helptopic}/edit'));
 });
 
 Breadcrumbs::register('sla.index', function ($breadcrumbs) {

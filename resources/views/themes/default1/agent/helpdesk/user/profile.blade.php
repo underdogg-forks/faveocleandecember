@@ -56,7 +56,7 @@ class="active"
         $grp = "";
     }
     if ($user->agent_tzone) {
-        $timezone = App\Model\helpdesk\Utility\Timezones::where('id', '=', $user->agent_tzone)->first();
+        $timezone = App\Model\helpdesk\Utility\Timezone::where('id', '=', $user->agent_tzone)->first();
         $timezone = $timezone->name;
     } else {
         $timezone = "";

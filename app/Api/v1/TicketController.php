@@ -414,10 +414,10 @@ class TicketController extends Controller
         try {
             $ticket = $ticket->where('id', '=', $ticket_id)->first();
 
-            $ticket->sla = Input::get('sla_plan');
-            $ticket->help_topic_id = Input::get('help_topic');
-            $ticket->source = Input::get('ticket_source');
-            $ticket->priority_id = Input::get('ticket_priority');
+            $ticket->sla = Input::get('tickets__slaplans');
+            $ticket->help_topic_id = Input::get('tickets__helptopics');
+            $ticket->source = Input::get('tickets__sources');
+            $ticket->priority_id = Input::get('tickets__priorities');
             $ticket->status = Input::get('status');
             $ticket->save();
 
@@ -695,7 +695,7 @@ class TicketController extends Controller
             $ticketid = Input::get('ticket_id');
 
             $ticket_collaborator = \DB::table('users')
-                    ->join('ticket_collaborator', function ($join) use ($ticketid) {
+                    ->join('tickets__collaborators', function ($join) use ($ticketid) {
                         $join->on('users.id', '=', 'ticket_collaborator.user_id')
                         ->where('ticket_collaborator.ticket_id', '=', $ticketid);
                     })

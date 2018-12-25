@@ -1,4 +1,4 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 
 @section('Tickets')
 active
@@ -36,7 +36,7 @@ class="active"
             <i class="fa fa-ban"></i>
             <b>{!! Lang::get('lang.alert') !!} !</b>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p>{{Session::get('failed')}}</p>                
+            <p>{{Session::get('failed')}}</p>
         </div>
         @endif
         <table id="example1" class="table table-bordered table-striped">
@@ -48,13 +48,14 @@ class="active"
                 </tr>
             </thead>
             <tbody>
-                @foreach($statuss as $status)
+                @foreach($statuses as $status)
                 <?php if ($status->name == 'Deleted') continue; ?>
                 <tr>
                     <td>{!! $status->name !!}</td>
-                    <td>{!! $status->sort !!}</td>
+                    <td>{!! $status->sortorder !!}</td>
                     <td>
-                        <a href="{!! route('status.edit',$status->id) !!}"><button class="btn btn-info btn-sm">{!! Lang::get('lang.edit_details') !!}</button></a>
+                        <a href="{!! route('status.edit',$status->id) !!}"><button class="btn btn-info btn-sm">{!!
+                                Lang::get('lang.edit_details') !!}</button></a>
                     </td>
                 </tr>
                 @endforeach

@@ -36,10 +36,10 @@ class LanguageMiddleware
     public function getLangFromSessionOrCache()
     {
         $lang = '';
-        if (Session::has('language')) {
-            $lang = Session::get('language');
-        } elseif (Cache::has('language')) {
-            $lang = Cache::get('language');
+        if (Session::has('languages')) {
+            $lang = Session::get('languages');
+        } elseif (Cache::has('languages')) {
+            $lang = Cache::get('languages');
         }
 
         return $lang;

@@ -35,7 +35,22 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        Queue::failing(function (JobFailed $event) {
+
+		// \Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
+		// 	 logger([$query->sql, $query->bindings, $query->time]);
+		// });
+
+		// if (env('APP_ENV') === 'local') {
+		// 	\DB::connection()->enableQueryLog();
+		// 	\Event::listen('kernel.handled', function ($request, $response) {
+		// 		//if ( $request->has('sql-debug') ) {
+		// 			$queries = DB::getQueryLog();
+		// 			dd($queries);
+		// 		//}
+		// 	});
+		// }
+
+		Queue::failing(function (JobFailed $event) {
             loging('Failed Job - '.$event->connectionName, json_encode([$event->job->payload(), 'error' => $event->exception->getMessage().' file=>'.$event->exception->getFile().' line=>'.$event->exception->getLine()]));
         });
         Route::singularResourceParameters(false);

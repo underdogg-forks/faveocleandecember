@@ -33,10 +33,10 @@
             Route::get('url', '\App\Api\v1\ApiExceptAuthController@checkUrl');
             Route::get('check-url', '\App\Api\v1\ApiExceptAuthController@urlResult');
             Route::get('api_key', '\App\Api\v1\ApiController@generateApiKey');
-            Route::get('help-topic', '\App\Api\v1\ApiController@getHelpTopic');
+            Route::get('helptopics', '\App\Api\v1\ApiController@getHelpTopic');
             Route::get('sla-plan', '\App\Api\v1\ApiController@getSlaPlan');
-            Route::get('priority', '\App\Api\v1\ApiController@getPriority');
-            Route::get('department', '\App\Api\v1\ApiController@getDepartment');
+            Route::get('priorities', '\App\Api\v1\ApiController@getPriority');
+            Route::get('departments', '\App\Api\v1\ApiController@getDepartment');
             Route::get('tickets', '\App\Api\v1\ApiController@getTickets');
             Route::get('ticket', '\App\Api\v1\ApiController@getTicketById');
             Route::get('inbox', '\App\Api\v1\ApiController@inbox');

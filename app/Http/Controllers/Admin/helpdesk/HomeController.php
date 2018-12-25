@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\helpdesk;
 
 /**
  * -----------------------------------------------
- * HelptopicController
+ * HomeController
  * -----------------------------------------------
  * This controller renders your application's "dashboard" for users that
  * are authenticated. Of course, you are free to change or remove the

@@ -12,7 +12,7 @@ class CreateTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('core__teams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->boolean('status');
@@ -30,6 +30,6 @@ class CreateTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('teams');
+        Schema::drop('core__teams');
     }
 }

@@ -6,5 +6,5 @@ use App\BaseModel;
 
 class TemplateType extends BaseModel
 {
-    protected $table = 'template_types';
+    protected $table = 'email__templatetypes';
 }

@@ -12,7 +12,7 @@ class AddForeignKeysToTicketFormDataTable extends Migration
      */
     public function up()
     {
-        Schema::table('ticket_form_data', function (Blueprint $table) {
+        Schema::table('tickets__formdata', function (Blueprint $table) {
             $table->foreign('ticket_id', 'ticket_form_data_ibfk_1')->references('id')->on('tickets')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
@@ -24,7 +24,7 @@ class AddForeignKeysToTicketFormDataTable extends Migration
      */
     public function down()
     {
-        Schema::table('ticket_form_data', function (Blueprint $table) {
+        Schema::table('tickets__formdata', function (Blueprint $table) {
             $table->dropForeign('ticket_form_data_ibfk_1');
         });
     }

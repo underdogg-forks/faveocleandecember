@@ -12,7 +12,7 @@ class AddForeignKeysToTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::table('teams', function (Blueprint $table) {
+        Schema::table('core__teams', function (Blueprint $table) {
             $table->foreign('team_lead', 'teams_ibfk_1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
@@ -24,7 +24,7 @@ class AddForeignKeysToTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::table('teams', function (Blueprint $table) {
+        Schema::table('core__teams', function (Blueprint $table) {
             $table->dropForeign('teams_ibfk_1');
         });
     }

@@ -23,7 +23,7 @@ class ComposerServiceProvider extends ServiceProvider
             [
                 'themes.default1.agent.layout.agent',
                 'themes.default1.agent.helpdesk.dashboard.dashboard',
-                'themes.default1.admin.layout.admin',
+                'themes.default1.admin.layouts.adminmaster',
                 'themes.default1.admin.helpdesk.setting',
                 $service_desk,
             ], 'App\Http\ViewComposers\AgentLayout'
@@ -36,12 +36,12 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             [
                'themes.default1.agent.layout.agent',
-                'themes.default1.admin.layout.admin',
+                'themes.default1.admin.layouts.adminmaster',
             ], 'App\Http\ViewComposers\AuthUser'
         );
         view()->composer(
             [
-                'themes.default1.admin.layout.admin',
+                'themes.default1.admin.layouts.adminmaster',
                 'themes.default1.agent.layout.agent',
                 'themes.default1.client.layout.client',
             ], 'App\Http\ViewComposers\UserLanguage'

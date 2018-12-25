@@ -12,7 +12,7 @@ class CreateSettingsEmailTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_email', function (Blueprint $table) {
+        Schema::create('email__settings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('template');
             $table->string('sys_email')->nullable();
@@ -37,6 +37,6 @@ class CreateSettingsEmailTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_email');
+        Schema::drop('email__settings');
     }
 }

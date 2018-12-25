@@ -1,4 +1,4 @@
-@extends('themes.default1.admin.layout.admin')
+@extends('themes.default1.admin.layouts.adminmaster')
 
 @section('Staffs')
 active
@@ -49,8 +49,8 @@ class="active"
             @if($errors->first('account_status'))
             <li class="error-message-padding">{!! $errors->first('account_status', ':message') !!}</li>
             @endif
-            @if($errors->first('sla'))
-            <li class="error-message-padding">{!! $errors->first('sla', ':message') !!}</li>
+            @if($errors->first('slaplan'))
+            <li class="error-message-padding">{!! $errors->first('slaplan', ':message') !!}</li>
             @endif
             @if($errors->first('manager'))
             <li class="error-message-padding">{!! $errors->first('manager', ':message') !!}</li>
@@ -81,9 +81,9 @@ class="active"
         </div>
         <div class="row">
             <!-- sla -->
-            <div class="col-xs-6 form-group {{ $errors->has('sla') ? 'has-error' : '' }}">
-                {!! Form::label('sla',Lang::get('lang.SLA_plan')) !!}
-                {!!Form::select('sla', [''=>Lang::get('lang.select_a_sla'), Lang::get('lang.sla_plans')=>$slas->pluck('grace_period','id')->toArray()],null,['class' => 'form-control select']) !!}
+            <div class="col-xs-6 form-group {{ $errors->has('slaplan') ? 'has-error' : '' }}">
+                {!! Form::label('slaplan',Lang::get('lang.SLA_plan')) !!}
+                {!!Form::select('slaplan_id', [''=>Lang::get('lang.select_a_sla'), Lang::get('lang.sla_plans')=>$slas->pluck('grace_period','id')->toArray()],null,['class' => 'form-control select']) !!}
             </div>
             <!-- manager -->
             <div class="col-xs-6 form-group {{ $errors->has('manager') ? 'has-error' : '' }}">
@@ -107,9 +107,7 @@ class="active"
             <input type="checkbox" name="sys_department" @if($sys_department->department == $departments->id) checked disabled @endif> {{ Lang::get('lang.make-default-department')}}
         </div>
     </div>
-
     <div class="box-footer">
-
         {!! Form::submit(Lang::get('lang.update'),['class'=>'form-group btn btn-primary'])!!}    
     </div>
     {!!Form::close()!!}

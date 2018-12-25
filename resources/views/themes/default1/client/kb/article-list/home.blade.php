@@ -52,7 +52,7 @@ class = "active"
                     foreach ($article_id as $id) {
                         //$format = App\Model\helpdesk\Settings\System::where('id','1')->first()->date_time_format;
                         $tz = App\Model\helpdesk\Settings\System::where('id', '1')->first()->time_zone;
-                        $tz = \App\Model\helpdesk\Utility\Timezones::where('id', $tz)->first()->name;
+                        $tz = \App\Model\helpdesk\Utility\Timezone::where('id', $tz)->first()->name;
                         date_default_timezone_set($tz);
                         $date = \Carbon\Carbon::now()->toDateTimeString();
                         //dd($date);

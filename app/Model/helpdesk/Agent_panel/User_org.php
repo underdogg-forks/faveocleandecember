@@ -8,7 +8,7 @@ class User_org extends BaseModel
 {
     /* define table name  */
 
-    protected $table = 'user_assign_organization';
+    protected $table = 'crm__user_assign_organization';
 
     /* define fillable fields */
     protected $fillable = ['id', 'org_id', 'user_id'];

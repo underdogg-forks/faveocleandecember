@@ -6,7 +6,7 @@ use App\BaseModel;
 
 class UserNotification extends BaseModel
 {
-    protected $table = 'user_notification';
+    protected $table = 'user_notifications';
     protected $fillable = [
 
             'notification_id', 'user_id', 'is_read',

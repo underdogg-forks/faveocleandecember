@@ -26,7 +26,7 @@ use App\Model\helpdesk\Ticket\Ticket_Priority;
 use App\Model\helpdesk\Utility\Date_format;
 use App\Model\helpdesk\Utility\Date_time_format;
 use App\Model\helpdesk\Utility\Time_format;
-use App\Model\helpdesk\Utility\Timezones;
+use App\Model\helpdesk\Utility\Timezone;
 use DateTime;
 // classes
 use DB;
@@ -86,7 +86,7 @@ class SettingsController2 extends Controller
         $date = new DateTime();
         $date->modify($days.' day');
         $formatted_date = $date->format('Y-m-d H:i:s');
-        $markasread = DB::table('user_notification')->where('created_at', '<=', $formatted_date)->get();
+        $markasread = DB::table('user_notifications')->where('created_at', '<=', $formatted_date)->get();
         foreach ($markasread as $mark) {
             $mark->delete();
             \App\Model\helpdesk\Notification\Notification::whereId($mark->notification_id)->delete();
@@ -107,7 +107,8 @@ class SettingsController2 extends Controller
     {
         try {
             /* fetch the values of company from company table */
-            $statuss = \DB::table('ticket_status')->get();
+            $statuss = \DB::table('tickets__statuses')->get();
+            dd($statuss);
             /* Direct to Company Settings Page */
             return view('themes.default1.admin.helpdesk.settings.status', compact('statuss'));
         } catch (Exception $e) {
@@ -131,14 +132,14 @@ class SettingsController2 extends Controller
             $statuss->name = Input::get('name');
             $statuss->icon_class = Input::get('icon_class');
             $statuss->email_user = Input::get('email_user');
-            $statuss->sort = Input::get('sort');
+            $statuss->sortorder = Input::get('sortorder');
             $delete = Input::get('delete');
             if ($delete == 'yes') {
                 $statuss->state = 'delete';
             } else {
                 $statuss->state = Input::get('state');
             }
-            $statuss->sort = Input::get('sort');
+            $statuss->sortorder = Input::get('sortorder');
             $statuss->save();
             /* Direct to Company Settings Page */
             return redirect()->back()->with('success', 'Status has been updated!');
@@ -154,14 +155,14 @@ class SettingsController2 extends Controller
         $statuss->name = Input::get('name');
         $statuss->icon_class = Input::get('icon_class');
         $statuss->email_user = Input::get('email_user');
-        $statuss->sort = Input::get('sort');
+        $statuss->sortorder = Input::get('sortorder');
         $delete = Input::get('delete');
         if ($delete == 'yes') {
             $statuss->state = 'delete';
         } else {
             $statuss->state = Input::get('state');
         }
-        $statuss->sort = Input::get('sort');
+        $statuss->sortorder = Input::get('sortorder');
         $statuss->save();
         /* Direct to Company Settings Page */
         return redirect()->back()->with('success', 'Status has been created!');
@@ -266,14 +267,14 @@ class SettingsController2 extends Controller
      *
      * @param type System           $system
      * @param type Department       $department
-     * @param type Timezones        $timezone
+     * @param type Timezone         $timezone
      * @param type Date_format      $date
      * @param type Date_time_format $date_time
      * @param type Time_format      $time
      *
      * @return type Response
      */
-    public function getsystem(System $system, Department $department, Timezones $timezone, Date_format $date, Date_time_format $date_time, Time_format $time)
+    public function getsystem(System $system, Department $department, Timezone $timezone, Date_format $date, Date_time_format $date_time, Time_format $time)
     {
         try {
             /* fetch the values of system from system table */
@@ -627,7 +628,7 @@ class SettingsController2 extends Controller
             $alerts = $alert->whereId('1')->first();
             /* Insert Checkbox to DB */
             $alerts->assignment_status = $request->input('assignment_status');
-            $alerts->ticket_status = $request->input('ticket_status');
+            $alerts->ticket_status = $request->input('tickets__statuses');
             $alerts->overdue_department_member = $request->input('overdue_department_member');
             $alerts->sql_error = $request->input('sql_error');
             $alerts->excessive_failure = $request->input('excessive_failure');
