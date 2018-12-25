@@ -360,7 +360,7 @@
                                     {!! Lang::get('lang.social-login') !!}</a></li>
                             <li @yield('languages')><a href="{{url('languages')}}"><i class="fa fa-language"></i>{!!
                                     Lang::get('lang.language') !!}</a></li>
-                            <li @yield('cron')><a href="{{url('job-scheduler')}}"><i class="fa fa-hourglass"></i>{!!
+                            <li @yield('cronjobs')><a href="{{url('cronjobs')}}"><i class="fa fa-hourglass"></i>{!!
                                     Lang::get('lang.cron') !!}</a></li>
                             <li @yield('security')><a href="{{url('security')}}"><i class="fa fa-lock"></i>{!!
                                     Lang::get('lang.security') !!}</a></li>

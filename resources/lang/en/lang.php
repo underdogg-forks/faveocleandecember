@@ -395,7 +395,7 @@ return [
     'registration_method'                              => 'Registration method',
     'user_session_timeout'                             => 'User session timeout',
     'client_quick_access'                              => 'Client quick access',
-    'cron'                                             => 'Cron',
+    'cron'                                             => 'Cron Jobs',
     'cron_settings'                                    => 'Cron settings',
     'system-settings'                                  => 'System settings',
     'settings-2'                                       => 'Settings',
@@ -1321,6 +1321,7 @@ return [
     'not_published'                                   => 'Not published',
     'numberofelementstodisplay'                       => 'Number of elements to display',
     //======================================
+    'languages'                                                                => 'Languages',
     'language'                                                                 => 'Language',
     'save'                                                                     => 'Save',
     'create'                                                                   => 'Create',

@@ -31,7 +31,7 @@ class="active"
 
 @if($warn!=="")
 @include('themes.default1.admin.helpdesk.settings.cron.cron-new')
-@else 
+@else
 @include('themes.default1.admin.helpdesk.settings.cron.cron-new')
 @endif
 @stop

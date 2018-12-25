@@ -4,7 +4,7 @@
         <h3 class="box-title">{{Lang::get('lang.cron_settings')}}</h3>
     </div>
 
-    <div class="box-body table-responsive"style="overflow:hidden;">
+    <div class="box-body table-responsive" style="overflow:hidden;">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -40,7 +40,8 @@
         @endif
         <div class="alert  alert-dismissable" style="background: #F3F3F3">
             <i class="fa  fa-info-circle"></i>&nbsp;{!!Lang::get('lang.crone-url-message')!!}
-            <a href="http://ladybirdweb.com/support/show/cron-job-scheduling" style="color:black" target="blank">{!!Lang::get('lang.click')!!}</a> {!!Lang::get('lang.check-cron-set')!!}
+            <a href="http://ladybirdweb.com/support/show/cron-job-scheduling" style="color:black" target="blank">{!!Lang::get('lang.click')!!}</a>
+            {!!Lang::get('lang.check-cron-set')!!}
         </div>
         <div class="col-md-6">
             <div class="info-box">
@@ -70,7 +71,8 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             {!! Form::label('notification_cron',Lang::get('lang.notification-email')) !!}<br>
-                            {!! Form::checkbox('notification_cron',1,true) !!}&nbsp;{{Lang::get('lang.cron_notification')}}
+                            {!! Form::checkbox('notification_cron',1,true)
+                            !!}&nbsp;{{Lang::get('lang.cron_notification')}}
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -114,11 +116,11 @@
         $temp.remove();
         alert('{!!Lang::get("lang.clipboard-copy-message")!!}');
     }
-    $(document).ready(function() {
+    $(document).ready(function () {
         var path = $(location).attr('href');
         // alert(path);
         // var str = path;
-        path = path.replace("job-scheduler", "readmails");
+        path = path.replace("cronjobs", "readmails");
         path2 = path.replace("readmails", "notification");
         path3 = path2.replace("notification", "auto-close-tickets")
         document.getElementById("p1").innerHTML = path;

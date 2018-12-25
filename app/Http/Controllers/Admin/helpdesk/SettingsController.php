@@ -350,7 +350,7 @@ class SettingsController extends Controller
      *
      * @return type Response
      */
-    public function getSchedular(Email $email, Template $template, Emails $email1, WorkflowClose $workflow)
+    public function getScheduler(Email $email, Template $template, Emails $email1, WorkflowClose $workflow)
     {
         // try {
         /* fetch the values of email from Email table */
@@ -435,10 +435,10 @@ class SettingsController extends Controller
             $work->save();
             $this->saveConditions();
             /* redirect to Index page with Success Message */
-            return redirect('job-scheduler')->with('success', Lang::get('lang.job-scheduler-success'));
+            return redirect('cronjobs')->with('success', Lang::get('lang.job-scheduler-success'));
         } catch (Exception $e) {
             /* redirect to Index page with Fails Message */
-            return redirect('job-scheduler')->with('fails', Lang::get('lang.job-scheduler-error').'<li>'.$e->getMessage().'</li>');
+            return redirect('cronjobs')->with('fails', Lang::get('lang.job-scheduler-error').'<li>'.$e->getMessage().'</li>');
         }
     }
 

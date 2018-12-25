@@ -330,7 +330,7 @@
                 <div class="col-md-2 col-sm-6">
                     <div class="settingiconblue">
                         <div class="settingdivblue">
-                            <a href="{{url('job-scheduler')}}"><span class="fa-stack fa-2x">
+                            <a href="{{url('cronjobs')}}"><span class="fa-stack fa-2x">
 
                                     <i class="fa  fa-hourglass-o fa-stack-1x"></i>
                                 </span></a>

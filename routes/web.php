@@ -136,7 +136,7 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('delete-forms/{id}', ['as' => 'forms.delete', 'uses' => 'Admin\helpdesk\FormController@delete']);
         //$router->model('id','getcompany');
-        Route::get('job-scheduler', ['as' => 'get.job.scheder', 'uses' => 'Admin\helpdesk\SettingsController@getSchedular']); //to get ob scheduler form page
+        Route::get('cronjobs', ['as' => 'get.job.scheder', 'uses' => 'Admin\helpdesk\SettingsController@getScheduler']); //to get ob scheduler form page
 
         Route::patch('post-scheduler', ['as' => 'post.job.scheduler', 'uses' => 'Admin\helpdesk\SettingsController@postSchedular']); //to update job scheduler
         Route::get('agent-profile-page/{id}', ['as' => 'agent.profile.page', 'uses' => 'Admin\helpdesk\AgentController@agent_profile']);
